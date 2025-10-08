@@ -1,28 +1,74 @@
 .aboutDetailsSection {
-  margin-top: calc(var(--spacing) * 2);
   width: 100dvw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  margin-top: calc(var(--spacing) * 2);
+}
+
+/* Sticky wrapper pins content during scroll */
+.stickyWrapper {
+  position: relative;
+  width: 90dvw;
+  height: 150vh; /* extra height to allow scrolling through reveal */
 }
 
 .aboutDetailsContainer {
-  /* display: grid;
-  grid-template-columns: 0.4fr 0.7fr;
-   align-items: center; */
+  position: sticky;
+  top: 0; /* sticks at the top of viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing);
+  width: 100%;
+  height: 100vh; /* occupy full viewport */
+}
+
+.aboutTextImgContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 90dvw;
 }
 
-.aboutDetailsContainer p {
-  width: 55%;
+.aboutTextImgContainer p {
+  width: 50%;
 }
 
-.aboutDetailsContainer img {
-  width: 35%;
-  height: auto;
+.aboutDetailsDescImgContainer {
+  width: 45%;
+  height: 15rem;
+  position: relative;
+}
+
+.aboutDetailsDescImgContainer img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.beforeLogo {
+  z-index: 1;
+}
+
+.afterLogoWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+
+.afterLogo {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }

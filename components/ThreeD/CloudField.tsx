@@ -208,11 +208,10 @@ export default function CloudField() {
   const sideGroup = useRef<THREE.Group>(null!); // X-axis clouds
 
   const texture = useTexture("/img/cloud10.png");
-  texture.colorSpace = THREE.SRGBColorSpace; // ✅ modern syntax
+  texture.colorSpace = THREE.SRGBColorSpace;
 
   const fog = new THREE.Fog(0x4584b4, -100, 3000);
 
-  // Main dense fog-layer clouds
   const material = new THREE.ShaderMaterial({
     uniforms: {
       map: { value: texture },
@@ -246,7 +245,6 @@ export default function CloudField() {
     depthTest: true,
   });
 
-  // Brighter, lighter shader for high drifting clouds
   const lightMaterial = new THREE.ShaderMaterial({
     uniforms: {
       map: { value: texture },
@@ -274,7 +272,7 @@ export default function CloudField() {
     depthTest: false,
   });
 
-  // Utility: merged random planes
+  // Helper to create cloud geometry (same as your original)
   const createCloudGeometry = (
     count: number,
     rangeZ: number,
@@ -330,73 +328,47 @@ export default function CloudField() {
     return geometry;
   };
 
-  // Forward (Z-axis) and side (X-axis) clouds
   const forwardClouds = createCloudGeometry(4000, 4000, 1000, 0.5, 1.0);
   const sideClouds = createCloudGeometry(1800, 2000, 9000, 400, 3.2);
 
   const target = useRef({ x: 0, y: 0 });
   const lerpFactor = 0.08;
 
+  const zLoop = 8000;
+  const xLoop = 9000;
+
   useFrame(({ mouse, clock }) => {
     const elapsed = clock.getElapsedTime() * 30;
-
-    const zLoop = 8000;
-    const xLoop = 9000;
-
-    // Continuous movement (no popping)
-    const zPosition = -(elapsed % zLoop);
-    const xPosition = ((elapsed * 5.15) % xLoop) - xLoop / 2;
 
     // Smooth mouse parallax
     target.current.x += (mouse.x * 1200 - target.current.x) * lerpFactor;
     target.current.y += (-mouse.y * 1300 - target.current.y) * lerpFactor;
 
-    // Update Z-axis clouds
+    // Infinite Z-axis clouds
     if (group.current) {
+      const zPos = -((elapsed % zLoop) + zLoop) % zLoop; // seamless modulo
       group.current.position.set(
         target.current.x * 0.01,
         target.current.y * 0.01,
-        zPosition
+        zPos
       );
-
-      // Seamless looping
-      const second = group.current.children[1];
-      if (second) second.position.z = zPosition - zLoop;
     }
 
-    // Update X-axis clouds
+    // Infinite X-axis drifting clouds
     if (sideGroup.current) {
-      sideGroup.current.position.set(
-        xPosition,
-        350 + target.current.y * 0.02,
-        0
-      );
-
-      const second = sideGroup.current.children[1];
-      if (second) second.position.x = xPosition - xLoop;
+      const xPos = ((elapsed * 5.15) % xLoop) - xLoop / 2;
+      sideGroup.current.position.set(xPos, 350 + target.current.y * 0.02, 0);
     }
   });
 
   return (
     <>
-      {/* Z-axis fly-through clouds */}
       <group ref={group} scale={1.5}>
         <mesh geometry={forwardClouds} material={material} />
-        <mesh
-          geometry={forwardClouds}
-          material={material}
-          position={[0, 0, -8000]}
-        />
       </group>
 
-      {/* High drifting X-axis clouds */}
       <group ref={sideGroup} scale={1.2}>
         <mesh geometry={sideClouds} material={lightMaterial} />
-        <mesh
-          geometry={sideClouds}
-          material={lightMaterial}
-          position={[-9000, 0, 0]}
-        />
       </group>
     </>
   );

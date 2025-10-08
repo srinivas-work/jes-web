@@ -1,5 +1,6 @@
 .header {
   position: fixed;
+  height: var(--header-height);
   width: 100dvw;
   top: 0;
   left: 0;
@@ -8,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.6rem 5dvw;
+  padding: 0 5dvw;
   backdrop-filter: blur(20px);
   /* background-color: rgba(255, 255, 255, 0.2); */
 
@@ -34,6 +35,8 @@
   width: 10rem;
   height: auto;
   object-fit: contain;
+  cursor: pointer;
+  user-select: none;
 }
 
 .navLinks {

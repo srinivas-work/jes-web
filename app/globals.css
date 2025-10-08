@@ -6,6 +6,7 @@
   --primary-blue: #00ffef;
   --primary-red: #a91e2d;
   --border-thickness: 2px;
+  --header-height: 5rem;
   --spacing: 4rem;
   font-family: var(--font-plusJakartaSans), Arial, Helvetica, sans-serif;
 }
@@ -46,9 +47,18 @@ h2 {
 }
 
 p {
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: 2rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 3rem;
+}
+
+video {
+  border: none;
+  outline: none;
+}
+
+video:focus {
+  outline: none;
 }
 
 @media (prefers-color-scheme: dark) {

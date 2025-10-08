@@ -15,7 +15,6 @@ import * as THREE from "three";
 import styles from "./page.module.css";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
-
 function Building() {
   const tex = useTexture("/img/modern-building.png");
 
