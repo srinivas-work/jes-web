@@ -1,0 +1,38 @@
+.container {
+  margin: auto;
+  width: 90dvw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 2.5rem;
+  border: var(--border-thickness) solid var(--light-gray);
+  padding: 2rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.statBox {
+  text-align: center;
+  flex: 1 1 150px;
+  max-width: 12rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.label {
+  margin-top: 0.5rem;
+  color: var(--light-gray);
+  font-size: 0.95rem;
+}
+
+.sublabel {
+  color: #6b7280;
+  font-size: 0.9rem;
+}

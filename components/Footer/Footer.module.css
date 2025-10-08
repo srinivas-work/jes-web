@@ -1,0 +1,149 @@
+.footer {
+  /* position: fixed;
+  bottom: 0;
+  left: 0; */
+  width: 100dvw;
+  background: #1a1a1a;
+  color: white;
+  z-index: 50;
+  border-radius: 4rem 4rem 0 0;
+  padding: 1dvw 5dvw;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.topSection {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 13rem;
+  height: auto;
+  object-fit: contain;
+}
+
+.navLinks {
+  width: 60%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.navLinks a {
+  height: fit-content;
+  text-decoration: none;
+  border-bottom: 1.5px solid white;
+  transition: all 0.5s ease-in-out;
+}
+
+.navLinks a:hover {
+  color: var(--primary-red);
+  border-color: var(--primary-red);
+}
+
+.contactTitle {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.socials a {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.socials a:hover {
+  color: var(--primary-red);
+}
+
+/* Down Side */
+.down {
+  border-radius: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.subscribeBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 40%;
+  background: #1f212b;
+  border-radius: 1rem;
+  padding: 0 2rem;
+}
+
+.input {
+  width: 100%;
+  height: 3.5rem;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--light-gray);
+  border-right: none;
+  background: transparent;
+  border-radius: 1rem;
+  outline: none;
+}
+
+.button {
+  width: 50%;
+  height: 3.5rem;
+  background: var(--primary-red);
+  color: white;
+  border: none;
+  padding: 0 1.25rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.button:hover {
+  background: #c81925;
+}
+
+/* Divider and bottom */
+.divider {
+  border-top: 1px solid #555;
+  margin: 1.5rem 0;
+}
+
+.bottomBar {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: var(--light-gray);
+  font-size: 0.875rem;
+}
+
+.bottomBar a {
+  color: var(--light-gray);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.bottomBar a:hover {
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .bottomBar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

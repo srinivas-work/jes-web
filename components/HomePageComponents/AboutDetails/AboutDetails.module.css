@@ -1,0 +1,28 @@
+.aboutDetailsSection {
+  margin-top: calc(var(--spacing) * 2);
+  width: 100dvw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.aboutDetailsContainer {
+  /* display: grid;
+  grid-template-columns: 0.4fr 0.7fr;
+   align-items: center; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90dvw;
+}
+
+.aboutDetailsContainer p {
+  width: 55%;
+}
+
+.aboutDetailsContainer img {
+  width: 35%;
+  height: auto;
+  object-fit: contain;
+}

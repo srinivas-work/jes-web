@@ -1,0 +1,72 @@
+.header {
+  position: fixed;
+  width: 100dvw;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 5dvw;
+  backdrop-filter: blur(20px);
+  /* background-color: rgba(255, 255, 255, 0.2); */
+
+  /* Feathered transparency at the bottom */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}
+
+.logo {
+  width: 10rem;
+  height: auto;
+  object-fit: contain;
+}
+
+.navLinks {
+  margin-left: auto;
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navLinks a {
+  height: fit-content;
+  text-decoration: none;
+  transition: all 0.5s ease-in-out;
+}
+
+.navLinks a:hover {
+  color: var(--primary-red);
+  border-color: var(--primary-red);
+}
+
+.button {
+  min-width: 10rem;
+  color: inherit;
+  border: 2px solid var(--primary-red);
+  padding: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  background: transparent;
+}
+
+.button:hover {
+  color: white;
+  border-color: transparent;
+  background: #c81925;
+}
