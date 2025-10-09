@@ -1,0 +1,220 @@
+.blogPage {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/*----------------HeroSection----------------*/
+.heroSection {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: var(--primary-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.heroVector {
+  position: absolute;
+  width: 58%;
+  height: 77%;
+  top: 23%;
+  left: 42%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  padding: 01rem;
+}
+
+.heroContenth1 {
+  font-weight: 700;
+  font-size: 56px;
+  margin-bottom: 1rem;
+}
+
+.heroContentp {
+  font-family: "Poppins", Helvetica;
+  font-size: 20px;
+  max-width: 600px;
+  margin: 0auto;
+}
+
+/*----------------BlogContainer----------------*/
+.blogContainer {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0auto;
+  padding: 4rem1rem;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.categoryButton {
+  padding: 0.6rem1.5rem;
+  border-radius: 999px;
+  background: #f4f4f4;
+  color: var(--primary-dark);
+
+  font-weight: 500;
+  font-size: 16px;
+  transition: all0.25sease;
+  border: none;
+  cursor: pointer;
+}
+
+.categoryButton:hover {
+  background: #e9e9e9;
+}
+
+.activeCategory {
+  background: var(--primary-red);
+  color: white;
+}
+
+/*----------------BlogCards----------------*/
+.blogGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.cardLink {
+  text-decoration: none;
+}
+
+.blogCard {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 04px12pxrgba (0, 0, 0, 0.08);
+  transition: transform0.3sease, box-shadow0.3sease;
+}
+
+.blogCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 06px18pxrgba (0, 0, 0, 0.12);
+}
+
+.imageWrapper {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+
+.cardImage {
+  object-fit: cover;
+  transition: transform0.3sease;
+}
+
+.blogCard:hover.cardImage {
+  transform: scale(1.08);
+}
+
+.categoryTag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: var(--primary-red);
+  color: white;
+  padding: 0.3rem0.8rem;
+  border-radius: 999px;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/*----------------CardContent----------------*/
+.cardContent {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.metaInfo {
+  color: #666;
+
+  font-size: 14px;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.cardTitle {
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--primary-dark);
+  margin-bottom: 0.8rem;
+  transition: color0.25sease;
+}
+
+.blogCard:hover.cardTitle {
+  color: var(--primary-red);
+}
+
+.cardExcerpt {
+  font-family: "Poppins", Helvetica;
+  color: #666;
+  font-size: 16px;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+/*----------------AuthorInfo----------------*/
+.authorRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1pxsolid#e6e6e6;
+  padding-top: 1rem;
+}
+
+.authorInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.authorAvatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.authorName {
+  font-size: 14px;
+  color: var(--primary-dark);
+  font-weight: 500;
+}
+
+.readMore {
+  color: var(--primary-red);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/*----------------Misc----------------*/
+.loading,
+.noPosts {
+  text-align: center;
+
+  color: var(--primary-dark);
+  font-size: 18px;
+  padding: 4rem0;
+}

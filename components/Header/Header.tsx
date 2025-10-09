@@ -6,8 +6,8 @@ import { useRouter } from "next/navigation";
 const Header = () => {
   const router = useRouter();
 
-  const goHome = () => {
-    router.push("/"); // navigate programmatically
+  const goTo = (route: string) => {
+    router.push(route); // navigate programmatically
   };
 
   return (
@@ -19,7 +19,7 @@ const Header = () => {
         sizes="100vw"
         width={0}
         height={0}
-        onClick={goHome}
+        onClick={() => goTo("/")}
       />
 
       <div className={styles.navLinks}>
@@ -29,7 +29,9 @@ const Header = () => {
         <Link href="/about">About Us</Link>
         <Link href="/projects">Projects</Link>
       </div>
-      <button className={styles.button}>Get In Touch</button>
+      <button className={styles.button} onClick={() => goTo("/contact")}>
+        Get In Touch
+      </button>
     </header>
   );
 };
