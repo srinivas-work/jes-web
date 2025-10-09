@@ -204,6 +204,8 @@ import { Suspense, useRef } from "react";
 //.......Fuller No Interaction version
 
 export default function CloudField() {
+  console.log("mounted");
+
   const group = useRef<THREE.Group>(null!); // Z-axis clouds
   const sideGroup = useRef<THREE.Group>(null!); // X-axis clouds
 

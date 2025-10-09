@@ -24,10 +24,10 @@ const Header = () => {
 
       <div className={styles.navLinks}>
         <Link href="/services">Services</Link>
-        <Link href="#">Solutions For</Link>
-        <Link href="#">Insight Hub</Link>
-        <Link href="#">About Us</Link>
-        <Link href="#">Projects</Link>
+        <Link href="/solutions">Solutions For</Link>
+        <Link href="/insights">Insight Hub</Link>
+        <Link href="/about">About Us</Link>
+        <Link href="/projects">Projects</Link>
       </div>
       <button className={styles.button}>Get In Touch</button>
     </header>

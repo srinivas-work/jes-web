@@ -1,0 +1,35 @@
+.buttonLayer {
+  height: var(--header-height);
+  width: 90dvw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap; /* wraps on small screens */
+  gap: 1.5rem;
+  margin: auto;
+}
+
+.button {
+  height: 100%;
+  min-width: 12rem;
+  background: transparent;
+  border: 2px solid var(--primary-dark);
+  color: var(--primary-dark);
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.button:hover {
+  border-color: var(--primary-red);
+  color: white;
+  background-color: var(--primary-red);
+}
+
+.button.active {
+  background: var(--primary-red);
+  color: white;
+  border-color: var(--primary-red);
+}

@@ -1,0 +1,227 @@
+.aboutUsAccordionContainer {
+  position: relative;
+  height: 400dvh;
+}
+
+.about-services-section-container {
+  position: sticky;
+  top: var(--header-height);
+  width: 100dvw;
+  height: 100dvh;
+  margin: auto;
+  display: flex;
+  justify-content: stretch;
+}
+
+.about-services-section-container section {
+  height: 100vh;
+  background-color: var(--lighter-gray);
+  border-left: 1px solid var(--primary-dark);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: flex 2s cubic-bezier(0.05, 1, 0.105, 1),
+    background-color 2s cubic-bezier(0.4, 0, 0.2, 1), color 0.6s ease-in-out;
+}
+
+.about-services-section-container section:hover {
+  color: white;
+  background-color: var(--primary-red);
+  cursor: pointer;
+}
+
+.about-services-section-title {
+  min-width: 5rem;
+  max-width: 5rem;
+  /* width: 100vw; */
+  font-size: 2.5rem;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.about-services-section-title-active {
+  transform: rotate(-90deg);
+  font-size: 2rem;
+  border-radius: 0 0 1rem 1rem;
+}
+
+.about-services-section-description-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: var(--lighter-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: none !important;
+  overflow: hidden;
+}
+
+.about-services-section-description-container-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.5) rotate(-30deg);
+  opacity: 0.03;
+  transform-origin: left right;
+}
+
+.about-services-section-circle-container {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  display: flex;
+  gap: 1rem;
+  pointer-events: auto;
+  z-index: 5;
+}
+
+.about-services-section-circle {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: rgba(169, 30, 45, 0.2);
+  transition: all 0.5s ease-in-out;
+}
+
+.about-services-section-circle:hover {
+  background-color: var(--primary-red);
+}
+
+.about-services-section-circle.outline {
+  background-color: transparent;
+  border: 1px solid rgba(169, 30, 45, 0.2);
+}
+
+.about-services-section-description {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60vw;
+  font-size: 1.1rem;
+  line-height: 2rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  /* animation: slide-right-animation ease-in-out 1s; */
+}
+
+.founder-images-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.founder-image-item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--primary-red);
+  padding: 1.2rem 1.5rem;
+  border-radius: 2rem;
+  color: white;
+}
+
+.founder-image-holder {
+  position: relative;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.founder-image-holder img {
+  object-fit: cover;
+}
+
+@media screen and (max-width: 800px) {
+  .about-services-section-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-services-section-container section {
+    border-left: none;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.25);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.6s ease-in-out, color 0.6s ease-in-out;
+  }
+
+  .about-services-section-title {
+    min-height: 5rem;
+    max-height: 5rem;
+    transform: rotate(0deg);
+    /* width: 100vw; */
+    font-size: 2rem;
+    font-weight: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+  }
+
+  .about-services-open-section {
+    animation: slide-down-animation ease-in-out 1s;
+  }
+
+  .about-services-section-description-container {
+    display: flex;
+    justify-content: center;
+    overflow-y: scroll;
+  }
+
+  .about-services-section-description {
+    width: 80vw;
+    margin: auto;
+    animation: slide-down-animation ease-in-out 1s;
+  }
+
+  .about-services-section-circle-container {
+    top: 5%;
+    left: 10%;
+    gap: 0.8rem;
+  }
+
+  .about-services-section-circle {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    background-color: rgba(17, 17, 17, 0.1);
+  }
+
+  .founder-image-item-container {
+    text-align: center;
+  }
+}
+
+@keyframes slide-right-animation {
+  0% {
+    transform: translateX(-5%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes slide-down-animation {
+  0% {
+    margin-top: -2rem;
+  }
+  100% {
+    margin-top: 0;
+  }
+}

@@ -71,5 +71,5 @@
 .button:hover {
   color: white;
   border-color: transparent;
-  background: #c81925;
+  background: var(--primary-red);
 }

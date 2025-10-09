@@ -1,10 +1,10 @@
 "use client";
 
-import AboutDetails from "@/components/HomePageComponents/AboutDetails/AboutDetails";
-import IndustryHighlights from "@/components/HomePageComponents/IndustryHighlights/IndustryHighlights";
-import ProcessDetails from "@/components/HomePageComponents/ProcessDetails/ProcessDetails";
-import ServiceScrollShowcase from "@/components/HomePageComponents/ServiceScrollShowcase/ServiceScrollShowcase";
-import StatsBar from "@/components/HomePageComponents/StatsBar/StatsBar";
+import AboutDetails from "@/components/PageComponents/HomePage/AboutDetails/AboutDetails";
+import IndustryHighlights from "@/components/PageComponents/HomePage/IndustryHighlights/IndustryHighlights";
+import ProcessDetails from "@/components/PageComponents/HomePage/ProcessDetails/ProcessDetails";
+import ServiceScrollShowcase from "@/components/PageComponents/HomePage/ServiceScrollShowcase/ServiceScrollShowcase";
+import StatsBar from "@/components/PageComponents/HomePage/StatsBar/StatsBar";
 import CloudField from "@/components/ThreeD/CloudField";
 import { useLenis } from "@/utils/hooks/useLenis";
 import { Text, useTexture } from "@react-three/drei";

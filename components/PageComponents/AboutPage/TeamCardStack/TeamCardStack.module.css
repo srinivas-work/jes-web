@@ -1,0 +1,263 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing);
+}
+
+.cardStack {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cardStack.expanded {
+  height: 500px;
+}
+
+.cardWrapper {
+  position: absolute;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* Stacked State - Symmetric Layout */
+.cardStack:not(.expanded) .cardWrapper {
+  left: 50%;
+  top: 50%;
+}
+
+/* Left side cards (negative position from center) */
+.cardStack:not(.expanded) .cardWrapper:not(.centerCard) {
+  transform: translate(-50%, -50%)
+    translateX(calc(var(--position-from-center) * 60px))
+    scale(calc(1 - (abs(var(--position-from-center)) * 0.08)));
+  z-index: calc(100 - abs(var(--position-from-center)));
+  opacity: calc(1 - (abs(var(--position-from-center)) * 0.1));
+}
+
+/* Center hero card */
+.cardStack:not(.expanded) .centerCard {
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 100;
+  opacity: 1;
+}
+
+/* Expanded State */
+.cardStack.expanded .cardWrapper {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: translateX(0) translateY(0) scale(1);
+  z-index: 1;
+  opacity: 1;
+}
+
+.cardStack.expanded {
+  display: flex;
+  gap: 30px;
+  overflow: visible;
+  /* overflow-x: auto; */
+  justify-content: center;
+  padding: 0 40px;
+  scroll-behavior: smooth;
+  align-items: center;
+}
+
+.cardStack.expanded::-webkit-scrollbar {
+  height: 8px;
+}
+
+.cardStack.expanded::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.cardStack.expanded::-webkit-scrollbar-thumb {
+  background: rgba(168, 58, 82, 0.5);
+  border-radius: 10px;
+}
+
+.cardStack.expanded::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 58, 82, 0.7);
+}
+
+/* Card Styles */
+.card {
+  width: 20rem;
+  height: 35rem;
+  border-radius: 999px;
+  padding-top: 2rem;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2rem;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-shrink: 0;
+}
+
+.centerCard .card {
+  box-shadow: 0 30px 80px rgba(168, 58, 82, 0.4);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 2;
+}
+
+.cardName {
+  font-size: 2rem;
+  font-weight: 500;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  margin: 0;
+  opacity: 0.95;
+}
+
+.cardImage {
+  width: 320px;
+  height: 70%;
+  border-radius: 999px;
+  object-fit: cover;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  background-color: white;
+  position: relative;
+}
+
+.cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Toggle Button */
+.toggleButton {
+  margin-top: 60px;
+  padding: 16px 48px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #a83a52 0%, #8b2e44 100%);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(168, 58, 82, 0.3);
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.toggleButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(168, 58, 82, 0.4);
+  background: linear-gradient(135deg, #8b2e44 0%, #a83a52 100%);
+}
+
+.toggleButton:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 16px rgba(168, 58, 82, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .cardStack.expanded {
+    gap: 20px;
+    padding: 0 20px;
+  }
+
+  .cardStack:not(.expanded) .cardWrapper:not(.centerCard) {
+    transform: translate(-50%, -50%)
+      translateX(calc(var(--position-from-center) * 50px))
+      scale(calc(1 - (abs(var(--position-from-center)) * 0.08)));
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 320px;
+    height: 420px;
+    padding: 40px 30px 0;
+  }
+
+  .cardName {
+    font-size: 28px;
+  }
+
+  .cardTitle {
+    font-size: 14px;
+  }
+
+  .cardImage {
+    width: 260px;
+    height: 260px;
+  }
+
+  .cardStack {
+    height: 500px;
+  }
+
+  .cardStack.expanded {
+    height: 450px;
+    gap: 15px;
+  }
+
+  .cardStack:not(.expanded) .cardWrapper:not(.centerCard) {
+    transform: translate(-50%, -50%)
+      translateX(calc(var(--position-from-center) * 40px))
+      scale(calc(1 - (abs(var(--position-from-center)) * 0.08)));
+  }
+
+  .toggleButton {
+    padding: 14px 36px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 280px;
+    height: 380px;
+  }
+
+  .cardName {
+    font-size: 24px;
+  }
+
+  .cardImage {
+    width: 220px;
+    height: 220px;
+  }
+
+  .cardStack:not(.expanded) .cardWrapper:not(.centerCard) {
+    transform: translate(-50%, -50%)
+      translateX(calc(var(--position-from-center) * 30px))
+      scale(calc(1 - (abs(var(--position-from-center)) * 0.08)));
+  }
+}

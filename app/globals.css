@@ -3,6 +3,7 @@
   --foreground: #171717;
   --primary-dark: #202020;
   --light-gray: #a8a8a8;
+  --lighter-gray: #e7e7e7;
   --primary-blue: #00ffef;
   --primary-red: #a91e2d;
   --border-thickness: 2px;
@@ -44,6 +45,7 @@ a {
 
 h2 {
   font-size: 4rem;
+  font-weight: 600;
 }
 
 p {

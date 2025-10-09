@@ -1,0 +1,11 @@
+.approachItemsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.approachItem {
+  width: 50%;
+  height: 10rem;
+  background-color: var(--primary-red);
+  color: white;
+}

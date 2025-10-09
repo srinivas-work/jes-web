@@ -8,7 +8,6 @@
   z-index: 50;
   border-radius: 4rem 4rem 0 0;
   padding: 1dvw 5dvw;
-  margin: auto;
 }
 
 .container {
@@ -128,6 +127,9 @@
   flex-direction: column;
   gap: 0.75rem;
   color: var(--light-gray);
+}
+
+.bottomBar * {
   font-size: 0.875rem;
 }
 
