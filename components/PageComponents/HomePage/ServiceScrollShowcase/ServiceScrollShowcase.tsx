@@ -8,6 +8,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import styles from "./ServiceScrollShowcase.module.css";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 type Section = {
   title: string;
@@ -69,6 +70,8 @@ const sections: Section[] = [
 export default function ServiceScrollShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(0);
+  const router = useRouter();
+
   const refs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -114,6 +117,10 @@ export default function ServiceScrollShowcase() {
     };
 
     requestAnimationFrame(animate);
+  };
+
+  const goTo = (route: string) => {
+    router.push(route); // navigate programmatically
   };
 
   return (
@@ -198,7 +205,12 @@ export default function ServiceScrollShowcase() {
               <p className={styles.description}>
                 {sections[activeIndex].description}
               </p>
-              <button className={styles.button}>View Details</button>
+              <button
+                className={styles.button}
+                onClick={() => goTo("/services")}
+              >
+                View Details
+              </button>
             </motion.div>
           </AnimatePresence>
         </div>
