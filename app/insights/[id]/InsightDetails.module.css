@@ -1,291 +1,151 @@
-.container {
-  background: #fff;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+:global(html),
+:global(body) {
+  box-sizing: border-box;
+}
+
+/* Wrapper */
+.detailsWrapper {
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
 /* Hero Section */
 .heroSection {
   position: relative;
+  height: 70vh;
   width: 100%;
-  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
   overflow: hidden;
 }
 
-.bannerImage {
-  object-fit: cover;
+.heroImageContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-.overlay {
+.heroImage {
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.heroOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.7),
-    rgba(0, 0, 0, 0.3),
-    transparent
-  );
+  background: rgba(0, 0, 0, 0.4);
 }
 
-.heroContent {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 0 1rem 3rem;
+.heroText {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 4rem;
   max-width: 900px;
   margin: 0 auto;
-  color: white;
-  font-family: "Plus Jakarta Sans", Helvetica;
 }
 
-.backLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: white;
-  margin-bottom: 1.5rem;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.backLink:hover {
-  color: #e5e5e5;
-}
-
-.icon {
-  width: 20px;
-  height: 20px;
-}
-
-.category {
-  display: inline-block;
-  background: #a91e2d;
-  color: white;
-  padding: 0.4rem 1rem;
-  border-radius: 9999px;
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 1rem;
-}
-
-.title {
-  font-size: 48px;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  line-height: 1.2;
+.heroTitle {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .meta {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-family: "Poppins", Helvetica;
-  font-size: 16px;
+  font-size: 0.95rem;
+  opacity: 0.85;
 }
 
-.author {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+/* Floating Curves */
+.floatingCurve1,
+.floatingCurve2 {
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.25;
+  will-change: transform;
 }
 
-.avatar {
-  border-radius: 50%;
-  border: 2px solid white;
-  object-fit: cover;
+.floatingCurve1 {
+  top: 8%;
+  left: -8%;
+  opacity: 0.05;
 }
 
-.dot {
-  opacity: 0.8;
+.floatingCurve2 {
+  bottom: 4%;
+  right: -12%;
 }
 
-.metaText {
-  opacity: 0.9;
+.floatingCurve3 {
+  top: 36%;
+  right: 6%;
 }
 
-/* Article */
-.article {
+/* Content Section */
+.contentSection {
+  position: relative;
+  z-index: 2;
+  padding: 10rem 2rem;
+}
+
+.contentWrapper {
   max-width: 900px;
   margin: 0 auto;
-  padding: 4rem 1rem;
-}
-
-.prose {
-  max-width: none;
-}
-
-/* Typography */
-.h1 {
-  font-size: 40px;
-  font-weight: bold;
-  color: var(--primary-dark, #222);
-  margin: 2rem 0 1.5rem;
-}
-
-.h2 {
-  font-size: 32px;
-  font-weight: bold;
-  color: var(--primary-dark, #222);
-  margin: 1.5rem 0 1rem;
-}
-
-.h3 {
-  font-size: 24px;
-  font-weight: bold;
-  color: var(--primary-dark, #222);
-  margin: 1.2rem 0 0.8rem;
-}
-
-.paragraph {
-  font-size: 18px;
-  color: #444;
-  margin-bottom: 1rem;
   line-height: 1.8;
-  font-family: "Poppins", Helvetica;
+  color: #333;
+  font-size: 1.05rem;
 }
 
-.bold {
-  font-size: 18px;
-  font-weight: bold;
-  color: var(--primary-dark, #222);
-  margin-bottom: 1rem;
+.contentWrapper p + p {
+  margin-top: 1.5rem;
 }
 
-.list {
-  font-size: 18px;
-  color: #444;
-  margin-left: 1.5rem;
-  margin-bottom: 0.5rem;
-  line-height: 1.7;
-  font-family: "Poppins", Helvetica;
-}
-
-/* Related Section */
-.relatedSection {
-  background: #f9f9f9;
-  padding: 4rem 1rem;
-}
-
-.relatedWrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.relatedHeading {
-  font-size: 40px;
-  font-weight: bold;
-  color: var(--primary-dark, #222);
-  margin-bottom: 2rem;
-}
-
-.relatedGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-}
-
-@media (min-width: 768px) {
-  .relatedGrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Card */
-.cardLink {
-  text-decoration: none;
-  color: inherit;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  background: white;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.cardImageWrapper {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
-}
-
-.cardImage {
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.card:hover .cardImage {
-  transform: scale(1.1);
-}
-
-.cardCategory {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  background: #a91e2d;
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.cardContent {
-  padding: 1.5rem;
-}
-
-.cardTitle {
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--primary-dark, #222);
-  margin-bottom: 0.5rem;
-  transition: color 0.3s;
-  line-clamp: 2;
-}
-
-.card:hover .cardTitle {
-  color: #a91e2d;
-}
-
-.cardMeta {
-  font-size: 14px;
-  color: #666;
-}
-
-/* Loading & Not Found */
-.loading,
+/* Not Found */
 .notFound {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  flex-direction: column;
-  font-family: "Plus Jakarta Sans", Helvetica;
+  text-align: center;
+  padding: 8rem 2rem;
 }
 
-.notFoundText {
-  font-size: 20px;
-  color: var(--primary-dark, #222);
-  margin-bottom: 1rem;
+.notFound button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #a91e2d;
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.returnLink {
-  color: #a91e2d;
-  text-decoration: none;
+.notFound button:hover {
+  background: #8d1925;
 }
 
-.returnLink:hover {
-  text-decoration: underline;
+/* Responsive */
+@media (max-width: 768px) {
+  .heroSection {
+    height: 60vh;
+  }
+  .floatingCurve1 {
+    width: 420px;
+    left: -18%;
+    top: 6%;
+    opacity: 0.12;
+  }
+  .floatingCurve2 {
+    width: 480px;
+    right: -20%;
+    bottom: 0;
+    opacity: 0.08;
+  }
+  .floatingCurve3 {
+    display: none;
+  }
 }

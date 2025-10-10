@@ -8,6 +8,7 @@
   z-index: 50;
   border-radius: 4rem 4rem 0 0;
   padding: 1dvw 5dvw;
+  z-index: 5;
 }
 
 .container {

@@ -47,7 +47,7 @@
 }
 
 .menuItem.active {
-  color: var(--primary-dark);
+  color: var(--primary-red);
   font-weight: 600;
 }
 
@@ -100,7 +100,7 @@
 
 .description {
   margin-top: 1rem;
-  color: #333;
+  line-height: 2rem;
 }
 
 .button {
