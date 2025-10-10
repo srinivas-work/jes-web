@@ -15,7 +15,7 @@
 
 .bgImageContainerOne {
   position: absolute;
-  top: 5rem;
+  top: 500dvh;
   right: -15rem;
   transform: rotateZ(-90deg);
 }
