@@ -2,16 +2,15 @@
 
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
+import OurApproach from "@/components/PageComponents/ServicePage/OurApproach/OurApproach";
 import ProductSelection from "@/components/PageComponents/ServicePage/ProductSelection/ProductSelection";
 import ServiceSteps from "@/components/PageComponents/ServicePage/ServiceSteps/ServiceSteps";
-import JesLogoMove from "@/components/TriangleMove/JesLogoMove";
 import VideoPlayer from "@/components/UI/VideoPlayer/VideoPlayer";
 import { useLenis } from "@/utils/hooks/useLenis";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 import styles from "./Services.module.css";
-import OurApproach from "@/components/PageComponents/ServicePage/OurApproach/OurApproach";
 
 function VideoSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -78,7 +77,7 @@ function VideoSection() {
 const Services = () => {
   useLenis();
 
-  return <JesLogoMove />;
+  //return <JesLogoMove />;
 
   return (
     <div className={styles.servicePage}>
