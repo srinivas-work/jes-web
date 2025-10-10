@@ -98,10 +98,10 @@
 
 .approachSectionBg {
   position: absolute;
-  bottom: 20rem;
-  right: -40rem;
-  width: 60%;
-  height: 60%;
+  bottom: 30rem;
+  right: -20rem;
+  width: 40%;
+  height: 40%;
   transform: scale(1.5);
   opacity: 0.03;
   transform-origin: left right;
