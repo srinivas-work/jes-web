@@ -78,7 +78,7 @@ function VideoSection() {
 const Services = () => {
   useLenis();
 
-  //return <JesLogoMove />;
+  return <JesLogoMove />;
 
   return (
     <div className={styles.servicePage}>
