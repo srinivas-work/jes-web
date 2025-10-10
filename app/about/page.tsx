@@ -9,6 +9,7 @@ import styles from "./About.module.css";
 import Image from "next/image";
 import Footer from "@/components/Footer/Footer";
 import OurClientsCarousel from "@/components/PageComponents/AboutPage/OurClientsCarousel/OurClientsCarousel";
+import CircularTimeline from "@/components/PageComponents/AboutPage/CircularTimeline/CircularTimeline";
 
 const About = () => {
   useLenis();
@@ -38,6 +39,7 @@ const About = () => {
       </div> */}
       <AboutAccordion />
       <TeamCardStack />
+      <CircularTimeline />
       <OurClientsCarousel />
       <Footer className={styles.Footer} />
     </div>

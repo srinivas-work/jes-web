@@ -1,0 +1,95 @@
+.scrollContainer {
+  position: relative;
+  width: 100%;
+  height: 500vh; /* scroll distance for all sections */
+}
+
+.stickyWrapper {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.journeyHeading {
+  margin-left: 5rem;
+  max-width: 20%;
+}
+
+.bgImageContainerOne {
+  position: absolute;
+  top: 0;
+  right: -15rem;
+  transform: rotateZ(90deg);
+  opacity: 0.05;
+}
+
+.bgImageOne {
+  width: 45rem;
+  height: auto;
+}
+
+.circle {
+  position: absolute;
+  left: -10%;
+  width: 40rem;
+  height: 40rem;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transform-origin: center center;
+}
+
+.circleNumber {
+  position: absolute;
+  top: -3%;
+  left: 43%;
+  transform-origin: center 240px;
+  font-size: 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+/* Enhanced active state for circle numbers */
+.circleNumber {
+  opacity: 0.15;
+}
+
+.textBlock {
+  position: absolute;
+  left: 15rem;
+  text-align: right;
+  width: 100%;
+  max-width: 700px;
+  pointer-events: none; /* Prevent interaction when invisible */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.number {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--primary-red);
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+}
+
+.desc {
+  margin-top: 0.75rem;
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 420px;
+  margin-bottom: 0;
+}
+
+.spacer {
+  height: 100vh;
+}
