@@ -1,17 +1,12 @@
-import React, { useState } from "react";
+"use client";
+
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import styles from "./ContactInfo.module.css";
 
 const contactInfo = [
-  {
-    icon: "/icons/phone.svg",
-    text: "+1012 3456 789",
-    alt: "Phone",
-  },
-  {
-    icon: "/icons/email.svg",
-    text: "demo@gmail.com",
-    alt: "Email",
-  },
+  { icon: "/icons/phone.svg", text: "+1012 3456 789", alt: "Phone" },
+  { icon: "/icons/email.svg", text: "demo@gmail.com", alt: "Email" },
   {
     icon: "/icons/location.svg",
     text: "132 Dartmouth Street Boston, Massachusetts 02156 United States",
@@ -20,18 +15,9 @@ const contactInfo = [
 ];
 
 const socialIcons = [
-  {
-    src: "/icons/discord.png",
-    alt: "Discord",
-  },
-  {
-    src: "/icons/ig.png",
-    alt: "Instagram",
-  },
-  {
-    src: "/icons/twitter.png",
-    alt: "Twitter",
-  },
+  { src: "/icons/discord.png", alt: "Discord" },
+  { src: "/icons/ig.png", alt: "Instagram" },
+  { src: "/icons/twitter.png", alt: "Twitter" },
 ];
 
 const subjectOptions = [
@@ -57,8 +43,35 @@ const subjectOptions = [
   },
 ];
 
-export const ContactInfo = () => {
-  const [formData, setFormData] = useState({
+const ContactInfo = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end end"],
+  });
+
+  // Parallax Y positions
+  const leftY = useTransform(scrollYProgress, [0, 1], [0, 20]);
+  const rightY = useTransform(scrollYProgress, [0, 1], [0, -20]);
+
+  // Smooth spring motion
+  const smoothLeftY = useSpring(leftY, { stiffness: 80, damping: 25 });
+  const smoothRightY = useSpring(rightY, { stiffness: 80, damping: 25 });
+
+  // Optional: subtle rotation/scale for decorative images
+  const whiteCurveRotate = useTransform(scrollYProgress, [0, 1], [0, 5]);
+  const smoothWhiteCurveRotate = useSpring(whiteCurveRotate, {
+    stiffness: 80,
+    damping: 25,
+  });
+
+  const redCurveRotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
+  const smoothRedCurveRotate = useSpring(redCurveRotate, {
+    stiffness: 80,
+    damping: 25,
+  });
+
+  const [formData, setFormData] = React.useState({
     firstName: "",
     lastName: "",
     email: "",
@@ -67,31 +80,32 @@ export const ContactInfo = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Message sent successfully!");
-  };
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    alert("Message sent successfully!");
+  };
+
   return (
-    <section className={styles.container}>
+    <section ref={ref} className={styles.container}>
       <div className={styles.wrapper}>
-        <div className={styles.leftPanel}>
-          <img
+        {/* LEFT PANEL */}
+        <motion.div className={styles.leftPanel} style={{ y: smoothLeftY }}>
+          <motion.img
             className={styles.backgroundVector}
             alt="Vector"
             src="/img/jes_curve_white.svg"
+            style={{ rotate: smoothWhiteCurveRotate }}
           />
 
           <div className={styles.contactTitleContainer}>
             <h3 className={styles.contactTitle}>Contact Information</h3>
-
             <p className={styles.contactSubtitle}>
               Say something to start a live chat!
             </p>
@@ -120,13 +134,15 @@ export const ContactInfo = () => {
               />
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        <div className={styles.rightPanel}>
-          <img
+        {/* RIGHT PANEL */}
+        <motion.div className={styles.rightPanel} style={{ y: smoothRightY }}>
+          <motion.img
             className={styles.formBackground}
             alt="Vector"
             src="/img/jes_curve_red.svg"
+            style={{ rotate: smoothRedCurveRotate }}
           />
 
           <form onSubmit={handleSubmit} className={styles.form}>
@@ -145,7 +161,6 @@ export const ContactInfo = () => {
                   required
                 />
               </div>
-
               <div className={styles.formGroup}>
                 <label htmlFor="lastName" className={styles.label}>
                   Last Name
@@ -178,7 +193,6 @@ export const ContactInfo = () => {
                   required
                 />
               </div>
-
               <div className={styles.formGroup}>
                 <label htmlFor="phone" className={styles.label}>
                   Phone Number
@@ -197,9 +211,7 @@ export const ContactInfo = () => {
             </div>
 
             <div className={styles.subjectSection}>
-              <label htmlFor="radio" className={styles.label}>
-                Select Subject?
-              </label>
+              <label className={styles.label}>Select Subject?</label>
               <div className={styles.radioGroup}>
                 {subjectOptions.map((option) => (
                   <label key={option.id} className={styles.radioItem}>
@@ -207,8 +219,6 @@ export const ContactInfo = () => {
                       type="radio"
                       name="custom-radio"
                       value={option.id}
-                      //   checked={value === option.id}
-                      //   onChange={() => onChange(option.id)}
                       className={styles.radioInput}
                     />
                     <span className={styles.radioLabel}>{option.label}</span>
@@ -238,7 +248,7 @@ export const ContactInfo = () => {
               </button>
             </div>
           </form>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
