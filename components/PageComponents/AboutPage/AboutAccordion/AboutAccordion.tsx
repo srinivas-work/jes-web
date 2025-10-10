@@ -29,6 +29,12 @@ const aboutUsList = [
     description:
       "Our Vision is to become the most valued and trusted partner of our Clients and Partners by; “Freeing you to be your best!",
   },
+  {
+    heading: "Our Values",
+    subheading: "",
+    description:
+      "Our Value is to become the most valued and trusted partner of our Clients and Partners by; “Freeing you to be your best!",
+  },
 ];
 
 const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
