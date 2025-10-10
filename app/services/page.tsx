@@ -78,36 +78,6 @@ function VideoSection() {
 const Services = () => {
   useLenis();
 
-  // return (
-  //   <svg
-  //     id="Layer_1"
-  //     xmlns="http://www.w3.org/2000/svg"
-  //     version="1.1"
-  //     viewBox="0 0 1942.2 1913.1"
-  //   >
-  //     <path
-  //       className="st0"
-  //       style={{ fill: "#a91e2d" }}
-  //       d="M883.8,875.2V201h100.9c100.9,0,198.2,33.7,275.6,95.2,77.1,61.4,129.3,146.7,147,241.2h176.9c-17.8-138.5-87.7-266-196.8-358.7-109.8-93.1-251.1-145.3-397.5-146.3h-282.4v842.9h176.2Z"
-  //     />
-  //     <path
-  //       className="st0"
-  //       style={{ fill: "#a91e2d" }}
-  //       d="M883.8,1051.4H209.6v-100.9c0-100.9,33.7-198.2,95.2-275.6,61.4-77.1,146.7-129.3,241.2-147v-176.9c-138.5,17.8-266,87.7-358.7,196.8-93.1,109.8-145.3,251.1-146.3,397.5v282.4h842.9v-176.2Z"
-  //     />
-  //     <path
-  //       className="st0"
-  //       style={{ fill: "#a91e2d" }}
-  //       d="M1059.9,1051.4v674.2h-100.9c-100.9,0-198.2-33.7-275.6-95.2-77.1-61.4-129.3-146.7-147-241.2h-176.9c17.8,138.5,87.7,266,196.8,358.7,109.8,93.1,251.1,145.3,397.5,146.3h282.4v-842.9h-176.2Z"
-  //     />
-  //     <path
-  //       className="st0"
-  //       style={{ fill: "#a91e2d" }}
-  //       d="M1059.9,875.2h674.2v100.9c0,100.9-33.7,198.2-95.2,275.6-61.4,77.1-146.7,129.3-241.2,147v176.9c138.5-17.8,266-87.7,358.7-196.8,93.1-109.8,145.3-251.1,146.3-397.5v-282.4h-842.9v176.2Z"
-  //     />
-  //   </svg>
-  // );
-
   //return <JesLogoMove />;
 
   return (
@@ -133,7 +103,9 @@ const Services = () => {
         />
       </div>
       <Header />
-      <h2>Comprehensive KPO Solutions for Your Success</h2>
+      <h2 className={styles.videoTitle}>
+        Comprehensive KPO Solutions for Your Success
+      </h2>
       <VideoSection />
       {/* <VideoPlayer />
       <p className={styles.serviceDetails}>
@@ -153,6 +125,7 @@ const Services = () => {
       </p> */}
       <ServiceSteps />
       <ProductSelection />
+      <OurApproach />
       <Footer />
     </div>
   );

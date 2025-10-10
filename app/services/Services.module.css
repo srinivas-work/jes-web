@@ -29,7 +29,7 @@
   height: auto;
 }
 
-.servicePage h2 {
+.videoTitle {
   margin-left: 5dvw;
   display: block;
   width: 20ch; /* limits to about 20 characters per line */
