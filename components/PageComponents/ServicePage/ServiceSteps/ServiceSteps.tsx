@@ -4,9 +4,9 @@ import styles from "./ServiceSteps.module.css";
 
 const cardsData = [
   {
-    label: "Part II",
+    label: "Part I",
     number: "01",
-    title: "Specialized Quantity Surveying",
+    title: "LOD 100 - Conceptual Design",
     content: [
       "LOD 100 represents the most basic level of BIM modeling.",
       "It includes conceptual information, basic geometry, and overall project massing.",
@@ -16,41 +16,41 @@ const cardsData = [
   {
     label: "Part II",
     number: "02",
-    title: "Software-Aided QTO",
+    title: "LOD 200 - Schematic Design",
     content: [
-      "LOD 100 represents the most basic level of BIM modeling.",
-      "It includes conceptual information, basic geometry, and overall project massing.",
-      "Used in the early stages of design to communicate the project's basic form and concept.",
+      "LOD 200 involves more developed elements than LOD 100.",
+      "It includes approximate sizes, shapes, and locations of building elements.",
+      "Used in the schematic design phase to visualize the project and assess its feasibility.",
     ],
   },
   {
-    label: "Part II",
+    label: "Part III",
     number: "03",
-    title: "Customized Reports & Documentation",
+    title: "LOD 300 - Detailed Design",
     content: [
-      "LOD 100 represents the most basic level of BIM modeling.",
-      "It includes conceptual information, basic geometry, and overall project massing.",
-      "Used in the early stages of design to communicate the project's basic form and concept.",
+      "LOD 300 provides a more detailed representation of building elements.",
+      "It includes accurate geometry, sizes, shapes, quantities, and relationships between components.",
+      "Used during the detailed design phase for coordination and construction documentation.",
     ],
   },
   {
-    label: "Part II",
+    label: "Part IV",
     number: "04",
-    title: "Customized Documentation",
+    title: "LOD 400 - Fabrication and Assembly",
     content: [
-      "LOD 100 represents the most basic level of BIM modeling.",
-      "It includes conceptual information, basic geometry, and overall project massing.",
-      "Used in the early stages of design to communicate the project's basic form and concept.",
+      "LOD 400 is highly detailed and suitable for fabrication and assembly purposes.",
+      "It includes precise geometry, specific product information, and assembly details.",
+      "Used for manufacturing, fabrication, and assembly of building components.",
     ],
   },
   {
-    label: "Part II",
+    label: "Part V",
     number: "05",
-    title: "Customized Documentation",
+    title: "LOD 500 - As-Built Model",
     content: [
-      "LOD 100 represents the most basic level of BIM modeling.",
-      "It includes conceptual information, basic geometry, and overall project massing.",
-      "Used in the early stages of design to communicate the project's basic form and concept.",
+      "LOD 500 represents the highest level of detail, capturing actual installed elements and accurate as-built conditions.",
+      "It includes precise geometry, product data, and operational information.",
+      "Used for facility management, maintenance, and renovation purposes post-construction.",
     ],
   },
 ];

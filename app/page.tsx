@@ -1,5 +1,7 @@
 "use client";
 
+import Footer from "@/components/Footer/Footer";
+import Header from "@/components/Header/Header";
 import AboutDetails from "@/components/PageComponents/HomePage/AboutDetails/AboutDetails";
 import IndustryHighlights from "@/components/PageComponents/HomePage/IndustryHighlights/IndustryHighlights";
 import ProcessDetails from "@/components/PageComponents/HomePage/ProcessDetails/ProcessDetails";
@@ -9,12 +11,10 @@ import CloudField from "@/components/ThreeD/CloudField";
 import { useLenis } from "@/utils/hooks/useLenis";
 import { Text, useTexture } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useControls } from "leva";
 import { Suspense } from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
-import Footer from "@/components/Footer/Footer";
-import Header from "@/components/Header/Header";
+import Folder from "@/components/UI/Folder/Folder";
 function Building() {
   const tex = useTexture("/img/modern-building.png");
 
@@ -37,8 +37,51 @@ function Building() {
   );
 }
 
+const loadingStates = [
+  {
+    text: "Buying a condo",
+  },
+  {
+    text: "Travelling in a flight",
+  },
+  {
+    text: "Meeting Tyler Durden",
+  },
+  {
+    text: "He makes soap",
+  },
+  {
+    text: "We goto a bar",
+  },
+  {
+    text: "Start a fight",
+  },
+  {
+    text: "We like it",
+  },
+  {
+    text: "Welcome to F**** C***",
+  },
+];
+
 export default function Home() {
   useLenis();
+
+  // return (
+  //   <div
+  //     style={{
+  //       width: "100dvw",
+  //       height: "100dvh",
+  //       display: "flex",
+  //       justifyContent: "center",
+  //       alignItems: "center",
+  //     }}
+  //   >
+  //     <Folder />
+  //   </div>
+  // );
+
+  //return <JesLogoMove />;
 
   return (
     <div style={{ width: "100vw", height: "100vh", background: "#ffffff" }}>

@@ -6,15 +6,15 @@ import OurApproach from "@/components/PageComponents/ServicePage/OurApproach/Our
 import ProductSelection from "@/components/PageComponents/ServicePage/ProductSelection/ProductSelection";
 import ServiceSteps from "@/components/PageComponents/ServicePage/ServiceSteps/ServiceSteps";
 import VideoPlayer from "@/components/UI/VideoPlayer/VideoPlayer";
-import { serviceSections } from "@/utils/data/dummyData";
 import { useLenis } from "@/utils/hooks/useLenis";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useParams } from "next/navigation";
 import { useRef } from "react";
-import styles from "./Services.module.css";
+import styles from "./ServiceItem.module.css";
+import { useParams } from "next/navigation";
+import { serviceSections } from "@/utils/data/dummyData";
 
-function VideoSection() {
+const VideoSection: React.FC<{ id?: number }> = ({ id }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -56,28 +56,18 @@ function VideoSection() {
             transformOrigin: "top",
           }}
         >
-          We’ve combined the precision, creativity, and innovation of our
-          U.S.-based engineering expertise with the deep, industry-specific
-          knowledge and technical excellence of our 200+ professional engineers
-          across India and Qatar. This powerful synergy enables us to deliver
-          high-performance design, documentation, and engineering solutions that
-          meet global standards while remaining cost-efficient and agile. Our
-          integrated global team works as an extension of your in-house
-          resources — seamlessly managing your engineering and design workloads
-          with unmatched accuracy, efficiency, and scalability. From concept
-          development and detailed design to validation and documentation, we
-          ensure every stage of your project is executed with meticulous
-          attention to quality and technical excellence. By entrusting us with
-          your most complex design and documentation needs, your organization
-          gains more.
+          {serviceSections[id ?? 0].description}
         </motion.p>
       </div>
     </div>
   );
-}
+};
 
-const Services = () => {
+const ServiceItem = () => {
   useLenis();
+
+  const params = useParams();
+  const { id } = params;
 
   return (
     <div className={styles.servicePage}>
@@ -102,7 +92,7 @@ const Services = () => {
         />
       </div>
       <Header />
-      <h2 className={styles.videoTitle}>{serviceSections[0].title}</h2>
+      <h2 className={styles.videoTitle}>{serviceSections[Number(id)].title}</h2>
       <VideoSection />
       {/* <VideoPlayer />
       <p className={styles.serviceDetails}>
@@ -128,4 +118,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default ServiceItem;

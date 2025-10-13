@@ -4,6 +4,7 @@
   display: flex;
   width: 90dvw;
   min-height: 100vh;
+  height: 800dvh;
   position: relative;
 }
 
@@ -12,6 +13,9 @@
   top: 5rem;
   right: -10rem;
   opacity: 0.1;
+  will-change: transform;
+  transform-origin: center;
+  z-index: -1;
 }
 
 .bgImage {
@@ -40,6 +44,12 @@
   transition: all 0.3s ease;
   text-align: left;
   cursor: pointer;
+}
+
+.menuItem p {
+  font-weight: inherit;
+  line-height: 2rem;
+  max-width: 80%;
 }
 
 .menuItem:hover {

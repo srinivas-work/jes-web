@@ -1,0 +1,72 @@
+.servicePage {
+  margin: auto;
+  margin-top: calc(var(--spacing) * 2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+}
+
+.bgImageContainerOne {
+  position: absolute;
+  top: 0;
+  right: -5rem;
+  opacity: 0.2;
+}
+
+.bgImageOne {
+  width: 20rem;
+  height: auto;
+}
+
+.bgImageContainerTwo {
+  position: absolute;
+  top: 180dvw;
+  left: 0;
+}
+
+.bgImageTwo {
+  width: 50rem;
+  height: auto;
+}
+
+.videoTitle {
+  margin-left: 5dvw;
+  display: block;
+  width: 20ch; /* limits to about 20 characters per line */
+  white-space: normal;
+  word-wrap: break-word;
+  line-height: 1.2;
+}
+
+.serviceDetails {
+  width: 90dvw;
+  margin: auto;
+  text-align: justify;
+  padding-right: 3rem;
+}
+
+/*Tesst Video*/
+.outerContainer {
+  position: relative;
+  height: 180vh; /* controls total scroll distance */
+  width: 100%;
+}
+
+.stickyContainer {
+  position: sticky;
+  top: var(--header-height);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 5vw;
+}
+
+/* .serviceDetails {
+  max-width: 900px;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+  opacity: 0;
+} */

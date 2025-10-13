@@ -21,7 +21,7 @@ const aboutUsList = [
     heading: "Our Mission",
     subheading: "",
     description:
-      "Our mission is to catalyze the expansion of global companies by providing access to exceptional back-office engineering and business support services. We specialize in delivering cost-effective solutions, streamlining operational processes, and fostering seamless collaboration. Through outsourcing, we empower organizations to concentrate on core competencies, achieve sustainable growth, and navigate the complexities of the modern business landscape with efficiency and innovation.",
+      "Our goal is to empower HVAC professionals and manufacturer reps with accurate, scalable, and tech-enabled solutions that enhance speed, precision, and overall project success. By integrating advanced technology, we streamline every phase of the process—from initial concept through to completion—ensuring more informed decision-making, faster execution, and higher-quality outcomes. We aim to provide HVAC professionals with the tools and resources they need to achieve greater efficiency, reduce errors, and deliver exceptional results in every project.",
   },
   {
     heading: "Our Vision",
