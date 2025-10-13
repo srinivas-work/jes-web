@@ -1,6 +1,9 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import styles from "./ProductSelection.module.css";
+import Carousel from "@/components/UI/Carousel/Carousel";
+import VerticalCarousel from "@/components/UI/VerticalCarousel/VerticalCarousel";
+import DoubleCarousel from "@/components/UI/DoubleCarousel/DoubleCarousel";
 
 interface Product {
   id: number;
@@ -9,20 +12,17 @@ interface Product {
 }
 
 const products: Product[] = [
-  { id: 1, title: "GRD (Grilles, Registers, & Diffusers)", icon: "🔲" },
-  { id: 2, title: "Dampers", icon: "↔️" },
-  { id: 3, title: "Silencers & Vibration", icon: "🔇" },
-  { id: 4, title: "Fans & Terminals", icon: "⚙️" },
-  { id: 5, title: "Vibration and seismic supports", icon: "📐" },
-  { id: 6, title: "Fan Coils & VRV", icon: "❄️" },
-  { id: 7, title: "Pumps & Hydronic Valves", icon: "💧" },
-  { id: 8, title: "AHUs & Custom AHUs", icon: "⭕" },
+  { id: 1, title: "Customized Reports & Documentation", icon: "🔲" },
+  { id: 2, title: "Consultancy and Project Support", icon: "↔️" },
+  { id: 3, title: "Quality Assurance & Compliance", icon: "🔇" },
+  { id: 4, title: "Domain Specific Services", icon: "⚙️" },
+  { id: 5, title: "Software Aided Services", icon: "📐" },
 ];
 
+// Controllable spacing variables
 const CARD_HEIGHT = 125;
-const EXPANDED_OFFSET = 40;
-const EXPANDED_SCALE = 1.02;
-
+const CARD_SPACING = 15; // Control the vertical space between cards
+const STACK_OFFSET = 10; // Control the horizontal stacking offset
 const ANIMATION_DURATION = 0.2;
 const COLOR_DURATION = 0.05;
 const STAGGER_DELAY = 0.01;
@@ -60,99 +60,74 @@ export default function ProductSelection() {
 
   const handleCardClick = (id: number) => {
     setExpandedId(id);
-
-    if (sectionRef.current) {
-      // Get the nearest scrollable parent
-      const parent = sectionRef.current.offsetParent as HTMLElement | null;
-      const scrollTop = parent
-        ? sectionRef.current.offsetTop - parent.offsetTop
-        : sectionRef.current.offsetTop;
-
-      window.scrollTo({
-        top: scrollTop,
-        behavior: "smooth",
-      });
-    }
   };
 
+  // Calculate stacked positions
   const getCardPosition = (index: number, id: number) => {
-    const basePosition = index * CARD_HEIGHT;
+    const basePosition = index * STACK_OFFSET;
     if (expandedId === null) return basePosition;
 
     const expandedIndex = products.findIndex((p) => p.id === expandedId);
-    if (id === expandedId) return 0;
-    if (index === 0 && expandedIndex !== 0) return expandedIndex * CARD_HEIGHT;
-    if (index > 0) return basePosition + EXPANDED_OFFSET;
+    if (id === expandedId) return basePosition; // Expanded card stays in its stack position
 
     return basePosition;
   };
 
-  const getVisualOrder = (id: number) => {
-    if (expandedId === null) {
-      return products.findIndex((p) => p.id === id);
-    }
-    if (id === expandedId) return 0;
+  const getCardTopPosition = (index: number) => {
+    return index * (CARD_HEIGHT + CARD_SPACING);
+  };
 
-    const currentIndex = products.findIndex((p) => p.id === id);
-    const expandedIndex = products.findIndex((p) => p.id === expandedId);
-
-    if (currentIndex === 0) return expandedIndex;
-    return currentIndex;
+  // Calculate total container height based on card count and spacing
+  const getTotalContainerHeight = () => {
+    return (
+      products.length * (CARD_HEIGHT + CARD_SPACING) +
+      products.length * STACK_OFFSET
+    );
   };
 
   return (
     <div ref={sectionRef} className={styles.container}>
-      <h2 className={styles.title}>Product Selection</h2>
+      <h2 className={styles.title}>Key Deliverables</h2>
 
       <div className={styles.grid}>
         {/* Left Column - Stacked Cards */}
         <div className={styles.leftColumn}>
-          <div className={styles.cardsStack}>
+          <div
+            className={styles.cardsStack}
+            //style={{ minHeight: `${getTotalContainerHeight()}px` }}
+          >
             {products.map((product, index) => {
-              const visualOrder = getVisualOrder(product.id);
               const isExpanded = expandedId === product.id;
-              const position = getCardPosition(visualOrder, product.id);
-
-              // Precompute animate values
-              const zIndex = isExpanded ? 50 : products.length - visualOrder;
-              const scale = isExpanded ? EXPANDED_SCALE : 1;
-              const background = isExpanded
-                ? CARD_COLORS.expanded
-                : CARD_COLORS.normal;
-              const opacity = 1; // stays 1
-              const y = animateCards ? position : 50;
+              const stackPosition = getCardPosition(index, product.id);
+              const topPosition = getCardTopPosition(index);
 
               return (
                 <motion.div
                   key={product.id}
                   className={styles.card}
+                  style={{
+                    // position: "absolute",
+                    // top: topPosition,
+                    // left: 0,
+                    zIndex: isExpanded ? 50 : products.length - index,
+                    // height: `fit-content`,
+                  }}
                   initial={{ opacity: 1, y: 50 }}
-                  animate={{ y, zIndex, scale, background, opacity }}
+                  animate={{
+                    y: animateCards ? 0 : 50,
+                    background: isExpanded
+                      ? CARD_COLORS.expanded
+                      : CARD_COLORS.normal,
+                    scale: isExpanded ? 1.02 : 1,
+                  }}
                   transition={{
-                    duration: isExpanded ? 0.1 : ANIMATION_DURATION,
+                    duration: ANIMATION_DURATION,
                     delay: index * STAGGER_DELAY,
                     ease: "easeInOut",
                   }}
                   onClick={() => handleCardClick(product.id)}
                 >
                   <div className={styles.cardContent}>
-                    <motion.h3
-                      className={styles.cardTitle}
-                      animate={{
-                        fontSize: isExpanded ? "1.7rem" : "1.2rem",
-                        fontWeight: isExpanded ? "600" : "500",
-                        color: isExpanded
-                          ? TEXT_COLORS.expanded
-                          : TEXT_COLORS.normal,
-                      }}
-                      transition={{
-                        duration: COLOR_DURATION,
-                        ease: "easeOut",
-                        delay: isExpanded ? STAGGER_DELAY : 0,
-                      }}
-                    >
-                      {product.title}
-                    </motion.h3>
                     <motion.div
                       className={styles.iconPlaceholder}
                       animate={{
@@ -163,7 +138,6 @@ export default function ProductSelection() {
                       transition={{
                         duration: COLOR_DURATION,
                         ease: "easeOut",
-                        delay: isExpanded ? STAGGER_DELAY * 1.2 : 0,
                       }}
                     >
                       <motion.span
@@ -172,15 +146,30 @@ export default function ProductSelection() {
                         transition={{
                           duration: COLOR_DURATION,
                           ease: "easeOut",
-                          delay: isExpanded ? STAGGER_DELAY * 1.4 : 0,
                         }}
                       >
                         {product.icon}
                       </motion.span>
                     </motion.div>
+                    <motion.h3
+                      className={styles.cardTitle}
+                      animate={{
+                        //fontSize: isExpanded ? "1.7rem" : "1.2rem",
+                        fontWeight: isExpanded ? "600" : "500",
+                        color: isExpanded
+                          ? TEXT_COLORS.expanded
+                          : TEXT_COLORS.normal,
+                      }}
+                      transition={{
+                        duration: COLOR_DURATION,
+                        ease: "easeOut",
+                      }}
+                    >
+                      {product.title}
+                    </motion.h3>
                   </div>
 
-                  {isExpanded && (
+                  {/* {isExpanded && (
                     <motion.button
                       className={styles.learnMore}
                       initial={{ opacity: 0, y: 15 }}
@@ -220,7 +209,7 @@ export default function ProductSelection() {
                       </svg>
                       Learn more
                     </motion.button>
-                  )}
+                  )} */}
                 </motion.div>
               );
             })}
@@ -230,27 +219,7 @@ export default function ProductSelection() {
         {/* Right Column - Product Info */}
         <div className={styles.rightColumn}>
           <div className={styles.imageGrid}>
-            <div className={styles.imageCard}>
-              <div className={styles.productImage}>
-                <div className={styles.imagePlaceholder}>
-                  <span>🔲</span>
-                </div>
-              </div>
-            </div>
-            <div className={styles.imageCard}>
-              <div className={styles.productImage}>
-                <div className={styles.imagePlaceholder}>
-                  <span>🔲</span>
-                </div>
-              </div>
-            </div>
-            <div className={styles.imageCard}>
-              <div className={styles.productImage}>
-                <div className={styles.imagePlaceholder}>
-                  <span>🔲</span>
-                </div>
-              </div>
-            </div>
+            <Carousel />
           </div>
 
           <div className={styles.description}>

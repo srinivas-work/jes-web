@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import styles from "./AboutDetails.module.css";
+import JesLogoMove from "@/components/JesLogoMove/JesLogoMove";
 
 const AboutDetails = () => {
   const containerRef = useRef<HTMLDivElement>(null);

@@ -1,0 +1,174 @@
+/* VerticalCarousel.module.css */
+.vertical-carousel-container {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--primary-dark);
+  border-radius: 24px;
+  padding: 16px;
+  --outer-r: 24px;
+  --p-distance: 12px;
+  width: 100%;
+  height: 100%;
+  max-height: 400px;
+  box-sizing: border-box;
+  /* Add right padding to create space for indicators */
+  padding-right: 60px; /* This matches INDICATOR_SPACE in the component */
+}
+
+.vertical-carousel-track {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.vertical-carousel-item {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  border-radius: calc(var(--outer-r) - var(--p-distance));
+  background-color: var(--primary-red);
+  overflow: hidden;
+  cursor: grab;
+  /* width is now controlled by component */
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.vertical-carousel-item:active {
+  cursor: grabbing;
+}
+
+.vertical-carousel-item-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+}
+
+.vertical-carousel-container.round {
+  border: 1px solid #555;
+}
+
+.vertical-carousel-item.round {
+  background-color: #0d0716;
+  position: relative;
+  border: 1px solid #555;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.vertical-carousel-item-header {
+  padding: 24px 24px 0 24px;
+  width: 100%;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.vertical-carousel-item-header.round {
+  padding: 0;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.vertical-carousel-icon-container {
+  display: flex;
+  height: 28px;
+  width: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.carousel-icon {
+  height: 16px;
+  width: 16px;
+  color: #060010;
+}
+
+.vertical-carousel-item-content {
+  padding: 24px;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.vertical-carousel-item-title {
+  margin-bottom: 8px;
+  font-weight: 900;
+  font-size: clamp(18px, 2vw, 24px);
+  color: #fff;
+  line-height: 1.2;
+}
+
+.vertical-carousel-item-description {
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: #fff;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Vertical indicators (right center) */
+.vertical-carousel-indicators-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 20px; /* Position from the right edge of the container */
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
+  height: auto;
+  z-index: 10; /* Ensure indicators are above cards */
+}
+
+.vertical-carousel-indicators {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 0;
+}
+
+.vertical-carousel-indicator {
+  height: 0.6rem;
+  width: 0.6rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 150ms ease;
+}
+
+.vertical-carousel-indicator.active {
+  background-color: var(--primary-red);
+  transform: scale(1.2);
+}
+
+.vertical-carousel-indicator.inactive {
+  background-color: rgba(169, 30, 45, 0.3);
+  transform: scale(0.8);
+}
+
+.vertical-carousel-indicators-container.round {
+  position: absolute;
+  z-index: 2;
+  bottom: 3em;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .vertical-carousel-container {
+    padding-right: 50px; /* Slightly less padding on mobile */
+  }
+
+  .vertical-carousel-indicators-container {
+    right: 15px; /* Adjust indicator position for mobile */
+  }
+}

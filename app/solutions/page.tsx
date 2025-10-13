@@ -70,7 +70,7 @@ const solutions: SolutionType[] = [
       "Grading & Drainage",
     ],
     image:
-      "https://images.unsplash.com/photo-1596637144845-689284b6aa14?w=1200&q=80",
+      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80",
   },
   {
     id: 5,
@@ -98,7 +98,7 @@ const solutions: SolutionType[] = [
       "Site Logistics Planning",
     ],
     image:
-      "https://images.unsplash.com/photo-1590496793907-4bebe2850a7e?w=1200&q=80",
+      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80",
   },
 ];
 

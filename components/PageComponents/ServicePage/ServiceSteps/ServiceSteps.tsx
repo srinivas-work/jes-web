@@ -80,7 +80,7 @@ export default function ServiceSteps() {
   return (
     <div className={styles.wrapper} ref={containerRef}>
       <div className={styles.stickyContainer}>
-        <h2 className={styles.title}>Service Steps</h2>
+        <h2 className={styles.title}>Service Details</h2>
 
         <div className={styles.scrollContainer}>
           <motion.div

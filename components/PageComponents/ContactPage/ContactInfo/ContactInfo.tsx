@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import styles from "./ContactInfo.module.css";
+import FlipBookViewer from "@/components/FlipBookViewer/FlipBookViewer";
+import { FileText } from "lucide-react";
 
 const contactInfo = [
   { icon: "/icons/phone.svg", text: "+1012 3456 789", alt: "Phone" },
@@ -45,6 +47,7 @@ const subjectOptions = [
 
 const ContactInfo = () => {
   const ref = useRef<HTMLDivElement>(null);
+  const [isDocClicked, setIsDocClicked] = useState(false);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end end"],
@@ -94,6 +97,10 @@ const ContactInfo = () => {
 
   return (
     <section ref={ref} className={styles.container}>
+      <FlipBookViewer
+        isClicked={isDocClicked}
+        onClose={() => setIsDocClicked(false)}
+      />
       <div className={styles.wrapper}>
         {/* LEFT PANEL */}
         <motion.div className={styles.leftPanel} style={{ y: smoothLeftY }}>
@@ -133,6 +140,15 @@ const ContactInfo = () => {
                 src={icon.src}
               />
             ))}
+            <button
+              className={styles.docButton}
+              onClick={() => setIsDocClicked(true)}
+              aria-label="Download Company Profile"
+              style={{ zIndex: 500 }}
+            >
+              <FileText className={styles.docIcon} />
+              View Company Profile
+            </button>
           </div>
         </motion.div>
 

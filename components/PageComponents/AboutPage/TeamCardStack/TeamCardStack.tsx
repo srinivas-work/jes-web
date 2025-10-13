@@ -55,26 +55,23 @@ export default function TeamCardStack() {
     },
     {
       id: 3,
-      name: "Pradeep Rajan",
-      title: "Chief Executive Officer",
-      image:
-        "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=80",
+      name: "Brad Tully",
+      title: "Engineering Partner",
+      image: "/img/team/brad_tully.png",
       color: "#c08e9a",
     },
     {
       id: 4,
-      name: "Dyna Jenney",
-      title: "Senior Consultant",
-      image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80",
+      name: "Bruce Dorey",
+      title: "Partner & CEO",
+      image: "/img/team/bruce_dorey.jpg",
       color: "#a91e2d",
     },
     {
       id: 5,
-      name: "Pradeep Rajan",
-      title: "Chief Executive Officer",
-      image:
-        "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80",
+      name: "Suchit Pradeep",
+      title: "Project Manager & DOO",
+      image: "/img/team/suchit_pradeep.jpg",
       color: "#c08e9a",
     },
     {
@@ -135,7 +132,7 @@ export default function TeamCardStack() {
       </div>
 
       <button className={styles.toggleButton} onClick={handleToggle}>
-        {isExpanded ? "Stack Cards" : "Expand Cards"}
+        {isExpanded ? "Hide Team" : "Show Team"}
       </button>
     </div>
   );

@@ -1,0 +1,36 @@
+.jesLogoDetailsContainer {
+  height: 200vh;
+  position: relative;
+}
+
+.jesLogoContainer {
+  margin-top: 10rem;
+  width: 100%;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.jesLogo {
+  margin-bottom: 7rem;
+}
+
+.jesLogoAboutContainer {
+  position: absolute;
+  width: 90dvw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.logoCompleteImg {
+  width: 25%;
+  height: 25%;
+  object-fit: cover;
+  overflow: visible;
+}

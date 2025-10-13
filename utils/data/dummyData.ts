@@ -2,52 +2,138 @@ import { ServiceSectionType } from "../types";
 
 export const serviceSections: ServiceSectionType[] = [
   {
-    title: "BIM Modeling",
-    image: "/img/bim.png",
+    title: "Spec Review",
+    image: "/img/digital.png",
     description:
-      "Building Information Modeling (BIM) employs different levels of detail (LOD) to categorize the extent of development and detailing within a BIM model. These levels help define the granularity and sophistication of information contained in the model at various stages of the project, from initial conceptual massing to final as-built documentation.",
+      "Our team of skilled engineers provide reliable take-off services for construction projects across all fields including Civil , MEP systems and general purpose buildings using advanced software like Bluebeam, Planswift, and OnScreen takeoff to meticulously measure quantities from floor plans which are compiled into comprehensive, accurately organized reports as per your requirements.",
   },
   {
-    title: "MEP Drafting Services",
+    title: "Quantity Take-Offs",
+    image: "/img/specs.png",
+    description:
+      "Poorly detailed fabrication drawings can result in rework, delays, and material waste. JES solves this with manufacturing-grade shop drawings derived from clash-coordinated BIM models.",
+  },
+
+  {
+    title: "Equipment Selection",
+    image: "/img/digital.png",
+    description:
+      "Design specifications often carry gaps or inconsistencies that surface only during execution. JES helps you prevent those problems early by conducting in-depth MEP Specification Reviews. We cross-check technical specs, design parameters, and product selections against project standards such as ASHRAE, NFPA, and local codes.",
+  },
+  {
+    title: "Revit Models Component and Assembly",
     image: "/img/engg.png",
     description:
-      "We specialize in providing high-quality Mechanical, Electrical, and Plumbing (MEP) AutoCAD drafting services that cater to the diverse needs of the construction and engineering industry. With a dedicated focus on precision, innovation, and efficiency, we serve as your trusted partner in delivering impeccable MEP drafting solutions.",
+      "Speed up equipment approvals with JES’s Digital Submittals. Centralized documentation, BIM integration, and faster RFI turnaround. ",
+  },
+  {
+    title: "BIM Modelling",
+    image: "/img/engg.png",
+    description:
+      "Speed up equipment approvals with JES’s Digital Submittals. Centralized documentation, BIM integration, and faster RFI turnaround. ",
+  },
+  {
+    title: "Duct & Pipe Layouts",
+    image: "/img/bim.png",
+    description:
+      "Multi-trade? Multi-format? JES handles Complex Submittals with ease—across formats, trades, and consultants.",
+  },
+  {
+    title: "Energy Modeling",
+    image: "/img/engg.png",
+    description:
+      "From LOD 100 to 500, JES delivers BIM models that are accurate, clash-free, and construction-ready—designed to keep your projects flowing.",
   },
   {
     title: "AR & VR Modeling",
     image: "/img/manufacturing.png",
     description:
-      "We offer a broad range of MEP Design support services to owners, consultants, main contractors and MEP contractors.",
+      "See your projects before they’re built. JES creates immersive 3D environments with AR/VR tools that enhance stakeholder buy-in and design clarity.",
   },
-  {
-    title: "Quantity Take Off",
-    image: "/img/specs.png",
-    description:
-      "Our team of skilled engineers provide reliable take-off services for construction projects across all fields including Civil , MEP systems and general purpose buildings using advanced software like Bluebeam, Planswift, and OnScreen takeoff to meticulously measure quantities from floor plans which are compiled into comprehensive, accurately organized reports as per your requirements.",
-  },
-  {
-    title: "Thermal Load Calculation",
-    image: "/img/digital.png",
-    description:
-      "We specialize in delivering comprehensive KPO services tailored specifically for accurate and detailed thermal load calculations. Our expertise lies in providing precise assessments crucial for efficient HVAC system design and optimization.",
-  },
-  {
-    title: "Ductwork E.S.P calculation",
-    image: "/img/complex.png",
-    description:
-      "We specialize in delivering comprehensive solutions for Air Conditioning (AC) ductwork, including accurate External Static Pressure (ESP) calculations. Understanding the significance of ESP in HVAC systems, we offer detailed services tailored to ensure optimal performance and efficiency.",
-  },
+];
 
+export const services = [
   {
-    title: "Pump Head Calculation",
-    image: "/img/arvr.png",
-    description:
-      "We specialize in providing Knowledge Process Outsourcing (KPO) services focused on precise and comprehensive pump head calculation solutions. Our expertise lies in offering accurate and tailored calculations crucial for efficient pump system design and operation.",
+    category: "BIM & MEP DRAFTING",
+    items: [
+      {
+        name: "BIM Modeling",
+        //href: "/services/bim-modelling",
+        href: "/services/4",
+        icon: "🏗️",
+      },
+      {
+        name: "Revit Models Component and Assembly",
+        //href: "/services/mep-drafting-services",
+        href: "/services/3",
+        icon: "⚙️",
+      },
+      {
+        name: "AR & VR Modeling",
+        //href: "/services/ar-vr-modelling",
+        href: "/services/7",
+        icon: "🔌",
+      },
+    ],
   },
   {
-    title: "Equipment Selection (VRV, fan coils, heat pumps & AHU)",
-    image: "/img/triage.png",
-    description:
-      "Jersey Engineering Solutions provides selection services for the air-side, chilled water, refrigerant controls. We offer equipment selection such as VRV & VRF, AHU, FCU, FANS, Chillier Water Pump, GDR, VAV Boxes & Fan power boxes, Dampers &  Louvers, Valves and more.",
+    category: "Application Engineering",
+    items: [
+      {
+        name: "Quantity Take Off",
+        //href: "/services/quantity-take-off",
+        href: "/services/1",
+        icon: "💡",
+      },
+      {
+        name: "Spec Review",
+        //href: "/services/thermal-load-calculation",
+        href: "/services/0",
+        icon: "📊",
+      },
+      {
+        name: "Equipment Selection",
+        //href: "/services/ductwork-esp-calculation",
+        href: "/services/2",
+        icon: "✅",
+      },
+      {
+        name: "Duct & Pipe Layouts",
+        //href: "/services/pump-head-calculation",
+        href: "/services/5",
+        icon: "🛡️",
+      },
+      {
+        name: "Energy Modeling",
+        //href: "/services/equipment-selection",
+        href: "/services/6",
+        icon: "🛡️",
+      },
+    ],
   },
+  //   {
+  //     category: "Solutions",
+  //     items: [
+  //       {
+  //         name: "Maintenance Services",
+  //         href: "/services/maintenance",
+  //         icon: "🔧",
+  //       },
+  //       {
+  //         name: "Training & Support",
+  //         href: "/services/training-support",
+  //         icon: "👨‍🏫",
+  //       },
+  //       {
+  //         name: "Custom Solutions",
+  //         href: "/services/custom-solutions",
+  //         icon: "🎯",
+  //       },
+  //       {
+  //         name: "Emergency Response",
+  //         href: "/services/emergency-response",
+  //         icon: "🚨",
+  //       },
+  //     ],
+  //   },
 ];

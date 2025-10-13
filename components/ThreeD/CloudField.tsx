@@ -204,8 +204,6 @@ import { Suspense, useRef } from "react";
 //.......Fuller No Interaction version
 
 export default function CloudField() {
-  console.log("mounted");
-
   const group = useRef<THREE.Group>(null!); // Z-axis clouds
   const sideGroup = useRef<THREE.Group>(null!); // X-axis clouds
 
@@ -330,7 +328,7 @@ export default function CloudField() {
     return geometry;
   };
 
-  const forwardClouds = createCloudGeometry(4000, 4000, 1000, 0.5, 1.0);
+  const forwardClouds = createCloudGeometry(4000, 14000, 1000, 0.5, 1.0);
   const sideClouds = createCloudGeometry(1800, 2000, 9000, 400, 3.2);
 
   const target = useRef({ x: 0, y: 0 });
@@ -340,7 +338,7 @@ export default function CloudField() {
   const xLoop = 9000;
 
   useFrame(({ mouse, clock }) => {
-    const elapsed = clock.getElapsedTime() * 30;
+    const elapsed = clock.getElapsedTime() * 10;
 
     // Smooth mouse parallax
     target.current.x += (mouse.x * 1200 - target.current.x) * lerpFactor;
@@ -358,7 +356,7 @@ export default function CloudField() {
 
     // Infinite X-axis drifting clouds
     if (sideGroup.current) {
-      const xPos = ((elapsed * 5.15) % xLoop) - xLoop / 2;
+      const xPos = ((elapsed * 15.15) % xLoop) - xLoop / 2;
       sideGroup.current.position.set(xPos, 350 + target.current.y * 0.02, 0);
     }
   });

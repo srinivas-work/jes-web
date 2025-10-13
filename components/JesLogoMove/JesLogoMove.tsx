@@ -17,7 +17,7 @@ interface CrossIconProps {
   path4Style?: MotionStyle;
 }
 
-const CrossIcon: React.FC<CrossIconProps> = ({
+const JesLogo: React.FC<CrossIconProps> = ({
   color = "#a91e2d",
   size = "20%", // Default to 100% for container filling
   className,
@@ -76,11 +76,13 @@ export default function JesLogoMove() {
     offset: ["start start", "end end"],
   });
 
+  const animationLimit = [0, 0.6];
+
   // Common animations for all paths
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const blurPx = useTransform(scrollYProgress, [0, 1], [30, 0]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [90, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
+  const opacity = useTransform(scrollYProgress, animationLimit, [0, 1]);
+  const blurPx = useTransform(scrollYProgress, animationLimit, [30, 0]);
+  const rotate = useTransform(scrollYProgress, animationLimit, [90, 0]);
+  const scale = useTransform(scrollYProgress, animationLimit, [0.5, 1]);
 
   // Smooth spring motion for common properties
   const smoothOpacity = useSpring(opacity, { stiffness: 100, damping: 25 });
@@ -90,26 +92,50 @@ export default function JesLogoMove() {
 
   // Individual path animations from different directions
   // Path 1: Top Left to Current Position
-  const path1X = useTransform(scrollYProgress, [0, 1], ["180vw", "0vw"]);
-  const path1Y = useTransform(scrollYProgress, [0, 1], ["-40vh", "0vh"]);
+  const path1X = useTransform(scrollYProgress, animationLimit, [
+    "180vw",
+    "0vw",
+  ]);
+  const path1Y = useTransform(scrollYProgress, animationLimit, [
+    "-40vh",
+    "0vh",
+  ]);
   const smoothPath1X = useSpring(path1X, { stiffness: 100, damping: 20 });
   const smoothPath1Y = useSpring(path1Y, { stiffness: 100, damping: 20 });
 
   // Path 2: Top Right to Current Position
-  const path2X = useTransform(scrollYProgress, [0, 1], ["-140vw", "0vw"]);
-  const path2Y = useTransform(scrollYProgress, [0, 1], ["-80vh", "0vh"]);
+  const path2X = useTransform(scrollYProgress, animationLimit, [
+    "-140vw",
+    "0vw",
+  ]);
+  const path2Y = useTransform(scrollYProgress, animationLimit, [
+    "-80vh",
+    "0vh",
+  ]);
   const smoothPath2X = useSpring(path2X, { stiffness: 100, damping: 20 });
   const smoothPath2Y = useSpring(path2Y, { stiffness: 100, damping: 20 });
 
   // Path 3: Bottom Left to Current Position
-  const path3X = useTransform(scrollYProgress, [0, 1], ["-140vw", "0vw"]);
-  const path3Y = useTransform(scrollYProgress, [0, 1], ["240vh", "0vh"]);
+  const path3X = useTransform(scrollYProgress, animationLimit, [
+    "-140vw",
+    "0vw",
+  ]);
+  const path3Y = useTransform(scrollYProgress, animationLimit, [
+    "240vh",
+    "0vh",
+  ]);
   const smoothPath3X = useSpring(path3X, { stiffness: 100, damping: 20 });
   const smoothPath3Y = useSpring(path3Y, { stiffness: 100, damping: 20 });
 
   // Path 4: Bottom Right to Current Position
-  const path4X = useTransform(scrollYProgress, [0, 1], ["140vw", "0vw"]);
-  const path4Y = useTransform(scrollYProgress, [0, 1], ["200vh", "0vh"]);
+  const path4X = useTransform(scrollYProgress, animationLimit, [
+    "140vw",
+    "0vw",
+  ]);
+  const path4Y = useTransform(scrollYProgress, animationLimit, [
+    "200vh",
+    "0vh",
+  ]);
   const smoothPath4X = useSpring(path4X, { stiffness: 100, damping: 20 });
   const smoothPath4Y = useSpring(path4Y, { stiffness: 100, damping: 20 });
 
@@ -120,28 +146,31 @@ export default function JesLogoMove() {
     <div
       ref={ref}
       style={{
-        height: "150vh", // allows enough scroll distance
+        height: "200vh", // allows enough scroll distance
         position: "relative",
       }}
     >
       <motion.div
         style={{
+          marginTop: "10rem",
           width: "100%",
-          height: "100dvh",
-          position: "fixed",
-          top: "50%",
-          left: "50%",
+          height: "100vh",
+          position: "sticky",
+          top: 0,
+          // position: "fixed",
+          // top: "50%",
+          // left: "50%",
           opacity: smoothOpacity,
           filter: blurFilter,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
-        transformTemplate={(_, generated) =>
-          `translate(-50%, -50%) ${generated}`
-        }
+        // transformTemplate={(_, generated) =>
+        //   `translate(-50%, -50%) ${generated}`
+        // }
       >
-        <CrossIcon
+        <JesLogo
           color="#a91e2d"
           size="50%" // Now this will work - adjust percentage as needed
           path1Style={{
@@ -176,25 +205,25 @@ export default function JesLogoMove() {
 
 // // Individual path animations from different directions
 // // Path 1: Top Left to Current Position
-// const path1X = useTransform(scrollYProgress, [0, 1], ["-40vw", "0vw"]);
-// const path1Y = useTransform(scrollYProgress, [0, 1], ["-40vh", "0vh"]);
+// const path1X = useTransform(scrollYProgress, animationLimit, ["-40vw", "0vw"]);
+// const path1Y = useTransform(scrollYProgress, animationLimit, ["-40vh", "0vh"]);
 // const smoothPath1X = useSpring(path1X, { stiffness: 100, damping: 20 });
 // const smoothPath1Y = useSpring(path1Y, { stiffness: 100, damping: 20 });
 
 // // Path 2: Top Right to Current Position
-// const path2X = useTransform(scrollYProgress, [0, 1], ["40vw", "0vw"]);
-// const path2Y = useTransform(scrollYProgress, [0, 1], ["-40vh", "0vh"]);
+// const path2X = useTransform(scrollYProgress, animationLimit, ["40vw", "0vw"]);
+// const path2Y = useTransform(scrollYProgress, animationLimit, ["-40vh", "0vh"]);
 // const smoothPath2X = useSpring(path2X, { stiffness: 100, damping: 20 });
 // const smoothPath2Y = useSpring(path2Y, { stiffness: 100, damping: 20 });
 
 // // Path 3: Bottom Left to Current Position
-// const path3X = useTransform(scrollYProgress, [0, 1], ["-40vw", "0vw"]);
-// const path3Y = useTransform(scrollYProgress, [0, 1], ["40vh", "0vh"]);
+// const path3X = useTransform(scrollYProgress, animationLimit, ["-40vw", "0vw"]);
+// const path3Y = useTransform(scrollYProgress, animationLimit, ["40vh", "0vh"]);
 // const smoothPath3X = useSpring(path3X, { stiffness: 100, damping: 20 });
 // const smoothPath3Y = useSpring(path3Y, { stiffness: 100, damping: 20 });
 
 // // Path 4: Bottom Right to Current Position
-// const path4X = useTransform(scrollYProgress, [0, 1], ["40vw", "0vw"]);
-// const path4Y = useTransform(scrollYProgress, [0, 1], ["40vh", "0vh"]);
+// const path4X = useTransform(scrollYProgress, animationLimit, ["40vw", "0vw"]);
+// const path4Y = useTransform(scrollYProgress, animationLimit, ["40vh", "0vh"]);
 // const smoothPath4X = useSpring(path4X, { stiffness: 100, damping: 20 });
 // const smoothPath4Y = useSpring(path4Y, { stiffness: 100, damping: 20 });

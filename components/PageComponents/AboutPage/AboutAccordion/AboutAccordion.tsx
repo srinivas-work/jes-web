@@ -33,7 +33,7 @@ const aboutUsList = [
     heading: "Our Values",
     subheading: "",
     description:
-      "Our Value is to become the most valued and trusted partner of our Clients and Partners by; “Freeing you to be your best!",
+      "Precision First. Speed with Integrity. Built for Partners. Own the Outcome. Scalable by Design. Innovate with Purpose. Clariy in Communication",
   },
 ];
 
@@ -62,11 +62,7 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
     });
   });
 
-  const getDescription = (
-    title: string,
-    description: string,
-    sectionId: number
-  ) => {
+  const getDescription = (description: string, sectionId: number) => {
     if (activeSectionId !== null && sectionId === activeSectionId) {
       return (
         <div
@@ -80,6 +76,7 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
             src="/img/bg_pattern.svg"
             alt="JES"
           />
+          <img src={"/img/demoAbout.png"} className={styles.accordionBg} />
           <div className={styles["about-services-section-circle-container"]}>
             {Array.from({ length: aboutUsList.length }).map((_, index) => (
               <div
@@ -115,7 +112,20 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
                 })}
               </div>
             )}
-            <p style={{ color: "var(--primary-dark)" }}>{description}</p>
+
+            {sectionId === aboutUsList.length - 1 ? (
+              <ul style={{ color: "var(--primary-dark)" }}>
+                <li>Precision First</li>
+                <li>Speed with Integrity</li>
+                <li>Built for Partners</li>
+                <li>Own the Outcome</li>
+                <li>Scalable by Design</li>
+                <li>Innovate with Purpose</li>
+                <li>Clariy in Communication</li>
+              </ul>
+            ) : (
+              <p style={{ color: "var(--primary-dark)" }}>{description}</p>
+            )}
           </div>
         </div>
       );
@@ -185,11 +195,7 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
             onClick={() => sectionClickHandler(index)}
           >
             <h2 className={getSectionTitleClass()}>{aboutUsItem.heading}</h2>
-            {getDescription(
-              "We are Lorem Ipsum",
-              aboutUsItem.description,
-              index
-            )}
+            {getDescription(aboutUsItem.description, index)}
           </section>
         ))}
       </section>

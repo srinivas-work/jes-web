@@ -1,0 +1,265 @@
+.backdrop {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0.08) 50%,
+    rgba(0, 0, 0, 0.02) 100%
+  );
+  backdrop-filter: blur(8px);
+  z-index: 499;
+  will-change: opacity;
+}
+
+.menuPanel {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  z-index: 500;
+  overflow: hidden;
+  will-change: transform, opacity;
+}
+
+.menuContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3.5rem 2rem 3rem;
+}
+
+.menuHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.menuTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.menuSubtitle {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--primary-red);
+  position: relative;
+}
+
+.categoryTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-red), transparent);
+  transition: width 0.6s ease;
+}
+
+.category:hover .categoryTitle::after {
+  width: 100%;
+}
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.serviceItem {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-radius: 16px;
+  cursor: pointer;
+  /* background: rgba(255, 255, 255, 0.6); */
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.serviceItem::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(82, 39, 255, 0.03),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.serviceItem:hover::before {
+  left: 100%;
+}
+
+.serviceItem:hover {
+  /* background: rgba(255, 255, 255, 0.9); */
+  border-color: rgba(82, 39, 255, 0.2);
+  /* box-shadow: 0 8px 32px rgba(82, 39, 255, 0.1),
+    0 2px 8px rgba(82, 39, 255, 0.05); */
+}
+
+.serviceIcon {
+  font-size: 1.75rem;
+  margin-right: 1.25rem;
+  width: 45px;
+  text-align: center;
+  filter: grayscale(0.3);
+  transition: all 0.3s ease;
+}
+
+.serviceItem:hover .serviceIcon {
+  filter: grayscale(0);
+}
+
+.serviceInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.serviceName {
+  font-weight: 500;
+  color: #1a1a1a;
+  font-size: 1.05rem;
+  transition: color 0.3s ease;
+}
+
+.serviceItem:hover .serviceName {
+  color: var(--primary-red);
+}
+
+.serviceArrow {
+  color: var(--primary-red);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.menuFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 3rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.ctaButton {
+  background: linear-gradient(135deg, var(--primary-red) 0%, #3a1bc4 100%);
+  color: white;
+  border: none;
+  padding: 1.25rem 2.5rem;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(82, 39, 255, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.ctaButton:hover::before {
+  left: 100%;
+}
+
+.contactText {
+  color: #666;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 968px) {
+  .servicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .menuContent {
+    padding: 2.5rem 1.5rem 2rem;
+  }
+
+  .menuTitle {
+    font-size: 2.5rem;
+  }
+
+  .menuFooter {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .serviceItem {
+    padding: 1rem 1.25rem;
+  }
+}

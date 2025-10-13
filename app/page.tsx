@@ -2,7 +2,6 @@
 
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
-import AboutDetails from "@/components/PageComponents/HomePage/AboutDetails/AboutDetails";
 import IndustryHighlights from "@/components/PageComponents/HomePage/IndustryHighlights/IndustryHighlights";
 import ProcessDetails from "@/components/PageComponents/HomePage/ProcessDetails/ProcessDetails";
 import ServiceScrollShowcase from "@/components/PageComponents/HomePage/ServiceScrollShowcase/ServiceScrollShowcase";
@@ -14,7 +13,8 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
-import Folder from "@/components/UI/Folder/Folder";
+import JesLogoDetails from "@/components/JesLogoMove/JesLogoDetails/JesLogoDetails";
+import AboutDetails from "@/components/PageComponents/HomePage/AboutDetails/AboutDetails";
 function Building() {
   const tex = useTexture("/img/modern-building.png");
 
@@ -82,6 +82,8 @@ export default function Home() {
   // );
 
   //return <JesLogoMove />;
+
+  //return <CircularGallery />;
 
   return (
     <div style={{ width: "100vw", height: "100vh", background: "#ffffff" }}>
@@ -153,6 +155,7 @@ export default function Home() {
       <StatsBar />
       <ServiceScrollShowcase />
       <AboutDetails />
+      {/* <JesLogoDetails /> */}
       <ProcessDetails />
       <IndustryHighlights />
       <Footer />
