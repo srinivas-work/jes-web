@@ -2,19 +2,22 @@
 
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
+import AboutDetails from "@/components/PageComponents/HomePage/AboutDetails/AboutDetails";
 import IndustryHighlights from "@/components/PageComponents/HomePage/IndustryHighlights/IndustryHighlights";
 import ProcessDetails from "@/components/PageComponents/HomePage/ProcessDetails/ProcessDetails";
 import ServiceScrollShowcase from "@/components/PageComponents/HomePage/ServiceScrollShowcase/ServiceScrollShowcase";
 import StatsBar from "@/components/PageComponents/HomePage/StatsBar/StatsBar";
+import TestimonialCarouselReel from "@/components/PageComponents/HomePage/TestimonialCarouselReel/TestimonialCarouselReel";
 import CloudField from "@/components/ThreeD/CloudField";
 import { useLenis } from "@/utils/hooks/useLenis";
+import { TestimonialCardProps } from "@/utils/types";
 import { Text, useTexture } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
-import JesLogoDetails from "@/components/JesLogoMove/JesLogoDetails/JesLogoDetails";
-import AboutDetails from "@/components/PageComponents/HomePage/AboutDetails/AboutDetails";
+import { testimonials } from "@/utils/data/dummyData";
+
 function Building() {
   const tex = useTexture("/img/modern-building.png");
 
@@ -37,53 +40,8 @@ function Building() {
   );
 }
 
-const loadingStates = [
-  {
-    text: "Buying a condo",
-  },
-  {
-    text: "Travelling in a flight",
-  },
-  {
-    text: "Meeting Tyler Durden",
-  },
-  {
-    text: "He makes soap",
-  },
-  {
-    text: "We goto a bar",
-  },
-  {
-    text: "Start a fight",
-  },
-  {
-    text: "We like it",
-  },
-  {
-    text: "Welcome to F**** C***",
-  },
-];
-
 export default function Home() {
   useLenis();
-
-  // return (
-  //   <div
-  //     style={{
-  //       width: "100dvw",
-  //       height: "100dvh",
-  //       display: "flex",
-  //       justifyContent: "center",
-  //       alignItems: "center",
-  //     }}
-  //   >
-  //     <Folder />
-  //   </div>
-  // );
-
-  //return <JesLogoMove />;
-
-  //return <CircularGallery />;
 
   return (
     <div style={{ width: "100vw", height: "100vh", background: "#ffffff" }}>
@@ -158,6 +116,7 @@ export default function Home() {
       {/* <JesLogoDetails /> */}
       <ProcessDetails />
       <IndustryHighlights />
+      <TestimonialCarouselReel cardSpacing={420} testimonials={testimonials} />
       <Footer />
     </div>
   );

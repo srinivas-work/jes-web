@@ -1,4 +1,4 @@
-import { ServiceSectionType } from "../types";
+import { ServiceSectionType, TestimonialCardProps } from "../types";
 
 export const serviceSections: ServiceSectionType[] = [
   {
@@ -136,4 +136,98 @@ export const services = [
   //       },
   //     ],
   //   },
+];
+
+export const testimonials: TestimonialCardProps[] = [
+  {
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
+    name: "Sarah Johnson",
+    title: "Designer",
+    desc: "The intuitive design tools have completely transformed my workflow. I can now bring ideas to life faster than ever.",
+    rating: 4,
+  },
+  {
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
+    name: "Michael Chen",
+    title: "Developer",
+    desc: "I was skeptical at first, but this AI tool saved me hours of work. The automation features are a game-changer.",
+    rating: 5,
+  },
+  {
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
+    name: "Emily Rodriguez",
+    title: "Manager",
+    desc: "Managing our design and dev teams is so much easier now. The platform keeps everything organized and effortless.",
+    rating: 3,
+  },
+  {
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400",
+    name: "David Kim",
+    title: "Engineer",
+    desc: "The performance and reliability are outstanding. It integrates smoothly with our existing tools.",
+    rating: 5,
+  },
+  {
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400",
+    name: "Lisa Park",
+    title: "Designer",
+    desc: "Beautiful interface and seamless experience — it’s a joy to use daily. Our clients love the results too!",
+    rating: 5,
+  },
+  {
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400",
+    name: "James Wilson",
+    title: "Consultant",
+    desc: "The insights I gained from using this platform are invaluable. It feels like having an extra teammate.",
+    rating: 4,
+  },
+  {
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400",
+    name: "Maria Garcia",
+    title: "Analyst",
+    desc: "I appreciate how user-friendly it is. Even complex data feels simple to understand and act on.",
+    rating: 5,
+  },
+  {
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
+    name: "Sarah Johnson",
+    title: "Designer",
+    desc: "It’s like having a creative assistant at my fingertips. My design productivity has doubled.",
+    rating: 5,
+  },
+  {
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
+    name: "Michael Chen",
+    title: "Developer",
+    desc: "The documentation and support are top-notch. I got everything running in minutes!",
+    rating: 5,
+  },
+  {
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
+    name: "Emily Rodriguez",
+    title: "Manager",
+    desc: "It helped us automate repetitive tasks so our team can focus on strategy. Worth every penny.",
+    rating: 4,
+  },
+  {
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400",
+    name: "Lisa Park",
+    title: "Designer",
+    desc: "Every update just makes it better. The attention to detail in the UI is incredible.",
+    rating: 5,
+  },
+  {
+    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400",
+    name: "James Wilson",
+    title: "Consultant",
+    desc: "It’s not just software — it’s a complete ecosystem for productivity. Highly recommended.",
+    rating: 5,
+  },
+  {
+    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400",
+    name: "Maria Garcia",
+    title: "Analyst",
+    desc: "This tool turned hours of manual work into minutes. It’s a real game-changer for my reports.",
+    rating: 5,
+  },
 ];

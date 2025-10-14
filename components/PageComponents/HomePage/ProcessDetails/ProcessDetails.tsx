@@ -74,7 +74,11 @@ export default function ProcessDetails() {
   return (
     <section className={styles.processDetailSection} ref={sectionRef}>
       <h2 className={styles.title}>Process Details</h2>
-
+      <img
+        className={styles.approachSectionBg}
+        src="/img/bg_pattern.svg"
+        alt="JES"
+      />
       <div className={styles.processWrapper}>
         {processes.map((process, index) => (
           <motion.div
