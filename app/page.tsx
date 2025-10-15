@@ -17,6 +17,7 @@ import { Suspense } from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
 import { testimonials } from "@/utils/data/dummyData";
+import JesLogoDetails from "@/components/JesLogoMove/JesLogoDetails/JesLogoDetails";
 
 function Building() {
   const tex = useTexture("/img/modern-building.png");
@@ -112,8 +113,8 @@ export default function Home() {
       </Canvas>
       <StatsBar />
       <ServiceScrollShowcase />
-      <AboutDetails />
-      {/* <JesLogoDetails /> */}
+      {/* <AboutDetails /> */}
+      <JesLogoDetails />
       <ProcessDetails />
       <IndustryHighlights />
       <TestimonialCarouselReel cardSpacing={420} testimonials={testimonials} />

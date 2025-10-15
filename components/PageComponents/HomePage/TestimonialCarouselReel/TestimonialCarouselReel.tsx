@@ -95,6 +95,7 @@ const TestimonialCarouselReel: React.FC<CarouselReelProps> = ({
                   }}
                 >
                   <TestimonialCard
+                    key={index}
                     desc={item.desc}
                     name={item.name}
                     title={item.title}

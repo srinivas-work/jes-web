@@ -3,8 +3,7 @@
   position: relative;
 }
 
-.jesLogoContainer {
-  margin-top: 10rem;
+.jesDetailsContainer {
   width: 100%;
   height: 100vh;
   position: sticky;
@@ -14,8 +13,16 @@
   align-items: center;
 }
 
+.jesLogoContainer {
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .jesLogo {
-  margin-bottom: 7rem;
+  margin-bottom: 5rem;
+  margin-right: 2rem;
 }
 
 .jesLogoAboutContainer {
@@ -26,6 +33,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  text-align: center;
 }
 
 .logoCompleteImg {

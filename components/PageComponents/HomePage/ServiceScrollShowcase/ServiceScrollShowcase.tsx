@@ -1,17 +1,15 @@
-// ServiceScrollShowcase.tsx
+import { serviceSections } from "@/utils/data/dummyData";
 import {
   AnimatePresence,
   motion,
   useScroll,
   useSpring,
   useTransform,
-  useVelocity,
 } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import styles from "./ServiceScrollShowcase.module.css";
-import { serviceSections } from "@/utils/data/dummyData";
 
 export default function ServiceScrollShowcase() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -173,6 +171,7 @@ export default function ServiceScrollShowcase() {
     </div>
   );
 }
+
 {
   /* <AnimatePresence mode="popLayout">
               {activeIndex === i && (
