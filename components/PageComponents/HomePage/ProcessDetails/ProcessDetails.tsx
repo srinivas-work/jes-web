@@ -1,9 +1,8 @@
-"use client";
-
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Target } from "lucide-react";
 import styles from "./ProcessDetails.module.css";
+import PatternAnimation from "@/components/UI/PatternAnimation/PatternAnimation";
 
 interface Process {
   title: string;
@@ -74,11 +73,13 @@ export default function ProcessDetails() {
   return (
     <section className={styles.processDetailSection} ref={sectionRef}>
       <h2 className={styles.title}>Process Details</h2>
-      <img
+      {/* <img
         className={styles.approachSectionBg}
         src="/img/bg_pattern.svg"
         alt="JES"
-      />
+      /> */}
+      <PatternAnimation className={styles.approachSectionBg} />
+      <PatternAnimation className={styles.approachSectionBgTwo} />
       <div className={styles.processWrapper}>
         {processes.map((process, index) => (
           <motion.div

@@ -5,7 +5,7 @@ import {
   useSpring,
   MotionStyle,
 } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./JesLogoDetails.module.css";
 
 interface CrossIconProps {
@@ -139,17 +139,28 @@ export default function JesLogoDetails() {
   const ref = useRef<HTMLDivElement | null>(null);
 
   // Track scroll progress across the full height of the section
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end end"],
-  });
+  // const { scrollYProgress } = useScroll({
+  //   target: ref,
+  //   offset: ["start start", "end end"],
+  // });
 
-  const animationLimit = [0, 0.6];
+  const { scrollYProgress } = useScroll();
+
+  // useEffect(() => {
+  //   const unsubscribe = demo.onChange((progress) => {
+  //     console.log("Scroll progress:", progress); // Log progress as it changes
+  //   });
+
+  //   // Cleanup when the component unmounts
+  //   return () => unsubscribe();
+  // }, [scrollYProgress]);
+
+  const animationLimit = [0.6, 0.72];
 
   const smoothness = { stiffness: 100, damping: 25 };
 
   // Common animations for all paths
-  const opacity = useTransform(scrollYProgress, animationLimit, [0.2, 1]);
+  const opacity = useTransform(scrollYProgress, animationLimit, [0, 1]);
   const blurPx = useTransform(scrollYProgress, animationLimit, [30, 0]);
   const rotate = useTransform(scrollYProgress, animationLimit, [90, 0]);
   const scale = useTransform(scrollYProgress, animationLimit, [5.5, 1]);
@@ -176,7 +187,7 @@ export default function JesLogoDetails() {
     "0vw",
   ]);
   const path2Y = useTransform(scrollYProgress, animationLimit, [
-    "-80vh",
+    "-120vh",
     "0vh",
   ]);
   const smoothPath2X = useSpring(path2X, smoothness);
@@ -198,7 +209,11 @@ export default function JesLogoDetails() {
   const smoothPath4Y = useSpring(path4Y, smoothness);
 
   //Logo Group
-  const logoPathX = useTransform(scrollYProgress, [0.5, 0.6], ["300vw", "0vh"]);
+  const logoPathX = useTransform(
+    scrollYProgress,
+    [0.7, 0.72],
+    ["300vw", "0vh"]
+  );
   const smoothlogoPathX = useSpring(logoPathX, smoothness);
 
   // Create motion blur filter

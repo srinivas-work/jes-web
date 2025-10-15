@@ -16,11 +16,20 @@
 .approachSectionBg {
   position: absolute;
   top: -10%;
-  left: -15rem;
-  width: 40%;
-  height: 40%;
-  transform: scale(2.5);
-  opacity: 0.03;
+  left: -10%;
+  width: 30%;
+  /* transform: scale(2.5); */
+  opacity: 0.05;
+  z-index: -1;
+}
+
+.approachSectionBgTwo {
+  position: absolute;
+  top: -100%;
+  right: -10%;
+  width: 25%;
+  /* transform: scale(2.5); */
+  opacity: 0.05;
   z-index: -1;
 }
 

@@ -1,0 +1,23 @@
+.matrixContainer {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  /* gap: 5rem; */
+}
+
+.logoCurve {
+  height: auto;
+  overflow: visible;
+  margin: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .matrixContainer {
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(4, auto);
+    gap: 6px;
+  }
+
+  .logoCurve {
+    width: 50px;
+  }
+}

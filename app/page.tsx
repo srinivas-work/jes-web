@@ -18,6 +18,7 @@ import * as THREE from "three";
 import styles from "./page.module.css";
 import { testimonials } from "@/utils/data/dummyData";
 import JesLogoDetails from "@/components/JesLogoMove/JesLogoDetails/JesLogoDetails";
+import PatternAnimation from "@/components/UI/PatternAnimation/PatternAnimation";
 
 function Building() {
   const tex = useTexture("/img/modern-building.png");
