@@ -13,12 +13,8 @@
   transform: rotateY(180deg);
   background-color: rgba(216, 216, 216, 0.1);
   backdrop-filter: blur(10px);
-  border: 1.5px solid var(--primary-dark);
+  border: 2px solid rgba(0, 0, 0, 0.3);
 }
-
-/* .card:hover {
-  transform: translateY(-4px);
-} */
 
 .stars {
   display: flex;
