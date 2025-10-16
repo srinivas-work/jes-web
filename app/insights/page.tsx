@@ -97,15 +97,12 @@ export default function Insights() {
 
   const curve1Y = useTransform(scrollYProgress, [0, 1], [0, -300]);
   const curve2Y = useTransform(scrollYProgress, [0, 1], [0, 400]);
-  const curve3Y = useTransform(scrollYProgress, [0, 1], [0, -200]);
   const curve1Rotate = useTransform(scrollYProgress, [0, 1], [0, 50]);
   const curve2Rotate = useTransform(scrollYProgress, [0, 1], [0, -40]);
-  const curve3Rotate = useTransform(scrollYProgress, [0, 1], [0, 30]);
   const heroImageY = useTransform(scrollYProgress, [0, 0.3], [0, 150]);
 
   const smoothCurve1Y = useSpring(curve1Y, { stiffness: 100, damping: 30 });
   const smoothCurve2Y = useSpring(curve2Y, { stiffness: 100, damping: 30 });
-  const smoothCurve3Y = useSpring(curve3Y, { stiffness: 100, damping: 30 });
   const smoothHeroImageY = useSpring(heroImageY, {
     stiffness: 100,
     damping: 30,

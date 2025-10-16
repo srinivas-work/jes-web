@@ -54,8 +54,8 @@ const ContactInfo = () => {
   });
 
   // Parallax Y positions
-  const leftY = useTransform(scrollYProgress, [0, 1], [0, 20]);
-  const rightY = useTransform(scrollYProgress, [0, 1], [0, -20]);
+  const leftY = useTransform(scrollYProgress, [0, 1], [0, 0]);
+  const rightY = useTransform(scrollYProgress, [0, 1], [0, 0]);
 
   // Smooth spring motion
   const smoothLeftY = useSpring(leftY, { stiffness: 80, damping: 25 });

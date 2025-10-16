@@ -21,7 +21,7 @@
 }
 
 .value {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: var(--primary-dark);
 }
@@ -30,7 +30,7 @@
   margin-top: 0.5rem;
   color: var(--light-gray);
   font-size: 0.95rem;
-  line-height: 1.5rem;
+  line-height: 1.3rem;
 }
 
 .sublabel {

@@ -26,9 +26,9 @@ const FlipBookViewer: React.FC<{
 
   const pdfUrl = "/flipBook/books/jes_demo.pdf"; // https://github.com/progit/progit2/releases/download/2.1.331/progit.pdf
 
-  const openFlipBook = () => {
-    setIsFlipbookOpen(true);
-  };
+  // const openFlipBook = () => {
+  //   setIsFlipbookOpen(true);
+  // };
 
   const closePopup = () => {
     setIsFlipbookOpen(false);

@@ -48,9 +48,9 @@ h2 {
 }
 
 p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 3rem;
+  line-height: 2.5rem;
 }
 
 video {
@@ -63,9 +63,11 @@ video:focus {
 }
 
 button {
-  border-radius: 8px;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+  background-color: var(--primary-red);
+  border-radius: 1rem;
+  width: 12rem;
+  padding: 1rem 1.2rem;
+  font-size: 1rem;
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
@@ -73,6 +75,15 @@ button {
   border: none;
   outline: none;
   user-select: none;
+}
+
+button:focus {
+  border: none;
+  outline: none;
+}
+
+button:hover {
+  background-color: #7f1010;
 }
 
 @media (prefers-color-scheme: dark) {

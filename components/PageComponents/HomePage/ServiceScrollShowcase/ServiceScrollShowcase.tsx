@@ -82,7 +82,6 @@ export default function ServiceScrollShowcase() {
 
   return (
     <div className={styles.wrapper} ref={sectionRef}>
-      {/* Sidebar */}
       <div className={styles.sidebar}>
         {serviceSections.map((sec, i) => (
           <div
@@ -102,7 +101,6 @@ export default function ServiceScrollShowcase() {
         ))}
       </div>
 
-      {/* Right Content */}
       <div className={styles.contentArea}>
         <div className={styles.stickyContent}>
           {/* Parallax Background */}
