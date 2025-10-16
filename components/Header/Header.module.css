@@ -47,6 +47,7 @@
 }
 
 .navLinks a {
+  font-size: 0.9rem;
   height: fit-content;
   text-decoration: none;
   transition: all 0.5s ease-in-out;

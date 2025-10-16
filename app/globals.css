@@ -43,7 +43,7 @@ a {
 }
 
 h2 {
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: 600;
 }
 
@@ -67,7 +67,7 @@ button {
   border-radius: 1rem;
   width: 12rem;
   padding: 1rem 1.2rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
