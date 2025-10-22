@@ -71,7 +71,7 @@ const Header = () => {
             onMouseLeave={handleServicesMouseLeave}
           >
             <Link
-              href="/services"
+              href=""
               className={styles.servicesLink}
               style={{ display: "flex", alignItems: "center" }}
             >
