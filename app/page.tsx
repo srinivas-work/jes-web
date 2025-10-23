@@ -16,6 +16,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
+import Folder from "@/components/UI/Folder/Folder";
 
 function Building() {
   const tex = useTexture("/img/modern-building.png");
@@ -41,6 +42,20 @@ function Building() {
 
 export default function Home() {
   useLenis();
+
+  // return (
+  //   <div
+  //     style={{
+  //       width: "100dvw",
+  //       height: "100dvh",
+  //       display: "flex",
+  //       justifyContent: "center",
+  //       alignItems: "center",
+  //     }}
+  //   >
+  //     <Folder />
+  //   </div>
+  // );
 
   return (
     <div style={{ width: "100vw", height: "100vh", background: "#ffffff" }}>

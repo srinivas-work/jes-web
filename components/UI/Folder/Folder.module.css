@@ -10,6 +10,7 @@
   transition: all 0.2s ease-in;
   cursor: pointer;
   margin: auto;
+  scale: 4;
 }
 
 .folder:not(.folder--click):hover {
