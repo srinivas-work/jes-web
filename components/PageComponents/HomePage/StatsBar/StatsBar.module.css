@@ -1,33 +1,39 @@
 .container {
   margin: auto;
   width: 90dvw;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5rem;
+  padding: 2.5rem;
   border-radius: 2.5rem;
   border: var(--border-thickness) solid var(--light-gray);
-  padding: 2rem;
-  flex-wrap: wrap;
-  gap: 2rem;
 }
 
 .statBox {
   text-align: center;
-  flex: 1 1 150px;
-  max-width: 12rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .value {
   font-size: 2.5rem;
+  line-height: 2.5rem;
   font-weight: 700;
-  color: var(--primary-dark);
+  display: flex;
+}
+
+.digitContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.digits {
+  color: var(--primary-red);
 }
 
 .label {
-  margin-top: 0.5rem;
   color: var(--light-gray);
   font-size: 0.95rem;
   line-height: 1.3rem;

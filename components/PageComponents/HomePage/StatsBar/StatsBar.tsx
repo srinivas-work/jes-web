@@ -16,14 +16,27 @@ type Stat = {
 
 const stats: Stat[] = [
   {
-    value: 82,
-    suffix: "%",
-    label: "of members say they gained clarity within the",
+    value: 20,
+    suffix: "Locations",
+    label: "JES currently serving customers in over 20 states and provinces.",
   },
-  { value: 93, suffix: "%", label: "report feeling more accountable" },
-  { value: 6, label: "6-person circles. The sweet spot for focused" },
-  { value: 1200, suffix: "+", label: "hours of mastermind sessions hosted" },
-  { value: 75, suffix: "%", label: "return for a second cycle" },
+  {
+    value: 8,
+    suffix: "Years",
+    label:
+      "Built on 8+ years of expertise, we’ve forged expertise and a strong foundation.",
+  },
+  {
+    value: 200,
+    suffix: "Strength",
+    label:
+      "Our Team includes over 200+ skilled professionals in different fields.",
+  },
+  {
+    value: 7,
+    suffix: "Services",
+    label: "World class Engineering and CAD services you can count on!",
+  },
 ];
 
 function AnimatedNumber({
@@ -56,8 +69,11 @@ function AnimatedNumber({
   }, [isInView, value, count]);
 
   return (
-    <motion.span ref={ref}>
-      {display}
+    <motion.span className={styles.digitContainer} ref={ref}>
+      <span className={styles.digits}>
+        {value < 10 && 0}
+        {display}+
+      </span>
       {suffix}
     </motion.span>
   );
