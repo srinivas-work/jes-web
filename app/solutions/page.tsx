@@ -18,14 +18,15 @@ type SolutionType = {
 const solutions: SolutionType[] = [
   {
     id: 1,
-    title: "Architectural Design",
+    title: "For Manufacturer Reps",
     description:
       "Transform your vision into reality with our comprehensive architectural BIM services. We create detailed 3D models that enable seamless coordination between all stakeholders.",
     services: [
-      "3D Modeling & Visualization",
-      "Clash Detection & Resolution",
-      "Design Development Support",
-      "As-Built Documentation",
+      "Quantity Take-off",
+      "Product Selections",
+      "Quotes & Submittals",
+      "Spec Review",
+      "Component Modelling & Assemblies",
     ],
     image:
       "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80",

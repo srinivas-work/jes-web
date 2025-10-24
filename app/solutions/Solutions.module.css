@@ -354,6 +354,7 @@
 
 .ctaButton:hover {
   color: var(--primary-red);
+  background-color: transparent;
 }
 
 .arrow {
