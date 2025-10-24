@@ -9,7 +9,7 @@ const aboutUsList = [
     heading: "Who are we?",
     subheading: "",
     description:
-      "Delivering comprehensive MEP building services to propel the growth of your company with a steadfast commitment to quality, ensuring higher efficiency, sustainability, and seamless integration with your projects.",
+      "Jersey Engineering Solutions is built on deep HVAC engineering experience and trusted relationships across the industry. Our reputation is everything, so we do what it takes—every time—to deliver reliable work and keep partnerships strong. Our partnership with our India team is built on 20-year relationships; they’re treated as true employees and friends. We know and trust each other completely, and it shows in the quality, speed, and consistency of our work. If you value integrity, responsiveness, and results, you’ll feel at home with us.",
   },
   {
     heading: "Why choose us?",

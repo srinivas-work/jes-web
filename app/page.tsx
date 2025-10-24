@@ -17,6 +17,7 @@ import { Suspense } from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
 import Folder from "@/components/UI/Folder/Folder";
+import FAQ from "@/components/FAQ/FAQ";
 
 function Building() {
   const tex = useTexture("/img/modern-building.png");
@@ -56,6 +57,36 @@ export default function Home() {
   //     <Folder />
   //   </div>
   // );
+
+  const faq = [
+    {
+      question: "What is Quantity Take-Off and why is it important?",
+      answer:
+        "Quantity Take-Off (QTO) is the process of measuring materials, components, and labor needed for construction projects. It ensures accurate cost estimation, reduces material wastage, and supports better budgeting and project planning.",
+    },
+    {
+      question:
+        "How does your team assist with Equipment or Product Selection?",
+      answer:
+        "We help clients choose the most efficient, cost-effective, and specification-compliant products and equipment. Our team evaluates performance data, compatibility, and sustainability to ensure the best selection for your project.",
+    },
+    {
+      question: "What does a Specification Review include?",
+      answer:
+        "Our Specification Review process checks technical documentation for consistency, clarity, and compliance with project requirements. This helps prevent design conflicts, delays, and rework during later stages.",
+    },
+    {
+      question: "What are the benefits of BIM Modelling for my project?",
+      answer:
+        "BIM (Building Information Modelling) provides a 3D digital representation of your project that integrates design, cost, and time data. It enhances collaboration, reduces design errors, and allows for better decision-making throughout the construction lifecycle.",
+    },
+    {
+      question:
+        "What’s the difference between Component and Assembly Revit Models?",
+      answer:
+        "Component models represent individual elements such as walls, doors, or HVAC units. Assembly models combine multiple components to form complex systems or units, enabling better visualization and coordination across disciplines.",
+    },
+  ];
 
   return (
     <div style={{ width: "100vw", height: "100vh", background: "#ffffff" }}>
@@ -130,6 +161,23 @@ export default function Home() {
       <JesLogoDetails />
       <ProcessDetails />
       <IndustryHighlights />
+      <div
+        style={{
+          margin: "8rem auto",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "4rem",
+        }}
+      >
+        <h2>Frequently Asked Questions</h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+          {!!faq &&
+            faq.map((item, i) => {
+              return <FAQ data={item} key={i} />;
+            })}
+        </div>
+      </div>
       <TestimonialCarouselReel cardSpacing={420} testimonials={testimonials} />
       <Footer />
     </div>

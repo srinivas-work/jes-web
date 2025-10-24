@@ -33,29 +33,23 @@ const solutions: SolutionType[] = [
   },
   {
     id: 2,
-    title: "Structural Engineering",
+    title: "For Manufacturers",
     description:
       "Optimize structural systems with precision BIM modeling and analysis. Our team delivers accurate structural models that integrate seamlessly with architectural and MEP systems.",
     services: [
-      "Structural BIM Modeling",
-      "Rebar Detailing",
-      "Connection Design",
-      "Load Analysis Integration",
+      "Specialized Production Drawings",
+      "Revit Family Creation",
+      "Offshore Manufacturing & Sourcing Support",
     ],
     image:
       "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1200&q=80",
   },
   {
     id: 3,
-    title: "MEP Engineering",
+    title: "For Engineers & Contractors",
     description:
       "Streamline mechanical, electrical, and plumbing systems with intelligent BIM coordination. We ensure all building systems work harmoniously, identifying conflicts before construction begins.",
-    services: [
-      "MEP Coordination",
-      "HVAC System Design",
-      "Electrical Layout",
-      "Plumbing & Fire Protection",
-    ],
+    services: ["BIM Modelling ", "MEP Drafting", "Energy Modelling"],
     image:
       "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80",
   },
