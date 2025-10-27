@@ -78,7 +78,7 @@ button {
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-button::before {
+/* button::before {
   content: "";
   position: absolute;
   top: 0;
@@ -96,7 +96,7 @@ button::before {
 
 button:hover::before {
   left: 100%;
-}
+} */
 
 button:focus {
   border: none;
