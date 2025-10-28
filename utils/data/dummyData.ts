@@ -276,10 +276,25 @@ const projects: ProjectItemType[] = [
     location: "Lusail City, Qatar",
     overview:
       "Al Bayt Stadium hosted the opening match of the 2022 World Cup, and hosted a semi-final and a quarter-final match. The stadium hosted around 60,000 World Cup fans, including 1,000 seats for the press. The architectural design takes its inspiration from the traditional tents of the nomadic people of Qatar and the region. It features a retractable roof, providing covered seating for all spectators.",
-    overviewOpt:
+    overview2:
       "It connects to transportation systems and has onsite parking for 6,000 cars, 350 buses and the movement of 150 public buses/shuttles, as well as 1,000 taxis and water taxis. The stadium is certified for its sustainability credentials under the Global Sustainability Assessment System (GSAS) for a number of certifications representing sustainable design & build, construction management practices and the efficiency of its energy centre.",
     client: "Qatari Diar & Lusail City",
     contractor: "Voltas Ltd.",
     serviceType: "BIM Modeling",
+  },
+  {
+    name: "Multi Purpose Hall at Lusail, Qatar",
+    imgLink: "/img/projects/al_bayt_stadium.jpg",
+    thumbnailLink: "/img/projects/al_bayt_stadium-thumb.jpg",
+    location: "Lusail City, Qatar",
+    overview:
+      "Al Bayt Stadium hosted the opening match of the 2022 World Cup, and hosted a semi-final and a quarter-final match. The stadium hosted around 60,000 World Cup fans, including 1,000 seats for press. The architectural design takes its inspiration from the traditional tents of the nomadic peoples of Qatar and the region. It features a retractable roof, providing covered seating for all spectators.",
+    overview2:
+      "It connects to transportation systems and have onsite parking for 6,000 cars, 350 buses and the coming and going of 150 public buses/shuttles, as well as 1,000 taxis and water taxis. The stadium is certified for its sustainability credentials under the Global Sustainability Assessment System (GSAS) for a number of certifications representing sustainable design & build, construction management practices and the efficiency of its energy centre.",
+    overview3:
+      "The stadium hosted around 60,000 World Cup fans, including 1,000 seats for press. The architectural design takes its inspiration from the traditional tents of the nomadic peoples of Qatar and the region. It features a retractable roof, providing covered seating for all spectators. It connects to transportation systems and have onsite parking for 6,000 cars, 350 buses and the coming and going of 150 public buses/shuttles, as well as 1,000 taxis and water taxis.",
+    client: "Qatari Diar & Lusail City",
+    contractor: "Voltas Ltd.",
+    serviceType: "",
   },
 ];

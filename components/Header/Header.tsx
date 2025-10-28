@@ -7,6 +7,7 @@ import Link from "next/link";
 import styles from "./Header.module.css";
 import { motion } from "framer-motion";
 import ServicesMenu from "../UI/ServicesMenu/ServicesMenu";
+import { Mail, Phone, User, User2 } from "lucide-react";
 
 const Header = () => {
   const router = useRouter();
@@ -14,7 +15,10 @@ const Header = () => {
   const servicesTimeoutRef = useRef<NodeJS.Timeout>(null);
   const menuTimeoutRef = useRef<NodeJS.Timeout>(null);
 
-  const goTo = (route: string) => {
+  const goTo = (route: string, newTab?: boolean) => {
+    if (newTab) {
+      return window.open(route, "_blank");
+    }
     router.push(route);
   };
 
@@ -114,13 +118,29 @@ const Header = () => {
           <Link href="/insights">Insight Hub</Link>
           <Link href="/about">About Us</Link>
           <Link href="/projects">Projects</Link>
+          <Link
+            href="/contact"
+            style={{ fontWeight: "bold", color: "var(--primary-red)" }}
+          >
+            {" "}
+            Contact Us
+          </Link>
         </div>
 
-        <button
+        {/* <button
           className={styles.contactButton}
           onClick={() => goTo("/contact")}
         >
+          <Mail className={styles.icon} opacity={0.5} />
           Get In Touch
+        </button> */}
+        <button
+          className={styles.contactButton}
+          onClick={() => goTo("https://jesi.jerseyeng.com/login/", true)}
+        >
+          <User2 className={styles.icon} />
+          {/* <User2 className={styles.icon} /> */}
+          Customer Login
         </button>
       </header>
 
