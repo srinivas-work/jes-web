@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, useInView } from "framer-motion";
 import { Linkedin, Facebook, Twitter } from "lucide-react";
 import Link from "next/link";

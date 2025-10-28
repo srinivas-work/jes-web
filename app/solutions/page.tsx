@@ -1,11 +1,9 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
-import styles from "./Solutions.module.css";
 import { useLenis } from "@/utils/hooks/useLenis";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
+import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useRef } from "react";
+import styles from "./Solutions.module.css";
 
 type SolutionType = {
   id: number;
@@ -244,7 +242,6 @@ const Solutions = () => {
 
   return (
     <div className={styles.container} ref={containerRef}>
-      <Header />
       {/* Floating Background Elements */}
       <motion.div
         className={styles.floatingBg1}
@@ -357,7 +354,6 @@ const Solutions = () => {
           </motion.button>
         </motion.div>
       </motion.section>
-      <Footer />
     </div>
   );
 };

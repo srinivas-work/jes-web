@@ -1,7 +1,6 @@
 "use client";
 
-import Footer from "@/components/Footer/Footer";
-import Header from "@/components/Header/Header";
+import FAQ from "@/components/FAQ/FAQ";
 import JesLogoDetails from "@/components/JesLogoMove/JesLogoDetails/JesLogoDetails";
 import IndustryHighlights from "@/components/PageComponents/HomePage/IndustryHighlights/IndustryHighlights";
 import ProcessDetails from "@/components/PageComponents/HomePage/ProcessDetails/ProcessDetails";
@@ -16,8 +15,6 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
-import Folder from "@/components/UI/Folder/Folder";
-import FAQ from "@/components/FAQ/FAQ";
 
 function Building() {
   const tex = useTexture("/img/modern-building.png");
@@ -89,8 +86,7 @@ export default function Home() {
   ];
 
   return (
-    <div style={{ width: "100vw", height: "100vh", background: "#ffffff" }}>
-      <Header />
+    <div>
       {/* <Image
         src={"/img/modern-building.png"}
         alt="JES Building"
@@ -121,6 +117,7 @@ export default function Home() {
       </h1> */}
       <Canvas
         className={styles.canvas}
+        style={{ width: "100vw", height: "100vh" }}
         //camera={{ fov: 30, near: 1, far: 10000, position: [0, 0, 6000] }}
         //camera={{ fov: 30, near: 1, far: 3000, position: [0, 0, 6000] }}
         // style={{ background: "linear-gradient(#1e4877, #4584b4)" }}
@@ -179,7 +176,6 @@ export default function Home() {
         </div>
       </div>
       <TestimonialCarouselReel cardSpacing={420} testimonials={testimonials} />
-      <Footer />
     </div>
   );
 }

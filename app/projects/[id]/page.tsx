@@ -1,7 +1,5 @@
 "use client";
 
-import Footer from "@/components/Footer/Footer";
-import Header from "@/components/Header/Header";
 import {
   ProjectCard,
   projectCardDetailsHorizontal,
@@ -80,7 +78,6 @@ export default function ProjectDetails() {
 
   return (
     <div className={styles.page}>
-      <Header />
       {/* Hero Section */}
       <section className={styles.hero}>
         <motion.div
@@ -214,9 +211,6 @@ export default function ProjectDetails() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <Footer className={styles.Footer} />
     </div>
   );
 }

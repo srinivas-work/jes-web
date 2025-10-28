@@ -1,7 +1,5 @@
 "use client";
 
-import Footer from "@/components/Footer/Footer";
-import Header from "@/components/Header/Header";
 import ButtonLayer from "@/components/PageComponents/ProjectPage/ButtonLayer/ButtonLayer";
 import LODGallery from "@/components/PageComponents/ProjectPage/LODGallery/LODGallery";
 import { useLenis } from "@/utils/hooks/useLenis";
@@ -12,7 +10,6 @@ const Projects = () => {
   useLenis();
   return (
     <div className={styles.projectPage}>
-      <Header />
       <div className={styles.bgImageContainerOne}>
         <Image
           className={styles.bgImageOne}
@@ -37,7 +34,6 @@ const Projects = () => {
       <h2>Our Client Projects</h2>
       <ButtonLayer options={["All", "MEP", "AR/VR"]} />
       <LODGallery />
-      <Footer className={styles.Footer} />
     </div>
   );
 };

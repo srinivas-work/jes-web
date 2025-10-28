@@ -1,7 +1,5 @@
 "use client";
 
-import Footer from "@/components/Footer/Footer";
-import Header from "@/components/Header/Header";
 import OurApproach from "@/components/PageComponents/ServicePage/OurApproach/OurApproach";
 import ProductSelection from "@/components/PageComponents/ServicePage/ProductSelection/ProductSelection";
 import ServiceSteps from "@/components/PageComponents/ServicePage/ServiceSteps/ServiceSteps";
@@ -101,7 +99,6 @@ const Services = () => {
           height={0}
         />
       </div>
-      <Header />
       <h2 className={styles.videoTitle}>{serviceSections[0].title}</h2>
       <VideoSection />
       {/* <VideoPlayer />
@@ -123,7 +120,6 @@ const Services = () => {
       <ServiceSteps />
       <ProductSelection />
       <OurApproach />
-      <Footer />
     </div>
   );
 };

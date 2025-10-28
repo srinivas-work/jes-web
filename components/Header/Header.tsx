@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -114,7 +116,10 @@ const Header = () => {
           <Link href="/projects">Projects</Link>
         </div>
 
-        <button className={styles.button} onClick={() => goTo("/contact")}>
+        <button
+          className={styles.contactButton}
+          onClick={() => goTo("/contact")}
+        >
           Get In Touch
         </button>
       </header>

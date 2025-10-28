@@ -1,22 +1,18 @@
 "use client";
 
-import Header from "@/components/Header/Header";
 import AboutAccordion from "@/components/PageComponents/AboutPage/AboutAccordion/AboutAccordion";
+import CircularTimeline from "@/components/PageComponents/AboutPage/CircularTimeline/CircularTimeline";
+import OurClientsCarousel from "@/components/PageComponents/AboutPage/OurClientsCarousel/OurClientsCarousel";
 import TeamCardStack from "@/components/PageComponents/AboutPage/TeamCardStack/TeamCardStack";
 import { useLenis } from "@/utils/hooks/useLenis";
-import React from "react";
-import styles from "./About.module.css";
 import Image from "next/image";
-import Footer from "@/components/Footer/Footer";
-import OurClientsCarousel from "@/components/PageComponents/AboutPage/OurClientsCarousel/OurClientsCarousel";
-import CircularTimeline from "@/components/PageComponents/AboutPage/CircularTimeline/CircularTimeline";
+import styles from "./About.module.css";
 
 const About = () => {
   useLenis();
 
   return (
     <div className={styles.aboutPage}>
-      <Header />
       <div className={styles.bgImageContainerOne}>
         <Image
           className={styles.bgImageOne}
@@ -41,7 +37,6 @@ const About = () => {
       <TeamCardStack />
       <CircularTimeline />
       <OurClientsCarousel />
-      <Footer className={styles.Footer} />
     </div>
   );
 };

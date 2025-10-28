@@ -1,12 +1,10 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useRef, useState, useMemo } from "react";
-import { useRouter } from "next/navigation";
-import styles from "./Insights.module.css";
 import { useLenis } from "@/utils/hooks/useLenis";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useRouter } from "next/navigation";
+import { useMemo, useRef, useState } from "react";
+import styles from "./Insights.module.css";
 
 interface Insight {
   id: number;
@@ -122,8 +120,6 @@ export default function Insights() {
 
   return (
     <div className={styles.pageWrapper} ref={containerRef}>
-      <Header />
-
       {/* Floating Background Elements */}
       <motion.div
         className={styles.floatingCurve1}
@@ -209,8 +205,6 @@ export default function Insights() {
           ))}
         </section>
       </div>
-
-      <Footer />
     </div>
   );
 }

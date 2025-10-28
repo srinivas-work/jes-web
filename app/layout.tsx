@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 
 const plusJakartaSans = localFont({
   src: [
@@ -63,7 +65,11 @@ export default function RootLayout({
           type="image/svg+xml"
         />
       </head>
-      <body className={plusJakartaSans.variable}>{children}</body>
+      <body className={plusJakartaSans.variable}>
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

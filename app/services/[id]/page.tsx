@@ -1,18 +1,16 @@
 "use client";
 
-import Footer from "@/components/Footer/Footer";
-import Header from "@/components/Header/Header";
 import OurApproach from "@/components/PageComponents/ServicePage/OurApproach/OurApproach";
 import ProductSelection from "@/components/PageComponents/ServicePage/ProductSelection/ProductSelection";
 import ServiceSteps from "@/components/PageComponents/ServicePage/ServiceSteps/ServiceSteps";
 import VideoPlayer from "@/components/UI/VideoPlayer/VideoPlayer";
+import { serviceSections } from "@/utils/data/dummyData";
 import { useLenis } from "@/utils/hooks/useLenis";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import { useParams } from "next/navigation";
 import { useRef } from "react";
 import styles from "./ServiceItem.module.css";
-import { useParams } from "next/navigation";
-import { serviceSections } from "@/utils/data/dummyData";
 
 const VideoSection: React.FC<{ id?: number }> = ({ id }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -91,7 +89,6 @@ const ServiceItem = () => {
           height={0}
         />
       </div>
-      <Header />
       <h2 className={styles.videoTitle}>{serviceSections[Number(id)].title}</h2>
       <VideoSection />
       {/* <VideoPlayer />
@@ -113,7 +110,6 @@ const ServiceItem = () => {
       <ServiceSteps />
       <ProductSelection />
       <OurApproach />
-      <Footer />
     </div>
   );
 };

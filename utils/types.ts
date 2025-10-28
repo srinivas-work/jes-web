@@ -11,3 +11,15 @@ export type TestimonialCardProps = {
   title: string;
   image: string;
 };
+
+export type ProjectItemType = {
+  name: string;
+  imgLink: string;
+  thumbnailLink?: string;
+  location: string;
+  overview: string;
+  overviewOpt?: string;
+  serviceType?: string;
+  client: string;
+  contractor: string;
+};
