@@ -42,7 +42,7 @@ const VideoSection: React.FC<{ id: number }> = ({ id }) => {
       );
     }
 
-    return <p>serviceSections[id].description</p>;
+    return <p>{serviceSections[id].description}</p>;
   };
 
   return (
