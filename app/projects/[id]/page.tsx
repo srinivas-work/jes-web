@@ -1,14 +1,13 @@
 "use client";
 
-import {
-  ProjectCard,
-  projectCardDetailsHorizontal,
-} from "@/components/PageComponents/ProjectPage/ProjectsGallery/ProjectsGallery";
+import { projectCardDetailsHorizontal } from "@/components/PageComponents/ProjectPage/ProjectsGallery/ProjectsGallery";
 import { useLenis } from "@/utils/hooks/useLenis";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import React, { useRef, useState } from "react";
 import styles from "./ProjectDetails.module.css";
+import ProjectCard from "@/components/PageComponents/ProjectPage/ProjectsGallery/ProjectCard/ProjectCard";
+import { projectList } from "@/utils/data/dummyData";
 
 interface TechnicalDetailProps {
   icon: string;
@@ -196,14 +195,12 @@ export default function ProjectDetails() {
             onMouseUp={onMouseUp}
             onMouseMove={onMouseMove}
           >
-            {projectCardDetailsHorizontal.map((card, i) => (
+            {projectList.map((projectItem, i) => (
               <ProjectCard
                 key={i}
-                imageUrl={card.imageUrl}
-                title={card.title}
-                author={card.author}
-                borderRadius={card.borderRadius}
-                overlayColor={card.overlayColor}
+                projectItem={projectItem}
+                //borderRadius={card.borderRadius}
+                //overlayColor={card.overlayColor}
                 isBlurred={hoveredIndex !== null && hoveredIndex !== i}
                 onHover={(hovered) => setHoveredIndex(hovered ? i : null)}
               />
