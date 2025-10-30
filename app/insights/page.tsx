@@ -3,8 +3,9 @@
 import { useLenis } from "@/utils/hooks/useLenis";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./Insights.module.css";
+import { useScrollStore } from "@/utils/hooks/useScrollStore";
 
 interface Insight {
   id: number;
@@ -217,6 +218,15 @@ function InsightCard({ insight, index }: { insight: Insight; index: number }) {
     target: cardRef,
     offset: ["start end", "end start"],
   });
+
+  // const setSectionScrollYProgress = useScrollStore(
+  //   (s) => s.setSectionScrollYProgress
+  // );
+
+  // // Register once
+  // useEffect(() => {
+  //   setSectionScrollYProgress(scrollYProgress);
+  // }, [scrollYProgress, setSectionScrollYProgress]);
 
   const imageY = useTransform(scrollYProgress, [0, 1], [80, -80]);
   const smoothImageY = useSpring(imageY, { stiffness: 100, damping: 30 });

@@ -16,7 +16,13 @@ const Header = () => {
   const textColor = useTransform(
     scrollYProgress,
     [0, 0.1],
-    ["#ffffff", "#1a1a1a"]
+    ["#efeeee", "#1a1a1a"]
+  );
+
+  const textColor2 = useTransform(
+    scrollYProgress,
+    [0, 0.1],
+    ["#efeeee", "var(--primary-red)"]
   );
 
   const goTo = (route: string, newTab?: boolean) => {
@@ -51,12 +57,15 @@ const Header = () => {
         <Link href="/insights">Insight Hub</Link>
         <Link href="/about">About Us</Link>
         <Link href="/projects">Projects</Link>
-        <Link
+        <motion.a
           href="/contact"
-          style={{ fontWeight: "bold", color: "var(--primary-red)" }}
+          style={{
+            fontWeight: "bold",
+            color: isSolutions ? textColor2 : "var(--primary-red)",
+          }}
         >
           Contact Us
-        </Link>
+        </motion.a>
       </nav>
 
       <motion.button
