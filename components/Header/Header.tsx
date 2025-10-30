@@ -1,103 +1,83 @@
 "use client";
 
-import React, { useState, useRef } from "react";
-import { useRouter } from "next/navigation";
+import { User2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import styles from "./Header.module.css";
-import { motion } from "framer-motion";
-import ServicesMenu from "../UI/ServicesMenu/ServicesMenu";
-import { Mail, Phone, User, User2 } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const Header = () => {
   const router = useRouter();
-  const [isServicesMenuOpen, setIsServicesMenuOpen] = useState(false);
-  const servicesTimeoutRef = useRef<NodeJS.Timeout>(null);
-  const menuTimeoutRef = useRef<NodeJS.Timeout>(null);
+  const pathname = usePathname();
+  const { scrollYProgress } = useScroll();
+
+  // Smoothly transition color from white → dark when scrollYProgress >= 0.1
+  const textColor = useTransform(
+    scrollYProgress,
+    [0, 0.1],
+    ["#ffffff", "#1a1a1a"]
+  );
 
   const goTo = (route: string, newTab?: boolean) => {
-    if (newTab) {
-      return window.open(route, "_blank");
-    }
+    if (newTab) return window.open(route, "_blank");
     router.push(route);
   };
 
-  const handleServicesMouseEnter = () => {
-    // Clear any pending close timeouts
-    if (servicesTimeoutRef.current) {
-      clearTimeout(servicesTimeoutRef.current);
-    }
-    if (menuTimeoutRef.current) {
-      clearTimeout(menuTimeoutRef.current);
-    }
-
-    // Open menu immediately
-    setIsServicesMenuOpen(true);
-  };
-
-  const handleServicesMouseLeave = () => {
-    // Delay closing to allow moving to menu
-    servicesTimeoutRef.current = setTimeout(() => {
-      setIsServicesMenuOpen(false);
-    }, 150);
-  };
-
-  const handleMenuMouseEnter = () => {
-    // Clear close timeout when entering menu
-    if (servicesTimeoutRef.current) {
-      clearTimeout(servicesTimeoutRef.current);
-    }
-  };
-
-  const handleMenuMouseLeave = () => {
-    // Close menu with slight delay
-    menuTimeoutRef.current = setTimeout(() => {
-      setIsServicesMenuOpen(false);
-    }, 100);
-  };
+  const isSolutions = pathname === "/solutions" || pathname === "/insights";
 
   return (
-    <>
-      <header className={styles.header}>
-        <Image
-          className={styles.logo}
-          src={"/img/logos/jes_after_logo.png"}
-          alt="JES Engineering"
-          sizes="100vw"
-          width={0}
-          height={0}
-          onClick={() => goTo("/")}
-        />
+    <motion.header
+      className={styles.header}
+      style={{
+        color: isSolutions ? textColor : "inherit",
+      }}
+    >
+      <Image
+        className={styles.logo}
+        src={"/img/logos/jes_after_logo.png"}
+        alt="JES Engineering"
+        sizes="100vw"
+        width={0}
+        height={0}
+        onClick={() => goTo("/")}
+      />
 
-        <div className={styles.navLinks}>
-          {/* Services with mega menu */}
-          <div
-            className={styles.servicesContainer}
-            // onClick={() =>
-            //   document
-            //     .getElementById("check")
-            //     ?.scrollIntoView({ behavior: "smooth" })
-            // }
-            onMouseEnter={handleServicesMouseEnter}
-            onMouseLeave={handleServicesMouseLeave}
-          >
-            <Link
-              href="/#check"
-              className={styles.servicesLink}
-              style={{ display: "flex", alignItems: "center" }}
-            >
-              <motion.span
-                animate={{
-                  letterSpacing: isServicesMenuOpen ? "0.2rem" : 0,
-                  color: isServicesMenuOpen
-                    ? "var(--primary-red)"
-                    : "var(--primary-dark)",
-                }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-              >
-                Services
-              </motion.span>
-              {/* <motion.svg
+      <nav className={styles.navLinks}>
+        <Link href="/#check" className={styles.servicesLink}>
+          Services
+        </Link>
+        <Link href="/solutions">Solutions For</Link>
+        <Link href="/insights">Insight Hub</Link>
+        <Link href="/about">About Us</Link>
+        <Link href="/projects">Projects</Link>
+        <Link
+          href="/contact"
+          style={{ fontWeight: "bold", color: "var(--primary-red)" }}
+        >
+          Contact Us
+        </Link>
+      </nav>
+
+      <motion.button
+        className={styles.contactButton}
+        onClick={() => goTo("https://jesi.jerseyeng.com/login/", true)}
+        style={{
+          borderColor: isSolutions ? textColor : "var(--primary-red)",
+          color: isSolutions ? textColor : "inherit",
+        }}
+      >
+        <User2 className={styles.icon} />
+        Customer Login
+      </motion.button>
+    </motion.header>
+  );
+};
+
+export default Header;
+
+{
+  /* <motion.svg
                 className={`${styles.chevron} ${
                   isServicesMenuOpen ? styles.rotate : ""
                 }`}
@@ -115,48 +95,25 @@ const Header = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
-              </motion.svg> */}
-            </Link>
-          </div>
+              </motion.svg> */
+}
 
-          <Link href="/solutions">Solutions For</Link>
-          <Link href="/insights">Insight Hub</Link>
-          <Link href="/about">About Us</Link>
-          <Link href="/projects">Projects</Link>
-          <Link
-            href="/contact"
-            style={{ fontWeight: "bold", color: "var(--primary-red)" }}
-          >
-            {" "}
-            Contact Us
-          </Link>
-        </div>
-
-        {/* <button
+{
+  /* <button
           className={styles.contactButton}
           onClick={() => goTo("/contact")}
         >
           <Mail className={styles.icon} opacity={0.5} />
           Get In Touch
-        </button> */}
-        <button
-          className={styles.contactButton}
-          onClick={() => goTo("https://jesi.jerseyeng.com/login/", true)}
-        >
-          <User2 className={styles.icon} />
-          {/* <User2 className={styles.icon} /> */}
-          Customer Login
-        </button>
-      </header>
-
-      {/* Services Mega Menu */}
-      {/* <ServicesMenu
+        </button> */
+}
+{
+  /* Services Mega Menu */
+}
+{
+  /* <ServicesMenu
         isVisible={isServicesMenuOpen}
         onMouseEnter={handleMenuMouseEnter}
         onMouseLeave={handleMenuMouseLeave}
-      /> */}
-    </>
-  );
-};
-
-export default Header;
+      /> */
+}
