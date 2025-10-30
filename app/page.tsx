@@ -8,6 +8,8 @@ import ServiceScrollShowcase from "@/components/PageComponents/HomePage/ServiceS
 import StatsBar from "@/components/PageComponents/HomePage/StatsBar/StatsBar";
 import TestimonialCarouselReel from "@/components/PageComponents/HomePage/TestimonialCarouselReel/TestimonialCarouselReel";
 import CloudField from "@/components/ThreeD/CloudField";
+import GrowthCubes3D from "@/components/ThreeD/PortalCards/GrowthCubes3D";
+import ServiceScrollStackPhone from "@/components/UI/ServiceScrollStackPhone/ServiceScrollStackPhone";
 import { faq, testimonials } from "@/utils/data/dummyData";
 import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 import { useLenis } from "@/utils/hooks/useLenis";
@@ -16,7 +18,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
-import ServiceScrollStackPhone from "@/components/UI/ServiceScrollStackPhone/ServiceScrollStackPhone";
+import GrowthPath3D from "@/components/ThreeD/GrowthPath3D/GrowthPath3D";
 
 function Building() {
   const tex = useTexture("/img/modern-building.png");
@@ -44,6 +46,8 @@ export default function Home() {
   useLenis();
 
   const isPhoneScreen = useIsPhoneScreen();
+
+  //return <BarsScene />;
 
   return (
     <div>
@@ -117,6 +121,8 @@ export default function Home() {
       {isPhoneScreen && <ServiceScrollStackPhone />}
       {/* <AboutDetails /> */}
       <JesLogoDetails />
+      <GrowthCubes3D />
+      <GrowthPath3D />
       <ProcessDetails />
       <IndustryHighlights />
       <div

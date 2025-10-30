@@ -1,0 +1,133 @@
+.industryHighlightsSection {
+  min-height: 100vh;
+  width: 100dvw;
+  margin: auto;
+  margin-top: calc(var(--spacing) * 2);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  padding: 0 5dvw;
+}
+
+.backgroundPattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.05;
+  background-image: linear-gradient(
+    45deg,
+    var(--primary-red) 15%,
+    transparent 15%
+  );
+  background-size: 40px 40px;
+  background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+}
+
+.industryItems {
+  display: flex;
+  width: 100%;
+  height: 30rem;
+  position: relative;
+  z-index: 1;
+}
+
+.industryItems::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(0, -50%);
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-dark);
+}
+
+.card {
+  width: 100%;
+  height: 15rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.card * {
+  color: inherit !important;
+}
+
+/* Alternate up/down layout */
+.card:nth-child(even) {
+  justify-content: flex-start;
+  margin-top: auto;
+  color: var(--primary-dark);
+}
+
+/* .card:nth-child(odd)::before {
+  content: "";
+  position: absolute;
+  left: 0rem;
+  width: 3px;
+  top: 0;
+  bottom: 0;
+  background: currentColor;
+}
+
+.card:nth-child(odd)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: currentColor;
+} */
+
+.card:nth-child(odd) {
+  margin-bottom: auto;
+  color: var(--primary-red);
+}
+
+/* .card:nth-child(even)::before {
+  content: "";
+  position: absolute;
+  left: 0rem;
+  width: 3px;
+  top: 0;
+  bottom: 0;
+  background: currentColor;
+}
+
+.card:nth-child(even)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: currentColor;
+} */
+
+.numberLarge {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.cardTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--primary-dark);
+}

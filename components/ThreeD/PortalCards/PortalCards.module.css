@@ -1,0 +1,70 @@
+.portalCardSection {
+  position: relative;
+  height: 400dvh;
+}
+
+.cardsContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2rem;
+  margin: 0 auto;
+  z-index: 5;
+}
+
+.portalCard {
+  position: absolute;
+}
+
+.portalCard::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -5rem;
+  transform: translate(0, -50%);
+  width: 20%;
+  height: 2px;
+  background-color: var(--primary-red);
+  z-index: -1;
+}
+
+.portalCard:hover {
+  transform: translateY(-2rem) !important;
+}
+
+.portalCard:nth-child(1) {
+  bottom: 5rem;
+  right: 3rem;
+}
+
+.portalCard:nth-child(2) {
+  top: 45%;
+  left: 3rem;
+  transform: translate(0, -45%) !important;
+}
+
+.portalCard:nth-child(2):hover {
+  transform: translate(0, -55%) !important;
+}
+
+.portalCard:nth-child(2)::before {
+  width: 15%;
+  top: 50%;
+  right: 0;
+  transform: translate(33rem, -50%);
+}
+
+.portalCard:nth-child(3) {
+  top: 5rem;
+  right: 7rem;
+}
+
+.portalCard:nth-child(3)::before {
+  left: -5rem;
+}

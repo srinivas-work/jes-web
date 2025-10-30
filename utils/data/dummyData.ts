@@ -1,4 +1,5 @@
 import {
+  PortalCardType,
   ProjectItemType,
   ServiceItemType,
   TestimonialCardProps,
@@ -561,4 +562,32 @@ const faq = [
   },
 ];
 
-export { serviceSections, services, testimonials, projectList, faq };
+const portalCardList: PortalCardType[] = [
+  {
+    imgLink:
+      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXBsb2FkJTIwZG9jdW1lbnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&h=500&q=80",
+    title: "Drop your RFQ",
+    desc: "Drop your RFQ -Upload everything in our secure portal. We take it from there.",
+  },
+  {
+    imgLink:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YW5hbHl6ZSUyMGRhdGF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&h=500&q=80",
+    title: "Align with the team",
+    desc: "Specify exactly what you need via the portal or email. Fast, direct, clear.",
+  },
+  {
+    imgLink:
+      "https://images.unsplash.com/photo-1556155092-490a1ba16284?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cXVvdGVzfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&h=500&q=80",
+    title: "Revise and track live",
+    desc: "Submit and upload everything in our secure portal for 100% accurate, real-time processing, we’ll take it from there.",
+  },
+];
+
+export {
+  serviceSections,
+  services,
+  testimonials,
+  projectList,
+  faq,
+  portalCardList,
+};

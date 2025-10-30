@@ -5,7 +5,7 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./Insights.module.css";
-import { useScrollStore } from "@/utils/hooks/useScrollStore";
+import { useScrollStore } from "@/utils/store/useScrollStore";
 
 interface Insight {
   id: number;

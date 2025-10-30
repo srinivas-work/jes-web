@@ -155,7 +155,7 @@ export default function JesLogoDetails() {
   //   return () => unsubscribe();
   // }, [scrollYProgress]);
 
-  const animationLimit = [0.6, 0.72];
+  const animationLimit = [0.3, 0.42];
 
   const smoothness = { stiffness: 100, damping: 25 };
 
@@ -211,7 +211,7 @@ export default function JesLogoDetails() {
   //Logo Group
   const logoPathX = useTransform(
     scrollYProgress,
-    [0.7, 0.72],
+    [0.4, 0.42],
     ["300vw", "0vh"]
   );
   const smoothlogoPathX = useSpring(logoPathX, smoothness);

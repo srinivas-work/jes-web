@@ -39,8 +39,11 @@
 .card {
   width: 100%;
   height: 15rem;
-  padding: 2rem;
+  padding: 1rem;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .card * {
@@ -105,14 +108,13 @@
 }
 
 .numberLarge {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: bold;
 }
 
 .cardTitle {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 1rem;
 }
 
 .cardDescription {

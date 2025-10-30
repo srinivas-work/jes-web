@@ -4,34 +4,36 @@ import styles from "./IndustryHighlights.module.css";
 
 const highlights = [
   {
-    number: "01",
-    title: "Industry Highlight",
-    description: "Lorem Ipsum ...",
+    title: "JES Inc.",
+    description: "Trusted American company with decades of experience.",
     delay: 0,
   },
   {
-    number: "02",
-    title: "Industry Highlight",
-    description: "Lorem Ipsum ...",
+    title: "Fast Delivery & Accuracy",
+    description: "Known for lightning-fast project delivery and precision.",
     delay: 0.15,
   },
   {
-    number: "03",
-    title: "Industry Highlight",
-    description: "Lorem Ipsum ...",
+    title: "ISO Certifications",
+    description: "Offshore partner with ISO 27001 & ISO 9001 certifications.",
     delay: 0.3,
   },
   {
-    number: "04",
-    title: "Industry Highlight",
-    description: "Lorem Ipsum ...",
+    title: "Efficient Processes",
+    description:
+      "Rigorous training and streamlined processes for unmatched speed and accuracy.",
     delay: 0.45,
   },
   {
-    number: "05",
-    title: "Industry Highlight",
-    description: "Lorem Ipsum ...",
+    title: "High Output",
+    description: "Completing 1,000–2,000 projects per month.",
     delay: 0.6,
+  },
+  {
+    title: "Trusted Network",
+    description:
+      "Serving 38 clients, including manufacturer reps, distributors, and contractors.",
+    delay: 0.45,
   },
 ];
 
@@ -101,10 +103,9 @@ export default function IndustryHighlights() {
               ease: [0.25, 0.1, 0.25, 1],
             }}
           >
-            <div className={styles.numberLarge}>{highlight.number}</div>
+            <div className={styles.numberLarge}>0{index + 1}</div>
             <h3 className={styles.cardTitle}>{highlight.title}</h3>
             <p className={styles.cardDescription}>{highlight.description}</p>
-            <a className={styles.link}>Discover more...</a>
           </motion.div>
         ))}
       </div>

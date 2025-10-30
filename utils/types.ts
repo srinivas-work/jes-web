@@ -31,3 +31,9 @@ export type ProjectItemType = {
   client: string;
   contractor: string;
 };
+
+export type PortalCardType = {
+  imgLink: string;
+  title: string;
+  desc: string;
+};
