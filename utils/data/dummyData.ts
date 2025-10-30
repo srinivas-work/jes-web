@@ -1,62 +1,295 @@
 import {
   ProjectItemType,
-  ServiceSectionType,
+  ServiceItemType,
   TestimonialCardProps,
 } from "../types";
 
-export const serviceSections: ServiceSectionType[] = [
+const serviceSections: ServiceItemType[] = [
   {
-    title: "Quantity Take-Offs",
+    title: "Quantity Take Off",
     image: "/img/specs.png",
     description:
       "Our team of skilled engineers provide reliable take-off services for construction projects across all fields including Civil , MEP systems and general purpose buildings using advanced software like Bluebeam, Planswift, and OnScreen takeoff to meticulously measure quantities from floor plans which are compiled into comprehensive, accurately organized reports as per your requirements.",
+    subServices: [
+      {
+        title: "Specialized Quantity Surveying",
+        desc: [
+          "Accurate measurement and estimation of quantities for construction projects in diverse fields like civil, MEP, etc.",
+        ],
+      },
+      {
+        title: "Software-Aided QTO",
+        desc: [
+          "Utilization of advanced software tools like Bluebeam, Planswift, or specialized QTO software for precise calculations and project evaluation.",
+        ],
+      },
+      {
+        title: "Customized Reports & Documentation",
+        desc: [
+          "Preparation of comprehensive reports outlining the measured quantities, including breakdowns.",
+          "Customized documentation catering to the specific needs of clients or projects.",
+        ],
+      },
+      {
+        title: "Consultancy and Project Support",
+        desc: [
+          "Support throughout the project lifecycle, from initial estimation to final execution.",
+        ],
+      },
+      {
+        title: "Quality Assurance and Compliance",
+        desc: [
+          "Ensuring compliance with industry standards, regulations, and best practices during the quantity estimation process.",
+          "Quality checks to maintain accuracy and reliability of the quantity take-off data.",
+        ],
+      },
+      {
+        title: "Domain-specific QTO Services",
+        desc: [
+          "Tailoring QTO services to different industries like real estate, infrastructure, manufacturing, etc., based on their unique requirements and standards.",
+        ],
+      },
+    ],
   },
   {
     title: "Equipment/Product Selection",
     image: "/img/digital.png",
-    description:
-      "Design specifications often carry gaps or inconsistencies that surface only during execution. JES helps you prevent those problems early by conducting in-depth MEP Specification Reviews. We cross-check technical specs, design parameters, and product selections against project standards such as ASHRAE, NFPA, and local codes.",
+    description: [
+      "Jersey Engineering Solutions provides equipment selection services for the air-side and chilled water refrigerant controls. We support in choosing the most suitable and efficient mechanical and electrical equipment for your construction projects. Equipment selected to meet local building codes and safety regulations ensures project compliance.",
+      "Equipment selection services are therefore very useful for optimizing the performance, efficiency, and cost-effectiveness of MEP systems in construction projects, while also promoting sustainability and compliance with industry standards.",
+    ],
+    pdfLink: "/pdfs/equipment_selection.pdf",
+    subServices: [
+      {
+        title: "Comprehensive Equipment Selection",
+        desc: [
+          "Support in choosing the most suitable mechanical and electrical equipment for construction projects.",
+          "Focus on air-side, chilled water, and refrigerant control systems.",
+        ],
+      },
+      {
+        title: "Efficiency & Performance Optimization",
+        desc: [
+          "Selection aimed at maximizing system efficiency and operational performance.",
+          "Ensures long-term reliability and reduced energy consumption.",
+        ],
+      },
+      {
+        title: "Regulatory Compliance",
+        desc: [
+          "Equipment chosen in alignment with local building codes and safety regulations.",
+          "Guarantees project compliance and safety assurance.",
+        ],
+      },
+      {
+        title: "Cost-effective Solutions",
+        desc: [
+          "Balance between performance, cost, and sustainability during equipment selection.",
+          "Helps optimize overall project budget without compromising quality.",
+        ],
+      },
+      {
+        title: "Sustainability-driven Approach",
+        desc: [
+          "Focus on environmentally responsible systems supporting green building standards.",
+          "Promotes long-term efficiency and reduced carbon footprint.",
+        ],
+      },
+    ],
   },
   {
     title: "Spec Review",
     image: "/img/digital.png",
     description:
-      "Our team of skilled engineers provide reliable take-off services for construction projects across all fields including Civil , MEP systems and general purpose buildings using advanced software like Bluebeam, Planswift, and OnScreen takeoff to meticulously measure quantities from floor plans which are compiled into comprehensive, accurately organized reports as per your requirements.",
+      "JES reviews specifications to ensure all representative products are listed, maximizing bid opportunities. Provides feedback within 24 hours through the JES portal. Supplies a pre-defined email.",
   },
-
   {
     title: "BIM Modelling",
     image: "/img/engg.png",
     description:
-      "Speed up equipment approvals with JES’s Digital Submittals. Centralized documentation, BIM integration, and faster RFI turnaround. ",
+      "Our team of skilled engineers provide reliable take-off services for construction projects across all fields including Civil , MEP systems and general purpose buildings using advanced software like Bluebeam, Planswift, and OnScreen takeoff to meticulously measure quantities from floor plans which are compiled into comprehensive, accurately organized reports as per your requirements.",
+    subServices: [
+      {
+        title: "LOD 100 - Conceptual Design",
+        desc: [
+          "LOD 100 represents the most basic level of BIM modeling.",
+          "It includes conceptual information, basic geometry, and overall project massing.",
+          "Used in the early stages of design to communicate the project's basic form and concept.",
+        ],
+      },
+      {
+        title: "LOD 200 - Schematic Design",
+        desc: [
+          "LOD 200 involves more developed elements than LOD 100.",
+          "It includes approximate sizes, shapes, and locations of building elements.",
+          "Used in the schematic design phase to visualize the project and assess its feasibility.",
+        ],
+      },
+      {
+        title: "LOD 300 - Detailed Design",
+        desc: [
+          "LOD 300 provides a more detailed representation of building elements.",
+          "It includes accurate geometry, sizes, shapes, quantities, and relationships between components.",
+          "Used during the detailed design phase for coordination and construction documentation.",
+        ],
+      },
+      {
+        title: "LOD 400 - Fabrication and Assembly",
+        desc: [
+          "LOD 400 is highly detailed and suitable for fabrication and assembly purposes.",
+          "It includes precise geometry, specific product information, and assembly details.",
+          "Used for manufacturing, fabrication, and assembly of building components.",
+        ],
+      },
+      {
+        title: "LOD 500 - As-Built Model",
+        desc: [
+          "LOD 500 represents the highest level of detail, capturing actual installed elements and accurate as-built conditions.",
+          "It includes precise geometry, product data, and operational information.",
+          "Used for facility management, maintenance, and renovation purposes post-construction.",
+        ],
+      },
+    ],
   },
   {
     title: "Revit Models: Component & Assembly",
     image: "/img/engg.png",
-    description:
-      "Speed up equipment approvals with JES’s Digital Submittals. Centralized documentation, BIM integration, and faster RFI turnaround. ",
+    description: [
+      "At Jersey Engineering Solutions (JES), our Revit-based Component and Assembly Modelling services bridge the gap between design intent and real-world construction. By integrating data-rich, parametric models from multiple manufacturers into a unified BIM environment, we deliver accurate, coordination-ready models that streamline project workflows.",
+      "Each model, whether an individual component or a complete assembly—is meticulously developed to represent true-to-life geometry, performance characteristics, and connectivity details. This ensures seamless integration across mechanical, electrical, and architectural disciplines.",
+    ],
+    subServices: [
+      {
+        title: "Integrated Component Modelling",
+        desc: [
+          "Creation of intelligent Revit models integrating parts from multiple manufacturers.",
+          "Ensures seamless coordination across MEP systems.",
+        ],
+      },
+      {
+        title: "Comprehensive Submittal Packages",
+        desc: [
+          "Preparation of detailed 3D component assemblies and technical drawings.",
+          "Includes family types, connection points, and performance data for approval.",
+        ],
+      },
+      {
+        title: "BIM-driven Efficiency",
+        desc: [
+          "Standardized, parametric Revit families for accurate coordination.",
+          "Reduces rework and improves design precision and collaboration.",
+        ],
+      },
+      {
+        title: "Assembly Modelling",
+        desc: [
+          "Development of combined mechanical, electrical, and structural assemblies.",
+          "Supports modular installation and clash detection for site efficiency.",
+        ],
+      },
+      {
+        title: "Deliverables",
+        desc: [
+          "Parametric Revit families (.RFA) and assemblies (.RVT).",
+          "Coordinated views, schedules, and LOD-compliant BIM models.",
+        ],
+      },
+    ],
   },
   {
     title: "AR/VR Modelling",
     image: "/img/manufacturing.png",
-    description:
-      "See your projects before they’re built. JES creates immersive 3D environments with AR/VR tools that enhance stakeholder buy-in and design clarity.",
+    description: [
+      "We provide state-of-the-art AR(Augmented Reality) & VR (Virtual Reality) 3D modeling at affordable prices that are custom-designed by professionally trained industry leading experts. These value added services present you with cutting-edge solutions for immersive digital experiences.",
+      "We create interactive 3D models and environments that enhance value across various industries in the segment. AR & VR modeling enable users to engage with realistic, computer-generated simulations that augment the real world (AR) or create entirely virtual environments (VR) for an array of applications, transforming how we experience and interact with content and information.",
+    ],
+    subServices: [
+      {
+        title: "Immersive AR/VR Solutions",
+        desc: [
+          "Development of interactive 3D models and environments for AR and VR platforms.",
+          "Enhances visualization and engagement across industries.",
+        ],
+      },
+      {
+        title: "Cutting-edge Digital Experiences",
+        desc: [
+          "Creation of realistic simulations that augment reality or form virtual spaces.",
+          "Transforms how users interact with digital environments.",
+        ],
+      },
+      {
+        title: "Expert-driven Design",
+        desc: [
+          "Models crafted by experienced professionals ensuring realism and precision.",
+          "Tailored to meet specific client objectives and applications.",
+        ],
+      },
+      {
+        title: "Affordable Innovation",
+        desc: [
+          "High-quality AR/VR modeling services offered at competitive pricing.",
+          "Combines technology and creativity for maximum value.",
+        ],
+      },
+      {
+        title: "Versatile Industry Applications",
+        desc: [
+          "AR/VR models designed for sectors like architecture, education, real estate, and manufacturing.",
+          "Enables immersive presentations, training, and simulation experiences.",
+        ],
+      },
+    ],
   },
   {
     title: "MEP Drafting",
     image: "/img/bim.png",
-    description:
-      "Multi-trade? Multi-format? JES handles Complex Submittals with ease—across formats, trades, and consultants.",
-  },
-  {
-    title: "Energy Modelling/Building Engineering Services",
-    image: "/img/engg.png",
-    description:
-      "From LOD 100 to 500, JES delivers BIM models that are accurate, clash-free, and construction-ready—designed to keep your projects flowing.",
+    description: [
+      "We specialize in providing high-quality Mechanical, Electrical, and Plumbing (MEP) AutoCAD drafting services that cater to the diverse needs of the construction and engineering industry. With a dedicated focus on precision, innovation, and efficiency, we serve as your trusted partner in delivering impeccable MEP drafting solutions.",
+      "Our drafting services encompass meticulous creation of Mechanical Drawings, Electrical Layouts, and Plumbing Designs. Precision is our hallmark, ensuring that every detail is accurately represented. With expertise in CAD technology, we deliver comprehensive, industry-compliant drafts, facilitating seamless integration for successful implementation in diverse construction and engineering projects.",
+    ],
+    subServices: [
+      {
+        title: "MEP AutoCAD Drafting",
+        desc: [
+          "Our team of experienced drafters utilize the power of AutoCAD to create accurate and detailed MEP drawings. From HVAC layouts to electrical plans and plumbing schematics, we ensure precision in every aspect of MEP design.",
+        ],
+      },
+      {
+        title: "2D Drafting and Detailing",
+        desc: [
+          "We excel in converting conceptual ideas into comprehensive 2D drafts, providing detailed layouts that adhere to industry standards and project specifications.",
+        ],
+      },
+      {
+        title: "3D Modeling Integration",
+        desc: [
+          "Seamlessly integrating 3D MEP models into AutoCAD, we ensure a holistic view of MEP systems, facilitating better visualization and coordination among various project stakeholders.",
+        ],
+      },
+      {
+        title: "As-Built Documentation",
+        desc: [
+          "We assist in creating as-built documentation, capturing accurate representations of installed MEP components for renovation or maintenance purposes.",
+        ],
+      },
+      {
+        title: "Coordination and Clash Detection",
+        desc: [
+          "We perform detailed coordination among architectural, structural, and MEP trades to identify and resolve clashes early, ensuring smooth on-site installation and reduced rework.",
+        ],
+      },
+      {
+        title: "BIM to CAD Conversion",
+        desc: [
+          "Our experts efficiently convert BIM models into detailed 2D CAD drawings, maintaining accuracy, scale, and data integrity for construction and documentation purposes.",
+        ],
+      },
+    ],
   },
 ];
 
-export const services = [
+const services = [
   {
     category: "BIM & MEP DRAFTING",
     items: [
@@ -142,7 +375,7 @@ export const services = [
   //   },
 ];
 
-export const testimonials: TestimonialCardProps[] = [
+const testimonials: TestimonialCardProps[] = [
   {
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
     name: "Sarah Johnson",
@@ -236,7 +469,7 @@ export const testimonials: TestimonialCardProps[] = [
   },
 ];
 
-const projects: ProjectItemType[] = [
+const projectList: ProjectItemType[] = [
   {
     name: "KIPP School Washington DC, USA",
     imgLink: "/img/projects/kipp-school.jpg",
@@ -284,8 +517,8 @@ const projects: ProjectItemType[] = [
   },
   {
     name: "Multi Purpose Hall at Lusail, Qatar",
-    imgLink: "/img/projects/al_bayt_stadium.jpg",
-    thumbnailLink: "/img/projects/al_bayt_stadium-thumb.jpg",
+    imgLink: "/img/projects/multi-purpose-hall-lusail.jpg",
+    thumbnailLink: "/img/projects/multi-purpose-hall-lusail-thumb.jpg",
     location: "Lusail City, Qatar",
     overview:
       "Al Bayt Stadium hosted the opening match of the 2022 World Cup, and hosted a semi-final and a quarter-final match. The stadium hosted around 60,000 World Cup fans, including 1,000 seats for press. The architectural design takes its inspiration from the traditional tents of the nomadic peoples of Qatar and the region. It features a retractable roof, providing covered seating for all spectators.",
@@ -298,3 +531,34 @@ const projects: ProjectItemType[] = [
     serviceType: "",
   },
 ];
+
+const faq = [
+  {
+    question: "What is Quantity Take-Off and why is it important?",
+    answer:
+      "Quantity Take-Off (QTO) is the process of measuring materials, components, and labor needed for construction projects. It ensures accurate cost estimation, reduces material wastage, and supports better budgeting and project planning.",
+  },
+  {
+    question: "How does your team assist with Equipment or Product Selection?",
+    answer:
+      "We help clients choose the most efficient, cost-effective, and specification-compliant products and equipment. Our team evaluates performance data, compatibility, and sustainability to ensure the best selection for your project.",
+  },
+  {
+    question: "What does a Specification Review include?",
+    answer:
+      "Our Specification Review process checks technical documentation for consistency, clarity, and compliance with project requirements. This helps prevent design conflicts, delays, and rework during later stages.",
+  },
+  {
+    question: "What are the benefits of BIM Modelling for my project?",
+    answer:
+      "BIM (Building Information Modelling) provides a 3D digital representation of your project that integrates design, cost, and time data. It enhances collaboration, reduces design errors, and allows for better decision-making throughout the construction lifecycle.",
+  },
+  {
+    question:
+      "What’s the difference between Component and Assembly Revit Models?",
+    answer:
+      "Component models represent individual elements such as walls, doors, or HVAC units. Assembly models combine multiple components to form complex systems or units, enabling better visualization and coordination across disciplines.",
+  },
+];
+
+export { serviceSections, services, testimonials, projectList, faq };

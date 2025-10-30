@@ -73,11 +73,16 @@ const Header = () => {
           {/* Services with mega menu */}
           <div
             className={styles.servicesContainer}
+            // onClick={() =>
+            //   document
+            //     .getElementById("check")
+            //     ?.scrollIntoView({ behavior: "smooth" })
+            // }
             onMouseEnter={handleServicesMouseEnter}
             onMouseLeave={handleServicesMouseLeave}
           >
             <Link
-              href=""
+              href="/#check"
               className={styles.servicesLink}
               style={{ display: "flex", alignItems: "center" }}
             >
@@ -145,11 +150,11 @@ const Header = () => {
       </header>
 
       {/* Services Mega Menu */}
-      <ServicesMenu
+      {/* <ServicesMenu
         isVisible={isServicesMenuOpen}
         onMouseEnter={handleMenuMouseEnter}
         onMouseLeave={handleMenuMouseLeave}
-      />
+      /> */}
     </>
   );
 };

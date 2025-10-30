@@ -1,0 +1,15 @@
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 90dvw;
+  margin: 0 auto;
+  overflow: hidden;
+  gap: 0.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
+}

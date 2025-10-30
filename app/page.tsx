@@ -8,13 +8,15 @@ import ServiceScrollShowcase from "@/components/PageComponents/HomePage/ServiceS
 import StatsBar from "@/components/PageComponents/HomePage/StatsBar/StatsBar";
 import TestimonialCarouselReel from "@/components/PageComponents/HomePage/TestimonialCarouselReel/TestimonialCarouselReel";
 import CloudField from "@/components/ThreeD/CloudField";
-import { testimonials } from "@/utils/data/dummyData";
+import { faq, testimonials } from "@/utils/data/dummyData";
+import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 import { useLenis } from "@/utils/hooks/useLenis";
 import { Text, useTexture } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
+import ServiceScrollStackPhone from "@/components/UI/ServiceScrollStackPhone/ServiceScrollStackPhone";
 
 function Building() {
   const tex = useTexture("/img/modern-building.png");
@@ -41,49 +43,7 @@ function Building() {
 export default function Home() {
   useLenis();
 
-  // return (
-  //   <div
-  //     style={{
-  //       width: "100dvw",
-  //       height: "100dvh",
-  //       display: "flex",
-  //       justifyContent: "center",
-  //       alignItems: "center",
-  //     }}
-  //   >
-  //     <Folder />
-  //   </div>
-  // );
-
-  const faq = [
-    {
-      question: "What is Quantity Take-Off and why is it important?",
-      answer:
-        "Quantity Take-Off (QTO) is the process of measuring materials, components, and labor needed for construction projects. It ensures accurate cost estimation, reduces material wastage, and supports better budgeting and project planning.",
-    },
-    {
-      question:
-        "How does your team assist with Equipment or Product Selection?",
-      answer:
-        "We help clients choose the most efficient, cost-effective, and specification-compliant products and equipment. Our team evaluates performance data, compatibility, and sustainability to ensure the best selection for your project.",
-    },
-    {
-      question: "What does a Specification Review include?",
-      answer:
-        "Our Specification Review process checks technical documentation for consistency, clarity, and compliance with project requirements. This helps prevent design conflicts, delays, and rework during later stages.",
-    },
-    {
-      question: "What are the benefits of BIM Modelling for my project?",
-      answer:
-        "BIM (Building Information Modelling) provides a 3D digital representation of your project that integrates design, cost, and time data. It enhances collaboration, reduces design errors, and allows for better decision-making throughout the construction lifecycle.",
-    },
-    {
-      question:
-        "What’s the difference between Component and Assembly Revit Models?",
-      answer:
-        "Component models represent individual elements such as walls, doors, or HVAC units. Assembly models combine multiple components to form complex systems or units, enabling better visualization and coordination across disciplines.",
-    },
-  ];
+  const isPhoneScreen = useIsPhoneScreen();
 
   return (
     <div>
@@ -153,7 +113,8 @@ export default function Home() {
         </Suspense>
       </Canvas>
       <StatsBar />
-      <ServiceScrollShowcase />
+      {!isPhoneScreen && <ServiceScrollShowcase />}
+      {isPhoneScreen && <ServiceScrollStackPhone />}
       {/* <AboutDetails /> */}
       <JesLogoDetails />
       <ProcessDetails />

@@ -1,7 +1,14 @@
-export type ServiceSectionType = {
+export type ServiceItemType = {
   title: string;
   image: string;
-  description: string;
+  description: string | string[];
+  subServices?: SubServiceType[];
+  pdfLink?: string;
+};
+
+export type SubServiceType = {
+  title: string;
+  desc: string[];
 };
 
 export type TestimonialCardProps = {

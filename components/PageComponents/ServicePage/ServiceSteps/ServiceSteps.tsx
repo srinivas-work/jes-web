@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import styles from "./ServiceSteps.module.css";
+import { SubServiceType } from "@/utils/types";
+import { toRoman } from "@/utils/helperFunctions";
 
 const cardsData = [
   {
@@ -55,7 +57,9 @@ const cardsData = [
   },
 ];
 
-export default function ServiceSteps() {
+const ServiceSteps: React.FC<{ subServiceItem?: SubServiceType[] }> = ({
+  subServiceItem,
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -75,7 +79,7 @@ export default function ServiceSteps() {
   }, [cardsData.length]);
 
   // map vertical scroll to horizontal translation (left → right)
-  const x = useTransform(scrollYProgress, [0, 1], [0, -maxX * 1.2]);
+  const x = useTransform(scrollYProgress, [0, 1], [50, -maxX * 1.2]);
 
   return (
     <div className={styles.wrapper} ref={containerRef}>
@@ -88,7 +92,7 @@ export default function ServiceSteps() {
             ref={cardsRef}
             style={{ x }}
           >
-            {cardsData.map((card, index) => (
+            {/* {cardsData.map((card, index) => (
               <div className={styles.card} key={index}>
                 <div className={styles.cardLabel}>{card.label}</div>
                 <div className={styles.cardNumber}>{card.number}</div>
@@ -99,10 +103,27 @@ export default function ServiceSteps() {
                   ))}
                 </ul>
               </div>
+            ))} */}
+
+            {subServiceItem?.map((item, index) => (
+              <div className={styles.card} key={index}>
+                <div className={styles.cardLabel}>
+                  Part {toRoman(index + 1)}
+                </div>
+                <div className={styles.cardNumber}>0{index + 1}</div>
+                <div className={styles.cardTitle}>{item.title}</div>
+                <ul className={styles.cardContent}>
+                  {item.desc.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </motion.div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default ServiceSteps;

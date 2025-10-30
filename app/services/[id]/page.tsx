@@ -12,7 +12,7 @@ import { useParams } from "next/navigation";
 import { useRef } from "react";
 import styles from "./ServiceItem.module.css";
 
-const VideoSection: React.FC<{ id?: number }> = ({ id }) => {
+const VideoSection: React.FC<{ id: number }> = ({ id }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -26,10 +26,24 @@ const VideoSection: React.FC<{ id?: number }> = ({ id }) => {
   const translateY = useTransform(scrollYProgress, [0, 0.6], [0, -150]);
 
   // Text fades and moves upward smoothly
-  const textOpacity = useTransform(scrollYProgress, [0.25, 0.7], [0, 1]);
+  // const textOpacity = useTransform(scrollYProgress, [0.25, 0.7], [0, 1]);
   // const textY = useTransform(scrollYProgress, [0.3, 0.8], [50, -280]);
   const textY = useTransform(scrollYProgress, [0, 0.6], [50, -280]);
   const textScaleY = useTransform(scrollYProgress, [0, 0.6], [0, 1]);
+
+  const getDescription = () => {
+    if (Array.isArray(serviceSections[id].description)) {
+      return (
+        <>
+          {serviceSections[id].description.map((item, index) => (
+            <p key={index}>{item}</p>
+          ))}
+        </>
+      );
+    }
+
+    return <p>serviceSections[id].description</p>;
+  };
 
   return (
     <div ref={containerRef} className={styles.outerContainer}>
@@ -45,7 +59,7 @@ const VideoSection: React.FC<{ id?: number }> = ({ id }) => {
           <VideoPlayer />
         </motion.div>
 
-        <motion.p
+        <motion.div
           className={styles.serviceDetails}
           style={{
             //opacity: textOpacity,
@@ -54,8 +68,8 @@ const VideoSection: React.FC<{ id?: number }> = ({ id }) => {
             transformOrigin: "top",
           }}
         >
-          {serviceSections[id ?? 0].description}
-        </motion.p>
+          {getDescription()}
+        </motion.div>
       </div>
     </div>
   );
@@ -90,24 +104,8 @@ const ServiceItem = () => {
         />
       </div>
       <h2 className={styles.videoTitle}>{serviceSections[Number(id)].title}</h2>
-      <VideoSection />
-      {/* <VideoPlayer />
-      <p className={styles.serviceDetails}>
-        We’ve combined the precision, creativity, and innovation of our
-        U.S.-based engineering expertise with the deep, industry-specific
-        knowledge and technical excellence of our 200+ professional engineers
-        across India and Qatar. This powerful synergy enables us to deliver
-        high-performance design, documentation, and engineering solutions that
-        meet global standards while remaining cost-efficient and agile.Our
-        integrated global team works as an extension of your in-house resources
-        — seamlessly managing your engineering and design workloads with
-        unmatched accuracy, efficiency, and scalability. From concept
-        development and detailed design to validation and documentation, we
-        ensure every stage of your project is executed with meticulous attention
-        to quality and technical excellence. By entrusting us with your most
-        complex design and documentation needs, your organization gains more.
-      </p> */}
-      <ServiceSteps />
+      <VideoSection id={Number(id)} />
+      <ServiceSteps subServiceItem={serviceSections[Number(id)].subServices} />
       <ProductSelection />
       <OurApproach />
     </div>

@@ -1,10 +1,10 @@
 "use client";
 
 import ButtonLayer from "@/components/PageComponents/ProjectPage/ButtonLayer/ButtonLayer";
-import LODGallery from "@/components/PageComponents/ProjectPage/LODGallery/LODGallery";
 import { useLenis } from "@/utils/hooks/useLenis";
 import Image from "next/image";
 import styles from "./Projects.module.css";
+import ProjectsGallery from "@/components/PageComponents/ProjectPage/ProjectsGallery/ProjectsGallery";
 
 const Projects = () => {
   useLenis();
@@ -33,7 +33,7 @@ const Projects = () => {
 
       <h2>Our Client Projects</h2>
       <ButtonLayer options={["All", "MEP", "AR/VR"]} />
-      <LODGallery />
+      <ProjectsGallery />
     </div>
   );
 };

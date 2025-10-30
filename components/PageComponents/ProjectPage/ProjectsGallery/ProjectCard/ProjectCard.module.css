@@ -1,12 +1,3 @@
-.gridContainer {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  width: 90dvw;
-  margin: 0 auto;
-  overflow: hidden;
-  gap: 0.2rem;
-}
-
 .cardWrapper {
   position: relative;
   overflow: hidden;
@@ -64,7 +55,7 @@
 
 .textTop h3 {
   margin: 0;
-  font-size: 1.7rem;
+  font-size: 2rem;
   font-weight: 600;
   width: 15ch;
   white-space: normal;
@@ -73,13 +64,12 @@
 
 .textSide {
   position: absolute;
-  left: 2rem;
+  right: 2rem;
   bottom: 2rem;
-  writing-mode: vertical-rl;
   text-orientation: mixed;
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.4rem;
   color: #fff;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   z-index: 2;
 }
 
@@ -90,8 +80,8 @@
 /* ✅ Blur effect for non-hovered cards */
 .blurred {
   filter: blur(5px);
-  /* opacity: 0.6; */
-  transform: scale(0.99);
+  /* transform: scale(0.99);
+  opacity: 0.6; */
   transition: all 0.4s ease-in-out;
 }
 

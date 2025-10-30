@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Image from "next/image";
-import styles from "./LODGallery.module.css";
-import { useRouter } from "next/navigation";
+import styles from "./ProjectsGallery.module.css";
+import { projectList } from "@/utils/data/dummyData";
+import ProjectCard from "./ProjectCard/ProjectCard";
 
 interface ProjectCardProps {
   imageUrl: string;
@@ -139,60 +139,60 @@ export const projectCardDetailsHorizontal = [
   },
 ];
 
-export const ProjectCard = ({
-  imageUrl,
-  title,
-  author,
-  borderRadius,
-  overlayColor,
-  isBlurred,
-  onHover,
-}: ProjectCardProps) => {
-  const router = useRouter();
+// export const ProjectCard = ({
+//   imageUrl,
+//   title,
+//   author,
+//   borderRadius,
+//   overlayColor,
+//   isBlurred,
+//   onHover,
+// }: ProjectCardProps) => {
+//   const router = useRouter();
 
-  const goToProjects = () => {
-    router.push("/projects/1"); // navigate to /projects
-  };
+//   const goToProjects = () => {
+//     router.push("/projects/1"); // navigate to /projects
+//   };
 
-  return (
-    <div
-      className={`${styles.cardWrapper} ${isBlurred ? styles.blurred : ""}`}
-      //className={styles.cardWrapper}
-      style={{ borderRadius }}
-      onMouseEnter={() => onHover?.(true)}
-      onMouseLeave={() => onHover?.(false)}
-      onClick={goToProjects}
-    >
-      <div className={styles.cardInner}>
-        <div className={styles.imageContainer}>
-          <Image
-            src={imageUrl}
-            alt={title}
-            fill
-            className={styles.cardImage}
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-          <div
-            className={styles.overlay}
-            style={{ background: overlayColor }}
-          ></div>
-        </div>
+//   return (
+//     <div
+//       className={`${styles.cardWrapper} ${isBlurred ? styles.blurred : ""}`}
+//       //className={styles.cardWrapper}
+//       style={{ borderRadius }}
+//       onMouseEnter={() => onHover?.(true)}
+//       onMouseLeave={() => onHover?.(false)}
+//       onClick={goToProjects}
+//     >
+//       <div className={styles.cardInner}>
+//         <div className={styles.imageContainer}>
+//           <Image
+//             src={imageUrl}
+//             alt={title}
+//             fill
+//             className={styles.cardImage}
+//             sizes="(max-width: 768px) 100vw, 50vw"
+//           />
+//           <div
+//             className={styles.overlay}
+//             style={{ background: overlayColor }}
+//           ></div>
+//         </div>
 
-        <div className={styles.textTop}>
-          <h3>{title}</h3>
-        </div>
-        <div className={styles.textSide}>{author}</div>
-      </div>
-    </div>
-  );
-};
+//         <div className={styles.textTop}>
+//           <h3>{title}</h3>
+//         </div>
+//         <div className={styles.textSide}>{author}</div>
+//       </div>
+//     </div>
+//   );
+// };
 
-export default function LODGallery() {
+export default function ProjectsGallery() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <main className={styles.gridContainer}>
-      {projectCardDetails.map((card, i) => (
+      {/* {projectCardDetails.map((card, i) => (
         <ProjectCard
           key={i}
           imageUrl={card.imageUrl}
@@ -202,6 +202,14 @@ export default function LODGallery() {
           overlayColor={card.overlayColor}
           isBlurred={hoveredIndex !== null && hoveredIndex !== i}
           onHover={(hovered) => setHoveredIndex(hovered ? i : null)}
+        />
+      ))} */}
+      {projectList.map((projectItem, index) => (
+        <ProjectCard
+          key={index}
+          projectItem={projectItem}
+          isBlurred={hoveredIndex !== null && hoveredIndex !== index}
+          onHover={(hovered) => setHoveredIndex(hovered ? index : null)}
         />
       ))}
     </main>

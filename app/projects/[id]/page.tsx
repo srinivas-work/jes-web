@@ -3,7 +3,7 @@
 import {
   ProjectCard,
   projectCardDetailsHorizontal,
-} from "@/components/PageComponents/ProjectPage/LODGallery/LODGallery";
+} from "@/components/PageComponents/ProjectPage/ProjectsGallery/ProjectsGallery";
 import { useLenis } from "@/utils/hooks/useLenis";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
