@@ -32,9 +32,10 @@
 .videoTitle {
   margin-left: 5dvw;
   display: block;
-  width: 20ch; /* limits to about 20 characters per line */
+  width: 80%; /* limits to about 20 characters per line */
   white-space: normal;
   word-wrap: break-word;
+  font-size: 8rem;
   line-height: 1.2;
 }
 
