@@ -141,7 +141,9 @@ export default function ServiceScrollShowcase() {
                 className={styles.image}
               />
               <p className={styles.description}>
-                {serviceSections[activeIndex].description}
+                {Array.isArray(serviceSections[activeIndex].description)
+                  ? serviceSections[activeIndex].description[0]
+                  : serviceSections[activeIndex].description}
               </p>
               <button
                 className={styles.button}
