@@ -62,7 +62,7 @@ const ICON_BG_COLORS = {
 };
 
 export default function ProductSelection() {
-  const [expandedId, setExpandedId] = useState<number | null>(1);
+  const [expandedId, setExpandedId] = useState<number>(1);
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.4 });
 
@@ -80,6 +80,8 @@ export default function ProductSelection() {
   const handleCardClick = (id: number) => {
     setExpandedId(id);
   };
+
+  console.log(expandedId);
 
   // Calculate stacked positions
   const getCardPosition = (index: number, id: number) => {
@@ -237,12 +239,7 @@ export default function ProductSelection() {
           </div>
 
           <div className={styles.description}>
-            <p>
-              We specialize in delivering comprehensive KPO services tailored
-              specifically for accurate and detailed thermal load calculations.
-              Our expertise lies in providing precise assessments crucial for
-              efficient HVAC system design and optimization.
-            </p>
+            <p>{products[expandedId - 1].desc}</p>
           </div>
         </div>
       </div>

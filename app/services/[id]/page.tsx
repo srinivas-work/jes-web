@@ -6,6 +6,7 @@ import ServiceSteps from "@/components/PageComponents/ServicePage/ServiceSteps/S
 import VideoPlayer from "@/components/UI/VideoPlayer/VideoPlayer";
 import {
   energyModellingSolutions,
+  faq,
   serviceSections,
   solutions,
 } from "@/utils/data/dummyData";
@@ -16,6 +17,7 @@ import { useParams } from "next/navigation";
 import { useRef } from "react";
 import styles from "./ServiceItem.module.css";
 import { SolutionCard } from "@/app/solutions/page";
+import FAQ from "@/components/FAQ/FAQ";
 
 const VideoSection: React.FC<{ id: number }> = ({ id }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -112,7 +114,6 @@ const ServiceItem = () => {
       <VideoSection id={Number(id)} />
       <ServiceSteps subServiceItem={serviceSections[Number(id)].subServices} />
       <ProductSelection />
-
       {id === "7" && (
         <section className={styles.solutionsSection}>
           {energyModellingSolutions.map((solution, index) => (
@@ -125,7 +126,54 @@ const ServiceItem = () => {
           ))}
         </section>
       )}
-      <OurApproach />
+      <div
+        style={{
+          margin: "0 auto",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "4rem",
+        }}
+      >
+        <h2>Frequently Asked Questions</h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+          {!!faq &&
+            faq.map((item, i) => {
+              return <FAQ data={item} key={i} />;
+            })}
+        </div>
+      </div>
+      <OurApproach />{" "}
+      <motion.section
+        className={styles.cta}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          viewport={{ once: true }}
+        >
+          <h2>Ready to Elevate Your Projects?</h2>
+          <p>
+            Let us discuss how our BIM solutions can transform your engineering
+            workflow
+          </p>
+          <motion.button
+            className={styles.primaryButton}
+            whileHover={{
+              y: -4,
+              boxShadow: "0 8px 24px rgba(169, 30, 45, 0.35)",
+            }}
+            whileTap={{ scale: 0.97 }}
+          >
+            Get Started
+          </motion.button>
+        </motion.div>
+      </motion.section>
     </div>
   );
 };

@@ -30,7 +30,10 @@ const Header = () => {
     router.push(route);
   };
 
-  const isSolutions = pathname === "/solutions" || pathname === "/insights";
+  const isSolutions =
+    pathname === "/solutions" ||
+    pathname === "/insights" ||
+    pathname.includes("projects/");
 
   return (
     <motion.header
