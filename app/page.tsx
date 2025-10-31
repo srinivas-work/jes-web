@@ -123,7 +123,7 @@ export default function Home() {
       <JesLogoDetails />
       <GrowthCubes3D />
       <GrowthPath3D />
-      <ProcessDetails />
+      {/* <ProcessDetails /> */}
       <IndustryHighlights />
       <div
         style={{
