@@ -472,6 +472,26 @@ const testimonials: TestimonialCardProps[] = [
 
 const projectList: ProjectItemType[] = [
   {
+    name: "Nissan Stadium , Tennessee Titan Stadium",
+    imgLink: "/img/projects/nissan-stadium.jpg",
+    location: "Tennessee, USA",
+    overview:
+      "KIPP DC Quest Academy educates District of Columbia children in Grades 1 through 4. KIPP DC Elementary Schools work with students to become thoughtful thinkers and teammates who will return as college-educated leaders of their community. Upon completion of fourth grade, Quest Academy students move onto KIPP DC Valor Academy.",
+    client: "Qatari Diar & Lusail City",
+    contractor: "Voltas Ltd.",
+    serviceType: "BIM Modeling",
+  },
+  {
+    name: "Wisconsin State Capital Building Renovation",
+    imgLink: "/img/projects/wisconsin-state-capital.jpg",
+    location: "Wisconsin, USA",
+    overview:
+      "Shura is the main hub island at The Red Sea. With a natural dolphin shape, the island is one of 92 in our archipelago and home to stunning vistas, incredible native fauna and flora, and beautiful wildlife. Due to open to guests in 2024, the island will house 11 world-class hotels and resorts including Edition, Fairmont, Raffles, SLS, InterContinental, Jumeirah, Miraval, Rosewood and Grand Hyatt brands. Guests will have a wide choice of experiences and attractions to enjoy, including an 18-hole championship golf course, a marina and a beach club, as well as a variety of luxury retail options.",
+    client: "Red Sea Global",
+    contractor: "Al Futtaim",
+    serviceType: "BIM Modeling",
+  },
+  {
     name: "KIPP School Washington DC, USA",
     imgLink: "/img/projects/kipp-school.jpg",
     thumbnailLink: "/img/projects/kipp-school-thumb.jpg",
