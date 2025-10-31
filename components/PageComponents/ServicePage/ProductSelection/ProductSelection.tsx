@@ -1,22 +1,41 @@
-import { motion, useInView } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
-import styles from "./ProductSelection.module.css";
 import Carousel from "@/components/UI/Carousel/Carousel";
-import VerticalCarousel from "@/components/UI/VerticalCarousel/VerticalCarousel";
-import DoubleCarousel from "@/components/UI/DoubleCarousel/DoubleCarousel";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import styles from "./ProductSelection.module.css";
 
 interface Product {
   id: number;
   title: string;
   icon: string;
+  desc: string;
 }
 
 const products: Product[] = [
-  { id: 1, title: "Customized Reports & Documentation", icon: "🔲" },
-  { id: 2, title: "Consultancy and Project Support", icon: "↔️" },
-  { id: 3, title: "Quality Assurance & Compliance", icon: "🔇" },
-  { id: 4, title: "Domain Specific Services", icon: "⚙️" },
-  { id: 5, title: "Software Aided Services", icon: "📐" },
+  {
+    id: 1,
+    title: "Thermal Load Calculation",
+    icon: "🔲",
+    desc: "We specialize in delivering comprehensive KPO services tailored specifically for accurate and detailed thermal load calculations. Our expertise lies in providing precise assessments crucial for efficient HVAC system design and optimization.",
+  },
+  {
+    id: 2,
+    title: "Ductwork E.S.P calculation",
+    icon: "↔️",
+    desc: "We specialize in delivering comprehensive solutions for Air Conditioning (AC) ductwork, including accurate External Static Pressure (ESP) calculations. Understanding the significance of ESP in HVAC systems, we offer detailed services tailored to ensure optimal performance and efficiency.",
+  },
+  {
+    id: 3,
+    title: "Pump Head Calculation",
+    icon: "🔇",
+    desc: "We specialize in providing Knowledge Process Outsourcing (KPO) services focused on precise and comprehensive pump head calculation solutions. Our expertise lies in offering accurate and tailored calculations crucial for efficient pump system design and operation.",
+  },
+  {
+    id: 4,
+    title: "Tools Used",
+    icon: "⚙️",
+    desc: "The tools we use for our services",
+  },
+  // { id: 5, title: "Software Aided Services", icon: "📐" },
 ];
 
 // Controllable spacing variables
@@ -98,17 +117,12 @@ export default function ProductSelection() {
           >
             {products.map((product, index) => {
               const isExpanded = expandedId === product.id;
-              const stackPosition = getCardPosition(index, product.id);
-              const topPosition = getCardTopPosition(index);
 
               return (
                 <motion.div
                   key={product.id}
                   className={styles.card}
                   style={{
-                    // position: "absolute",
-                    // top: topPosition,
-                    // left: 0,
                     zIndex: isExpanded ? 50 : products.length - index,
                     // height: `fit-content`,
                   }}
@@ -224,9 +238,10 @@ export default function ProductSelection() {
 
           <div className={styles.description}>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industrys standard dummy text
-              ever since the 1500s.
+              We specialize in delivering comprehensive KPO services tailored
+              specifically for accurate and detailed thermal load calculations.
+              Our expertise lies in providing precise assessments crucial for
+              efficient HVAC system design and optimization.
             </p>
           </div>
         </div>

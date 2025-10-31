@@ -116,7 +116,12 @@ const ServiceItem = () => {
       {id === "7" && (
         <section className={styles.solutionsSection}>
           {energyModellingSolutions.map((solution, index) => (
-            <SolutionCard key={solution.id} solution={solution} index={index} />
+            <SolutionCard
+              key={solution.id}
+              solution={solution}
+              index={index}
+              hideBtn
+            />
           ))}
         </section>
       )}

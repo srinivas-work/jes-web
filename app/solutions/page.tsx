@@ -10,7 +10,8 @@ import { solutions } from "@/utils/data/dummyData";
 export const SolutionCard: React.FC<{
   solution: SolutionType;
   index: number;
-}> = ({ solution, index }) => {
+  hideBtn?: boolean;
+}> = ({ solution, index, hideBtn }) => {
   const cardRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -97,22 +98,24 @@ export const SolutionCard: React.FC<{
               ))}
             </div>
 
-            <motion.button
-              className={styles.ctaButton}
-              whileHover={{ x: 8 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Explore Solution
-              <svg className={styles.arrow} viewBox="0 0 20 20" fill="none">
-                <path
-                  d="M7 3l7 7-7 7"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </motion.button>
+            {!hideBtn && (
+              <motion.button
+                className={styles.ctaButton}
+                whileHover={{ x: 8 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Explore Solution
+                <svg className={styles.arrow} viewBox="0 0 20 20" fill="none">
+                  <path
+                    d="M7 3l7 7-7 7"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </motion.button>
+            )}
           </motion.div>
         </div>
       </div>
