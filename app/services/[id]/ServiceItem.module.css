@@ -8,9 +8,10 @@
 
 .bgImageContainerOne {
   position: absolute;
-  top: 0;
+  top: 100dvh;
   right: -5rem;
   opacity: 0.2;
+  z-index: 500;
 }
 
 .bgImageOne {
