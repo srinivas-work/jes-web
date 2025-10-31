@@ -41,3 +41,11 @@ export type SecurityItemType = {
   title: string;
   desc: string;
 };
+
+export type SolutionType = {
+  id: number;
+  title: string;
+  description: string;
+  services: string[];
+  image: string;
+};

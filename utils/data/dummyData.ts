@@ -3,6 +3,7 @@ import {
   ProjectItemType,
   SecurityItemType,
   ServiceItemType,
+  SolutionType,
   TestimonialCardProps,
 } from "../types";
 
@@ -285,6 +286,46 @@ const serviceSections: ServiceItemType[] = [
         title: "BIM to CAD Conversion",
         desc: [
           "Our experts efficiently convert BIM models into detailed 2D CAD drawings, maintaining accuracy, scale, and data integrity for construction and documentation purposes.",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Energy Modelling / Building Engineering Services",
+    image: "/img/energy.png",
+    description: [
+      "We provide advanced Energy Modelling and Building Engineering services to optimize the efficiency, sustainability, and performance of building systems. Our analyses are rooted in precise engineering calculations and simulation tools to ensure comfort, reliability, and energy savings across MEP systems.",
+      "Through data-driven design and simulation, we help engineers and project stakeholders make informed decisions that reduce operational costs and environmental impact while meeting international building performance standards.",
+    ],
+    subServices: [
+      {
+        title: "Thermal Load Calculation",
+        desc: [
+          "Comprehensive assessment of heating and cooling loads using industry-standard methods to ensure accurate HVAC system sizing and energy efficiency.",
+        ],
+      },
+      {
+        title: "Ductwork E.S.P Calculation",
+        desc: [
+          "Detailed calculation of External Static Pressure (ESP) for duct systems, ensuring optimal airflow, balanced pressure distribution, and reduced system losses.",
+        ],
+      },
+      {
+        title: "Pump Head Calculation",
+        desc: [
+          "Precise evaluation of total dynamic head for chilled water and plumbing systems to determine pump capacity and ensure efficient hydraulic performance.",
+        ],
+      },
+      {
+        title: "Energy Simulation & Analysis",
+        desc: [
+          "Utilization of software tools like HAP or IES-VE for modeling building energy performance, identifying savings opportunities, and verifying design compliance.",
+        ],
+      },
+      {
+        title: "System Optimization & Reporting",
+        desc: [
+          "Preparation of energy efficiency reports, system performance summaries, and recommendations to improve sustainability and reduce operational costs.",
         ],
       },
     ],
@@ -663,6 +704,133 @@ const aboutUsAccordionList = [
   },
 ];
 
+const solutions: SolutionType[] = [
+  {
+    id: 1,
+    title: "For Manufacturer Reps",
+    description:
+      "Transform your vision into reality with our comprehensive architectural BIM services. We create detailed 3D models that enable seamless coordination between all stakeholders.",
+    services: [
+      "Quantity Take-off",
+      "Product Selections",
+      "Quotes & Submittals",
+      "Spec Review",
+      "Component Modelling & Assemblies",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80",
+  },
+  {
+    id: 2,
+    title: "For Manufacturers",
+    description:
+      "Optimize structural systems with precision BIM modeling and analysis. Our team delivers accurate structural models that integrate seamlessly with architectural and MEP systems.",
+    services: [
+      "Specialized Production Drawings",
+      "Revit Family Creation",
+      "Offshore Manufacturing & Sourcing Support",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1200&q=80",
+  },
+  {
+    id: 3,
+    title: "For Engineers & Contractors",
+    description:
+      "Streamline mechanical, electrical, and plumbing systems with intelligent BIM coordination. We ensure all building systems work harmoniously, identifying conflicts before construction begins.",
+    services: ["BIM Modelling ", "MEP Drafting", "Energy Modelling"],
+    image:
+      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80",
+  },
+  {
+    id: 4,
+    title: "Infrastructure & Civil",
+    description:
+      "Deliver large-scale infrastructure projects with advanced civil BIM solutions. From highways to bridges, our models provide comprehensive insights for better planning and design.",
+    services: [
+      "Road & Highway Design",
+      "Bridge Engineering",
+      "Site Development",
+      "Grading & Drainage",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80",
+  },
+  {
+    id: 5,
+    title: "Facility Management",
+    description:
+      "Maximize operational efficiency with BIM-enabled facility management solutions. We create digital twins that provide real-time insights into building performance and maintenance.",
+    services: [
+      "Asset Information Modeling",
+      "Maintenance Planning",
+      "Space Management",
+      "Energy Analysis",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
+  },
+  {
+    id: 6,
+    title: "Construction Management",
+    description:
+      "Enhance project delivery with 4D and 5D BIM solutions. We provide construction sequencing, cost estimation, and progress tracking to keep your projects on time and within budget.",
+    services: [
+      "4D Scheduling",
+      "5D Cost Estimation",
+      "Progress Monitoring",
+      "Site Logistics Planning",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80",
+  },
+];
+
+const energyModellingSolutions: SolutionType[] = [
+  {
+    id: 1,
+    title: "Thermal Load Calculation",
+    description:
+      "Accurate thermal load calculation in a building is vital as it lets you estimate the required capacity of your heating systems, thereby meeting the required temperature conditions in the conditioned space.",
+    services: [
+      "Heat Load Analysis",
+      "HVAC System Design Support",
+      "Energy Efficiency Optimization",
+      "Troubleshooting and Assessment",
+    ],
+    image:
+      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FThermal_load_calc_e20d82a2dc.jpg&w=1920&q=90",
+  },
+  {
+    id: 2,
+    title: "Ductwork E.S.P Calculations",
+    description:
+      "Optimize structural systems with precision BIM modeling and analysis. Our team delivers accurate structural models that integrate seamlessly with architectural and MEP systems.",
+    services: [
+      "Detailed Analysis",
+      "Ductwork Design Optimization",
+      "Equipment Selection Support",
+      "Troubleshooting and Optimization",
+    ],
+    image:
+      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FHVAC_2_761e9977f7.png&w=1920&q=90",
+  },
+  {
+    id: 3,
+    title: "Pump Head Calculation",
+    description:
+      "Streamline mechanical, electrical, and plumbing systems with intelligent BIM coordination. We ensure all building systems work harmoniously, identifying conflicts before construction begins.",
+    services: [
+      "Hydraulic Analysis",
+      "Efficiency Optimization",
+      "System Design Support",
+      "Troubleshooting and Assessment",
+    ],
+    image:
+      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fgallery9_79ecb57d8d.jpg&w=1920&q=90",
+  },
+];
+
 export {
   faq,
   portalCardList,
@@ -672,4 +840,6 @@ export {
   testimonials,
   securityList,
   aboutUsAccordionList,
+  solutions,
+  energyModellingSolutions,
 };

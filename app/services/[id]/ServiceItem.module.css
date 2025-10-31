@@ -79,3 +79,10 @@
   margin-top: 2rem;
   opacity: 0;
 } */
+
+.solutionsSection {
+  max-width: 90dvw;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}

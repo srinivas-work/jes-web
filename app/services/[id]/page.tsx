@@ -4,13 +4,18 @@ import OurApproach from "@/components/PageComponents/ServicePage/OurApproach/Our
 import ProductSelection from "@/components/PageComponents/ServicePage/ProductSelection/ProductSelection";
 import ServiceSteps from "@/components/PageComponents/ServicePage/ServiceSteps/ServiceSteps";
 import VideoPlayer from "@/components/UI/VideoPlayer/VideoPlayer";
-import { serviceSections } from "@/utils/data/dummyData";
+import {
+  energyModellingSolutions,
+  serviceSections,
+  solutions,
+} from "@/utils/data/dummyData";
 import { useLenis } from "@/utils/hooks/useLenis";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useRef } from "react";
 import styles from "./ServiceItem.module.css";
+import { SolutionCard } from "@/app/solutions/page";
 
 const VideoSection: React.FC<{ id: number }> = ({ id }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -107,6 +112,14 @@ const ServiceItem = () => {
       <VideoSection id={Number(id)} />
       <ServiceSteps subServiceItem={serviceSections[Number(id)].subServices} />
       <ProductSelection />
+
+      {id === "7" && (
+        <section className={styles.solutionsSection}>
+          {energyModellingSolutions.map((solution, index) => (
+            <SolutionCard key={solution.id} solution={solution} index={index} />
+          ))}
+        </section>
+      )}
       <OurApproach />
     </div>
   );
