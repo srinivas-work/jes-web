@@ -1,0 +1,10 @@
+.securitySection {
+  width: 90dvw;
+  height: 100dvh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+  align-items: center;
+  z-index: 500;
+}

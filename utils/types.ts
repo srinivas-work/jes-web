@@ -35,3 +35,9 @@ export type PortalCardType = {
   title: string;
   desc: string;
 };
+
+export type SecurityItemType = {
+  imgLink: string;
+  title: string;
+  desc: string;
+};

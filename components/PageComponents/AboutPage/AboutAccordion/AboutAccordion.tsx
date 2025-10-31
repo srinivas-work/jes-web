@@ -3,39 +3,7 @@ import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import styles from "./AboutAccordion.module.css";
-
-const aboutUsList = [
-  {
-    heading: "Who are we?",
-    subheading: "",
-    description:
-      "Jersey Engineering Solutions is built on deep HVAC engineering experience and trusted relationships across the industry. Our reputation is everything, so we do what it takes—every time—to deliver reliable work and keep partnerships strong. Our partnership with our India team is built on 20-year relationships; they’re treated as true employees and friends. We know and trust each other completely, and it shows in the quality, speed, and consistency of our work. If you value integrity, responsiveness, and results, you’ll feel at home with us.",
-  },
-  {
-    heading: "Why choose us?",
-    subheading: "",
-    description:
-      "Establish a groundbreaking paradigm in the MEP industry with Jersey Engineering, empowering you to achieve your best. Our services offer a more effective way to run your business, allowing you the time to concentrate on what only you can do much better and at ease serving your customers, managing your employees, and nurturing the overall well-being of your enterprise.",
-  },
-  {
-    heading: "Our Mission",
-    subheading: "",
-    description:
-      "Our goal is to empower HVAC professionals and manufacturer reps with accurate, scalable, and tech-enabled solutions that enhance speed, precision, and overall project success. By integrating advanced technology, we streamline every phase of the process—from initial concept through to completion—ensuring more informed decision-making, faster execution, and higher-quality outcomes. We aim to provide HVAC professionals with the tools and resources they need to achieve greater efficiency, reduce errors, and deliver exceptional results in every project.",
-  },
-  {
-    heading: "Our Vision",
-    subheading: "",
-    description:
-      "Our Vision is to become the most valued and trusted partner of our Clients and Partners by; “Freeing you to be your best!",
-  },
-  {
-    heading: "Our Values",
-    subheading: "",
-    description:
-      "Precision First. Speed with Integrity. Built for Partners. Own the Outcome. Scalable by Design. Innovate with Purpose. Clariy in Communication",
-  },
-];
+import { aboutUsAccordionList } from "@/utils/data/dummyData";
 
 const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
   const [activeSectionId, setActiveSectionId] = useState<null | number>(null);
@@ -50,7 +18,7 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
 
   // 👇 Update active section automatically based on scroll progress
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const totalSections = aboutUsList.length;
+    const totalSections = aboutUsAccordionList.length;
     const sectionIndex = Math.floor(latest * totalSections);
 
     // prevent unnecessary re-renders & preserve click functionality
@@ -78,16 +46,18 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
           />
           <img src={"/img/demoAbout.png"} className={styles.accordionBg} />
           <div className={styles["about-services-section-circle-container"]}>
-            {Array.from({ length: aboutUsList.length }).map((_, index) => (
-              <div
-                key={index}
-                className={`${styles["about-services-section-circle"]} ${
-                  index === activeSectionId || index < activeSectionId
-                    ? ""
-                    : styles.outline
-                }`}
-              />
-            ))}
+            {Array.from({ length: aboutUsAccordionList.length }).map(
+              (_, index) => (
+                <div
+                  key={index}
+                  className={`${styles["about-services-section-circle"]} ${
+                    index === activeSectionId || index < activeSectionId
+                      ? ""
+                      : styles.outline
+                  }`}
+                />
+              )
+            )}
           </div>
           <div className={styles["about-services-section-description"]}>
             {sectionId === 0 && (
@@ -113,7 +83,7 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
               </div>
             )}
 
-            {sectionId === aboutUsList.length - 1 ? (
+            {sectionId === aboutUsAccordionList.length - 1 ? (
               <ul style={{ color: "var(--primary-dark)" }}>
                 <li>Precision First</li>
                 <li>Speed with Integrity</li>
@@ -188,10 +158,13 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
         className={`${styles["about-services-section-container"]} ${className}`}
         id="about-us-section"
       >
-        {aboutUsList.map((aboutUsItem, index) => (
+        {aboutUsAccordionList.map((aboutUsItem, index) => (
           <section
             key={index}
-            style={getSectionStyle(index, aboutUsList.length - 1 - index)}
+            style={getSectionStyle(
+              index,
+              aboutUsAccordionList.length - 1 - index
+            )}
             onClick={() => sectionClickHandler(index)}
           >
             <h2 className={getSectionTitleClass()}>{aboutUsItem.heading}</h2>

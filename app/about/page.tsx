@@ -7,6 +7,7 @@ import TeamCardStack from "@/components/PageComponents/AboutPage/TeamCardStack/T
 import { useLenis } from "@/utils/hooks/useLenis";
 import Image from "next/image";
 import styles from "./About.module.css";
+import SecuritySection from "@/components/PageComponents/AboutPage/SecuritySection/SecuritySection";
 
 const About = () => {
   useLenis();
@@ -34,7 +35,8 @@ const About = () => {
         />
       </div> */}
       <AboutAccordion />
-      <TeamCardStack />
+      <SecuritySection />
+      {/* <TeamCardStack /> */}
       <CircularTimeline />
       <OurClientsCarousel />
     </div>

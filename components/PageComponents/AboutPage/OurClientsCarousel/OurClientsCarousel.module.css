@@ -3,7 +3,8 @@
   overflow: hidden;
   text-align: center;
   user-select: none;
-  pointer-events: none; /* ❌ disables all mouse interaction */
+  pointer-events: none;
+  margin-bottom: calc(var(--spacing) * 2);
 }
 
 .carouselTitle {
@@ -22,11 +23,10 @@
 
 .imageWrapper {
   flex: 0 0 auto;
-  width: 240px;
-  height: 160px;
-  margin-right: 1rem;
+  width: 80px;
+  height: 80px;
+  margin-right: 5rem;
   overflow: hidden;
-  border-radius: 1rem;
 }
 
 .image {
