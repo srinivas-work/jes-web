@@ -10,7 +10,7 @@ import {
 const serviceSections: ServiceItemType[] = [
   {
     title: "Quantity Take Off",
-    image: "/img/specs.png",
+    image: "/img/services/qto.png",
     description:
       "Our team of skilled engineers provide reliable take-off services for construction projects across all fields including Civil , MEP systems and general purpose buildings using advanced software like Bluebeam, Planswift, and OnScreen takeoff to meticulously measure quantities from floor plans which are compiled into comprehensive, accurately organized reports as per your requirements.",
     subServices: [
@@ -83,7 +83,7 @@ const serviceSections: ServiceItemType[] = [
   },
   {
     title: "Equipment/Product Selection",
-    image: "/img/digital.png",
+    image: "/img/services/equipment-selection.png",
     description: [
       "Jersey Engineering Solutions provides equipment selection services for the air-side and chilled water refrigerant controls. We support in choosing the most suitable and efficient mechanical and electrical equipment for your construction projects. Equipment selected to meet local building codes and safety regulations ensures project compliance.",
       "Equipment selection services are therefore very useful for optimizing the performance, efficiency, and cost-effectiveness of MEP systems in construction projects, while also promoting sustainability and compliance with industry standards.",
@@ -129,13 +129,15 @@ const serviceSections: ServiceItemType[] = [
   },
   {
     title: "Spec Review",
-    image: "/img/digital.png",
+    image: "/img/services/spec-review.png",
+
     description:
       "JES reviews specifications to ensure all representative products are listed, maximizing bid opportunities. Provides feedback within 24 hours through the JES portal. Supplies a pre-defined email.",
   },
   {
     title: "BIM Modelling",
-    image: "/img/engg.png",
+    image: "/img/services/bim-modelling.jpg",
+
     description:
       "Our team of skilled engineers provide reliable take-off services for construction projects across all fields including Civil , MEP systems and general purpose buildings using advanced software like Bluebeam, Planswift, and OnScreen takeoff to meticulously measure quantities from floor plans which are compiled into comprehensive, accurately organized reports as per your requirements.",
     subServices: [
@@ -183,7 +185,8 @@ const serviceSections: ServiceItemType[] = [
   },
   {
     title: "Revit Models: Component & Assembly",
-    image: "/img/engg.png",
+    image: "/img/services/revit-models.png",
+
     description: [
       "At Jersey Engineering Solutions (JES), our Revit-based Component and Assembly Modelling services bridge the gap between design intent and real-world construction. By integrating data-rich, parametric models from multiple manufacturers into a unified BIM environment, we deliver accurate, coordination-ready models that streamline project workflows.",
       "Each model, whether an individual component or a complete assembly—is meticulously developed to represent true-to-life geometry, performance characteristics, and connectivity details. This ensures seamless integration across mechanical, electrical, and architectural disciplines.",
@@ -244,13 +247,14 @@ const serviceSections: ServiceItemType[] = [
             desc: "Streamlined design process by ensuring compatibility and reducing coordination effort.",
           },
         ],
-        image: "/img/services/revit_component_modelling.png",
+        image: "/img/services/revit-models-3.png",
       },
     ],
   },
   {
     title: "AR/VR Modelling",
-    image: "/img/manufacturing.png",
+    image: "/img/services/ar-vr.jpg",
+
     description: [
       "We provide state-of-the-art AR(Augmented Reality) & VR (Virtual Reality) 3D modeling at affordable prices that are custom-designed by professionally trained industry leading experts. These value added services present you with cutting-edge solutions for immersive digital experiences.",
       "We create interactive 3D models and environments that enhance value across various industries in the segment. AR & VR modeling enable users to engage with realistic, computer-generated simulations that augment the real world (AR) or create entirely virtual environments (VR) for an array of applications, transforming how we experience and interact with content and information.",
@@ -318,7 +322,8 @@ const serviceSections: ServiceItemType[] = [
   },
   {
     title: "MEP Drafting",
-    image: "/img/bim.png",
+    image: "/img/services/mep-drafting.png",
+
     description: [
       "We specialize in providing high-quality Mechanical, Electrical, and Plumbing (MEP) AutoCAD drafting services that cater to the diverse needs of the construction and engineering industry. With a dedicated focus on precision, innovation, and efficiency, we serve as your trusted partner in delivering impeccable MEP drafting solutions.",
       "Our drafting services encompass meticulous creation of Mechanical Drawings, Electrical Layouts, and Plumbing Designs. Precision is our hallmark, ensuring that every detail is accurately represented. With expertise in CAD technology, we deliver comprehensive, industry-compliant drafts, facilitating seamless integration for successful implementation in diverse construction and engineering projects.",
@@ -387,7 +392,8 @@ const serviceSections: ServiceItemType[] = [
   },
   {
     title: "Energy Modelling / Building Engineering Services",
-    image: "/img/energy.png",
+    image: "/img/services/energy-modelling.png",
+
     description: [
       "We provide advanced Energy Modelling and Building Engineering services to optimize the efficiency, sustainability, and performance of building systems. Our analyses are rooted in precise engineering calculations and simulation tools to ensure comfort, reliability, and energy savings across MEP systems.",
       "Through data-driven design and simulation, we help engineers and project stakeholders make informed decisions that reduce operational costs and environmental impact while meeting international building performance standards.",

@@ -57,7 +57,7 @@ const StickyCard = ({
             <h3 className={styles.title}>{serviceItem.title}</h3>
           )}
           <img
-            src={`/img/services/service-${index + 1}.jpg`}
+            src={serviceItem.image}
             alt={serviceItem.title}
             className={styles.serviceImage}
           />

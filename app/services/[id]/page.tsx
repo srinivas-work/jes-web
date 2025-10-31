@@ -17,6 +17,8 @@ import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { useRef } from "react";
 import styles from "./ServiceItem.module.css";
+import LaptopViewer from "@/components/ThreeD/LaptopViewer/LaptopViewer";
+import { splitText } from "@/utils/helperFunctions";
 
 const VideoSection: React.FC<{ id: number }> = ({ id }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -90,6 +92,10 @@ const ServiceItem = () => {
 
   const selectedService = serviceSections[Number(id)];
 
+  const { text1: headingPart1, text2: headingPart2 } = splitText(
+    selectedService.title
+  );
+
   return (
     <div className={styles.servicePage}>
       <div className={styles.bgImageContainerOne}>
@@ -112,8 +118,14 @@ const ServiceItem = () => {
           height={0}
         />
       </div>
-      <h2 className={styles.videoTitle}>{selectedService.title}</h2>
-      <VideoSection id={Number(id)} />
+      {/* <h2 className={styles.videoTitle}>{selectedService.title}</h2> */}
+      <LaptopViewer
+        text1={headingPart1}
+        text2={headingPart2}
+        imgLink={selectedService.image}
+      />
+
+      {/* <VideoSection id={Number(id)} /> */}
       <ServiceSteps subServiceItem={selectedService.subServices} />
       <ProductSelection />
       {id === "7" && (

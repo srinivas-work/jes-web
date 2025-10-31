@@ -31,7 +31,7 @@ const Footer: React.FC<HTMLProps<HTMLElement>> = ({ ...props }) => {
             />
 
             <div className={styles.navLinks}>
-              <Link href="/services">Services</Link>
+              <Link href="/#services">Services</Link>
               <Link href="/solutions">Solutions For</Link>
               <Link href="/insights">Insight Hub</Link>
               <Link href="/about">About Us</Link>

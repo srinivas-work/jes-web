@@ -136,7 +136,7 @@ export default function ServiceScrollShowcase() {
               transition={{ duration: 0.6, ease: "easeInOut" }}
             >
               <img
-                src={`/img/services/service-${activeIndex + 1}.jpg`}
+                src={serviceSections[activeIndex].image}
                 alt={serviceSections[activeIndex].title}
                 className={styles.image}
               />

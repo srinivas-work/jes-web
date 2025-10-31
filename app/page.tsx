@@ -19,6 +19,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
+import ModelViewer from "@/components/ThreeD/ModelViewer";
 
 function Building() {
   const tex = useTexture("/img/modern-building.png");
@@ -49,6 +50,7 @@ export default function Home() {
 
   //return <BarsScene />;
 
+  //return <ModelViewer />;
   return (
     <div>
       {/* <Image
