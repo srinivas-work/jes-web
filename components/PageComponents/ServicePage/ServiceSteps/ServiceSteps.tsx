@@ -1,63 +1,10 @@
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import styles from "./ServiceSteps.module.css";
-import { SubServiceType } from "@/utils/types";
 import { toRoman } from "@/utils/helperFunctions";
+import { GenericType } from "@/utils/types";
 
-const cardsData = [
-  {
-    label: "Part I",
-    number: "01",
-    title: "LOD 100 - Conceptual Design",
-    content: [
-      "LOD 100 represents the most basic level of BIM modeling.",
-      "It includes conceptual information, basic geometry, and overall project massing.",
-      "Used in the early stages of design to communicate the project's basic form and concept.",
-    ],
-  },
-  {
-    label: "Part II",
-    number: "02",
-    title: "LOD 200 - Schematic Design",
-    content: [
-      "LOD 200 involves more developed elements than LOD 100.",
-      "It includes approximate sizes, shapes, and locations of building elements.",
-      "Used in the schematic design phase to visualize the project and assess its feasibility.",
-    ],
-  },
-  {
-    label: "Part III",
-    number: "03",
-    title: "LOD 300 - Detailed Design",
-    content: [
-      "LOD 300 provides a more detailed representation of building elements.",
-      "It includes accurate geometry, sizes, shapes, quantities, and relationships between components.",
-      "Used during the detailed design phase for coordination and construction documentation.",
-    ],
-  },
-  {
-    label: "Part IV",
-    number: "04",
-    title: "LOD 400 - Fabrication and Assembly",
-    content: [
-      "LOD 400 is highly detailed and suitable for fabrication and assembly purposes.",
-      "It includes precise geometry, specific product information, and assembly details.",
-      "Used for manufacturing, fabrication, and assembly of building components.",
-    ],
-  },
-  {
-    label: "Part V",
-    number: "05",
-    title: "LOD 500 - As-Built Model",
-    content: [
-      "LOD 500 represents the highest level of detail, capturing actual installed elements and accurate as-built conditions.",
-      "It includes precise geometry, product data, and operational information.",
-      "Used for facility management, maintenance, and renovation purposes post-construction.",
-    ],
-  },
-];
-
-const ServiceSteps: React.FC<{ subServiceItem?: SubServiceType[] }> = ({
+const ServiceSteps: React.FC<{ subServiceItem?: GenericType[] }> = ({
   subServiceItem,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -76,7 +23,7 @@ const ServiceSteps: React.FC<{ subServiceItem?: SubServiceType[] }> = ({
       const distance = cardsWidth - containerWidth;
       setMaxX(distance); // max scroll distance in px
     }
-  }, [cardsData.length]);
+  }, [subServiceItem?.length]);
 
   // map vertical scroll to horizontal translation (left → right)
   const x = useTransform(scrollYProgress, [0, 1], [50, -maxX * 1.2]);
@@ -113,9 +60,8 @@ const ServiceSteps: React.FC<{ subServiceItem?: SubServiceType[] }> = ({
                 <div className={styles.cardNumber}>0{index + 1}</div>
                 <div className={styles.cardTitle}>{item.title}</div>
                 <ul className={styles.cardContent}>
-                  {item.desc.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
+                  {Array.isArray(item.desc) &&
+                    item.desc.map((item, i) => <li key={i}>{item}</li>)}
                 </ul>
               </div>
             ))}

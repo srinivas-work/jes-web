@@ -1,19 +1,23 @@
 "use client";
 
+import { solutions } from "@/utils/data/dummyData";
 import { useLenis } from "@/utils/hooks/useLenis";
+import { SolutionType } from "@/utils/types";
 import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 import styles from "./Solutions.module.css";
-import { SolutionType } from "@/utils/types";
-import { solutions } from "@/utils/data/dummyData";
+import { useRouter } from "next/navigation";
 
 export const SolutionCard: React.FC<{
   solution: SolutionType;
   index: number;
   hideBtn?: boolean;
-}> = ({ solution, index, hideBtn }) => {
-  const cardRef = useRef(null);
+  hideId?: boolean;
+  destinationUrl?: string;
+}> = ({ solution, index, hideId, hideBtn, destinationUrl }) => {
+  const router = useRouter();
 
+  const cardRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: cardRef,
     offset: ["start end", "end start"],
@@ -26,6 +30,14 @@ export const SolutionCard: React.FC<{
   const rotate = useTransform(scrollYProgress, [0, 1], [2, -2]);
 
   const isEven = index % 2 === 0;
+
+  const goTo = () => {
+    if (destinationUrl) {
+      return window.open(destinationUrl, "_blank");
+    }
+
+    router.push("/contact");
+  };
 
   return (
     <motion.div
@@ -53,15 +65,17 @@ export const SolutionCard: React.FC<{
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <motion.div
-              className={styles.numberBadge}
-              initial={{ scale: 0, rotate: -180 }}
-              whileInView={{ scale: 1, rotate: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "backOut" }}
-              viewport={{ once: true }}
-            >
-              {String(index + 1).padStart(2, "0")}
-            </motion.div>
+            {!hideId && (
+              <motion.div
+                className={styles.numberBadge}
+                initial={{ scale: 0, rotate: -180 }}
+                whileInView={{ scale: 1, rotate: 0 }}
+                transition={{ duration: 0.6, delay: 0.2, ease: "backOut" }}
+                viewport={{ once: true }}
+              >
+                {String(index + 1).padStart(2, "0")}
+              </motion.div>
+            )}
             <h2 className={styles.title}>{solution.title}</h2>
             <p className={styles.description}>{solution.description}</p>
 
@@ -86,14 +100,23 @@ export const SolutionCard: React.FC<{
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     transition={{ duration: 0.3, delay: 0.3 + idx * 0.1 }}
-                    viewport={{ once: true }}
+                    style={
+                      typeof service === "object" ? { marginTop: "0.5rem" } : {}
+                    }
                   >
                     <path
                       d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                       fill="currentColor"
                     />
                   </motion.svg>
-                  <span>{service}</span>
+                  {typeof service === "object" ? (
+                    <div className={styles.serviceDescContainer}>
+                      <p>{service.title}</p>
+                      <p>{service.desc}</p>
+                    </div>
+                  ) : (
+                    <span>{service as string}</span>
+                  )}
                 </motion.div>
               ))}
             </div>
@@ -103,6 +126,7 @@ export const SolutionCard: React.FC<{
                 className={styles.ctaButton}
                 whileHover={{ x: 8 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={goTo}
               >
                 Explore Solution
                 <svg className={styles.arrow} viewBox="0 0 20 20" fill="none">
@@ -235,7 +259,7 @@ const Solutions = () => {
 
       <section className={styles.solutionsSection}>
         {solutions.map((solution, index) => (
-          <SolutionCard key={solution.id} solution={solution} index={index} />
+          <SolutionCard key={index} solution={solution} index={index} />
         ))}
       </section>
 

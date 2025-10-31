@@ -3,7 +3,7 @@
   margin-top: calc(var(--spacing) * 2);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing);
+  gap: calc(var(--spacing) / 2);
 }
 
 .bgImageContainerOne {
@@ -35,7 +35,7 @@
   width: 80%; /* limits to about 20 characters per line */
   white-space: normal;
   word-wrap: break-word;
-  font-size: 8rem;
+  font-size: 6.5rem;
   line-height: 1.2;
 }
 
@@ -80,14 +80,14 @@
   opacity: 0;
 } */
 
-.solutionsSection {
+.extrasSection {
   max-width: 90dvw;
   margin: 0 auto;
   position: relative;
   z-index: 1;
 }
 
-.cta {
+.serviceCtaSection {
   text-align: center;
   padding: 10rem 2rem;
   position: relative;
@@ -99,7 +99,13 @@
   );
 }
 
-.cta h2 {
+.serviceCtaSection div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.serviceCtaSection h2 {
   font-size: clamp(2.2rem, 5vw, 4rem);
   color: var(--primary-dark);
   margin-bottom: 1.5rem;
@@ -108,7 +114,7 @@
   line-height: 1.1;
 }
 
-.cta p {
+.serviceCtaSection p {
   font-size: 1.25rem;
   color: var(--light-gray);
   margin-bottom: 3.5rem;
@@ -118,158 +124,7 @@
   line-height: 1.7;
 }
 
-.primaryButton {
-  background: var(--primary-red);
-  border: none;
-  color: white;
+.serviceCtaSection .primaryButton {
   font-size: 1.1rem;
   font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(169, 30, 45, 0.25), 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative;
-  overflow: hidden;
-}
-
-.primaryButton:hover {
-  background: #8a1824;
-  transform: translateY(-2px);
-}
-
-@media (max-width: 1200px) {
-  .floatingBg1,
-  .floatingBg2,
-  .floatingBg3,
-  .floatingBg4 {
-    opacity: 0.05;
-  }
-
-  .floatingBg1 {
-    width: 500px;
-  }
-
-  .floatingBg2 {
-    width: 450px;
-  }
-
-  .floatingBg3 {
-    width: 400px;
-  }
-
-  .floatingBg4 {
-    width: 550px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .cardContent,
-  .odd .cardContent,
-  .even .cardContent {
-    grid-template-columns: 1fr;
-    gap: 4rem;
-  }
-
-  .even .imageWrapper,
-  .even .textContent {
-    order: initial;
-  }
-
-  .imageContainer {
-    height: 500px;
-  }
-
-  .solutionCard {
-    margin-bottom: 8rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .floatingBg1,
-  .floatingBg2,
-  .floatingBg3,
-  .floatingBg4 {
-    display: none;
-  }
-
-  .hero {
-    min-height: 75vh;
-    padding: 6rem 1.5rem 3rem;
-  }
-
-  .badge {
-    font-size: 0.7rem;
-    padding: 0.5rem 1.3rem;
-  }
-
-  .heroTitle {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .heroSubtitle {
-    font-size: 1.08rem;
-  }
-
-  .solutionsSection {
-    padding: 3rem 1.5rem 5rem;
-  }
-
-  .solutionCard {
-    margin-bottom: 6rem;
-  }
-
-  .cardContent {
-    gap: 2.5rem;
-  }
-
-  .imageContainer {
-    height: 380px;
-  }
-
-  .textContent {
-    padding: 0;
-  }
-
-  .numberBadge {
-    width: 48px;
-    height: 48px;
-    font-size: 1.1rem;
-  }
-
-  .title {
-    font-size: 1.85rem;
-  }
-
-  .description {
-    font-size: 1.02rem;
-  }
-
-  .servicesList {
-    gap: 1rem;
-  }
-
-  .serviceItem {
-    font-size: 0.93rem;
-  }
-
-  .checkIcon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .cta {
-    padding: 6rem 1.5rem;
-  }
-
-  .cta h2 {
-    font-size: 2rem;
-  }
-
-  .cta p {
-    font-size: 1.08rem;
-  }
-
-  .primaryButton {
-    padding: 1.2rem 2.8rem;
-    font-size: 1.02rem;
-  }
 }

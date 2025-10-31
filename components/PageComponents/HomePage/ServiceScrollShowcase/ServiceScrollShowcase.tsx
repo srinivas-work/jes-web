@@ -81,7 +81,7 @@ export default function ServiceScrollShowcase() {
   };
 
   return (
-    <div className={styles.serviceScrollWrapper} ref={sectionRef} id="check">
+    <div className={styles.serviceScrollWrapper} ref={sectionRef} id="services">
       <div className={styles.sidebar}>
         {serviceSections.map((sec, i) => (
           <div

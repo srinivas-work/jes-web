@@ -77,7 +77,7 @@ const ServiceScrollStackPhone = () => {
   const router = useRouter();
 
   return (
-    <main ref={container} className={styles.mainContainer}>
+    <main ref={container} className={styles.mainContainer} id="services">
       {serviceSections.map((serviceItem, i) => {
         const targetScale = Math.max(
           0.5,

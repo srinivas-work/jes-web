@@ -2,13 +2,9 @@ export type ServiceItemType = {
   title: string;
   image: string;
   description: string | string[];
-  subServices?: SubServiceType[];
+  subServices?: GenericType[];
   pdfLink?: string;
-};
-
-export type SubServiceType = {
-  title: string;
-  desc: string[];
+  extraDetails?: SolutionType[];
 };
 
 export type TestimonialCardProps = {
@@ -43,9 +39,13 @@ export type SecurityItemType = {
 };
 
 export type SolutionType = {
-  id: number;
   title: string;
   description: string;
-  services: string[];
+  services: string[] | GenericType[];
   image: string;
+};
+
+export type GenericType = {
+  title: string;
+  desc: string | string[];
 };

@@ -297,7 +297,7 @@
 
 .serviceItem {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1.2rem;
   font-size: 1rem;
   color: var(--primary-dark);
@@ -320,6 +320,19 @@
 
 .serviceItem:hover .checkIcon {
   transform: scale(1.1);
+}
+
+.serviceDescContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.serviceDescContainer p:first-child {
+  font-weight: bold;
+}
+
+.serviceDescContainer p:nth-child(2) {
+  line-height: 1.7rem;
 }
 
 .ctaButton {

@@ -1,6 +1,6 @@
 .approachSection {
   height: 400dvh;
-  margin-bottom: calc(var(--spacing) * 2);
+  margin: calc(var(--spacing) * 2) 0;
 }
 
 .approachDetailsContainer {

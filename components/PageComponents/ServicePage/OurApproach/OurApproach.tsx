@@ -47,7 +47,7 @@ const OurApproach = () => {
   return (
     <div ref={ref} className={styles.approachSection}>
       <div className={styles.approachDetailsContainer}>
-        <h2 className={styles.title}>Our Approach</h2>
+        <h2 className={styles.title}>Why Choose JES</h2>
         <img
           className={styles.approachSectionBg}
           src="/img/bg_pattern.svg"

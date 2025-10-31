@@ -53,7 +53,7 @@ const Header = () => {
       />
 
       <nav className={styles.navLinks}>
-        <Link href="/#check" className={styles.servicesLink}>
+        <Link href="/#services" className={styles.servicesLink}>
           Services
         </Link>
         <Link href="/solutions">Solutions For</Link>

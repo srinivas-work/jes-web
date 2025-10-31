@@ -1,5 +1,7 @@
 "use client";
 
+import { SolutionCard } from "@/app/solutions/page";
+import FAQ from "@/components/FAQ/FAQ";
 import OurApproach from "@/components/PageComponents/ServicePage/OurApproach/OurApproach";
 import ProductSelection from "@/components/PageComponents/ServicePage/ProductSelection/ProductSelection";
 import ServiceSteps from "@/components/PageComponents/ServicePage/ServiceSteps/ServiceSteps";
@@ -8,16 +10,13 @@ import {
   energyModellingSolutions,
   faq,
   serviceSections,
-  solutions,
 } from "@/utils/data/dummyData";
 import { useLenis } from "@/utils/hooks/useLenis";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useRef } from "react";
 import styles from "./ServiceItem.module.css";
-import { SolutionCard } from "@/app/solutions/page";
-import FAQ from "@/components/FAQ/FAQ";
 
 const VideoSection: React.FC<{ id: number }> = ({ id }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -85,8 +84,11 @@ const VideoSection: React.FC<{ id: number }> = ({ id }) => {
 const ServiceItem = () => {
   useLenis();
 
+  const router = useRouter();
   const params = useParams();
   const { id } = params;
+
+  const selectedService = serviceSections[Number(id)];
 
   return (
     <div className={styles.servicePage}>
@@ -110,18 +112,34 @@ const ServiceItem = () => {
           height={0}
         />
       </div>
-      <h2 className={styles.videoTitle}>{serviceSections[Number(id)].title}</h2>
+      <h2 className={styles.videoTitle}>{selectedService.title}</h2>
       <VideoSection id={Number(id)} />
-      <ServiceSteps subServiceItem={serviceSections[Number(id)].subServices} />
+      <ServiceSteps subServiceItem={selectedService.subServices} />
       <ProductSelection />
       {id === "7" && (
-        <section className={styles.solutionsSection}>
+        <section className={styles.extrasSection}>
           {energyModellingSolutions.map((solution, index) => (
             <SolutionCard
-              key={solution.id}
+              key={index}
               solution={solution}
               index={index}
               hideBtn
+            />
+          ))}
+        </section>
+      )}
+
+      {selectedService.extraDetails && (
+        <section className={styles.extrasSection}>
+          {selectedService.extraDetails?.map((solution, index) => (
+            <SolutionCard
+              key={index}
+              solution={solution}
+              index={index}
+              hideId
+              destinationUrl={
+                Number(id) === 0 ? "https://jesi.jerseyeng.com/" : ""
+              }
             />
           ))}
         </section>
@@ -143,9 +161,9 @@ const ServiceItem = () => {
             })}
         </div>
       </div>
-      <OurApproach />{" "}
+      <OurApproach />
       <motion.section
-        className={styles.cta}
+        className={styles.serviceCtaSection}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -159,8 +177,8 @@ const ServiceItem = () => {
         >
           <h2>Ready to Elevate Your Projects?</h2>
           <p>
-            Let us discuss how our BIM solutions can transform your engineering
-            workflow
+            Let us discuss how our {selectedService.title} Solutions can
+            transform your engineering workflow
           </p>
           <motion.button
             className={styles.primaryButton}
@@ -169,6 +187,7 @@ const ServiceItem = () => {
               boxShadow: "0 8px 24px rgba(169, 30, 45, 0.35)",
             }}
             whileTap={{ scale: 0.97 }}
+            onClick={() => router.push("/contact")}
           >
             Get Started
           </motion.button>
