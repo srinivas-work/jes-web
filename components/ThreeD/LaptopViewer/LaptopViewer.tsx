@@ -82,6 +82,41 @@ function Model({ openProgress, hinge, imgLink }: ModelProps) {
     );
   });
 
+  // 💎 Custom materials
+  const aluminiumMat = new THREE.MeshStandardMaterial({
+    color: "#b0b0b0",
+    metalness: 0.9,
+    roughness: 0.25,
+    envMapIntensity: 1.2,
+    side: THREE.DoubleSide,
+  });
+
+  const matteMat = new THREE.MeshStandardMaterial({
+    color: "#272727",
+    metalness: 0.9,
+    roughness: 0.25,
+    side: THREE.DoubleSide,
+  });
+
+  const keyMat = new THREE.MeshStandardMaterial({
+    color: "#111",
+    metalness: 0.9,
+    roughness: 0.2,
+    side: THREE.DoubleSide,
+  });
+
+  const trackpadMat = new THREE.MeshStandardMaterial({
+    color: "#c0c0c0",
+    metalness: 0.6,
+    roughness: 0.4,
+  });
+
+  const touchbarMat = new THREE.MeshStandardMaterial({
+    color: "#000",
+    metalness: 0.8,
+    roughness: 0.3,
+  });
+
   return (
     <group
       ref={group}
@@ -95,15 +130,8 @@ function Model({ openProgress, hinge, imgLink }: ModelProps) {
     >
       <group rotation-x={hinge} position={[0, -0.04, 0.41]}>
         <group position={[0, 2.96, -0.13]} rotation={[Math.PI / 2, 0, 0]}>
-          <mesh
-            material={materials.aluminium}
-            geometry={nodes["Cube008"].geometry}
-          />
-          <mesh
-            material={materials["matte.001"]}
-            geometry={nodes["Cube008_1"].geometry}
-          />
-          {/* ✅ Use loaded texture */}
+          <mesh material={aluminiumMat} geometry={nodes["Cube008"].geometry} />
+          <mesh material={matteMat} geometry={nodes["Cube008_1"].geometry} />
           <mesh geometry={nodes["Cube008_2"].geometry}>
             <meshBasicMaterial map={imageTexture} toneMapped={false} />
           </mesh>
@@ -111,16 +139,13 @@ function Model({ openProgress, hinge, imgLink }: ModelProps) {
       </group>
 
       <mesh
-        material={materials.keys}
+        material={keyMat}
         geometry={nodes.keyboard.geometry}
         position={[1.79, 0, 3.45]}
       />
 
       <group position={[0, -0.1, 3.39]}>
-        <mesh
-          material={materials.aluminium}
-          geometry={nodes["Cube002"].geometry}
-        />
+        <mesh material={aluminiumMat} geometry={nodes["Cube002"].geometry} />
         <mesh
           material={materials.trackpad}
           geometry={nodes["Cube002_1"].geometry}
@@ -202,7 +227,6 @@ function Scene({
       >
         {text1}
       </Text>
-
       <Text
         position={[text2X, text2Y, -textZ]}
         fontSize={1.6 * textScale}
@@ -213,8 +237,9 @@ function Scene({
       >
         {text2}
       </Text>
-
       <Model openProgress={openProgress} hinge={hinge} imgLink={imgTexture} />
+      {/* <directionalLight intensity={2} /> */}
+      <pointLight position={[10, 10, 10]} intensity={1.5} />
       <Environment preset="city" />
     </group>
   );
@@ -256,7 +281,7 @@ export default function LaptopViewer({
   const textColor = useTransform(
     smoothProgress,
     [0, 0.5, 1],
-    ["#ffffff", "#a91e2d", "#202020"]
+    ["#979797", "#a91e2d", "#202020"]
   );
   const background = useTransform(
     smoothProgress,
