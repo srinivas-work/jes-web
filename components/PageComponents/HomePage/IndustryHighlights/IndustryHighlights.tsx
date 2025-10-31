@@ -79,7 +79,7 @@ export default function IndustryHighlights() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        Industry Highlights
+        Unlocking Engineering Possibilities
       </motion.h2>
 
       <div className={styles.industryItems}>
