@@ -14,6 +14,7 @@ import {
 } from "@react-three/drei";
 import { motion, useTransform, useScroll, useSpring } from "framer-motion";
 import styles from "./LaptopViewer.module.css";
+import { ServiceItemType } from "@/utils/types";
 
 type ModelProps = {
   openProgress: number;
@@ -223,10 +224,12 @@ export default function LaptopViewer({
   text1 = "Innovation in Motion",
   text2 = "Powered by Creativity",
   imgLink,
+  selectedService,
 }: {
   text1?: string;
   text2?: string;
   imgLink: string;
+  selectedService: ServiceItemType;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mouse = useRef({ x: 0, y: 0 });
@@ -321,6 +324,22 @@ export default function LaptopViewer({
     return () => window.removeEventListener("mousemove", onMove);
   }, []);
 
+  const getDescription = () => {
+    return (
+      <>
+        {Array.isArray(selectedService.description) ? (
+          selectedService.description.map((item, index) => (
+            <p key={index} className={styles.serviceDetails}>
+              {item}
+            </p>
+          ))
+        ) : (
+          <p className={styles.serviceDetails}>{selectedService.description}</p>
+        )}
+      </>
+    );
+  };
+
   return (
     <motion.section
       className={styles.laptopViewerSection}
@@ -358,6 +377,8 @@ export default function LaptopViewer({
           </Suspense>
           <Preload all />
         </Canvas>
+        {/* <div className={styles.serviceDetails}>{getDescription()}</div> */}
+        {getDescription()}
       </div>
     </motion.section>
   );

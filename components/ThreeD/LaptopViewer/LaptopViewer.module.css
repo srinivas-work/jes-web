@@ -14,3 +14,39 @@
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%; */
 }
+
+/* .serviceDetails {
+  position: absolute;
+  z-index: 500;
+  bottom: 3rem;
+  left: 3rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+}
+
+.serviceDetails p {
+  width: 20rem;
+  line-height: 1.5rem;
+} */
+
+.serviceDetails {
+  position: absolute;
+  z-index: 500;
+  bottom: 12rem;
+  left: 3rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 20rem;
+  line-height: 1.5rem;
+}
+
+.serviceDetails:nth-child(2) {
+  bottom: 3rem;
+  left: unset;
+  right: 3rem;
+}

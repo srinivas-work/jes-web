@@ -123,8 +123,8 @@ const ServiceItem = () => {
         text1={headingPart1}
         text2={headingPart2}
         imgLink={selectedService.image}
+        selectedService={selectedService}
       />
-
       {/* <VideoSection id={Number(id)} /> */}
       <ServiceSteps subServiceItem={selectedService.subServices} />
       <ProductSelection />
