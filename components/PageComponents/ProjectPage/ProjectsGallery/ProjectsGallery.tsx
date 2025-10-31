@@ -207,6 +207,7 @@ export default function ProjectsGallery() {
       {projectList.map((projectItem, index) => (
         <ProjectCard
           key={index}
+          index={index}
           projectItem={projectItem}
           isBlurred={hoveredIndex !== null && hoveredIndex !== index}
           onHover={(hovered) => setHoveredIndex(hovered ? index : null)}

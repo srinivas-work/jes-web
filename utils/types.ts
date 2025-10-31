@@ -24,9 +24,7 @@ export type ProjectItemType = {
   imgLink: string;
   thumbnailLink?: string;
   location: string;
-  overview: string;
-  overview2?: string;
-  overview3?: string;
+  overview: string[];
   serviceType?: string;
   client: string;
   contractor: string;

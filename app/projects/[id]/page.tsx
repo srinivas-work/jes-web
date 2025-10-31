@@ -8,6 +8,7 @@ import React, { useRef, useState } from "react";
 import styles from "./ProjectDetails.module.css";
 import ProjectCard from "@/components/PageComponents/ProjectPage/ProjectsGallery/ProjectCard/ProjectCard";
 import { projectList } from "@/utils/data/dummyData";
+import { useParams } from "next/navigation";
 
 interface TechnicalDetailProps {
   icon: string;
@@ -31,6 +32,8 @@ const TechnicalDetail: React.FC<TechnicalDetailProps> = ({
 export default function ProjectDetails() {
   useLenis();
 
+  const params = useParams();
+  const { id } = params;
   const { scrollY } = useScroll();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
@@ -84,7 +87,7 @@ export default function ProjectDetails() {
           style={{ y: heroY, filter: heroFilter }}
         >
           <img
-            src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&q=80"
+            src={projectList[Number(id)].imgLink}
             alt="Hero background"
             className={styles.heroImage}
           />
@@ -108,28 +111,25 @@ export default function ProjectDetails() {
         <div className={styles.container}>
           <div className={styles.projectHeader}>
             <h2>
-              KIPP School
+              {projectList[Number(id)].name}
               <br />
-              Washington DC, USA
+              {projectList[Number(id)].location}
             </h2>
           </div>
 
           <div className={styles.projectInfo}>
             <div className={styles.overviewSection}>
               <h3 className={styles.sectionTitle}>Project Overview</h3>
-              <p className={styles.overviewText}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industrys standard dummy text
-                ever since the 1500s, when an unknown printer took a galley of
-                type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-              </p>
+              <div className={styles.overviewContainer}>
+                {projectList[Number(id)].overview.map((o, i) => (
+                  <p className={styles.overviewText}>{o}</p>
+                ))}
+              </div>
             </div>
 
             <div className={styles.imageSection}>
               <motion.img
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80"
+                src={projectList[Number(id)].imgLink}
                 alt="Project detail"
                 className={styles.projectImage}
                 style={{
@@ -150,22 +150,22 @@ export default function ProjectDetails() {
               <TechnicalDetail
                 icon="/icons/client.svg"
                 label="Client"
-                value="Qatari Diar & Lusail City"
+                value={projectList[Number(id)].client}
               />
               <TechnicalDetail
                 icon="/icons/contractor.svg"
                 label="Contractor"
-                value="Voltas Ltd."
+                value={projectList[Number(id)].contractor}
               />
-              <TechnicalDetail
+              {/* <TechnicalDetail
                 icon="/icons/client.svg"
                 label="Client"
-                value="Qatari Diar & Lusail City"
-              />
+                value={projectList[Number(id)].client}
+              /> */}
               <TechnicalDetail
                 icon="/icons/scope.svg"
                 label="Scope of Work"
-                value="BIM Modelling"
+                value={projectList[Number(id)].serviceType || ""}
               />
             </div>
           </div>
@@ -199,6 +199,7 @@ export default function ProjectDetails() {
               <ProjectCard
                 key={i}
                 projectItem={projectItem}
+                index={i}
                 //borderRadius={card.borderRadius}
                 //overlayColor={card.overlayColor}
                 isBlurred={hoveredIndex !== null && hoveredIndex !== i}

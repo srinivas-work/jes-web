@@ -5,13 +5,14 @@ import Image from "next/image";
 
 const ProjectCard: React.FC<{
   projectItem: ProjectItemType;
+  index: number;
   isBlurred: boolean;
   onHover: (hovered: boolean) => void;
-}> = ({ projectItem, isBlurred, onHover }) => {
+}> = ({ projectItem, index, isBlurred, onHover }) => {
   const router = useRouter();
 
   const goToProjects = () => {
-    router.push("/projects/1"); // navigate to /projects
+    router.push(`/projects/${index}`); // navigate to /projects
   };
 
   return (
