@@ -15,7 +15,7 @@ const regions: Region[] = [
     name: "India",
     hasDetails: true,
     details: [
-      "Jes Sersey Engineering Solutions",
+      "Jes Engineering Solutions",
       "Plot No 22-A, ABIL TII Tower - Cygnus,",
       "Rajiv Gandhi IT Park, Hinjawadi Phase 1, Pune - 411057",
       "Or contact us at",

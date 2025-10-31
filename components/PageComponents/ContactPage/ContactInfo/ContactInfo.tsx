@@ -8,7 +8,7 @@ import { FileText } from "lucide-react";
 
 const contactInfo = [
   { icon: "/icons/phone.svg", text: "+1012 3456 789", alt: "Phone" },
-  { icon: "/icons/email.svg", text: "demo@gmail.com", alt: "Email" },
+  { icon: "/icons/email.svg", text: "sales@jerseyeng.com", alt: "Email" },
   {
     icon: "/icons/location.svg",
     text: "132 Dartmouth Street Boston, Massachusetts 02156 United States",
