@@ -1,20 +1,20 @@
-import * as THREE from "three";
-import React, { Suspense, useEffect, useRef, useState } from "react";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { ServiceItemType } from "@/utils/types";
 import {
-  Environment,
-  useGLTF,
   ContactShadows,
-  useTexture,
+  Environment,
   Html,
-  useProgress,
   Preload,
   Text,
-  Sky,
+  useGLTF,
+  useProgress,
+  useTexture,
 } from "@react-three/drei";
-import { motion, useTransform, useScroll, useSpring } from "framer-motion";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import React, { Suspense, useEffect, useRef, useState } from "react";
+import * as THREE from "three";
 import styles from "./LaptopViewer.module.css";
-import { ServiceItemType } from "@/utils/types";
+import { Perf } from "r3f-perf";
 
 type ModelProps = {
   openProgress: number;
@@ -45,7 +45,8 @@ function Loader() {
 
 function Model({ openProgress, hinge, imgLink }: ModelProps) {
   const group = useRef<THREE.Group>(null);
-  const { nodes, materials } = useGLTF("/models/mac-draco.glb") as any;
+  const screenRef = useRef<THREE.Mesh>(null); // 👈 add this
+  const { nodes } = useGLTF("/models/mac-draco.glb") as any;
   const [hovered, setHovered] = useState(false);
   const imageTexture = useTexture(imgLink);
 
@@ -60,6 +61,7 @@ function Model({ openProgress, hinge, imgLink }: ModelProps) {
     const t = state.clock.getElapsedTime();
     const open = openProgress < 0.1;
 
+    // existing floating motion
     group.current.rotation.x = THREE.MathUtils.lerp(
       group.current.rotation.x,
       open ? Math.cos(t / 10) / 10 + 0.25 : 0,
@@ -80,11 +82,27 @@ function Model({ openProgress, hinge, imgLink }: ModelProps) {
       open ? (-2 + Math.sin(t)) / 3 : -4.3,
       0.1
     );
+
+    // 💫 smooth scale animation for screen
+    if (screenRef.current) {
+      const targetScale = hovered ? 1.04 : 1;
+      const currentScale = screenRef.current.scale.x;
+      const newScale = THREE.MathUtils.lerp(currentScale, targetScale, 0.08);
+      screenRef.current.scale.setScalar(newScale);
+    }
   });
 
   // 💎 Custom materials
   const aluminiumMat = new THREE.MeshStandardMaterial({
     color: "#b0b0b0",
+    metalness: 0.9,
+    roughness: 0.25,
+    envMapIntensity: 1.2,
+    side: THREE.DoubleSide,
+  });
+
+  const trackPadMat = new THREE.MeshStandardMaterial({
+    color: "#969696",
     metalness: 0.9,
     roughness: 0.25,
     envMapIntensity: 1.2,
@@ -105,34 +123,23 @@ function Model({ openProgress, hinge, imgLink }: ModelProps) {
     side: THREE.DoubleSide,
   });
 
-  const trackpadMat = new THREE.MeshStandardMaterial({
-    color: "#c0c0c0",
-    metalness: 0.6,
-    roughness: 0.4,
-  });
-
-  const touchbarMat = new THREE.MeshStandardMaterial({
-    color: "#000",
-    metalness: 0.8,
-    roughness: 0.3,
-  });
-
   return (
-    <group
-      ref={group}
-      scale={1.2}
-      onPointerOver={(e) => {
-        e.stopPropagation();
-        setHovered(true);
-      }}
-      onPointerOut={() => setHovered(false)}
-      dispose={null}
-    >
+    <group ref={group} scale={1.2} dispose={null}>
       <group rotation-x={hinge} position={[0, -0.04, 0.41]}>
         <group position={[0, 2.96, -0.13]} rotation={[Math.PI / 2, 0, 0]}>
           <mesh material={aluminiumMat} geometry={nodes["Cube008"].geometry} />
           <mesh material={matteMat} geometry={nodes["Cube008_1"].geometry} />
-          <mesh geometry={nodes["Cube008_2"].geometry}>
+
+          {/* 🖥️ Screen mesh with hover + scale */}
+          <mesh
+            ref={screenRef}
+            geometry={nodes["Cube008_2"].geometry}
+            onPointerOver={(e) => {
+              e.stopPropagation();
+              setHovered(true);
+            }}
+            onPointerOut={(e) => setHovered(false)}
+          >
             <meshBasicMaterial map={imageTexture} toneMapped={false} />
           </mesh>
         </group>
@@ -146,14 +153,11 @@ function Model({ openProgress, hinge, imgLink }: ModelProps) {
 
       <group position={[0, -0.1, 3.39]}>
         <mesh material={aluminiumMat} geometry={nodes["Cube002"].geometry} />
-        <mesh
-          material={materials.trackpad}
-          geometry={nodes["Cube002_1"].geometry}
-        />
+        <mesh material={trackPadMat} geometry={nodes["Cube002_1"].geometry} />
       </group>
 
       <mesh
-        material={materials.touchbar}
+        material={keyMat}
         geometry={nodes.touchbar.geometry}
         position={[0, -0.03, 1.2]}
       />
@@ -409,6 +413,7 @@ export default function LaptopViewer({
         <Canvas dpr={[1, 2]} camera={{ position: [0, 0, -30], fov: 35 }}>
           <Suspense fallback={<Loader />}>
             {/* <Sky /> */}
+
             <Scene
               text1={text1}
               text2={text2}

@@ -82,7 +82,7 @@ const serviceSections: ServiceItemType[] = [
     ],
   },
   {
-    title: "Equipment/Product Selection",
+    title: "Equipment / Product Selection",
     image: "/img/services/equipment-selection.png",
     description: [
       "Jersey Engineering Solutions provides equipment selection services for the air-side and chilled water refrigerant controls. We support in choosing the most suitable and efficient mechanical and electrical equipment for your construction projects. Equipment selected to meet local building codes and safety regulations ensures project compliance.",
