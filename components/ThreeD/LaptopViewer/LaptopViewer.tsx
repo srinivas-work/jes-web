@@ -14,7 +14,6 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import styles from "./LaptopViewer.module.css";
-import { Perf } from "r3f-perf";
 
 type ModelProps = {
   openProgress: number;
@@ -45,7 +44,7 @@ function Loader() {
 
 function Model({ openProgress, hinge, imgLink }: ModelProps) {
   const group = useRef<THREE.Group>(null);
-  const screenRef = useRef<THREE.Mesh>(null); // 👈 add this
+  const screenRef = useRef<THREE.Mesh>(null);
   const { nodes } = useGLTF("/models/mac-draco.glb") as any;
   const [hovered, setHovered] = useState(false);
   const imageTexture = useTexture(imgLink);
@@ -83,7 +82,7 @@ function Model({ openProgress, hinge, imgLink }: ModelProps) {
       0.1
     );
 
-    // 💫 smooth scale animation for screen
+    // smooth scale animation for screen
     if (screenRef.current) {
       const targetScale = hovered ? 1.04 : 1;
       const currentScale = screenRef.current.scale.x;
@@ -92,7 +91,7 @@ function Model({ openProgress, hinge, imgLink }: ModelProps) {
     }
   });
 
-  // 💎 Custom materials
+  // Custom materials
   const aluminiumMat = new THREE.MeshStandardMaterial({
     color: "#b0b0b0",
     metalness: 0.9,
@@ -130,7 +129,7 @@ function Model({ openProgress, hinge, imgLink }: ModelProps) {
           <mesh material={aluminiumMat} geometry={nodes["Cube008"].geometry} />
           <mesh material={matteMat} geometry={nodes["Cube008_1"].geometry} />
 
-          {/* 🖥️ Screen mesh with hover + scale */}
+          {/* Screen mesh with hover + scale */}
           <mesh
             ref={screenRef}
             geometry={nodes["Cube008_2"].geometry}
