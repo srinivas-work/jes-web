@@ -174,6 +174,7 @@ function Scene({
   textZ,
   textScale,
   textColor,
+  textShadowColor,
   imgTexture,
 }: {
   text1: string;
@@ -188,6 +189,7 @@ function Scene({
   textZ: number;
   textScale: number;
   textColor: string;
+  textShadowColor: string;
   imgTexture: string;
 }) {
   const mainGroup = useRef<THREE.Group>(null);
@@ -228,9 +230,29 @@ function Scene({
         {text1}
       </Text>
       <Text
+        position={[text1X + 0.03, text1Y - 0.03, textZ - 0.01]} // slight offset
+        fontSize={2 * textScale}
+        color={textShadowColor}
+        anchorX="center"
+        anchorY="middle"
+        font="/fonts/PlusJakartaSans-Medium.ttf"
+      >
+        {text1}
+      </Text>
+      <Text
         position={[text2X, text2Y, -textZ]}
         fontSize={1.6 * textScale}
         color={textColor}
+        anchorX="center"
+        anchorY="middle"
+        font="/fonts/PlusJakartaSans-Medium.ttf"
+      >
+        {text2}
+      </Text>
+      <Text
+        position={[text2X, text2Y - 0.03, -textZ - 0.01]}
+        fontSize={1.6 * textScale}
+        color={textShadowColor}
         anchorX="center"
         anchorY="middle"
         font="/fonts/PlusJakartaSans-Medium.ttf"
@@ -281,8 +303,14 @@ export default function LaptopViewer({
   const textColor = useTransform(
     smoothProgress,
     [0, 0.5, 1],
-    ["#979797", "#a91e2d", "#202020"]
+    ["#f3f3f3", "#a91e2d", "#202020"]
   );
+  const textShadowColor = useTransform(
+    smoothProgress,
+    [0, 1],
+    ["#434343", "#f3f3f3"]
+  );
+
   const background = useTransform(
     smoothProgress,
     [0, 0.5, 1],
@@ -302,7 +330,8 @@ export default function LaptopViewer({
   const [t2Y, setT2Y] = useState(-4.5);
   const [tZ, setTZ] = useState(4);
   const [tScale, setTScale] = useState(1);
-  const [tColor, setTColor] = useState("#ffffff");
+  const [tColor, setTColor] = useState("#f3f3f3");
+  const [tShadowColor, setTShadowColor] = useState("#434343");
 
   // Subscribe to transform updates
   useEffect(() => {
@@ -315,6 +344,7 @@ export default function LaptopViewer({
     const u7 = textZ.on("change", setTZ);
     const u8 = textScale.on("change", setTScale);
     const u9 = textColor.on("change", setTColor);
+    const u10 = textShadowColor.on("change", setTShadowColor);
     return () => {
       u1();
       u2();
@@ -325,6 +355,7 @@ export default function LaptopViewer({
       u7();
       u8();
       u9();
+      u10();
     };
   }, [
     hingeValue,
@@ -336,6 +367,7 @@ export default function LaptopViewer({
     textZ,
     textScale,
     textColor,
+    textShadowColor,
   ]);
 
   // Mouse movement tracking
@@ -390,6 +422,7 @@ export default function LaptopViewer({
               textZ={tZ}
               textScale={tScale}
               textColor={tColor}
+              textShadowColor={tShadowColor}
               imgTexture={imgLink}
             />
             <ContactShadows
