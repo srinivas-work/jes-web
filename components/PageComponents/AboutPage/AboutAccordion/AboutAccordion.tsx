@@ -9,6 +9,7 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
   const [activeSectionId, setActiveSectionId] = useState<null | number>(null);
   const isPhoneScreen = useIsPhoneScreen();
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   // 👇 Track scroll progress relative to the container
   const { scrollYProgress } = useScroll({
@@ -18,6 +19,8 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
 
   // 👇 Update active section automatically based on scroll progress
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (isScrolling) return; // Don't update during programmatic scroll
+
     const totalSections = aboutUsAccordionList.length;
     const sectionIndex = Math.floor(latest * totalSections);
 
@@ -29,6 +32,35 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
       return prev;
     });
   });
+
+  // 👇 NEW: Scroll to section when activeSectionId changes via click
+  useEffect(() => {
+    if (activeSectionId === null || !containerRef.current) return;
+
+    const scrollToSection = () => {
+      setIsScrolling(true);
+
+      const container = containerRef.current;
+      if (!container) return;
+
+      const totalSections = aboutUsAccordionList.length;
+      const sectionHeight = container.scrollHeight / totalSections;
+      const targetScroll = sectionHeight * activeSectionId;
+
+      // Smooth scroll to the target position
+      window.scrollTo({
+        top: targetScroll,
+        behavior: "smooth",
+      });
+
+      // Reset scrolling flag after animation completes
+      setTimeout(() => {
+        setIsScrolling(false);
+      }, 1000); // Match this with your scroll duration
+    };
+
+    scrollToSection();
+  }, [activeSectionId]);
 
   const getDescription = (description: string, sectionId: number) => {
     if (activeSectionId !== null && sectionId === activeSectionId) {

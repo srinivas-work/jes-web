@@ -1,6 +1,5 @@
 .aboutPage {
   margin: auto;
-  margin-top: calc(var(--spacing) * 2);
   display: flex;
   flex-direction: column;
   gap: calc(var(--spacing) * 2);
