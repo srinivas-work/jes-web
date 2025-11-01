@@ -12,7 +12,7 @@ const serviceSections: ServiceItemType[] = [
     title: "Quantity Take Off",
     image: "/img/services/qto.png",
     description:
-      "Our team of skilled engineers provide reliable take-off services for construction projects across all fields including Civil , MEP systems and general purpose buildings using advanced software like Bluebeam, Planswift, and OnScreen takeoff to meticulously measure quantities from floor plans which are compiled into comprehensive, accurately organized reports as per your requirements.",
+      "Our team of skilled engineers provide reliable take-off services for construction projects across all fields including Civil, MEP systems and general purpose buildings using advanced software like Bluebeam, Planswift, and OnScreen takeoff to meticulously measure quantities from floor plans which are compiled into comprehensive, accurately organized reports as per your requirements.",
     subServices: [
       {
         title: "Specialized Quantity Surveying",

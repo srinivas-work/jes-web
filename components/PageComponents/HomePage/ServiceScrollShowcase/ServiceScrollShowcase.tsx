@@ -171,30 +171,3 @@ export default function ServiceScrollShowcase() {
     </div>
   );
 }
-
-{
-  /* <AnimatePresence mode="popLayout">
-              {activeIndex === i && (
-                <motion.span
-                  className={styles.seeker}
-                  key={i}
-                  initial={{
-                    opacity: 0,
-                    //visibility: "hidden",
-                    y: -20 * direction,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    //visibility: "visible",
-                    y: -20,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    //visibility: "hidden",
-                    y: -20 * direction,
-                  }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                />
-              )}
-            </AnimatePresence> */
-}
