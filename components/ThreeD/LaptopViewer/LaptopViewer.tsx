@@ -223,7 +223,7 @@ function Scene({
         color={textColor}
         anchorX="center"
         anchorY="middle"
-        font="/fonts/PlusJakartaSans-Regular.ttf"
+        font="/fonts/PlusJakartaSans-Medium.ttf"
       >
         {text1}
       </Text>
@@ -233,7 +233,7 @@ function Scene({
         color={textColor}
         anchorX="center"
         anchorY="middle"
-        font="/fonts/PlusJakartaSans-Regular.ttf"
+        font="/fonts/PlusJakartaSans-Medium.ttf"
       >
         {text2}
       </Text>
