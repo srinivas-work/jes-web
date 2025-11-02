@@ -1,10 +1,14 @@
 import type { NextConfig } from "next";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+
+const isAnalyze = process.env.ANALYZE === "true";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  reactStrictMode: true,
+  swcMinify: true, // use SWC compiler for faster minification
+
   images: {
-    domains: ["images.unsplash.com"],
-    // or use remotePatterns for more control (recommended in newer Next.js versions)
+    // Allow external images (for <Image />)
     remotePatterns: [
       {
         protocol: "https",
@@ -26,9 +30,34 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
   eslint: {
     ignoreDuringBuilds: true,
   },
+
+  webpack(config, { isServer }) {
+    // 🔍 Bundle Analyzer (enable via ANALYZE=true npm run build)
+    if (isAnalyze) {
+      config.plugins.push(
+        new BundleAnalyzerPlugin({
+          analyzerMode: "static",
+          reportFilename: isServer
+            ? "../analyze-server.html"
+            : "./analyze-client.html",
+        })
+      );
+    }
+
+    return config;
+  },
+
+  experimental: {
+    optimizeCss: true, // reduces CSS size
+    scrollRestoration: true,
+    serverActions: true,
+  },
+
+  compress: true, // enable gzip compression for faster responses
 };
 
 export default nextConfig;

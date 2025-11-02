@@ -37,8 +37,8 @@ const Header = () => {
   const isSolutions =
     pathname === "/solutions" ||
     pathname === "/insights" ||
-    pathname.includes("projects/") ||
-    pathname.includes("/services/");
+    pathname.includes("projects/");
+  //pathname.includes("/services/");
 
   return (
     <motion.header
@@ -49,7 +49,7 @@ const Header = () => {
     >
       <Image
         className={styles.logo}
-        src={"/img/logos/jes_after_logo.png"}
+        src={"/img/logos/jes_logo_final.svg"}
         alt="JES Engineering"
         sizes="100vw"
         width={0}

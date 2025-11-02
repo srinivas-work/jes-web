@@ -22,7 +22,7 @@ const Footer: React.FC<HTMLProps<HTMLElement>> = ({ ...props }) => {
         <div className={styles.up}>
           <Image
             className={styles.logo}
-            src={"/img/jes_white.png"}
+            src={"/img/logos/jes_logo_final_white.svg"}
             alt="JES Engineering"
             sizes="100vw"
             width={0}

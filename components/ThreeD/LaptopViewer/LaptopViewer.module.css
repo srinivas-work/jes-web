@@ -37,7 +37,7 @@
   z-index: 500;
   bottom: 12rem;
   left: 3rem;
-  color: white;
+  /* color: white; */
   display: flex;
   justify-content: space-between;
   gap: 1rem;

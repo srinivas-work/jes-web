@@ -36,7 +36,7 @@ const About = () => {
       </div> */}
       <AboutAccordion />
       <SecuritySection />
-      {/* <TeamCardStack /> */}
+      <TeamCardStack />
       <CircularTimeline />
       <OurClientsCarousel />
     </div>

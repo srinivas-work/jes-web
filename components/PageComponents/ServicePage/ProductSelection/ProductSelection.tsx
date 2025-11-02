@@ -2,6 +2,7 @@ import Carousel from "@/components/UI/Carousel/Carousel";
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import styles from "./ProductSelection.module.css";
+import { useParams } from "next/navigation";
 
 interface Product {
   id: number;
@@ -13,35 +14,69 @@ interface Product {
 const products: Product[] = [
   {
     id: 1,
-    title: "Thermal Load Calculation",
-    icon: "🔲",
+    title: "AHU, chilled water pumps",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/bmi_73aa8947cb.svg",
     desc: "We specialize in delivering comprehensive KPO services tailored specifically for accurate and detailed thermal load calculations. Our expertise lies in providing precise assessments crucial for efficient HVAC system design and optimization.",
   },
   {
     id: 2,
-    title: "Ductwork E.S.P calculation",
-    icon: "↔️",
+    title: "GRD, VAV boxes and terminal units Dampers & Louvers",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/application_4aa981e844.svg",
     desc: "We specialize in delivering comprehensive solutions for Air Conditioning (AC) ductwork, including accurate External Static Pressure (ESP) calculations. Understanding the significance of ESP in HVAC systems, we offer detailed services tailored to ensure optimal performance and efficiency.",
   },
   {
     id: 3,
-    title: "Pump Head Calculation",
-    icon: "🔇",
+    title: "Valves, heat-exchangers, separators",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/contract_ac062687fa.svg",
     desc: "We specialize in providing Knowledge Process Outsourcing (KPO) services focused on precise and comprehensive pump head calculation solutions. Our expertise lies in offering accurate and tailored calculations crucial for efficient pump system design and operation.",
   },
   {
     id: 4,
-    title: "Tools Used",
-    icon: "⚙️",
+    title: "VRV & VRF, piping packages",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/bmi_73aa8947cb.svg",
     desc: "The tools we use for our services",
   },
-  // { id: 5, title: "Software Aided Services", icon: "📐" },
+  {
+    id: 5,
+    title: "Noise control, vibration & seismic",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/application_4aa981e844.svg",
+    desc: "We specialize in providing Knowledge Process Outsourcing (KPO) services focused on precise and comprehensive pump head calculation solutions. Our expertise lies in offering accurate and tailored calculations crucial for efficient pump system design and operation.",
+  },
 ];
 
-// Controllable spacing variables
-const CARD_HEIGHT = 125;
-const CARD_SPACING = 15; // Control the vertical space between cards
-const STACK_OFFSET = 10; // Control the horizontal stacking offset
+const productsBIM: Product[] = [
+  {
+    id: 1,
+    title: "LOD 100 - Conceptual Design",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/bmi_73aa8947cb.svg",
+    desc: "LOD 100 represents the most basic level of BIM modeling. It includes conceptual information, basic geometry, and overall project massing.",
+  },
+  {
+    id: 2,
+    title: "LOD 200 - Schematic Design",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/application_4aa981e844.svg",
+    desc: "LOD 200 involves more developed elements than LOD 100. It includes approximate sizes, shapes, and locations of building elements.",
+  },
+  {
+    id: 3,
+    title: "LOD 300 - Detailed Design",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/contract_ac062687fa.svg",
+    desc: "LOD 300 provides a more detailed representation of building elements. It includes accurate geometry, sizes, shapes, quantities, and relationships between components.",
+  },
+  {
+    id: 4,
+    title: "LOD 400 - Fabrication and Assembly",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/bmi_73aa8947cb.svg",
+    desc: "LOD 400 is highly detailed and suitable for fabrication and assembly purposes. It includes precise geometry, specific product information, and assembly details.",
+  },
+  {
+    id: 5,
+    title: "LOD 500 - As-Built Model",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/application_4aa981e844.svg",
+    desc: "LOD 500 represents the highest level of detail, capturing actual installed elements and accurate as-built conditions. It includes precise geometry, product data, and operational information.",
+  },
+];
+
 const ANIMATION_DURATION = 0.2;
 const COLOR_DURATION = 0.05;
 const STAGGER_DELAY = 0.01;
@@ -65,46 +100,18 @@ export default function ProductSelection() {
   const [expandedId, setExpandedId] = useState<number>(1);
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.4 });
-
   const [animateCards, setAnimateCards] = useState(false);
 
-  // Trigger animation when section enters view
+  const params = useParams();
+  const { id } = params;
+
+  const productList = id === "3" ? productsBIM : products;
+
   useEffect(() => {
-    if (isInView) {
-      setAnimateCards(true);
-    } else {
-      setAnimateCards(false);
-    }
+    setAnimateCards(isInView);
   }, [isInView]);
 
-  const handleCardClick = (id: number) => {
-    setExpandedId(id);
-  };
-
-  console.log(expandedId);
-
-  // Calculate stacked positions
-  const getCardPosition = (index: number, id: number) => {
-    const basePosition = index * STACK_OFFSET;
-    if (expandedId === null) return basePosition;
-
-    const expandedIndex = products.findIndex((p) => p.id === expandedId);
-    if (id === expandedId) return basePosition; // Expanded card stays in its stack position
-
-    return basePosition;
-  };
-
-  const getCardTopPosition = (index: number) => {
-    return index * (CARD_HEIGHT + CARD_SPACING);
-  };
-
-  // Calculate total container height based on card count and spacing
-  const getTotalContainerHeight = () => {
-    return (
-      products.length * (CARD_HEIGHT + CARD_SPACING) +
-      products.length * STACK_OFFSET
-    );
-  };
+  const handleCardClick = (id: number) => setExpandedId(id);
 
   return (
     <div ref={sectionRef} className={styles.container}>
@@ -113,11 +120,8 @@ export default function ProductSelection() {
       <div className={styles.grid}>
         {/* Left Column - Stacked Cards */}
         <div className={styles.leftColumn}>
-          <div
-            className={styles.cardsStack}
-            //style={{ minHeight: `${getTotalContainerHeight()}px` }}
-          >
-            {products.map((product, index) => {
+          <div className={styles.cardsStack}>
+            {productList.map((product, index) => {
               const isExpanded = expandedId === product.id;
 
               return (
@@ -126,7 +130,6 @@ export default function ProductSelection() {
                   className={styles.card}
                   style={{
                     zIndex: isExpanded ? 50 : products.length - index,
-                    // height: `fit-content`,
                   }}
                   initial={{ opacity: 1, y: 50 }}
                   animate={{
@@ -156,21 +159,27 @@ export default function ProductSelection() {
                         ease: "easeOut",
                       }}
                     >
-                      <motion.span
-                        className={styles.icon}
-                        animate={{ opacity: isExpanded ? 0.9 : 0.7 }}
-                        transition={{
-                          duration: COLOR_DURATION,
-                          ease: "easeOut",
+                      {/* 🟢 Smooth invert transition */}
+                      <motion.img
+                        src={product.icon}
+                        alt={product.title}
+                        className={styles.iconImage}
+                        animate={{
+                          opacity: isExpanded ? 1 : 0.8,
+                          filter: isExpanded
+                            ? "invert(0) grayscale(0%)"
+                            : "invert(1) grayscale(100%)",
                         }}
-                      >
-                        {product.icon}
-                      </motion.span>
+                        transition={{
+                          duration: 0.4,
+                          ease: "easeInOut",
+                        }}
+                      />
                     </motion.div>
+
                     <motion.h3
                       className={styles.cardTitle}
                       animate={{
-                        //fontSize: isExpanded ? "1.7rem" : "1.2rem",
                         fontWeight: isExpanded ? "600" : "500",
                         color: isExpanded
                           ? TEXT_COLORS.expanded
@@ -184,48 +193,6 @@ export default function ProductSelection() {
                       {product.title}
                     </motion.h3>
                   </div>
-
-                  {/* {isExpanded && (
-                    <motion.button
-                      className={styles.learnMore}
-                      initial={{ opacity: 0, y: 15 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{
-                        duration: 0.5,
-                        delay: STAGGER_DELAY * 2,
-                        ease: "easeInOut",
-                      }}
-                      whileHover={{
-                        x: 4,
-                        transition: { duration: 0.3, ease: "easeOut" },
-                      }}
-                    >
-                      <svg
-                        className={styles.arrowIcon}
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M6 18L18 6"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M12 6H18V12"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      Learn more
-                    </motion.button>
-                  )} */}
                 </motion.div>
               );
             })}
@@ -239,10 +206,37 @@ export default function ProductSelection() {
           </div>
 
           <div className={styles.description}>
-            <p>{products[expandedId - 1].desc}</p>
+            <p>{productList[expandedId - 1].desc}</p>
           </div>
         </div>
       </div>
     </div>
   );
 }
+
+// const products: Product[] = [
+//   {
+//     id: 1,
+//     title: "Thermal Load Calculation",
+//     icon: "🔲",
+//     desc: "We specialize in delivering comprehensive KPO services tailored specifically for accurate and detailed thermal load calculations. Our expertise lies in providing precise assessments crucial for efficient HVAC system design and optimization.",
+//   },
+//   {
+//     id: 2,
+//     title: "Ductwork E.S.P calculation",
+//     icon: "↔️",
+//     desc: "We specialize in delivering comprehensive solutions for Air Conditioning (AC) ductwork, including accurate External Static Pressure (ESP) calculations. Understanding the significance of ESP in HVAC systems, we offer detailed services tailored to ensure optimal performance and efficiency.",
+//   },
+//   {
+//     id: 3,
+//     title: "Pump Head Calculation",
+//     icon: "🔇",
+//     desc: "We specialize in providing Knowledge Process Outsourcing (KPO) services focused on precise and comprehensive pump head calculation solutions. Our expertise lies in offering accurate and tailored calculations crucial for efficient pump system design and operation.",
+//   },
+//   {
+//     id: 4,
+//     title: "Tools Used",
+//     icon: "⚙️",
+//     desc: "The tools we use for our services",
+//   },
+// ];

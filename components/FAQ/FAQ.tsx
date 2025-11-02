@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, memo } from "react";
 import styles from "./FAQ.module.css";
 
 export interface FAQData {
@@ -10,7 +10,7 @@ interface FAQProps {
   data: FAQData;
 }
 
-const FAQ: React.FC<FAQProps> = ({ data }) => {
+const FAQ: React.FC<FAQProps> = memo(({ data }) => {
   const [show, setShow] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -41,6 +41,6 @@ const FAQ: React.FC<FAQProps> = ({ data }) => {
       </div>
     </div>
   );
-};
+});
 
 export default FAQ;

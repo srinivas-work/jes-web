@@ -26,6 +26,8 @@ const TestimonialCarouselReel: React.FC<CarouselReelProps> = ({
   const targetSpeedRef = useRef(rotationSpeed);
   const currentSpeedRef = useRef(rotationSpeed);
 
+  const modifiedTestimonials = Array(3).fill(testimonials).flat();
+
   // 👇 Add this variable — controls how close the carousel appears
   const cameraDepthOffset = -450; // increase this value (e.g. 800, 1000) to bring closer
 
@@ -84,7 +86,7 @@ const TestimonialCarouselReel: React.FC<CarouselReelProps> = ({
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            {testimonials?.map((item, index) => {
+            {testimonials.map((item, index) => {
               const angle = angleStep * index;
               return (
                 <div

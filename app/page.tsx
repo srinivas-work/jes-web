@@ -79,6 +79,7 @@ export default function Home() {
       <Canvas
         className={styles.canvas}
         style={{ width: "100vw", height: "100vh" }}
+        //frameloop="demand"
         //camera={{ fov: 30, near: 1, far: 10000, position: [0, 0, 6000] }}
         //camera={{ fov: 30, near: 1, far: 3000, position: [0, 0, 6000] }}
         // style={{ background: "linear-gradient(#1e4877, #4584b4)" }}

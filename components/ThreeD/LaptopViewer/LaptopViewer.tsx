@@ -305,8 +305,8 @@ export default function LaptopViewer({
   const textScale = useTransform(smoothProgress, [0, 1], [1, 0.9]);
   const textColor = useTransform(
     smoothProgress,
-    [0, 0.5, 1],
-    ["#f3f3f3", "#a91e2d", "#202020"]
+    [0, 1],
+    ["#a91e2d", "#202020"]
   );
   const textShadowColor = useTransform(
     smoothProgress,
@@ -318,7 +318,7 @@ export default function LaptopViewer({
     smoothProgress,
     [0, 0.5, 1],
     [
-      "linear-gradient(180deg, #a91e2d 0%, #ffffff 100%)", // Start: red → white gradient
+      "linear-gradient(180deg, #ffc9ceff 0%, #ffffff 100%)", // Start: red → white gradient
       "linear-gradient(180deg, #fefefe 0%, #ffffff 100%)", // Middle: almost white
       "linear-gradient(180deg, #f3f3f3 0%, #ffffff 0%)", // End: subtle grey fade
     ]
@@ -333,7 +333,7 @@ export default function LaptopViewer({
   const [t2Y, setT2Y] = useState(-4.5);
   const [tZ, setTZ] = useState(4);
   const [tScale, setTScale] = useState(1);
-  const [tColor, setTColor] = useState("#f3f3f3");
+  const [tColor, setTColor] = useState("#a91e2d");
   const [tShadowColor, setTShadowColor] = useState("#434343");
 
   // Subscribe to transform updates

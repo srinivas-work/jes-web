@@ -8,10 +8,10 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import styles from "./ServiceScrollShowcase.module.css";
 
-export default function ServiceScrollShowcase() {
+const ServiceScrollShowcase = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const router = useRouter();
   const refs = useRef<(HTMLDivElement | null)[]>([]);
@@ -170,4 +170,6 @@ export default function ServiceScrollShowcase() {
       </div>
     </div>
   );
-}
+};
+
+export default memo(ServiceScrollShowcase);
