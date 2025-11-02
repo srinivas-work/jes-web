@@ -9,26 +9,32 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 2rem;
   padding: 0 5dvw;
   backdrop-filter: blur(20px);
   /* background-color: rgba(255, 255, 255, 0.2); */
+}
 
-  /* Feathered transparency at the bottom */
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 1) 85%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: 100% 100%;
+@media screen and (min-width: 700px) {
+  .header {
+    gap: 0;
+    /* Feathered transparency at the bottom */
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 85%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
 
-  mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 1) 85%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  mask-repeat: no-repeat;
-  mask-size: 100% 100%;
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 85%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+  }
 }
 
 .logo {

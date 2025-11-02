@@ -20,35 +20,21 @@ const Footer: React.FC<HTMLProps<HTMLElement>> = ({ ...props }) => {
       <div className={styles.container}>
         {/* Up Section */}
         <div className={styles.up}>
-          <div className={styles.topSection}>
-            <Image
-              className={styles.logo}
-              src={"/img/jes_white.png"}
-              alt="JES Engineering"
-              sizes="100vw"
-              width={0}
-              height={0}
-            />
+          <Image
+            className={styles.logo}
+            src={"/img/jes_white.png"}
+            alt="JES Engineering"
+            sizes="100vw"
+            width={0}
+            height={0}
+          />
 
-            <div className={styles.navLinks}>
-              <Link href="/#services">Services</Link>
-              <Link href="/solutions">Solutions For</Link>
-              <Link href="/insights">Insight Hub</Link>
-              <Link href="/about">About Us</Link>
-              <Link href="/projects">Projects</Link>
-            </div>
-
-            <div className={styles.socials}>
-              <Link href="#" aria-label="LinkedIn">
-                <Linkedin size={22} />
-              </Link>
-              <Link href="#" aria-label="Facebook">
-                <Facebook size={22} />
-              </Link>
-              <Link href="#" aria-label="Twitter">
-                <Twitter size={22} />
-              </Link>
-            </div>
+          <div className={styles.navLinks}>
+            <Link href="/#services">Services</Link>
+            <Link href="/solutions">Solutions For</Link>
+            <Link href="/insights">Insight Hub</Link>
+            <Link href="/about">About Us</Link>
+            <Link href="/projects">Projects</Link>
           </div>
         </div>
 
@@ -70,7 +56,17 @@ const Footer: React.FC<HTMLProps<HTMLElement>> = ({ ...props }) => {
           </div>
         </div>
       </div>
-
+      <div className={styles.socials}>
+        <Link href="#" aria-label="LinkedIn">
+          <Linkedin size={22} />
+        </Link>
+        <Link href="#" aria-label="Facebook">
+          <Facebook size={22} />
+        </Link>
+        <Link href="#" aria-label="Twitter">
+          <Twitter size={22} />
+        </Link>
+      </div>
       <div className={styles.divider}></div>
 
       <div className={styles.bottomBar}>

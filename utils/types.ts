@@ -49,3 +49,8 @@ export type GenericType = {
   title: string;
   desc: string | string[];
 };
+
+export type HeaderMenuItemType = {
+  name: string;
+  path: string;
+};

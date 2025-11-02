@@ -19,7 +19,6 @@ const FAQ: React.FC<FAQProps> = ({ data }) => {
     if (el) {
       el.style.maxHeight = show ? `${el.scrollHeight}px` : "0px";
     }
-    console.log("hh");
   }, [show]);
 
   return (

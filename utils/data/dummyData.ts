@@ -1,4 +1,5 @@
 import {
+  HeaderMenuItemType,
   PortalCardType,
   ProjectItemType,
   SecurityItemType,
@@ -6,6 +7,15 @@ import {
   SolutionType,
   TestimonialCardProps,
 } from "../types";
+
+const defaultHeaderMenuItems: HeaderMenuItemType[] = [
+  { name: "Services", path: "/#services" },
+  { name: "Solutions For", path: "/solutions" },
+  { name: "Insight Hub", path: "/insights" },
+  { name: "About Us", path: "/about" },
+  { name: "Projects", path: "/projects" },
+  { name: "Contact Us", path: "/contact" },
+];
 
 const serviceSections: ServiceItemType[] = [
   {
@@ -139,7 +149,7 @@ const serviceSections: ServiceItemType[] = [
     image: "/img/services/bim-modelling.jpg",
 
     description:
-      "Our team of skilled engineers provide reliable take-off services for construction projects across all fields including Civil , MEP systems and general purpose buildings using advanced software like Bluebeam, Planswift, and OnScreen takeoff to meticulously measure quantities from floor plans which are compiled into comprehensive, accurately organized reports as per your requirements.",
+      "Building Information Modeling (BIM) employs different levels of detail (LOD) to categorize the extent of development and detailing within a BIM model. These levels help define the granularity and sophistication of information contained in the model at various stages of the project.",
     subServices: [
       {
         title: "LOD 100 - Conceptual Design",
@@ -256,7 +266,7 @@ const serviceSections: ServiceItemType[] = [
     image: "/img/services/ar-vr.jpg",
 
     description: [
-      "We provide state-of-the-art AR(Augmented Reality) & VR (Virtual Reality) 3D modeling at affordable prices that are custom-designed by professionally trained industry leading experts. These value added services present you with cutting-edge solutions for immersive digital experiences.",
+      "We provide state-of-the-art AR(Augmented Reality) & VR(Virtual Reality) 3D modeling at affordable prices that are custom-designed by professionally trained industry leading experts. These value added services present you with cutting-edge solutions for immersive digital experiences.",
       "We create interactive 3D models and environments that enhance value across various industries in the segment. AR & VR modeling enable users to engage with realistic, computer-generated simulations that augment the real world (AR) or create entirely virtual environments (VR) for an array of applications, transforming how we experience and interact with content and information.",
     ],
     subServices: [
@@ -521,7 +531,7 @@ const services = [
 
 const projectList: ProjectItemType[] = [
   {
-    name: "Nissan Stadium , Tennessee Titan Stadium",
+    name: "Nissan Stadium, Tennessee Titan Stadium",
     imgLink: "/img/projects/nissan-stadium.jpg",
     location: "Tennessee, USA",
     overview: [
@@ -571,7 +581,7 @@ const projectList: ProjectItemType[] = [
     thumbnailLink: "/img/projects/lusail-boulevard-thumb.jpg",
     location: "Lusail City, Qatar",
     overview: [
-      "Lusail Boulevard is what truly modern and bustling City lifestyle offers: amazing architecture, retail, entertainment, restaurants and cafes, pedestrian and cycling pathways, all within walking distance to the iconic Lusail stadium , yet another architectural wonder and a stunning spectacle to behold.",
+      "Lusail Boulevard is what truly modern and bustling City lifestyle offers: amazing architecture, retail, entertainment, restaurants and cafes, pedestrian and cycling pathways, all within walking distance to the iconic Lusail stadium, yet another architectural wonder and a stunning spectacle to behold.",
     ],
     client: "Qatari Diar & Lusail City",
     contractor: "Voltas Ltd.",
@@ -924,6 +934,7 @@ const faq = [
 ];
 
 export {
+  defaultHeaderMenuItems,
   faq,
   portalCardList,
   projectList,

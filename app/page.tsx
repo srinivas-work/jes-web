@@ -3,7 +3,6 @@
 import FAQ from "@/components/FAQ/FAQ";
 import JesLogoDetails from "@/components/JesLogoMove/JesLogoDetails/JesLogoDetails";
 import IndustryHighlights from "@/components/PageComponents/HomePage/IndustryHighlights/IndustryHighlights";
-import ProcessDetails from "@/components/PageComponents/HomePage/ProcessDetails/ProcessDetails";
 import ServiceScrollShowcase from "@/components/PageComponents/HomePage/ServiceScrollShowcase/ServiceScrollShowcase";
 import StatsBar from "@/components/PageComponents/HomePage/StatsBar/StatsBar";
 import TestimonialCarouselReel from "@/components/PageComponents/HomePage/TestimonialCarouselReel/TestimonialCarouselReel";
@@ -19,7 +18,6 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
-import ModelViewer from "@/components/ThreeD/ModelViewer";
 
 function Building() {
   const tex = useTexture("/img/modern-building.png");
@@ -48,9 +46,6 @@ export default function Home() {
 
   const isPhoneScreen = useIsPhoneScreen();
 
-  //return <BarsScene />;
-
-  //return <ModelViewer />;
   return (
     <div>
       {/* <Image
