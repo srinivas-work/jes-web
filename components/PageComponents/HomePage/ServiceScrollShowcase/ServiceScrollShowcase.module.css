@@ -1,4 +1,4 @@
-/* ScrollShowcase.module.css */
+/* ServiceScrollShowcase.module.css */
 .serviceScrollWrapper {
   margin: auto;
   display: flex;
@@ -96,20 +96,42 @@
   padding: 2rem;
 }
 
-.imageContainer {
+.serviceImageContainer {
   max-width: 800px;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   flex-direction: column;
   align-items: start;
 }
 
-.image {
+/* Image Stack Container */
+.imageStack {
+  position: relative;
   width: 100%;
-  height: auto;
-  max-height: 25rem;
-  border-radius: 2rem;
+  height: 400px; /* Adjust based on your needs */
+}
+
+.serviceImage {
+  position: absolute;
+  width: 300px; /* Square dimensions */
+  height: 300px;
+  border-radius: 1rem;
   object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Back image - positioned bottom left */
+.imageBack {
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Front image - positioned top right */
+.imageFront {
+  bottom: 0;
+  right: 2rem;
+  z-index: 2;
 }
 
 .description {
@@ -117,6 +139,7 @@
   margin-top: 1rem;
   line-height: 2rem;
   text-align: justify;
+  max-width: 600px;
 }
 
 .button {
@@ -126,10 +149,10 @@
 /* Invisible dynamic scroll triggers */
 .scrollSections {
   position: relative;
-  pointer-events: none; /* allow pointer events to pass through */
+  pointer-events: none;
 }
 
 .trigger {
   height: 100vh;
-  pointer-events: none; /* ensures triggers don't block clicks */
+  pointer-events: none;
 }

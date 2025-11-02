@@ -23,15 +23,15 @@ const ServiceScrollShowcase = () => {
     offset: ["start end", "end start"],
   });
 
-  const rotate = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 360]), // rotate 25° total
-    { stiffness: 60, damping: 18 }
-  );
+  const rotate = useSpring(useTransform(scrollYProgress, [0, 1], [0, 360]), {
+    stiffness: 60,
+    damping: 18,
+  });
 
-  const scale = useSpring(
-    useTransform(scrollYProgress, [0, 1], [1, 1.1]), // slight scale for depth
-    { stiffness: 70, damping: 22 }
-  );
+  const scale = useSpring(useTransform(scrollYProgress, [0, 1], [1, 1.1]), {
+    stiffness: 70,
+    damping: 22,
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,7 +39,6 @@ const ServiceScrollShowcase = () => {
         entries.forEach((entry) => {
           const index = refs.current.indexOf(entry.target as HTMLDivElement);
           if (entry.isIntersecting) {
-            //setPrevIndex(activeIndex);
             setActiveIndex(index);
           }
         });
@@ -107,12 +106,6 @@ const ServiceScrollShowcase = () => {
           <motion.div
             className={styles.bgImageContainer}
             style={{ rotate, scale }}
-            initial={
-              undefined
-              //{ opacity: 0.15, x: 150, y: 0, rotate: 0 }
-            }
-            whileInView={undefined}
-            viewport={{ once: false, amount: 0.2 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
           >
             <Image
@@ -125,21 +118,28 @@ const ServiceScrollShowcase = () => {
             />
           </motion.div>
 
-          {/* Foreground Content */}
+          {/* Foreground Content with Two Overlapping Images */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
-              className={styles.imageContainer}
+              className={styles.serviceImageContainer}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -30 }}
               transition={{ duration: 0.6, ease: "easeInOut" }}
             >
-              <img
-                src={serviceSections[activeIndex].image}
-                alt={serviceSections[activeIndex].title}
-                className={styles.image}
-              />
+              <div className={styles.imageStack}>
+                <img
+                  src={serviceSections[activeIndex].image}
+                  alt={serviceSections[activeIndex].title}
+                  className={`${styles.serviceImage} ${styles.imageBack}`}
+                />
+                <img
+                  src={serviceSections[activeIndex].image} // You might want to use a different image here
+                  alt={serviceSections[activeIndex].title}
+                  className={`${styles.serviceImage} ${styles.imageFront}`}
+                />
+              </div>
               <p className={styles.description}>
                 {Array.isArray(serviceSections[activeIndex].description)
                   ? serviceSections[activeIndex].description[0]

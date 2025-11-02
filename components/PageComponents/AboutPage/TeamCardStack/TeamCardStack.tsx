@@ -2,7 +2,6 @@ import { useState } from "react";
 import styles from "./TeamCardStack.module.css";
 
 interface TeamMember {
-  id: number;
   name: string;
   title: string;
   image: string;
@@ -38,7 +37,6 @@ export default function TeamCardStack() {
 
   const teamMembers: TeamMember[] = [
     {
-      id: 1,
       name: "Prad",
       title: "Chief Executive Officer",
       image:
@@ -46,36 +44,33 @@ export default function TeamCardStack() {
       color: "#e8b4bc",
     },
     {
-      id: 2,
       name: "Pradeep",
       title: "Chief Executive Officer",
       image:
         "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
       color: "#d4a1ab",
     },
+    // {
+    //   id: 3,
+    //   name: "Brad Tully",
+    //   title: "Engineering Partner",
+    //   image: "/img/team/brad_tully.png",
+    //   color: "#c08e9a",
+    // },
+
     {
-      id: 3,
-      name: "Brad Tully",
-      title: "Engineering Partner",
-      image: "/img/team/brad_tully.png",
-      color: "#c08e9a",
-    },
-    {
-      id: 4,
-      name: "Bruce Dorey",
-      title: "Partner & CEO",
-      image: "/img/team/bruce_dorey.jpg",
-      color: "#a91e2d",
-    },
-    {
-      id: 5,
       name: "Suchit Pradeep",
       title: "Project Manager & DOO",
       image: "/img/team/suchit_pradeep.jpg",
       color: "#c08e9a",
     },
     {
-      id: 6,
+      name: "Bruce Dorey",
+      title: "Partner & CEO",
+      image: "/img/team/bruce_dorey.jpg",
+      color: "#a91e2d",
+    },
+    {
       name: "Rajan",
       title: "Chief Executive Officer",
       image:
@@ -83,7 +78,6 @@ export default function TeamCardStack() {
       color: "#d4a1ab",
     },
     {
-      id: 7,
       name: "Rajan",
       title: "Chief Executive Officer",
       image:
@@ -112,7 +106,7 @@ export default function TeamCardStack() {
 
           return (
             <div
-              key={member.id}
+              key={index}
               className={`${styles.cardWrapper} ${
                 isCenter ? styles.centerCard : ""
               }`}
