@@ -4,7 +4,6 @@ import { defaultHeaderMenuItems } from "@/utils/data/dummyData";
 import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { User2 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import FloatingSideMenu from "../HeaderStaggeredMenu/FloatingSideMenu";
@@ -47,13 +46,10 @@ const Header = () => {
         color: isSolutions ? textColor : "inherit",
       }}
     >
-      <Image
+      <img
         className={styles.logo}
         src={"/img/logos/jes_logo_final.svg"}
         alt="JES Engineering"
-        sizes="100vw"
-        width={0}
-        height={0}
         onClick={() => goTo("/")}
       />
 

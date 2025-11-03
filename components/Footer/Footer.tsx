@@ -1,11 +1,9 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { Linkedin, Facebook, Twitter } from "lucide-react";
+import { Facebook, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
 import { HTMLProps, useRef } from "react";
 import styles from "./Footer.module.css";
-import Image from "next/image";
 
 const Footer: React.FC<HTMLProps<HTMLElement>> = ({ ...props }) => {
   const ref = useRef(null);
@@ -20,13 +18,10 @@ const Footer: React.FC<HTMLProps<HTMLElement>> = ({ ...props }) => {
       <div className={styles.container}>
         {/* Up Section */}
         <div className={styles.up}>
-          <Image
+          <img
             className={styles.logo}
             src={"/img/logos/jes_logo_final_white.svg"}
             alt="JES Engineering"
-            sizes="100vw"
-            width={0}
-            height={0}
           />
 
           <div className={styles.navLinks}>
