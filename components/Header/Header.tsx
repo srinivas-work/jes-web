@@ -49,7 +49,7 @@ const Header = () => {
     >
       <Image
         className={styles.logo}
-        src={"/img/logos/jes_logo_final.svg"}
+        src={"/img/logos/jes_logo.svg"}
         alt="JES Engineering"
         sizes="100vw"
         width={0}
