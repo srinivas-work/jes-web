@@ -5,13 +5,13 @@ const WhyChooseUs: React.FC<HTMLAttributes<HTMLDivElement>> = ({
   ...props
 }) => {
   return (
-    <section className={`${styles.aboutService} ${props.className}`} {...props}>
-      <figure className={styles.background}>
+    <div className={`${styles.aboutService} ${props.className}`} {...props}>
+      {/* <figure className={styles.background}>
         <img
           src="https://jerseyeng.com/_next/image?url=%2Fimages%2Fabout%2Faboutservice-banner.png&w=1920&q=90"
           alt="service background"
         />
-      </figure>
+      </figure> */}
 
       <div className={styles.container}>
         <div className={styles.header}>
@@ -80,7 +80,7 @@ const WhyChooseUs: React.FC<HTMLAttributes<HTMLDivElement>> = ({
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

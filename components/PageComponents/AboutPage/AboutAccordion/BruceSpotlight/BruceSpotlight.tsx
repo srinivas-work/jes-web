@@ -5,7 +5,7 @@ const BruceSpotlight: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   ...props
 }) => {
   return (
-    <section className={`${styles.bruceSpotlight} ${props.style}`} {...props}>
+    <div className={`${styles.bruceSpotlight} ${props.style}`} {...props}>
       <div className={styles.container}>
         <div className={styles.grid}>
           {/* Left Image Section */}
@@ -47,7 +47,7 @@ const BruceSpotlight: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

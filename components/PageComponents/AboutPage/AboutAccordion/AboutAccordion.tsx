@@ -96,30 +96,30 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
           </div> */}
           <div className={styles["about-services-section-description"]}>
             {sectionId === 0 && (
-              <div className={styles["founder-images-container"]}>
-                {Array.from({ length: 2 }).map((_, index) => {
-                  const name = index === 0 ? "John Doe" : "Foe Snow";
-                  return (
-                    <div
-                      className={styles["founder-image-item-container"]}
-                      key={index}
-                    >
-                      <div className={styles["founder-image-holder"]}>
-                        <Image
-                          src={`/img/founder-${index + 1}.jpg`}
-                          alt={name}
-                          fill
-                        />
-                      </div>
-                      <p>{name}</p>
-                    </div>
-                  );
-                })}
-              </div>
-              // <BruceSpotlight />
+              // <div className={styles["founder-images-container"]}>
+              //   {Array.from({ length: 2 }).map((_, index) => {
+              //     const name = index === 0 ? "John Doe" : "Foe Snow";
+              //     return (
+              //       <div
+              //         className={styles["founder-image-item-container"]}
+              //         key={index}
+              //       >
+              //         <div className={styles["founder-image-holder"]}>
+              //           <Image
+              //             src={`/img/founder-${index + 1}.jpg`}
+              //             alt={name}
+              //             fill
+              //           />
+              //         </div>
+              //         <p>{name}</p>
+              //       </div>
+              //     );
+              //   })}
+              // </div>
+              <BruceSpotlight />
             )}
 
-            {/* {sectionId === 1 && <WhyChooseUs />} */}
+            {sectionId === 1 && <WhyChooseUs />}
 
             {sectionId === aboutUsAccordionList.length - 1 ? (
               <ul>

@@ -1,5 +1,4 @@
 .bruceSpotlight {
-  background-color: var(--primary-dark, #1a1a1a) !important;
   width: 100%;
   height: 100dvh;
 }
@@ -11,7 +10,7 @@
   text-align: left;
   display: flex;
   align-items: center;
-  padding-top: 2rem;
+  padding-top: 5rem;
 }
 
 /* Grid Layout */
