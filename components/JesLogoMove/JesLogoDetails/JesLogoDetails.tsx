@@ -109,7 +109,7 @@ const JesLogo: React.FC<CrossIconProps> = ({
           </g>
         </g>
       </motion.g>
-      <g>
+      {/* <g>
         <motion.path
           style={path1Style}
           className="cls-3"
@@ -130,7 +130,7 @@ const JesLogo: React.FC<CrossIconProps> = ({
           className="cls-3"
           d="M135.812,116.704h86.018v12.871c0,12.871-4.306,25.288-12.146,35.168-7.841,9.834-18.717,16.496-30.772,18.763v22.569c17.674-2.266,33.944-11.194,45.773-25.108,11.874-14.004,18.536-32.041,18.672-50.713v-36.03h-107.545v22.479Z"
         />
-      </g>
+      </g> */}
     </svg>
   );
 };
@@ -212,7 +212,7 @@ export default function JesLogoDetails() {
   const logoPathX = useTransform(
     scrollYProgress,
     [0.4, 0.42],
-    ["300vw", "0vh"]
+    ["300vw", "-15vw"]
   );
   const smoothlogoPathX = useSpring(logoPathX, smoothness);
 
@@ -247,7 +247,7 @@ export default function JesLogoDetails() {
         >
           <JesLogo
             className={styles.jesLogo}
-            size="35rem"
+            size="45rem"
             logoStyle={{
               x: smoothlogoPathX,
             }}
