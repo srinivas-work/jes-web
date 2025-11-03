@@ -18,6 +18,8 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
+import BruceSpotlight from "@/components/PageComponents/AboutPage/AboutAccordion/BruceSpotlight/BruceSpotlight";
+import WhyChooseUs from "@/components/PageComponents/AboutPage/AboutAccordion/WhyChooseUs/WhyChooseUs";
 
 function Building() {
   const tex = useTexture("/img/modern-building.png");

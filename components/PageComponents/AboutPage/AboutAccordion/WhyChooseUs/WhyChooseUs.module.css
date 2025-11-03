@@ -1,0 +1,141 @@
+.aboutService {
+  position: relative;
+  overflow: hidden;
+  padding: 50px 0;
+  color: white;
+  width: 100%;
+  height: 100%;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.background img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.04);
+  transition: transform 0.1s cubic-bezier(0.3, 0.2, 0.2, 0.8), opacity 0.1s;
+}
+
+.background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #0b0b0b, rgba(0, 0, 0, 0));
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .header {
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+    gap: 5rem;
+  }
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.3;
+  max-width: 455px;
+  margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .title {
+    font-size: 52px;
+    line-height: 68px;
+    margin: 0;
+  }
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 545px;
+  margin: 0 auto 40px;
+}
+
+@media (min-width: 1024px) {
+  .description {
+    margin: 0 0 0 auto;
+    font-size: 18px;
+  }
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-top: 80px;
+}
+
+@media (min-width: 1024px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 100px;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  position: relative;
+}
+
+.icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.text {
+  margin-top: 20px;
+}
+
+@media (min-width: 1024px) {
+  .text {
+    margin-top: 38px;
+  }
+}
+
+.text h3 {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.3;
+  border-bottom: 1px solid #888;
+  padding-bottom: 20px;
+}
+
+.text p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #dbdbdb;
+  margin-top: 1.5rem;
+}

@@ -54,7 +54,7 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: true, // reduces CSS size
     scrollRestoration: true,
-    serverActions: true,
+    //serverActions: true,
   },
 
   compress: true, // enable gzip compression for faster responses

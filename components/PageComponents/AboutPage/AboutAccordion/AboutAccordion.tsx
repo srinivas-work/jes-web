@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import styles from "./AboutAccordion.module.css";
 import { aboutUsAccordionList } from "@/utils/data/dummyData";
+import BruceSpotlight from "./BruceSpotlight/BruceSpotlight";
+import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
 
 const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
   const [activeSectionId, setActiveSectionId] = useState<null | number>(null);
@@ -91,29 +93,35 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
               )
             )}
           </div>
-          <div className={styles["about-services-section-description"]}>
+          <div
+            className={styles["about-services-section-description"]}
+            style={sectionId !== 0 ? { width: "60vw" } : {}}
+          >
             {sectionId === 0 && (
-              <div className={styles["founder-images-container"]}>
-                {Array.from({ length: 2 }).map((_, index) => {
-                  const name = index === 0 ? "John Doe" : "Foe Snow";
-                  return (
-                    <div
-                      className={styles["founder-image-item-container"]}
-                      key={index}
-                    >
-                      <div className={styles["founder-image-holder"]}>
-                        <Image
-                          src={`/img/founder-${index + 1}.jpg`}
-                          alt={name}
-                          fill
-                        />
-                      </div>
-                      <p>{name}</p>
-                    </div>
-                  );
-                })}
-              </div>
+              // <div className={styles["founder-images-container"]}>
+              //   {Array.from({ length: 2 }).map((_, index) => {
+              //     const name = index === 0 ? "John Doe" : "Foe Snow";
+              //     return (
+              //       <div
+              //         className={styles["founder-image-item-container"]}
+              //         key={index}
+              //       >
+              //         <div className={styles["founder-image-holder"]}>
+              //           <Image
+              //             src={`/img/founder-${index + 1}.jpg`}
+              //             alt={name}
+              //             fill
+              //           />
+              //         </div>
+              //         <p>{name}</p>
+              //       </div>
+              //     );
+              //   })}
+              // </div>
+              <BruceSpotlight />
             )}
+
+            {/* {sectionId === 1 && <WhyChooseUs />} */}
 
             {sectionId === aboutUsAccordionList.length - 1 ? (
               <ul style={{ color: "var(--primary-dark)" }}>
