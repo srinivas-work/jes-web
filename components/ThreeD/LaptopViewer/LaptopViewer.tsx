@@ -44,16 +44,10 @@ function Loader() {
 
 function Model({ openProgress, hinge, imgLink }: ModelProps) {
   const group = useRef<THREE.Group>(null);
-  const screenRef = useRef<THREE.Mesh>(null);
   const { nodes } = useGLTF("/models/mac-draco.glb") as any;
-  const [hovered, setHovered] = useState(false);
   const imageTexture = useTexture(imgLink);
 
   imageTexture.flipY = false;
-
-  useEffect(() => {
-    document.body.style.cursor = hovered ? "pointer" : "auto";
-  }, [hovered]);
 
   useFrame((state) => {
     if (!group.current) return;
@@ -81,14 +75,6 @@ function Model({ openProgress, hinge, imgLink }: ModelProps) {
       open ? (-2 + Math.sin(t)) / 3 : -4.3,
       0.1
     );
-
-    // smooth scale animation for screen
-    if (screenRef.current) {
-      const targetScale = hovered ? 1.04 : 1;
-      const currentScale = screenRef.current.scale.x;
-      const newScale = THREE.MathUtils.lerp(currentScale, targetScale, 0.08);
-      screenRef.current.scale.setScalar(newScale);
-    }
   });
 
   // Custom materials
@@ -130,15 +116,7 @@ function Model({ openProgress, hinge, imgLink }: ModelProps) {
           <mesh material={matteMat} geometry={nodes["Cube008_1"].geometry} />
 
           {/* Screen mesh with hover + scale */}
-          <mesh
-            ref={screenRef}
-            geometry={nodes["Cube008_2"].geometry}
-            onPointerOver={(e) => {
-              e.stopPropagation();
-              setHovered(true);
-            }}
-            onPointerOut={(e) => setHovered(false)}
-          >
+          <mesh geometry={nodes["Cube008_2"].geometry}>
             <meshBasicMaterial map={imageTexture} toneMapped={false} />
           </mesh>
         </group>

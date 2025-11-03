@@ -39,7 +39,7 @@ const About = () => {
       <TeamCardStack />
       <CircularTimeline />
       <SecuritySection />
-      <OurClientsCarousel />
+      {/* <OurClientsCarousel /> */}
     </div>
   );
 };
