@@ -1,9 +1,11 @@
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import styles from "./WhyChooseUs.module.css";
 
-const WhyChooseUs = () => {
+const WhyChooseUs: React.FC<HTMLAttributes<HTMLDivElement>> = ({
+  ...props
+}) => {
   return (
-    <section className={styles.aboutService}>
+    <section className={`${styles.aboutService} ${props.className}`} {...props}>
       <figure className={styles.background}>
         <img
           src="https://jerseyeng.com/_next/image?url=%2Fimages%2Fabout%2Faboutservice-banner.png&w=1920&q=90"

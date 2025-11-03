@@ -685,45 +685,6 @@ const solutions: SolutionType[] = [
     image:
       "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80",
   },
-  {
-    title: "Infrastructure & Civil",
-    description:
-      "Deliver large-scale infrastructure projects with advanced civil BIM solutions. From highways to bridges, our models provide comprehensive insights for better planning and design.",
-    services: [
-      "Road & Highway Design",
-      "Bridge Engineering",
-      "Site Development",
-      "Grading & Drainage",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80",
-  },
-  {
-    title: "Facility Management",
-    description:
-      "Maximize operational efficiency with BIM-enabled facility management solutions. We create digital twins that provide real-time insights into building performance and maintenance.",
-    services: [
-      "Asset Information Modeling",
-      "Maintenance Planning",
-      "Space Management",
-      "Energy Analysis",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
-  },
-  {
-    title: "Construction Management",
-    description:
-      "Enhance project delivery with 4D and 5D BIM solutions. We provide construction sequencing, cost estimation, and progress tracking to keep your projects on time and within budget.",
-    services: [
-      "4D Scheduling",
-      "5D Cost Estimation",
-      "Progress Monitoring",
-      "Site Logistics Planning",
-    ],
-    image:
-      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1200&q=80",
-  },
 ];
 
 const energyModellingSolutions: SolutionType[] = [

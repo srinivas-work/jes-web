@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./AboutAccordion.module.css";
 import BruceSpotlight from "./BruceSpotlight/BruceSpotlight";
 import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
+import Image from "next/image";
 
 const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
   const [activeSectionId, setActiveSectionId] = useState<null | number>(null);
@@ -64,6 +65,7 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
   }, [activeSectionId]);
 
   const getDescription = (description: string, sectionId: number) => {
+    //Active Section Item
     if (activeSectionId !== null && sectionId === activeSectionId) {
       return (
         <div
@@ -92,38 +94,35 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
               )
             )}
           </div> */}
-          <div
-            className={styles["about-services-section-description"]}
-            style={sectionId !== 0 && sectionId !== 1 ? { width: "60vw" } : {}}
-          >
+          <div className={styles["about-services-section-description"]}>
             {sectionId === 0 && (
-              // <div className={styles["founder-images-container"]}>
-              //   {Array.from({ length: 2 }).map((_, index) => {
-              //     const name = index === 0 ? "John Doe" : "Foe Snow";
-              //     return (
-              //       <div
-              //         className={styles["founder-image-item-container"]}
-              //         key={index}
-              //       >
-              //         <div className={styles["founder-image-holder"]}>
-              //           <Image
-              //             src={`/img/founder-${index + 1}.jpg`}
-              //             alt={name}
-              //             fill
-              //           />
-              //         </div>
-              //         <p>{name}</p>
-              //       </div>
-              //     );
-              //   })}
-              // </div>
-              <BruceSpotlight />
+              <div className={styles["founder-images-container"]}>
+                {Array.from({ length: 2 }).map((_, index) => {
+                  const name = index === 0 ? "John Doe" : "Foe Snow";
+                  return (
+                    <div
+                      className={styles["founder-image-item-container"]}
+                      key={index}
+                    >
+                      <div className={styles["founder-image-holder"]}>
+                        <Image
+                          src={`/img/founder-${index + 1}.jpg`}
+                          alt={name}
+                          fill
+                        />
+                      </div>
+                      <p>{name}</p>
+                    </div>
+                  );
+                })}
+              </div>
+              // <BruceSpotlight />
             )}
 
-            {sectionId === 1 && <WhyChooseUs />}
+            {/* {sectionId === 1 && <WhyChooseUs />} */}
 
             {sectionId === aboutUsAccordionList.length - 1 ? (
-              <ul style={{ color: "var(--primary-dark)" }}>
+              <ul>
                 <li>Precision First</li>
                 <li>Speed with Integrity</li>
                 <li>Built for Partners</li>
@@ -133,7 +132,7 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
                 <li>Clariy in Communication</li>
               </ul>
             ) : (
-              <p style={{ color: "var(--primary-dark)" }}>{description}</p>
+              <p>{description}</p>
             )}
           </div>
         </div>
@@ -144,8 +143,15 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
   };
 
   const getDescriptionStyle = (sectionId: number) => {
+    const backgroundColor =
+      sectionId % 2 == 0 ? "var(--primary-dark)" : "var(--primary-red)";
+
     if (activeSectionId !== null && sectionId === activeSectionId) {
-      return { padding: isPhoneScreen ? "12rem" : "5rem" };
+      return {
+        padding: isPhoneScreen ? "12rem" : "5rem",
+        backgroundColor,
+        color: "white",
+      };
     } else {
       return {};
     }
@@ -154,6 +160,7 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
   const getSectionStyle = (sectionId: number, zIndex: number) => {
     if (activeSectionId !== null && sectionId === activeSectionId) {
       return {
+        width: "100%",
         color: "white",
         backgroundColor: "var(--primary-red)",
         flex: 1,
@@ -216,3 +223,46 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
 };
 
 export default AboutAccordion;
+
+{
+  /* <BruceSpotlight
+              style={
+                sectionId === 0
+                  ? { opacity: 1, zIndex: 2 }
+                  : { opacity: 0, zIndex: -1 }
+              }
+            />
+
+            <WhyChooseUs
+              style={
+                sectionId === 1
+                  ? { opacity: 1, zIndex: 1 }
+                  : { opacity: 0, zIndex: -1 }
+              }
+            />
+            <ul
+              style={
+                sectionId === aboutUsAccordionList.length - 1
+                  ? { opacity: 1, zIndex: 1 }
+                  : { opacity: 0, zIndex: -1 }
+              }
+            >
+              <li>Precision First</li>
+              <li>Speed with Integrity</li>
+              <li>Built for Partners</li>
+              <li>Own the Outcome</li>
+              <li>Scalable by Design</li>
+              <li>Innovate with Purpose</li>
+              <li>Clariy in Communication</li>
+            </ul>
+
+            <p
+              style={
+                sectionId > 1 && sectionId < aboutUsAccordionList.length - 1
+                  ? { opacity: 1, zIndex: 1 }
+                  : { opacity: 0, zIndex: -1 }
+              }
+            >
+              {description}
+            </p> */
+}

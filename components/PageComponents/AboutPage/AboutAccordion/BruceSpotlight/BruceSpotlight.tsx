@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "./BruceSpotlight.module.css";
 
-const BruceSpotlight = () => {
+const BruceSpotlight: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
+  ...props
+}) => {
   return (
-    <section className={styles.bruceSpotlight}>
+    <section className={`${styles.bruceSpotlight} ${props.style}`} {...props}>
       <div className={styles.container}>
         <div className={styles.grid}>
           {/* Left Image Section */}
