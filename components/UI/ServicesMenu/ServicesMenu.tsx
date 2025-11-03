@@ -2,13 +2,98 @@ import React, { useRef } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { useRouter } from "next/navigation";
 import styles from "./ServicesMenu.module.css";
-import { services } from "@/utils/data/dummyData";
 
 interface ServicesMenuProps {
   isVisible: boolean;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
 }
+
+const services = [
+  {
+    category: "BIM & MEP DRAFTING",
+    items: [
+      {
+        name: "BIM Modeling",
+        //href: "/services/bim-modelling",
+        href: "/services/4",
+        icon: "🏗️",
+      },
+      {
+        name: "Revit Models Component and Assembly",
+        //href: "/services/mep-drafting-services",
+        href: "/services/3",
+        icon: "⚙️",
+      },
+      {
+        name: "AR & VR Modeling",
+        //href: "/services/ar-vr-modelling",
+        href: "/services/7",
+        icon: "🔌",
+      },
+    ],
+  },
+  {
+    category: "Application Engineering",
+    items: [
+      {
+        name: "Quantity Take Off",
+        //href: "/services/quantity-take-off",
+        href: "/services/1",
+        icon: "💡",
+      },
+      {
+        name: "Spec Review",
+        //href: "/services/thermal-load-calculation",
+        href: "/services/0",
+        icon: "📊",
+      },
+      {
+        name: "Equipment Selection",
+        //href: "/services/ductwork-esp-calculation",
+        href: "/services/2",
+        icon: "✅",
+      },
+      {
+        name: "Duct & Pipe Layouts",
+        //href: "/services/pump-head-calculation",
+        href: "/services/5",
+        icon: "🛡️",
+      },
+      {
+        name: "Energy Modeling",
+        //href: "/services/equipment-selection",
+        href: "/services/6",
+        icon: "🛡️",
+      },
+    ],
+  },
+  //   {
+  //     category: "Solutions",
+  //     items: [
+  //       {
+  //         name: "Maintenance Services",
+  //         href: "/services/maintenance",
+  //         icon: "🔧",
+  //       },
+  //       {
+  //         name: "Training & Support",
+  //         href: "/services/training-support",
+  //         icon: "👨‍🏫",
+  //       },
+  //       {
+  //         name: "Custom Solutions",
+  //         href: "/services/custom-solutions",
+  //         icon: "🎯",
+  //       },
+  //       {
+  //         name: "Emergency Response",
+  //         href: "/services/emergency-response",
+  //         icon: "🚨",
+  //       },
+  //     ],
+  //   },
+];
 
 const ServicesMenu: React.FC<ServicesMenuProps> = ({
   isVisible,

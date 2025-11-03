@@ -21,6 +21,8 @@ const serviceSections: ServiceItemType[] = [
   {
     title: "Quantity Take Off",
     image: "/img/services/qto.png",
+    img1: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FGroup_21_553dee3fe0.jpg&w=640&q=90",
+    img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FRectangle_35_9b6cebc560.jpg&w=640&q=90",
     description:
       "Our team of skilled engineers provide reliable take-off services for construction projects across all fields including Civil, MEP systems and general purpose buildings using advanced software like Bluebeam, Planswift, and OnScreen takeoff to meticulously measure quantities from floor plans which are compiled into comprehensive, accurately organized reports as per your requirements.",
     subServices: [
@@ -94,6 +96,8 @@ const serviceSections: ServiceItemType[] = [
   {
     title: "Equipment / Product Selection",
     image: "/img/services/equipment-selection.png",
+    img1: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fd8a7a68b9d4d121713a62556451f0c4d9ca6d9ec_1438x985_90082729a1.webp&w=640&q=90",
+    img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FRectangle_29_f4d8f843e7.jpg&w=640&q=90",
     description: [
       "Jersey Engineering Solutions provides equipment selection services for the air-side and chilled water refrigerant controls. We support in choosing the most suitable and efficient mechanical and electrical equipment for your construction projects. Equipment selected to meet local building codes and safety regulations ensures project compliance.",
       "Equipment selection services are therefore very useful for optimizing the performance, efficiency, and cost-effectiveness of MEP systems in construction projects, while also promoting sustainability and compliance with industry standards.",
@@ -147,7 +151,8 @@ const serviceSections: ServiceItemType[] = [
   {
     title: "BIM Modelling",
     image: "/img/services/bim-modelling.jpg",
-
+    img1: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FRectangle_52_2196634e4a.jpg&w=640&q=90",
+    img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FRectangle_52_2196634e4a.jpg&w=640&q=90",
     description:
       "Building Information Modeling (BIM) employs different levels of detail (LOD) to categorize the extent of development and detailing within a BIM model. These levels help define the granularity and sophistication of information contained in the model at various stages of the project.",
     subServices: [
@@ -196,7 +201,6 @@ const serviceSections: ServiceItemType[] = [
   {
     title: "Revit Models: Component & Assembly",
     image: "/img/services/revit-models.png",
-
     description: [
       "At Jersey Engineering Solutions (JES), our Revit-based Component and Assembly Modelling services bridge the gap between design intent and real-world construction. By integrating data-rich, parametric models from multiple manufacturers into a unified BIM environment, we deliver accurate, coordination-ready models that streamline project workflows.",
       "Each model, whether an individual component or a complete assembly—is meticulously developed to represent true-to-life geometry, performance characteristics, and connectivity details. This ensures seamless integration across mechanical, electrical, and architectural disciplines.",
@@ -264,7 +268,8 @@ const serviceSections: ServiceItemType[] = [
   {
     title: "AR/VR Modelling",
     image: "/img/services/ar-vr.jpg",
-
+    img1: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FFrame_627513_edf1367c2e.png&w=640&q=90",
+    img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FRectangle_21_87e7dacf53.jpg&w=640&q=90",
     description: [
       "We provide state-of-the-art AR(Augmented Reality) & VR(Virtual Reality) 3D modeling at affordable prices that are custom-designed by professionally trained industry leading experts. These value added services present you with cutting-edge solutions for immersive digital experiences.",
       "We create interactive 3D models and environments that enhance value across various industries in the segment. AR & VR modeling enable users to engage with realistic, computer-generated simulations that augment the real world (AR) or create entirely virtual environments (VR) for an array of applications, transforming how we experience and interact with content and information.",
@@ -333,7 +338,8 @@ const serviceSections: ServiceItemType[] = [
   {
     title: "MEP Drafting",
     image: "/img/services/mep-drafting.png",
-
+    img1: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fmep_drafting_services_intro_b23052ada0.jpg&w=640&q=90",
+    img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FSpace_Management_Software_8c243ef07d.webp&w=640&q=90",
     description: [
       "We specialize in providing high-quality Mechanical, Electrical, and Plumbing (MEP) AutoCAD drafting services that cater to the diverse needs of the construction and engineering industry. With a dedicated focus on precision, innovation, and efficiency, we serve as your trusted partner in delivering impeccable MEP drafting solutions.",
       "Our drafting services encompass meticulous creation of Mechanical Drawings, Electrical Layouts, and Plumbing Designs. Precision is our hallmark, ensuring that every detail is accurately represented. With expertise in CAD technology, we deliver comprehensive, industry-compliant drafts, facilitating seamless integration for successful implementation in diverse construction and engineering projects.",
@@ -403,7 +409,8 @@ const serviceSections: ServiceItemType[] = [
   {
     title: "Energy Modelling / Building Engineering Services",
     image: "/img/services/energy-modelling.png",
-
+    img1: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FThermal_load_calc_2_a858c198db.jpg&w=384&q=90",
+    img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2F3d_rendering_ventilation_system_5_b1bd869dfe.jpg&w=384&q=90",
     description: [
       "We provide advanced Energy Modelling and Building Engineering services to optimize the efficiency, sustainability, and performance of building systems. Our analyses are rooted in precise engineering calculations and simulation tools to ensure comfort, reliability, and energy savings across MEP systems.",
       "Through data-driven design and simulation, we help engineers and project stakeholders make informed decisions that reduce operational costs and environmental impact while meeting international building performance standards.",
@@ -441,92 +448,6 @@ const serviceSections: ServiceItemType[] = [
       },
     ],
   },
-];
-
-const services = [
-  {
-    category: "BIM & MEP DRAFTING",
-    items: [
-      {
-        name: "BIM Modeling",
-        //href: "/services/bim-modelling",
-        href: "/services/4",
-        icon: "🏗️",
-      },
-      {
-        name: "Revit Models Component and Assembly",
-        //href: "/services/mep-drafting-services",
-        href: "/services/3",
-        icon: "⚙️",
-      },
-      {
-        name: "AR & VR Modeling",
-        //href: "/services/ar-vr-modelling",
-        href: "/services/7",
-        icon: "🔌",
-      },
-    ],
-  },
-  {
-    category: "Application Engineering",
-    items: [
-      {
-        name: "Quantity Take Off",
-        //href: "/services/quantity-take-off",
-        href: "/services/1",
-        icon: "💡",
-      },
-      {
-        name: "Spec Review",
-        //href: "/services/thermal-load-calculation",
-        href: "/services/0",
-        icon: "📊",
-      },
-      {
-        name: "Equipment Selection",
-        //href: "/services/ductwork-esp-calculation",
-        href: "/services/2",
-        icon: "✅",
-      },
-      {
-        name: "Duct & Pipe Layouts",
-        //href: "/services/pump-head-calculation",
-        href: "/services/5",
-        icon: "🛡️",
-      },
-      {
-        name: "Energy Modeling",
-        //href: "/services/equipment-selection",
-        href: "/services/6",
-        icon: "🛡️",
-      },
-    ],
-  },
-  //   {
-  //     category: "Solutions",
-  //     items: [
-  //       {
-  //         name: "Maintenance Services",
-  //         href: "/services/maintenance",
-  //         icon: "🔧",
-  //       },
-  //       {
-  //         name: "Training & Support",
-  //         href: "/services/training-support",
-  //         icon: "👨‍🏫",
-  //       },
-  //       {
-  //         name: "Custom Solutions",
-  //         href: "/services/custom-solutions",
-  //         icon: "🎯",
-  //       },
-  //       {
-  //         name: "Emergency Response",
-  //         href: "/services/emergency-response",
-  //         icon: "🚨",
-  //       },
-  //     ],
-  //   },
 ];
 
 const projectList: ProjectItemType[] = [
@@ -966,7 +887,6 @@ export {
   faq,
   portalCardList,
   projectList,
-  services,
   serviceSections,
   testimonials,
   securityList,

@@ -1,6 +1,8 @@
 export type ServiceItemType = {
   title: string;
   image: string;
+  img1?: string;
+  img2?: string;
   description: string | string[];
   subServices?: GenericType[];
   pdfLink?: string;

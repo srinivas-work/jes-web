@@ -109,12 +109,13 @@
   position: relative;
   width: 100%;
   height: 400px; /* Adjust based on your needs */
+  margin-bottom: 1rem;
 }
 
 .serviceImage {
   position: absolute;
-  width: 300px; /* Square dimensions */
-  height: 300px;
+  width: 350px; /* Square dimensions */
+  height: 350px;
   border-radius: 1rem;
   object-fit: cover;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -130,7 +131,7 @@
 /* Front image - positioned top right */
 .imageFront {
   bottom: 0;
-  right: 2rem;
+  right: 0rem;
   z-index: 2;
 }
 

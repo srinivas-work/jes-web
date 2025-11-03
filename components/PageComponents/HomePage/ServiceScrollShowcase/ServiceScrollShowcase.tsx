@@ -130,14 +130,20 @@ const ServiceScrollShowcase = () => {
             >
               <div className={styles.imageStack}>
                 <img
-                  src={serviceSections[activeIndex].image}
-                  alt={serviceSections[activeIndex].title}
-                  className={`${styles.serviceImage} ${styles.imageBack}`}
-                />
-                <img
-                  src={serviceSections[activeIndex].image} // You might want to use a different image here
+                  src={
+                    serviceSections[activeIndex].img1 ??
+                    serviceSections[activeIndex].image
+                  } // You might want to use a different image here
                   alt={serviceSections[activeIndex].title}
                   className={`${styles.serviceImage} ${styles.imageFront}`}
+                />
+                <img
+                  src={
+                    serviceSections[activeIndex].img2 ??
+                    serviceSections[activeIndex].image
+                  }
+                  alt={serviceSections[activeIndex].title}
+                  className={`${styles.serviceImage} ${styles.imageBack}`}
                 />
               </div>
               <p className={styles.description}>
