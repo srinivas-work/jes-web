@@ -36,20 +36,6 @@ export default function TeamCardStack() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const teamMembers: TeamMember[] = [
-    {
-      name: "Prad",
-      title: "Chief Executive Officer",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80",
-      color: "#e8b4bc",
-    },
-    {
-      name: "Pradeep",
-      title: "Chief Executive Officer",
-      image:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
-      color: "#d4a1ab",
-    },
     // {
     //   id: 3,
     //   name: "Brad Tully",
@@ -59,10 +45,17 @@ export default function TeamCardStack() {
     // },
 
     {
-      name: "Suchit Pradeep",
-      title: "Project Manager & DOO",
-      image: "/img/team/suchit_pradeep.jpg",
-      color: "#c08e9a",
+      name: "Daryl Showalter",
+      title: "Sr. Technical Advisor",
+      image: "/img/team/daryl_showalter.jpg",
+      color: "#e8b4bc",
+    },
+
+    {
+      name: "John Weykar",
+      title: "Director of Sales",
+      image: "/img/team/john_weykar.jpg",
+      color: "#d4a1ab",
     },
     {
       name: "Bruce Dorey",
@@ -71,18 +64,10 @@ export default function TeamCardStack() {
       color: "#a91e2d",
     },
     {
-      name: "Rajan",
-      title: "Chief Executive Officer",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
-      color: "#d4a1ab",
-    },
-    {
-      name: "Rajan",
-      title: "Chief Executive Officer",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80",
-      color: "#e8b4bc",
+      name: "Suchit Pradeep",
+      title: "Director of Engineering",
+      image: "/img/team/suchit_pradeep.jpg",
+      color: "#c08e9a",
     },
   ];
 

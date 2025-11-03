@@ -52,7 +52,7 @@
 
 /* Alternate up/down layout */
 .card:nth-child(odd) {
-  margin-top: auto;
+  margin-bottom: auto;
   color: var(--primary-dark);
   /* border-top: 10px solid var(--primary-dark);
   border-left: 2px solid var(--primary-dark); */
@@ -71,7 +71,7 @@
 .card:nth-child(odd)::after {
   content: "";
   position: absolute;
-  top: -10px;
+  bottom: -10px;
   left: 1rem;
   width: 90%;
   height: 10px;
@@ -80,7 +80,7 @@
 }
 
 .card:nth-child(even) {
-  margin-bottom: auto;
+  margin-top: auto;
   color: var(--primary-red);
   /* border-bottom: 10px solid var(--primary-red);
   border-left: 2px solid var(--primary-red); */

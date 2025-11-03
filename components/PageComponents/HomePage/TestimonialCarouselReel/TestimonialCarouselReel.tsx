@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
-import styles from "./TestimonialCarouselReel.module.css";
 import { TestimonialCardProps } from "@/utils/types";
-import TestimonialCard from "../../../UI/TestimonialCard/TestimonialCard";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+import TestimonialCard from "../../../UI/TestimonialCard/TestimonialCard";
+import styles from "./TestimonialCarouselReel.module.css";
 
 interface CarouselReelProps {
   autoRotate?: boolean;
@@ -25,8 +25,6 @@ const TestimonialCarouselReel: React.FC<CarouselReelProps> = ({
   const [isPaused, setIsPaused] = useState(false);
   const targetSpeedRef = useRef(rotationSpeed);
   const currentSpeedRef = useRef(rotationSpeed);
-
-  const modifiedTestimonials = Array(3).fill(testimonials).flat();
 
   // 👇 Add this variable — controls how close the carousel appears
   const cameraDepthOffset = -450; // increase this value (e.g. 800, 1000) to bring closer

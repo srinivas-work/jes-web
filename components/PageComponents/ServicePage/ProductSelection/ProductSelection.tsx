@@ -44,6 +44,39 @@ const products: Product[] = [
   },
 ];
 
+const whyQTO: Product[] = [
+  {
+    id: 1,
+    title: "Engineering-Backed Accuracy",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/bmi_73aa8947cb.svg",
+    desc: "As an engineering firm, we don't just measure; we understand the why behind the designs, leading to more intelligent and accurate takeoffs.",
+  },
+  {
+    id: 2,
+    title: "Advanced Technology",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/application_4aa981e844.svg",
+    desc: "We invest in the latest digital takeoff software to deliver speed and precision that manual methods can't match.",
+  },
+  {
+    id: 3,
+    title: "Speed & Scalability",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/contract_ac062687fa.svg",
+    desc: "Need a takeoff in 24 hours? We have the team and technology to meet tight deadlines without compromising quality.",
+  },
+  {
+    id: 4,
+    title: "Cost-Effective Solution",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/bmi_73aa8947cb.svg",
+    desc: "Avoid the overhead of a full-time, in-house estimator. Our services provide top-tier expertise on a project-by-project basis.",
+  },
+  {
+    id: 5,
+    title: "Collaborative Partnership",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/application_4aa981e844.svg",
+    desc: "We see ourselves as an extension of your team, dedicated to your success. We're always available to clarify our reports and discuss the project.",
+  },
+];
+
 const productsBIM: Product[] = [
   {
     id: 1,
@@ -96,7 +129,9 @@ const ICON_BG_COLORS = {
   expanded: "rgba(255, 255, 255, 0.15)",
 };
 
-export default function ProductSelection() {
+const ProductSelection: React.FC<{ heading?: string }> = ({
+  heading = "Key Deliverables",
+}) => {
   const [expandedId, setExpandedId] = useState<number>(1);
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.4 });
@@ -105,7 +140,13 @@ export default function ProductSelection() {
   const params = useParams();
   const { id } = params;
 
-  const productList = id === "3" ? productsBIM : products;
+  let productList = products;
+
+  if (Number(id) === 0) {
+    productList = whyQTO;
+  } else if (Number(id) === 3) {
+    productList = productsBIM;
+  }
 
   useEffect(() => {
     setAnimateCards(isInView);
@@ -115,7 +156,7 @@ export default function ProductSelection() {
 
   return (
     <div ref={sectionRef} className={styles.container}>
-      <h2 className={styles.title}>Key Deliverables</h2>
+      <h2 className={styles.title}>{heading}</h2>
 
       <div className={styles.grid}>
         {/* Left Column - Stacked Cards */}
@@ -159,7 +200,7 @@ export default function ProductSelection() {
                         ease: "easeOut",
                       }}
                     >
-                      {/* 🟢 Smooth invert transition */}
+                      {/* Smooth invert transition */}
                       <motion.img
                         src={product.icon}
                         alt={product.title}
@@ -202,7 +243,12 @@ export default function ProductSelection() {
         {/* Right Column - Product Info */}
         <div className={styles.rightColumn}>
           <div className={styles.imageGrid}>
-            <Carousel />
+            <Carousel
+              selectedId={expandedId}
+              onCarouselChange={(carouselId) => {
+                setExpandedId(carouselId + 1);
+              }}
+            />
           </div>
 
           <div className={styles.description}>
@@ -212,7 +258,9 @@ export default function ProductSelection() {
       </div>
     </div>
   );
-}
+};
+
+export default ProductSelection;
 
 // const products: Product[] = [
 //   {

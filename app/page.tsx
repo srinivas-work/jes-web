@@ -20,6 +20,7 @@ import * as THREE from "three";
 import styles from "./page.module.css";
 import BruceSpotlight from "@/components/PageComponents/AboutPage/AboutAccordion/BruceSpotlight/BruceSpotlight";
 import WhyChooseUs from "@/components/PageComponents/AboutPage/AboutAccordion/WhyChooseUs/WhyChooseUs";
+import ProcessDetails from "@/components/PageComponents/HomePage/ProcessDetails/ProcessDetails";
 
 function Building() {
   const tex = useTexture("/img/modern-building.png");
@@ -47,6 +48,8 @@ export default function Home() {
   useLenis();
 
   const isPhoneScreen = useIsPhoneScreen();
+
+  console.log("Home");
 
   return (
     <div>

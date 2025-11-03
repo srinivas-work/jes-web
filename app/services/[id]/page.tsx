@@ -20,68 +20,7 @@ import styles from "./ServiceItem.module.css";
 import LaptopViewer from "@/components/ThreeD/LaptopViewer/LaptopViewer";
 import { splitText } from "@/utils/helperFunctions";
 
-const VideoSection: React.FC<{ id: number }> = ({ id }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  // As user scrolls, video squishes and moves upward
-  const scaleY = useTransform(scrollYProgress, [0, 0.6], [1, 0.8]);
-  // const translateY = useTransform(scrollYProgress, [0.4, 1], [0, -150]);
-  const translateY = useTransform(scrollYProgress, [0, 0.6], [0, -150]);
-
-  // Text fades and moves upward smoothly
-  // const textOpacity = useTransform(scrollYProgress, [0.25, 0.7], [0, 1]);
-  // const textY = useTransform(scrollYProgress, [0.3, 0.8], [50, -280]);
-  const textY = useTransform(scrollYProgress, [0, 0.6], [50, -280]);
-  const textScaleY = useTransform(scrollYProgress, [0, 0.6], [0, 1]);
-
-  const getDescription = () => {
-    if (Array.isArray(serviceSections[id].description)) {
-      return (
-        <>
-          {serviceSections[id].description.map((item, index) => (
-            <p key={index}>{item}</p>
-          ))}
-        </>
-      );
-    }
-
-    return <p>{serviceSections[id].description}</p>;
-  };
-
-  return (
-    <div ref={containerRef} className={styles.outerContainer}>
-      <div className={styles.stickyContainer}>
-        <motion.div
-          style={{
-            scaleY,
-            y: translateY,
-            transformOrigin: "top",
-          }}
-          transition={{ type: "spring", stiffness: 80, damping: 20 }}
-        >
-          <VideoPlayer />
-        </motion.div>
-
-        <motion.div
-          className={styles.serviceDetails}
-          style={{
-            //opacity: textOpacity,
-            y: textY,
-            scaleY: textScaleY,
-            transformOrigin: "top",
-          }}
-        >
-          {getDescription()}
-        </motion.div>
-      </div>
-    </div>
-  );
-};
+//
 
 const ServiceItem = () => {
   useLenis();
@@ -127,7 +66,49 @@ const ServiceItem = () => {
       />
       {/* <VideoSection id={Number(id)} /> */}
       <ServiceSteps subServiceItem={selectedService.subServices} />
-      <ProductSelection />
+      <ProductSelection
+        heading={
+          Number(id) === 0 ? "Why Choose JES for Your QTO?" : "Key Deliverables"
+        }
+      />
+      {selectedService.toolsUsed && (
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "3rem",
+            marginTop: "-2rem",
+            marginBottom: "4rem",
+          }}
+        >
+          <h2>Tools Used</h2>
+          <div
+            style={{
+              width: "80%",
+              display: "flex",
+              justifyContent: "space-evenly",
+            }}
+          >
+            {selectedService.toolsUsed.map((t, i) => (
+              <div
+                key={i}
+                style={{
+                  maxWidth: "15rem",
+                  backgroundColor: "#efeeee",
+                  padding: "1rem 2rem",
+                  display: "flex",
+                  alignItems: "center",
+                  borderRadius: "2rem",
+                }}
+              >
+                <img src={t} style={{ width: "100%", objectFit: "contain" }} />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
       {id === "7" && (
         <section className={styles.extrasSection}>
           {energyModellingSolutions.map((solution, index) => (
@@ -210,3 +191,66 @@ const ServiceItem = () => {
 };
 
 export default ServiceItem;
+
+//const VideoSection: React.FC<{ id: number }> = ({ id }) => {
+//   const containerRef = useRef<HTMLDivElement>(null);
+
+//   const { scrollYProgress } = useScroll({
+//     target: containerRef,
+//     offset: ["start start", "end end"],
+//   });
+
+//   // As user scrolls, video squishes and moves upward
+//   const scaleY = useTransform(scrollYProgress, [0, 0.6], [1, 0.8]);
+//   // const translateY = useTransform(scrollYProgress, [0.4, 1], [0, -150]);
+//   const translateY = useTransform(scrollYProgress, [0, 0.6], [0, -150]);
+
+//   // Text fades and moves upward smoothly
+//   // const textOpacity = useTransform(scrollYProgress, [0.25, 0.7], [0, 1]);
+//   // const textY = useTransform(scrollYProgress, [0.3, 0.8], [50, -280]);
+//   const textY = useTransform(scrollYProgress, [0, 0.6], [50, -280]);
+//   const textScaleY = useTransform(scrollYProgress, [0, 0.6], [0, 1]);
+
+//   const getDescription = () => {
+//     if (Array.isArray(serviceSections[id].description)) {
+//       return (
+//         <>
+//           {serviceSections[id].description.map((item, index) => (
+//             <p key={index}>{item}</p>
+//           ))}
+//         </>
+//       );
+//     }
+
+//     return <p>{serviceSections[id].description}</p>;
+//   };
+
+//   return (
+//     <div ref={containerRef} className={styles.outerContainer}>
+//       <div className={styles.stickyContainer}>
+//         <motion.div
+//           style={{
+//             scaleY,
+//             y: translateY,
+//             transformOrigin: "top",
+//           }}
+//           transition={{ type: "spring", stiffness: 80, damping: 20 }}
+//         >
+//           <VideoPlayer />
+//         </motion.div>
+
+//         <motion.div
+//           className={styles.serviceDetails}
+//           style={{
+//             //opacity: textOpacity,
+//             y: textY,
+//             scaleY: textScaleY,
+//             transformOrigin: "top",
+//           }}
+//         >
+//           {getDescription()}
+//         </motion.div>
+//       </div>
+//     </div>
+//   );
+// };

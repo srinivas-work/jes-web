@@ -92,6 +92,11 @@ const serviceSections: ServiceItemType[] = [
           "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FJE_Si_676ad8ceb5.png&w=1080&q=90",
       },
     ],
+    toolsUsed: [
+      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FPlan_Swift_Logo_Lrg_3a74a35ff2.png&w=384&q=100",
+      "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/tool3_ce410bd7df.svg",
+      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fon_center_software_logo_bycc_www_e8c4a31429.png&w=384&q=100",
+    ],
   },
   {
     title: "Equipment / Product Selection",
@@ -140,11 +145,34 @@ const serviceSections: ServiceItemType[] = [
         ],
       },
     ],
+    extraDetails: [
+      {
+        caseStudy: true,
+        title: "Engineering Model integration",
+        description:
+          "Using JESi, our all-in-one project management portal designed to elevate collaboration and streamline project workflows. With our user-friendly interface, clients can effortlessly upload project files, ensuring seamless communication and file sharing.",
+        services: [
+          {
+            title: "Challenge",
+            desc: "Engineers needed a complete model including an ERU, fan system, and vibration curb.",
+          },
+          {
+            title: "Solution",
+            desc: "JES engaged manufacturers to retrieve models for all components.",
+          },
+          {
+            title: "Outcome",
+            desc: "Model delivered overnight, allowing the rep to engage with JES in the afternoon and have the model ready for the engineer the next morning.",
+          },
+        ],
+        image: "/img/services/subServices/equipment-case-study.png",
+      },
+    ],
   },
   {
     title: "Spec Review",
     image: "/img/services/spec-review.png",
-
+    img2: "/img/services/spec-review-2.png",
     description:
       "JES reviews specifications to ensure all representative products are listed, maximizing bid opportunities. Provides feedback within 24 hours through the JES portal. Supplies a pre-defined email.",
   },
@@ -152,7 +180,7 @@ const serviceSections: ServiceItemType[] = [
     title: "BIM Modelling",
     image: "/img/services/bim-modelling.jpg",
     img1: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FRectangle_52_2196634e4a.jpg&w=640&q=90",
-    img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FRectangle_52_2196634e4a.jpg&w=640&q=90",
+    img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fwhat_is_bim_thumb_1172x660_888f6c7af1.jpg&w=640&q=90",
     description:
       "Building Information Modeling (BIM) employs different levels of detail (LOD) to categorize the extent of development and detailing within a BIM model. These levels help define the granularity and sophistication of information contained in the model at various stages of the project.",
     subServices: [
@@ -196,6 +224,11 @@ const serviceSections: ServiceItemType[] = [
           "Used for facility management, maintenance, and renovation purposes post-construction.",
         ],
       },
+    ],
+    toolsUsed: [
+      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FFrame_189727_fa99135d7e.png&w=384&q=100",
+      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FGroup_189727_d3db82f79c.png&w=384&q=100",
+      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FGroup_189728_4bdd969802.png&w=384&q=100",
     ],
   },
   {
@@ -404,6 +437,10 @@ const serviceSections: ServiceItemType[] = [
         image:
           "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fdrawing_management_large_1152x688_1_d480d4f19e.jpg&w=1080&q=90",
       },
+    ],
+    toolsUsed: [
+      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FFrame_189727_fa99135d7e.png&w=384&q=100",
+      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FGroup_189727_d3db82f79c.png&w=384&q=100",
     ],
   },
   {

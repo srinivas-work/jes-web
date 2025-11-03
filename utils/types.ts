@@ -3,6 +3,7 @@ export type ServiceItemType = {
   image: string;
   img1?: string;
   img2?: string;
+  toolsUsed?: string[];
   description: string | string[];
   subServices?: GenericType[];
   pdfLink?: string;
@@ -41,6 +42,7 @@ export type SecurityItemType = {
 };
 
 export type SolutionType = {
+  caseStudy?: boolean;
   title: string;
   description: string;
   services: string[] | GenericType[];

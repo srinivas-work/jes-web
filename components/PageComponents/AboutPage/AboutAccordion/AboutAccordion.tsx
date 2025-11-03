@@ -1,9 +1,8 @@
-import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
-import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
-import { useScroll, useMotionValueEvent } from "framer-motion";
-import styles from "./AboutAccordion.module.css";
 import { aboutUsAccordionList } from "@/utils/data/dummyData";
+import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
+import { useMotionValueEvent, useScroll } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import styles from "./AboutAccordion.module.css";
 import BruceSpotlight from "./BruceSpotlight/BruceSpotlight";
 import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
 
@@ -79,7 +78,7 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
             alt="JES"
           />
           <img src={"/img/demoAbout.png"} className={styles.accordionBg} />
-          <div className={styles["about-services-section-circle-container"]}>
+          {/* <div className={styles["about-services-section-circle-container"]}>
             {Array.from({ length: aboutUsAccordionList.length }).map(
               (_, index) => (
                 <div
@@ -92,10 +91,10 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
                 />
               )
             )}
-          </div>
+          </div> */}
           <div
             className={styles["about-services-section-description"]}
-            style={sectionId !== 0 ? { width: "60vw" } : {}}
+            style={sectionId !== 0 && sectionId !== 1 ? { width: "60vw" } : {}}
           >
             {sectionId === 0 && (
               // <div className={styles["founder-images-container"]}>
@@ -121,7 +120,7 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
               <BruceSpotlight />
             )}
 
-            {/* {sectionId === 1 && <WhyChooseUs />} */}
+            {sectionId === 1 && <WhyChooseUs />}
 
             {sectionId === aboutUsAccordionList.length - 1 ? (
               <ul style={{ color: "var(--primary-dark)" }}>

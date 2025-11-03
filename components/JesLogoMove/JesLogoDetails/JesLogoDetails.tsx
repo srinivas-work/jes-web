@@ -7,6 +7,8 @@ import {
 } from "framer-motion";
 import { useEffect, useRef } from "react";
 import styles from "./JesLogoDetails.module.css";
+import PatternAnimation from "@/components/UI/PatternAnimation/PatternAnimation";
+import Image from "next/image";
 
 interface CrossIconProps {
   color?: string;
@@ -212,7 +214,7 @@ export default function JesLogoDetails() {
   const logoPathX = useTransform(
     scrollYProgress,
     [0.4, 0.42],
-    ["300vw", "-15vw"]
+    ["300vw", "-6.5vw"]
   );
   const smoothlogoPathX = useSpring(logoPathX, smoothness);
 
@@ -223,6 +225,32 @@ export default function JesLogoDetails() {
     <div className={styles.jesLogoDetailsContainer} ref={ref}>
       <div className={styles.jesDetailsContainer}>
         <div className={styles.jesLogoAboutContainer}>
+          <PatternAnimation
+            style={{
+              position: "absolute",
+              top: "-10%",
+              left: "-10%",
+              width: "30%",
+              opacity: "0.05",
+              zIndex: "-1",
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              top: "60%",
+              transform: "translate(0,-50%)",
+              right: "-30rem",
+              opacity: "0.2",
+            }}
+          >
+            <img
+              src={"/img/jes_curve_detailed.png"}
+              alt="JES Engineering"
+              style={{ width: "45rem", height: "auto" }}
+            />
+          </div>
+
           <h2>About Us</h2>
           <p className={styles.jesLogoAboutDesc}>
             We have combined the precision and innovation of our U.S.-based

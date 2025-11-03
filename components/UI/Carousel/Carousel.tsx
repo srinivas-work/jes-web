@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Carousel.module.css";
+import { useParams } from "next/navigation";
 
 interface CarouselItem {
   title: string;
@@ -32,6 +33,8 @@ interface CarouselProps {
   pauseOnHover?: boolean;
   loop?: boolean;
   round?: boolean;
+  selectedId?: number;
+  onCarouselChange?: (carouselId: number) => void;
 }
 
 const DEFAULT_ITEMS: CarouselItem[] = [
@@ -39,7 +42,7 @@ const DEFAULT_ITEMS: CarouselItem[] = [
     title: "3D BIM Modeling",
     description:
       "Comprehensive Revit-based 3D modeling for architecture, structure, and MEP systems.",
-    imgUrl: "/img/services/service-1.jpg",
+    imgUrl: "/img/services/carousel-qto.png",
     id: 1,
     icon: <Layers className={styles["carousel-icon"]} />, // Represents model layers & building components
   },
@@ -47,7 +50,7 @@ const DEFAULT_ITEMS: CarouselItem[] = [
     title: "Clash Detection",
     description:
       "Identify and resolve design conflicts across disciplines using Navisworks and Revit coordination.",
-    imgUrl: "/img/services/service-2.jpg",
+    imgUrl: "/img/services/qto.png",
     id: 2,
     icon: <AlertTriangle className={styles["carousel-icon"]} />, // Indicates clashes or issues
   },
@@ -77,6 +80,49 @@ const DEFAULT_ITEMS: CarouselItem[] = [
   },
 ];
 
+const EquipmentSelection: CarouselItem[] = [
+  {
+    title: "3D BIM Modeling",
+    description:
+      "Comprehensive Revit-based 3D modeling for architecture, structure, and MEP systems.",
+    imgUrl: "/img/services/subServices/ahu.jpg",
+    id: 1,
+    icon: <Layers className={styles["carousel-icon"]} />, // Represents model layers & building components
+  },
+  {
+    title: "Clash Detection",
+    description:
+      "Identify and resolve design conflicts across disciplines using Navisworks and Revit coordination.",
+    imgUrl: "/img/services/subServices/grd.png",
+    id: 2,
+    icon: <AlertTriangle className={styles["carousel-icon"]} />, // Indicates clashes or issues
+  },
+  {
+    title: "Clash Detection",
+    description:
+      "Identify and resolve design conflicts across disciplines using Navisworks and Revit coordination.",
+    imgUrl: "/img/services/subServices/valves.jpg",
+    id: 3,
+    icon: <AlertTriangle className={styles["carousel-icon"]} />, // Indicates clashes or issues
+  },
+  {
+    title: "MEP Coordination",
+    description:
+      "Mechanical, electrical, and plumbing design integration for seamless construction workflows.",
+    imgUrl: "/img/services/subServices/vrv.png",
+    id: 4,
+    icon: <Cpu className={styles["carousel-icon"]} />, // Symbolic of systems integration
+  },
+  {
+    title: "Quantity Takeoff",
+    description:
+      "Automated quantity estimation and material scheduling from BIM data for accurate costing.",
+    imgUrl: "/img/services/subServices/noise-control.jpg",
+    id: 5,
+    icon: <FileSpreadsheet className={styles["carousel-icon"]} />, // Represents reports/BOQs
+  },
+];
+
 const DRAG_BUFFER = 0;
 const VELOCITY_THRESHOLD = 500;
 const GAP = 16;
@@ -95,6 +141,8 @@ export default function Carousel({
   pauseOnHover = false,
   loop = false,
   round = false,
+  selectedId = 1,
+  onCarouselChange,
 }: CarouselProps): React.JSX.Element {
   const containerPadding = 0; //16 actual
   const [containerSize, setContainerSize] = useState<{
@@ -102,6 +150,15 @@ export default function Carousel({
     height: number;
   }>({ width: 0, height: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const params = useParams();
+  const { id } = params;
+
+  let revisedItems = DEFAULT_ITEMS;
+
+  if (Number(id) === 1) {
+    revisedItems = EquipmentSelection;
+  }
 
   // Calculate container dimensions on mount and resize
   useEffect(() => {
@@ -130,10 +187,14 @@ export default function Carousel({
   const trackItemOffset = itemWidth + GAP;
 
   const carouselItems = loop ? [...items, items[0]] : items;
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(selectedId - 1);
   const x = useMotionValue(0);
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const [isResetting, setIsResetting] = useState<boolean>(false);
+
+  useEffect(() => {
+    setCurrentIndex(selectedId - 1);
+  }, [selectedId]);
 
   // Pause on hover
   useEffect(() => {
@@ -171,6 +232,11 @@ export default function Carousel({
     carouselItems.length,
     pauseOnHover,
   ]);
+
+  useEffect(() => {
+    if (!onCarouselChange) return;
+    onCarouselChange(currentIndex);
+  }, [currentIndex]);
 
   const effectiveTransition: Transition = isResetting
     ? { duration: 0 }
@@ -243,7 +309,7 @@ export default function Carousel({
         transition={effectiveTransition}
         onAnimationComplete={handleAnimationComplete}
       >
-        {carouselItems.map((item, index) => {
+        {revisedItems.map((item, index) => {
           const range = [
             -(index + 1) * trackItemOffset,
             -index * trackItemOffset,

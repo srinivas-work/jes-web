@@ -44,15 +44,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 0.5rem;
   align-items: center;
   text-align: center;
   overflow: visible;
   margin: auto;
-  padding-bottom: 1rem;
 }
 
 .approachItem:first-child {
-  padding-top: 2rem;
+  padding-top: 2.5rem;
 }
 
 .approachItem:last-child {
@@ -80,7 +80,7 @@
 
 .approachItem p {
   font-size: 1rem;
-  line-height: 2rem;
+  line-height: 1.7rem;
 }
 
 .bgImageContainerOne {

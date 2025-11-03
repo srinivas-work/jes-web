@@ -78,7 +78,17 @@ export default function ProcessDetails() {
         src="/img/bg_pattern.svg"
         alt="JES"
       /> */}
-      <PatternAnimation className={styles.approachSectionBg} />
+      <PatternAnimation
+        className={styles.approachSectionBg}
+        style={{
+          position: "absolute",
+          top: "-10%",
+          left: "-10%",
+          width: "30%",
+          opacity: "0.05",
+          zIndex: "-1",
+        }}
+      />
       <PatternAnimation className={styles.approachSectionBgTwo} />
       <div className={styles.processWrapper}>
         {processes.map((process, index) => (

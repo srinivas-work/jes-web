@@ -76,6 +76,14 @@ export const SolutionCard: React.FC<{
                 {String(index + 1).padStart(2, "0")}
               </motion.div>
             )}
+            {solution.caseStudy && (
+              <h2
+                className={styles.title}
+                style={{ color: "var(--primary-red)", marginBottom: "0.5rem" }}
+              >
+                Case Study:
+              </h2>
+            )}
             <h2 className={styles.title}>{solution.title}</h2>
             <p className={styles.description}>{solution.description}</p>
 

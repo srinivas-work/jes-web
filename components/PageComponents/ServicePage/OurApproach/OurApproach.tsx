@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import styles from "./OurApproach.module.css";
 import { useRef } from "react";
 import Image from "next/image";
+import { useParams } from "next/navigation";
 
 const approaches = [
   {
@@ -26,6 +27,52 @@ const approaches = [
   },
 ];
 
+const approachesQto = [
+  {
+    title: "Plan Review & Consultation",
+    subtitle:
+      "We assess your architectural, structural, and MEP drawings to define project scope and key requirements.",
+  },
+  {
+    title: "Digital Modeling & Measurement",
+    subtitle:
+      "Using Bluebeam, Planswift, and AutoCAD, we perform precise digital takeoffs with pixel-perfect accuracy.",
+  },
+  {
+    title: "Categorization & Itemization",
+    subtitle:
+      "We group quantities into clear categories for easy understanding.",
+  },
+  {
+    title: "Quality Control & Validation",
+    subtitle:
+      "Each takeoff is reviewed by senior estimators to ensure accuracy, consistency, and completeness.",
+  },
+];
+
+const approachesEquipmentSelection = [
+  {
+    title: "In-Depth Load Analysis & Modeling",
+    subtitle:
+      "We calculate exact capacity needs to prevent costly oversizing or undersizing of equipment.",
+  },
+  {
+    title: "Life-Cycle Cost Analysis (LCCA)",
+    subtitle:
+      "We compare upfront costs and long-term savings to help you choose the most cost-efficient system.",
+  },
+  {
+    title: "Value Engineering & Bid Analysis",
+    subtitle:
+      "We review bids and ensure proposed equipment meets performance standards and true value criteria.",
+  },
+  {
+    title: "Future-Proofing & Sustainability Integration",
+    subtitle:
+      "We recommend energy-efficient systems that lower emissions and qualify for green certifications.",
+  },
+];
+
 const OurApproach = () => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -44,10 +91,26 @@ const OurApproach = () => {
   const blur3 = useTransform(scrollYProgress, [0.5, 0.75], ["8px", "0px"]);
   const blur4 = useTransform(scrollYProgress, [0.75, 0.85], ["8px", "0px"]);
 
+  const params = useParams();
+  const { id } = params;
+
+  let revisedApproaches = approaches;
+  let heading = "Our Process";
+
+  if (Number(id) === 0) {
+    heading = "Our Quantity Takeoff Process";
+
+    revisedApproaches = approachesQto;
+  } else if (Number(id) === 1) {
+    heading = "The JES Advantages";
+
+    revisedApproaches = approachesEquipmentSelection;
+  }
+
   return (
     <div ref={ref} className={styles.approachSection}>
       <div className={styles.approachDetailsContainer}>
-        <h2 className={styles.title}>Why Choose JES</h2>
+        <h2 className={styles.title}>{heading}</h2>
         <img
           className={styles.approachSectionBg}
           src="/img/bg_pattern.svg"
@@ -66,7 +129,7 @@ const OurApproach = () => {
         <div className={styles.approachCircleContainer}>
           {/* Text overlay */}
           <div className={styles.approachItemsContainer}>
-            {approaches.map((approach, index) => (
+            {revisedApproaches.map((approach, index) => (
               <motion.div
                 className={styles.approachItem}
                 key={index}

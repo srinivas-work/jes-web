@@ -35,9 +35,10 @@ const About = () => {
         />
       </div> */}
       <AboutAccordion />
-      <SecuritySection />
+
       <TeamCardStack />
       <CircularTimeline />
+      <SecuritySection />
       <OurClientsCarousel />
     </div>
   );
