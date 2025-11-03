@@ -6,8 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint",
-    "analyze": "cross-env ANALYZE=true next build"
+    "lint": "eslint"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.6",
@@ -21,8 +20,7 @@
     "r3f-perf": "^7.2.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "three": "^0.180.0",
-    "webpack-bundle-analyzer": "^4.10.2"
+    "three": "^0.180.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -30,7 +28,6 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/webpack-bundle-analyzer": "^4.7.0",
-    "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
     "typescript": "^5"
