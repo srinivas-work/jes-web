@@ -5,20 +5,14 @@ import FAQ from "@/components/FAQ/FAQ";
 import OurApproach from "@/components/PageComponents/ServicePage/OurApproach/OurApproach";
 import ProductSelection from "@/components/PageComponents/ServicePage/ProductSelection/ProductSelection";
 import ServiceSteps from "@/components/PageComponents/ServicePage/ServiceSteps/ServiceSteps";
-import VideoPlayer from "@/components/UI/VideoPlayer/VideoPlayer";
-import {
-  energyModellingSolutions,
-  faq,
-  serviceSections,
-} from "@/utils/data/dummyData";
+import LaptopViewer from "@/components/ThreeD/LaptopViewer/LaptopViewer";
+import { faq, serviceSections } from "@/utils/data/dummyData";
+import { splitText } from "@/utils/helperFunctions";
 import { useLenis } from "@/utils/hooks/useLenis";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
-import { useRef } from "react";
 import styles from "./ServiceItem.module.css";
-import LaptopViewer from "@/components/ThreeD/LaptopViewer/LaptopViewer";
-import { splitText } from "@/utils/helperFunctions";
 
 //
 
