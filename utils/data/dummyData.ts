@@ -740,16 +740,10 @@ const aboutUsAccordionList = [
       "Establish a groundbreaking paradigm in the MEP industry with Jersey Engineering, empowering you to achieve your best. Our services offer a more effective way to run your business, allowing you the time to concentrate on what only you can do much better and at ease serving your customers, managing your employees, and nurturing the overall well-being of your enterprise.",
   },
   {
-    heading: "Our Mission",
+    heading: "Our Mission & Mission",
     subheading: "",
     description:
       "Our goal is to empower HVAC professionals and manufacturer reps with accurate, scalable, and tech-enabled solutions that enhance speed, precision, and overall project success. By integrating advanced technology, we streamline every phase of the process—from initial concept through to completion—ensuring more informed decision-making, faster execution, and higher-quality outcomes. We aim to provide HVAC professionals with the tools and resources they need to achieve greater efficiency, reduce errors, and deliver exceptional results in every project.",
-  },
-  {
-    heading: "Our Vision",
-    subheading: "",
-    description:
-      "Our Vision is to become the most valued and trusted partner of our Clients and Partners by; “Freeing you to be your best!",
   },
   {
     heading: "Our Values",

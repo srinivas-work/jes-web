@@ -6,6 +6,7 @@ import styles from "./AboutAccordion.module.css";
 import BruceSpotlight from "./BruceSpotlight/BruceSpotlight";
 import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
 import Image from "next/image";
+import MissionVision from "./MissionVision/MissionVision";
 
 const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
   const [activeSectionId, setActiveSectionId] = useState<null | number>(null);
@@ -64,6 +65,31 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
     scrollToSection();
   }, [activeSectionId]);
 
+  const getSectionItem = (sectionId: number, description: string) => {
+    switch (sectionId) {
+      case 0:
+        return <BruceSpotlight />;
+      case 1:
+        return <WhyChooseUs />;
+      case 2:
+        return <MissionVision />;
+      case aboutUsAccordionList.length - 1:
+        return (
+          <ul>
+            <li>Precision First</li>
+            <li>Speed with Integrity</li>
+            <li>Built for Partners</li>
+            <li>Own the Outcome</li>
+            <li>Scalable by Design</li>
+            <li>Innovate with Purpose</li>
+            <li>Clariy in Communication</li>
+          </ul>
+        );
+      default:
+        return <p>{description}</p>;
+    }
+  };
+
   const getDescription = (description: string, sectionId: number) => {
     //Active Section Item
     if (activeSectionId !== null && sectionId === activeSectionId) {
@@ -107,45 +133,7 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
             )}
           </div> */}
           <div className={styles["about-services-section-description"]}>
-            {sectionId === 0 && (
-              // <div className={styles["founder-images-container"]}>
-              //   {Array.from({ length: 2 }).map((_, index) => {
-              //     const name = index === 0 ? "John Doe" : "Foe Snow";
-              //     return (
-              //       <div
-              //         className={styles["founder-image-item-container"]}
-              //         key={index}
-              //       >
-              //         <div className={styles["founder-image-holder"]}>
-              //           <Image
-              //             src={`/img/founder-${index + 1}.jpg`}
-              //             alt={name}
-              //             fill
-              //           />
-              //         </div>
-              //         <p>{name}</p>
-              //       </div>
-              //     );
-              //   })}
-              // </div>
-              <BruceSpotlight />
-            )}
-
-            {sectionId === 1 && <WhyChooseUs />}
-
-            {sectionId === aboutUsAccordionList.length - 1 ? (
-              <ul>
-                <li>Precision First</li>
-                <li>Speed with Integrity</li>
-                <li>Built for Partners</li>
-                <li>Own the Outcome</li>
-                <li>Scalable by Design</li>
-                <li>Innovate with Purpose</li>
-                <li>Clariy in Communication</li>
-              </ul>
-            ) : (
-              <p>{description}</p>
-            )}
+            {getSectionItem(sectionId, description)}
           </div>
         </div>
       );
@@ -235,6 +223,27 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
 };
 
 export default AboutAccordion;
+
+// <div className={styles["founder-images-container"]}>
+//   {Array.from({ length: 2 }).map((_, index) => {
+//     const name = index === 0 ? "John Doe" : "Foe Snow";
+//     return (
+//       <div
+//         className={styles["founder-image-item-container"]}
+//         key={index}
+//       >
+//         <div className={styles["founder-image-holder"]}>
+//           <Image
+//             src={`/img/founder-${index + 1}.jpg`}
+//             alt={name}
+//             fill
+//           />
+//         </div>
+//         <p>{name}</p>
+//       </div>
+//     );
+//   })}
+// </div>
 
 {
   /* <BruceSpotlight

@@ -22,6 +22,7 @@ import BruceSpotlight from "@/components/PageComponents/AboutPage/AboutAccordion
 import WhyChooseUs from "@/components/PageComponents/AboutPage/AboutAccordion/WhyChooseUs/WhyChooseUs";
 import ProcessDetails from "@/components/PageComponents/HomePage/ProcessDetails/ProcessDetails";
 import Image from "next/image";
+import MissionVision from "@/components/PageComponents/AboutPage/AboutAccordion/MissionVision/MissionVision";
 
 function Building() {
   const tex = useTexture("/img/modern-building.png");
@@ -50,7 +51,7 @@ export default function Home() {
 
   const isPhoneScreen = useIsPhoneScreen();
 
-  console.log("Home");
+  //return <MissionVision />;
 
   return (
     <div>

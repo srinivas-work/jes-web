@@ -88,7 +88,8 @@ const ServiceItem = () => {
             style={{
               width: "80%",
               display: "flex",
-              justifyContent: "space-evenly",
+              gap: "var(--spacing)",
+              justifyContent: "center",
             }}
           >
             {selectedService.toolsUsed.map((t, i) => (
