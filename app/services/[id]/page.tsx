@@ -109,18 +109,6 @@ const ServiceItem = () => {
           </div>
         </div>
       )}
-      {id === "7" && (
-        <section className={styles.extrasSection}>
-          {energyModellingSolutions.map((solution, index) => (
-            <SolutionCard
-              key={index}
-              solution={solution}
-              index={index}
-              hideBtn
-            />
-          ))}
-        </section>
-      )}
 
       {selectedService.extraDetails && (
         <section className={styles.extrasSection}>

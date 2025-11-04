@@ -21,6 +21,7 @@ import styles from "./page.module.css";
 import BruceSpotlight from "@/components/PageComponents/AboutPage/AboutAccordion/BruceSpotlight/BruceSpotlight";
 import WhyChooseUs from "@/components/PageComponents/AboutPage/AboutAccordion/WhyChooseUs/WhyChooseUs";
 import ProcessDetails from "@/components/PageComponents/HomePage/ProcessDetails/ProcessDetails";
+import Image from "next/image";
 
 function Building() {
   const tex = useTexture("/img/modern-building.png");
@@ -53,26 +54,25 @@ export default function Home() {
 
   return (
     <div>
-      {/* <Image
+      {/* <img
         src={"/img/modern-building.png"}
         alt="JES Building"
-        width={750}
-        height={1050}
         style={{
-          position: "fixed",
+          width: "50rem",
+          position: "absolute",
           bottom: 0,
           left: "50%",
           transform: "translate(-50%,0)",
           zIndex: 500,
         }}
-      /> */}
-      {/* <h1
+      />
+      <h1
         style={{
           fontWeight: 300,
           fontSize: "10rem",
           letterSpacing: "5rem",
           color: "#a91e29",
-          position: "fixed",
+          position: "absolute",
           top: "50%",
           left: "50%",
           transform: "translate(-50%,0)",

@@ -79,7 +79,19 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
             src="/img/bg_pattern.svg"
             alt="JES"
           />
-          <img src={"/img/demoAbout.png"} className={styles.accordionBg} />
+          {sectionId !== 1 && (
+            <img src={"/img/demoAbout.png"} className={styles.accordionBg} />
+          )}
+
+          {sectionId === 1 && (
+            <img
+              src={
+                "https://jerseyeng.com/_next/image?url=%2Fimages%2Fabout%2Faboutservice-banner.png&w=3840&q=90"
+              }
+              style={{ opacity: 0.5 }}
+              className={styles.accordionBg}
+            />
+          )}
           {/* <div className={styles["about-services-section-circle-container"]}>
             {Array.from({ length: aboutUsAccordionList.length }).map(
               (_, index) => (

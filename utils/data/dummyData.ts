@@ -175,6 +175,29 @@ const serviceSections: ServiceItemType[] = [
     img2: "/img/services/spec-review-2.png",
     description:
       "JES reviews specifications to ensure all representative products are listed, maximizing bid opportunities. Provides feedback within 24 hours through the JES portal. Supplies a pre-defined email.",
+    extraDetails: [
+      {
+        caseStudy: true,
+        title: "Engineering Model integration",
+        description:
+          "Using JESi, our all-in-one project management portal designed to elevate collaboration and streamline project workflows. With our user-friendly interface, clients can effortlessly upload project files, ensuring seamless communication and file sharing.",
+        services: [
+          {
+            title: "Challenge",
+            desc: "Engineers needed a complete model including an ERU, fan system, and vibration curb.",
+          },
+          {
+            title: "Solution",
+            desc: "JES engaged manufacturers to retrieve models for all components.",
+          },
+          {
+            title: "Outcome",
+            desc: "Model delivered overnight, allowing the rep to engage with JES in the afternoon and have the model ready for the engineer the next morning.",
+          },
+        ],
+        image: "/img/services/subServices/equipment-case-study.png",
+      },
+    ],
   },
   {
     title: "BIM Modelling",
@@ -229,6 +252,29 @@ const serviceSections: ServiceItemType[] = [
       "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FFrame_189727_fa99135d7e.png&w=384&q=100",
       "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FGroup_189727_d3db82f79c.png&w=384&q=100",
       "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FGroup_189728_4bdd969802.png&w=384&q=100",
+    ],
+    extraDetails: [
+      {
+        caseStudy: true,
+        title: "Engineering Model integration",
+        description:
+          "Using JESi, our all-in-one project management portal designed to elevate collaboration and streamline project workflows. With our user-friendly interface, clients can effortlessly upload project files, ensuring seamless communication and file sharing.",
+        services: [
+          {
+            title: "Challenge",
+            desc: "Engineers needed a complete model including an ERU, fan system, and vibration curb.",
+          },
+          {
+            title: "Solution",
+            desc: "JES engaged manufacturers to retrieve models for all components.",
+          },
+          {
+            title: "Outcome",
+            desc: "Model delivered overnight, allowing the rep to engage with JES in the afternoon and have the model ready for the engineer the next morning.",
+          },
+        ],
+        image: "/img/services/subServices/equipment-case-study.png",
+      },
     ],
   },
   {
@@ -437,6 +483,28 @@ const serviceSections: ServiceItemType[] = [
         image:
           "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fdrawing_management_large_1152x688_1_d480d4f19e.jpg&w=1080&q=90",
       },
+
+      {
+        caseStudy: true,
+        title: "Space Design Challenges Solved in Record Time",
+        description:
+          "Using JESi, our all-in-one project management portal designed to elevate collaboration and streamline project workflows. With our user-friendly interface, clients can effortlessly upload project files, ensuring seamless communication and file sharing.",
+        services: [
+          {
+            title: "The Challenge",
+            desc: "Client faced critical space constraints with modular chiller replacement.",
+          },
+          {
+            title: "Our Response",
+            desc: "Delivered detailed 3D Revit model within 48 hours",
+          },
+          {
+            title: "The Result",
+            desc: "Client visualized exact space utilization. WE WON THE $400,000 JOB IN NYC",
+          },
+        ],
+        image: "/img/services/subServices/mep-case-study.jpg",
+      },
     ],
     toolsUsed: [
       "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FFrame_189727_fa99135d7e.png&w=384&q=100",
@@ -482,6 +550,47 @@ const serviceSections: ServiceItemType[] = [
         desc: [
           "Preparation of energy efficiency reports, system performance summaries, and recommendations to improve sustainability and reduce operational costs.",
         ],
+      },
+    ],
+    extraDetails: [
+      {
+        title: "Thermal Load Calculation",
+        description:
+          "Accurate thermal load calculation in a building is vital as it lets you estimate the required capacity of your heating systems, thereby meeting the required temperature conditions in the conditioned space.",
+        services: [
+          "Heat Load Analysis",
+          "HVAC System Design Support",
+          "Energy Efficiency Optimization",
+          "Troubleshooting and Assessment",
+        ],
+        image:
+          "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FThermal_load_calc_e20d82a2dc.jpg&w=1920&q=90",
+      },
+      {
+        title: "Ductwork E.S.P Calculations",
+        description:
+          "Optimize structural systems with precision BIM modeling and analysis. Our team delivers accurate structural models that integrate seamlessly with architectural and MEP systems.",
+        services: [
+          "Detailed Analysis",
+          "Ductwork Design Optimization",
+          "Equipment Selection Support",
+          "Troubleshooting and Optimization",
+        ],
+        image:
+          "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FHVAC_2_761e9977f7.png&w=1920&q=90",
+      },
+      {
+        title: "Pump Head Calculation",
+        description:
+          "Streamline mechanical, electrical, and plumbing systems with intelligent BIM coordination. We ensure all building systems work harmoniously, identifying conflicts before construction begins.",
+        services: [
+          "Hydraulic Analysis",
+          "Efficiency Optimization",
+          "System Design Support",
+          "Troubleshooting and Assessment",
+        ],
+        image:
+          "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fgallery9_79ecb57d8d.jpg&w=1920&q=90",
       },
     ],
   },
@@ -687,48 +796,6 @@ const solutions: SolutionType[] = [
   },
 ];
 
-const energyModellingSolutions: SolutionType[] = [
-  {
-    title: "Thermal Load Calculation",
-    description:
-      "Accurate thermal load calculation in a building is vital as it lets you estimate the required capacity of your heating systems, thereby meeting the required temperature conditions in the conditioned space.",
-    services: [
-      "Heat Load Analysis",
-      "HVAC System Design Support",
-      "Energy Efficiency Optimization",
-      "Troubleshooting and Assessment",
-    ],
-    image:
-      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FThermal_load_calc_e20d82a2dc.jpg&w=1920&q=90",
-  },
-  {
-    title: "Ductwork E.S.P Calculations",
-    description:
-      "Optimize structural systems with precision BIM modeling and analysis. Our team delivers accurate structural models that integrate seamlessly with architectural and MEP systems.",
-    services: [
-      "Detailed Analysis",
-      "Ductwork Design Optimization",
-      "Equipment Selection Support",
-      "Troubleshooting and Optimization",
-    ],
-    image:
-      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FHVAC_2_761e9977f7.png&w=1920&q=90",
-  },
-  {
-    title: "Pump Head Calculation",
-    description:
-      "Streamline mechanical, electrical, and plumbing systems with intelligent BIM coordination. We ensure all building systems work harmoniously, identifying conflicts before construction begins.",
-    services: [
-      "Hydraulic Analysis",
-      "Efficiency Optimization",
-      "System Design Support",
-      "Troubleshooting and Assessment",
-    ],
-    image:
-      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fgallery9_79ecb57d8d.jpg&w=1920&q=90",
-  },
-];
-
 const testimonials: TestimonialCardProps[] = [
   {
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
@@ -890,6 +957,5 @@ export {
   securityList,
   aboutUsAccordionList,
   solutions,
-  energyModellingSolutions,
   highlights,
 };
