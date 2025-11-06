@@ -55,19 +55,10 @@ export default function Home() {
 
   return (
     <div>
-      {/* <img
-        src={"/img/modern-building.png"}
-        alt="JES Building"
-        style={{
-          width: "50rem",
-          position: "absolute",
-          bottom: 0,
-          left: "50%",
-          transform: "translate(-50%,0)",
-          zIndex: 500,
-        }}
-      />
-      <h1
+      {/* <div className={styles.buildingImgContainer}>
+        <img src={"/img/modern-building.png"} alt="JES Building" />
+      </div> */}
+      {/* <h1
         style={{
           fontWeight: 300,
           fontSize: "10rem",

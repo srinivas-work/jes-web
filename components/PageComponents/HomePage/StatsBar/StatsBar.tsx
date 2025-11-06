@@ -7,6 +7,7 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import styles from "./StatsBar.module.css";
+import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 
 type Stat = {
   value: number;
@@ -80,8 +81,10 @@ function AnimatedNumber({
 }
 
 export default function StatsBar() {
+  const isPhoneScreen = useIsPhoneScreen();
+
   return (
-    <div className={styles.container}>
+    <section className={styles.statsSection}>
       {stats.map((stat, i) => (
         <motion.div
           key={i}
@@ -91,12 +94,12 @@ export default function StatsBar() {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ margin: "-50px" }}
         >
-          <div className={styles.value}>
+          <div className={styles.statValue}>
             <AnimatedNumber value={stat.value} suffix={stat.suffix} />
           </div>
-          <p className={styles.label}>{stat.label}</p>
+          {!isPhoneScreen && <p className={styles.statLabel}>{stat.label}</p>}
         </motion.div>
       ))}
-    </div>
+    </section>
   );
 }

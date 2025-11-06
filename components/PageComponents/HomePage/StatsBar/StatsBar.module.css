@@ -1,6 +1,6 @@
-.container {
+.statsSection {
   margin: auto;
-  width: 90dvw;
+  max-width: 90dvw;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 5rem;
@@ -17,7 +17,7 @@
   gap: 1rem;
 }
 
-.value {
+.statValue {
   font-size: 2.5rem;
   line-height: 2.5rem;
   font-weight: 700;
@@ -33,7 +33,7 @@
   color: var(--primary-red);
 }
 
-.label {
+.statLabel {
   color: var(--light-gray);
   font-size: 0.95rem;
   line-height: 1.3rem;
@@ -42,4 +42,28 @@
 .sublabel {
   color: #6b7280;
   font-size: 0.9rem;
+}
+
+@media screen and (max-width: 700px) {
+  .statsSection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 1.4rem;
+    border-radius: 2.5rem;
+    border: var(--border-thickness) solid var(--light-gray);
+  }
+
+  .statBox {
+    gap: 0.5rem;
+  }
+
+  .statValue {
+    font-size: 1.3rem;
+    line-height: 1.7rem;
+  }
+
+  .statLabel {
+    text-align: left;
+  }
 }

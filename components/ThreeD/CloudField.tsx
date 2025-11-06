@@ -1,7 +1,7 @@
-import * as THREE from "three";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
-import { Suspense, useRef } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
+import { useRef } from "react";
+import * as THREE from "three";
 
 export default function CloudField() {
   const group = useRef<THREE.Group>(null!);
@@ -119,15 +119,9 @@ export default function CloudField() {
   const lerpFactor = 0.05;
 
   useFrame(({ mouse, clock }) => {
-    const elapsed = clock.getElapsedTime();
-
-    // Vertical movement: move along Z axis infinitely
-    motion.current.z += 20 * 0.04; // speed factor
-    if (motion.current.z > verticalDepth) motion.current.z -= verticalDepth;
-
-    // Horizontal movement: move along X axis infinitely
-    motion.current.x += 10 * 0.03; // slower side motion
-    if (motion.current.x > horizontalWidth) motion.current.x -= horizontalWidth;
+    // Use modulo for seamless looping - no abrupt resets
+    motion.current.z = (motion.current.z + 20 * 0.005) % verticalDepth;
+    motion.current.x = (motion.current.x + 10 * 0.003) % horizontalWidth;
 
     // Smooth parallax effect
     target.current.x = THREE.MathUtils.lerp(
@@ -141,7 +135,7 @@ export default function CloudField() {
       lerpFactor
     );
 
-    // Apply positions
+    // Apply positions with seamless looping
     if (group.current) {
       group.current.position.set(
         target.current.x * 0.01,
@@ -397,7 +391,7 @@ export default function CloudField() {
 //   const mesh2 = useRef<THREE.Mesh>(null!);
 //   const { camera } = useThree();
 
-//   const texture = useTexture("/cloud10.png"); // must be in /public
+//   const texture = useTexture("/img/cloud10.png"); // must be in /public
 
 //   const fog = new THREE.Fog(0x4584b4, -100, 3000);
 
