@@ -97,7 +97,8 @@ export default function StatsBar() {
           <div className={styles.statValue}>
             <AnimatedNumber value={stat.value} suffix={stat.suffix} />
           </div>
-          {!isPhoneScreen && <p className={styles.statLabel}>{stat.label}</p>}
+          <p className={styles.statLabel}>{stat.label}</p>
+          {/* {!isPhoneScreen && <p className={styles.statLabel}>{stat.label}</p>} */}
         </motion.div>
       ))}
     </section>

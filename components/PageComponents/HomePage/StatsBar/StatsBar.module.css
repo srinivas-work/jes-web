@@ -61,6 +61,8 @@
   .statValue {
     font-size: 1.3rem;
     line-height: 1.7rem;
+    text-align: left;
+    margin-right: auto;
   }
 
   .statLabel {
