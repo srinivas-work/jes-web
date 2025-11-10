@@ -58,3 +58,10 @@ export type HeaderMenuItemType = {
   name: string;
   path: string;
 };
+
+export type Region = {
+  name: string;
+  hasDetails: boolean;
+  details: string[];
+  mapPosition: { top: string; left: string };
+};

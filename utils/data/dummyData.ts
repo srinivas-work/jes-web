@@ -2,6 +2,7 @@ import {
   HeaderMenuItemType,
   PortalCardType,
   ProjectItemType,
+  Region,
   SecurityItemType,
   ServiceItemType,
   SolutionType,
@@ -938,6 +939,69 @@ const highlights = [
   },
 ];
 
+const regions: Region[] = [
+  {
+    name: "United States",
+    hasDetails: true,
+    details: [
+      "US – SALES OFFICE Charlottesville, Virginia 22902, United States",
+      "+1434218-8403",
+      "bruce.dorey@jerseyeng.com",
+    ],
+    mapPosition: { top: "50%", left: "20%" },
+  },
+  {
+    name: "India",
+    hasDetails: true,
+    details: [
+      "Head Quarters - Plot No 22-A, AMRL Hi-Tech City Ltd, Multi Product SEZ, Nanguneri, Tirunelveli, Tamilnadu - 627108",
+      "+919994701501",
+      "info@jerseyeng.com",
+    ],
+    mapPosition: { top: "57%", left: "64%" },
+  },
+  {
+    name: "Canada",
+    hasDetails: true,
+    details: [
+      "CANADA - SALES OFFICE 7405 East Danbro Crescent, Mississauga, Ontario, L5N 6P8 CANADA",
+      "+14168045900",
+      "info@jerseyeng.com",
+    ],
+    mapPosition: { top: "38%", left: "18%" },
+  },
+  {
+    name: "Europe",
+    hasDetails: true,
+    details: [
+      "EUROPE - BELGIUM OFFICE BLERCO BVBA Sint-Jacobsnieuw, straat 45 Ghent 9000, Belgium",
+      "+4915124064230",
+      "info@jerseyeng.com",
+    ],
+    mapPosition: { top: "40%", left: "48%" },
+  },
+  {
+    name: "Middle East",
+    hasDetails: true,
+    details: [
+      "Jersey Group, Building No. 44, Zone No. 91، Street No. 3062, Logistic Park-B, Birkat Al Awamer, State of Qatar.",
+      "+97444925077",
+      "info@jerseygroup.com",
+    ],
+    mapPosition: { top: "52%", left: "55%" },
+  },
+  {
+    name: "Africa",
+    hasDetails: true,
+    details: [
+      "AFRICA - NIGERIA OFFICE Plot 18, Nike Art Gallery Road, Lekki Lagos, Nigeria",
+      "+2348134210881",
+      "info@jerseyeng.com",
+    ],
+    mapPosition: { top: "65%", left: "50%" },
+  },
+];
+
 export {
   defaultHeaderMenuItems,
   faq,
@@ -949,4 +1013,5 @@ export {
   aboutUsAccordionList,
   solutions,
   highlights,
+  regions,
 };
