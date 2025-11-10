@@ -22,7 +22,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       <p className={styles.desc}>"{desc}"</p>
 
       <div className={styles.author}>
-        <div className={styles.avatar}>
+        {/* <div className={styles.avatar}>
           <Image
             src={image}
             alt={name}
@@ -30,7 +30,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
             height={40}
             className={styles.avatarImg}
           />
-        </div>
+        </div> */}
         <div>
           <h4 className={styles.name}>{name}</h4>
           <p className={styles.title}>{title}</p>

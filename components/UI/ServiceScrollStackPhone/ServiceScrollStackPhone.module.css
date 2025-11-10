@@ -1,20 +1,19 @@
-.stickyContainer {
-  position: sticky;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 90dvw;
-  height: 70vh;
-  container: "";
-}
-
 .mainContainer {
   position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: var(--spacing);
+  gap: calc(var(--spacing) / 2);
+}
+
+.cardContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90dvw;
+  container: "";
 }
 
 .motionCard {
@@ -99,11 +98,5 @@
     color: var(--primary-red);
     font-size: 1.5rem;
     font-weight: 700;
-  }
-  .serviceImage {
-    min-width: 100%;
-    height: 100%;
-    border-radius: 2rem;
-    object-fit: cover;
   }
 }

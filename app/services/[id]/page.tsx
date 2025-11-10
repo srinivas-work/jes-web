@@ -60,11 +60,7 @@ const ServiceItem = () => {
       />
       {/* <VideoSection id={Number(id)} /> */}
       <ServiceSteps subServiceItem={selectedService.subServices} />
-      <ProductSelection
-        heading={
-          Number(id) === 0 ? "Why Choose JES for Your QTO?" : "Key Deliverables"
-        }
-      />
+      <ProductSelection />
       {selectedService.toolsUsed && (
         <div
           style={{
@@ -137,7 +133,7 @@ const ServiceItem = () => {
             })}
         </div>
       </div>
-      <OurApproach />
+      {/* <OurApproach /> */}
       <motion.section
         className={styles.serviceCtaSection}
         initial={{ opacity: 0 }}
@@ -151,7 +147,7 @@ const ServiceItem = () => {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
         >
-          <h2>Ready to Elevate Your Projects?</h2>
+          <h2>Ready to Scale Your Business?</h2>
           <p>
             Let us discuss how our {selectedService.title} Solutions can
             transform your engineering workflow

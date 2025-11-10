@@ -4,109 +4,57 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./ProductSelection.module.css";
 import { useParams } from "next/navigation";
 
-interface Product {
+interface KeyDeliverablesType {
   id: number;
   title: string;
   icon: string;
-  desc: string;
+  desc: string[];
 }
 
-const products: Product[] = [
+const keyDeliverables: KeyDeliverablesType[] = [
   {
     id: 1,
-    title: "AHU, chilled water pumps",
+    title: "Rapid MEP Quantity Takeoff",
     icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/bmi_73aa8947cb.svg",
-    desc: "We specialize in delivering comprehensive KPO services tailored specifically for accurate and detailed thermal load calculations. Our expertise lies in providing precise assessments crucial for efficient HVAC system design and optimization.",
+    desc: [
+      "Get precise counts fast so your team can price and plan with confidence and spend more time in front of customers.",
+      "What you get: Clean, auditable quantities for HVAC, plumbing, and electrical equipment",
+      "Turnaround: 12-72 hours for most scopes",
+      "Why it matters: Fewer misses, tighter bids, less rework",
+    ],
   },
   {
     id: 2,
-    title: "GRD, VAV boxes and terminal units Dampers & Louvers",
+    title: "Spec Review + Equipment Selections",
     icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/application_4aa981e844.svg",
-    desc: "We specialize in delivering comprehensive solutions for Air Conditioning (AC) ductwork, including accurate External Static Pressure (ESP) calculations. Understanding the significance of ESP in HVAC systems, we offer detailed services tailored to ensure optimal performance and efficiency.",
+    desc: [
+      "De-risk choices before they hit the field.",
+      "What you get: Spec compliance check, side-by-side AI assisted comparison options, and recommended selections",
+      "Focus: Performance, availability, cost, and lifecycle",
+      "Why it matters: Fewer RFIs, faster approvals, smother procurement",
+    ],
   },
   {
     id: 3,
-    title: "Valves, heat-exchangers, separators",
+    title: "BIM/Revit Modelling + XR Visualization",
     icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/contract_ac062687fa.svg",
-    desc: "We specialize in providing Knowledge Process Outsourcing (KPO) services focused on precise and comprehensive pump head calculation solutions. Our expertise lies in offering accurate and tailored calculations crucial for efficient pump system design and operation.",
+    desc: [
+      "Build it right, before you build it.",
+      "What you get: Revit families and coordinated BIM models with clash-aware layout",
+      "Extras: AR/VR animations and interactive walkthroughs for stakeholder buy-in",
+      "Why it matters: Fewer field changes, clearer coordination, stronger client trust",
+    ],
   },
   {
     id: 4,
-    title: "VRV & VRF, piping packages",
+    title: "Submittals Package (Ready to Approve)",
     icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/bmi_73aa8947cb.svg",
-    desc: "The tools we use for our services",
-  },
-  {
-    id: 5,
-    title: "Noise control, vibration & seismic",
-    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/application_4aa981e844.svg",
-    desc: "We specialize in providing Knowledge Process Outsourcing (KPO) services focused on precise and comprehensive pump head calculation solutions. Our expertise lies in offering accurate and tailored calculations crucial for efficient pump system design and operation.",
-  },
-];
-
-const whyQTO: Product[] = [
-  {
-    id: 1,
-    title: "Engineering-Backed Accuracy",
-    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/bmi_73aa8947cb.svg",
-    desc: "As an engineering firm, we don't just measure; we understand the why behind the designs, leading to more intelligent and accurate takeoffs.",
-  },
-  {
-    id: 2,
-    title: "Advanced Technology",
-    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/application_4aa981e844.svg",
-    desc: "We invest in the latest digital takeoff software to deliver speed and precision that manual methods can't match.",
-  },
-  {
-    id: 3,
-    title: "Speed & Scalability",
-    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/contract_ac062687fa.svg",
-    desc: "Need a takeoff in 24 hours? We have the team and technology to meet tight deadlines without compromising quality.",
-  },
-  {
-    id: 4,
-    title: "Cost-Effective Solution",
-    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/bmi_73aa8947cb.svg",
-    desc: "Avoid the overhead of a full-time, in-house estimator. Our services provide top-tier expertise on a project-by-project basis.",
-  },
-  {
-    id: 5,
-    title: "Collaborative Partnership",
-    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/application_4aa981e844.svg",
-    desc: "We see ourselves as an extension of your team, dedicated to your success. We're always available to clarify our reports and discuss the project.",
-  },
-];
-
-const productsBIM: Product[] = [
-  {
-    id: 1,
-    title: "LOD 100 - Conceptual Design",
-    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/bmi_73aa8947cb.svg",
-    desc: "LOD 100 represents the most basic level of BIM modeling. It includes conceptual information, basic geometry, and overall project massing.",
-  },
-  {
-    id: 2,
-    title: "LOD 200 - Schematic Design",
-    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/application_4aa981e844.svg",
-    desc: "LOD 200 involves more developed elements than LOD 100. It includes approximate sizes, shapes, and locations of building elements.",
-  },
-  {
-    id: 3,
-    title: "LOD 300 - Detailed Design",
-    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/contract_ac062687fa.svg",
-    desc: "LOD 300 provides a more detailed representation of building elements. It includes accurate geometry, sizes, shapes, quantities, and relationships between components.",
-  },
-  {
-    id: 4,
-    title: "LOD 400 - Fabrication and Assembly",
-    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/bmi_73aa8947cb.svg",
-    desc: "LOD 400 is highly detailed and suitable for fabrication and assembly purposes. It includes precise geometry, specific product information, and assembly details.",
-  },
-  {
-    id: 5,
-    title: "LOD 500 - As-Built Model",
-    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/application_4aa981e844.svg",
-    desc: "LOD 500 represents the highest level of detail, capturing actual installed elements and accurate as-built conditions. It includes precise geometry, product data, and operational information.",
+    desc: [
+      "Approval-ready documents that move projects, not paperwork",
+      "What you get: Complete submittal sets with cut sheets, schedules, markups and traceability",
+      "Standard: Organized to division and CSI requirements",
+      "Why it matters: Faster approvals and fewer back-and-forth cycles",
+    ],
   },
 ];
 
@@ -129,24 +77,11 @@ const ICON_BG_COLORS = {
   expanded: "rgba(255, 255, 255, 0.15)",
 };
 
-const ProductSelection: React.FC<{ heading?: string }> = ({
-  heading = "Key Deliverables",
-}) => {
+const ProductSelection = () => {
   const [expandedId, setExpandedId] = useState<number>(1);
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.4 });
   const [animateCards, setAnimateCards] = useState(false);
-
-  const params = useParams();
-  const { id } = params;
-
-  let productList = products;
-
-  if (Number(id) === 0) {
-    productList = whyQTO;
-  } else if (Number(id) === 3) {
-    productList = productsBIM;
-  }
 
   useEffect(() => {
     setAnimateCards(isInView);
@@ -156,22 +91,19 @@ const ProductSelection: React.FC<{ heading?: string }> = ({
 
   return (
     <div ref={sectionRef} className={styles.container}>
-      <h2 className={styles.title}>{heading}</h2>
+      <h2 className={styles.title}>Key Deliverables</h2>
 
       <div className={styles.grid}>
         {/* Left Column - Stacked Cards */}
         <div className={styles.leftColumn}>
           <div className={styles.cardsStack}>
-            {productList.map((product, index) => {
+            {keyDeliverables.map((product, index) => {
               const isExpanded = expandedId === product.id;
 
               return (
                 <motion.div
                   key={product.id}
                   className={styles.card}
-                  style={{
-                    zIndex: isExpanded ? 50 : products.length - index,
-                  }}
                   initial={{ opacity: 1, y: 50 }}
                   animate={{
                     y: animateCards ? 0 : 50,
@@ -252,7 +184,13 @@ const ProductSelection: React.FC<{ heading?: string }> = ({
           </div>
 
           <div className={styles.description}>
-            <p>{productList[expandedId - 1].desc}</p>
+            <p>{keyDeliverables[expandedId - 1].desc[0]}</p>
+            <ul>
+              {keyDeliverables[expandedId - 1].desc.map((desItem, i) => {
+                if (i === 0) return undefined;
+                return <li key={i}>{desItem}</li>;
+              })}
+            </ul>
           </div>
         </div>
       </div>

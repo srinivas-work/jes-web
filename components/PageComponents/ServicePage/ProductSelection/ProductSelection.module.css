@@ -27,8 +27,8 @@
 
 .cardsStack {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
 }
 
 .card {
@@ -55,8 +55,8 @@
 }
 
 .cardTitle {
-  margin: 0;
-  line-height: 1.4;
+  max-width: 80%;
+  line-height: 1.4rem;
   transition: color 0.3s ease;
 }
 
@@ -93,25 +93,32 @@
 .rightColumn {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 1rem;
 }
 
 .imageGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 1.5rem;
 }
 
 .description {
-  padding: 0 20px;
+  color: #666;
+  padding-right: 1rem;
 }
 
 .description p {
-  font-size: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
   line-height: 1.8;
-  color: #666;
   text-align: justify;
-  margin: 0;
+  margin-bottom: 0.5rem;
+}
+.description ul {
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 /* Responsive */

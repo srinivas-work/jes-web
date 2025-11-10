@@ -138,8 +138,6 @@ export default function GrowthCubes3D() {
     offset: ["start start", "end end"],
   });
 
-  console.log("Growth Cube");
-
   return (
     <motion.section ref={ref} className={styles.portalCardSection}>
       <div

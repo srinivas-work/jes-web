@@ -250,7 +250,7 @@ const Solutions = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            Precision-Driven BIM Services
+            Speed adn Certainty for Reps, Manufacturers & Contractors
           </motion.h1>
           <motion.p
             className={styles.heroSubtitle}
@@ -258,9 +258,8 @@ const Solutions = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            Empowering every discipline with intelligent modeling, seamless
-            coordination, and innovative solutions that transform the way you
-            build.
+            Accurate takeoffs, compliant selections & contractor-ready
+            submittals powered by senior QA/QC.
           </motion.p>
         </motion.div>
       </motion.section>

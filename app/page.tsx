@@ -116,7 +116,7 @@ export default function Home() {
       {isPhoneScreen && <ServiceScrollStackPhone />}
       {/* <AboutDetails /> */}
       <JesLogoDetails />
-      <GrowthCubes3D />
+      {/* <GrowthCubes3D /> */}
       <GrowthPath3D />
       {/* <ProcessDetails /> */}
       <IndustryHighlights />

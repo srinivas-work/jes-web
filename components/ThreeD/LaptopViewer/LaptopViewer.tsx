@@ -418,7 +418,7 @@ export default function LaptopViewer({
           <Preload all />
         </Canvas>
         {/* <div className={styles.serviceDetails}>{getDescription()}</div> */}
-        {getDescription()}
+        {/* {getDescription()} */}
       </div>
     </motion.section>
   );
