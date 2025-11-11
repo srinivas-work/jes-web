@@ -1,6 +1,7 @@
 .bruceSpotlight {
   width: 100%;
   height: 100dvh;
+  padding-left: 5rem;
 }
 
 /* Container */
@@ -47,7 +48,7 @@
 .shapeFigure img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 /* Main image */

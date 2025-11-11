@@ -99,8 +99,9 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
             src="/img/bg_pattern.svg"
             alt="JES"
           />
-          {sectionId !== 1 && (
-            <img src={"/img/demoAbout.png"} className={styles.accordionBg} />
+
+          {sectionId === 0 && (
+            <img src={"/img/highBuilding.jpg"} className={styles.accordionBg} />
           )}
 
           {sectionId === 1 && (
@@ -112,6 +113,25 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
               className={styles.accordionBg}
             />
           )}
+
+          {sectionId === 2 && (
+            <img
+              src={
+                "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687"
+              }
+              className={styles.accordionBg}
+            />
+          )}
+
+          {sectionId === 3 && (
+            <img
+              src={
+                "https://images.unsplash.com/photo-1537291730574-76479f3da033?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
+              }
+              className={styles.accordionBg}
+            />
+          )}
+
           <div className={styles["about-services-section-description"]}>
             {getSectionItem(sectionId, description)}
           </div>
