@@ -19,7 +19,7 @@ import { Suspense } from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
 import BruceSpotlight from "@/components/PageComponents/AboutPage/AboutAccordion/BruceSpotlight/BruceSpotlight";
-import WhyChooseUs from "@/components/PageComponents/AboutPage/AboutAccordion/WhyChooseUs/WhyChooseUs";
+import WhyChooseUs from "@/components/PageComponents/AboutPage/AboutAccordion/WhyChooseUs/CommonDataShowcase";
 import ProcessDetails from "@/components/PageComponents/HomePage/ProcessDetails/ProcessDetails";
 import Image from "next/image";
 import MissionVision from "@/components/PageComponents/AboutPage/AboutAccordion/MissionVision/MissionVision";

@@ -4,9 +4,8 @@ import { useMotionValueEvent, useScroll } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import styles from "./AboutAccordion.module.css";
 import BruceSpotlight from "./BruceSpotlight/BruceSpotlight";
-import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
-import Image from "next/image";
 import MissionVision from "./MissionVision/MissionVision";
+import CommonDataShowcase from "./WhyChooseUs/CommonDataShowcase";
 
 const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
   const [activeSectionId, setActiveSectionId] = useState<null | number>(null);
@@ -25,9 +24,14 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
     if (isScrolling) return; // Don't update during programmatic scroll
 
     const totalSections = aboutUsAccordionList.length;
-    const sectionIndex = Math.floor(latest * totalSections);
 
-    // prevent unnecessary re-renders & preserve click functionality
+    // --- START: adjusted mapping to avoid hitting last index early ---
+    // Use a 0..1 mapping to (totalSections - 1) so the last section only
+    // activates when scroll progress is near the container end.
+    const adjusted = Math.min(Math.max(latest, 0), 1);
+    const sectionIndex = Math.round(adjusted * (totalSections - 1));
+    // --- END: adjusted mapping ---
+
     setActiveSectionId((prev) => {
       if (prev !== sectionIndex) {
         return sectionIndex;
@@ -70,28 +74,18 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
       case 0:
         return <BruceSpotlight />;
       case 1:
-        return <WhyChooseUs />;
+        return <CommonDataShowcase pageType="whyChoose" />;
       case 2:
         return <MissionVision />;
       case aboutUsAccordionList.length - 1:
-        return (
-          <ul>
-            <li>Precision First</li>
-            <li>Speed with Integrity</li>
-            <li>Built for Partners</li>
-            <li>Own the Outcome</li>
-            <li>Scalable by Design</li>
-            <li>Innovate with Purpose</li>
-            <li>Clariy in Communication</li>
-          </ul>
-        );
+        return <CommonDataShowcase pageType="ourValues" />;
       default:
         return <p>{description}</p>;
     }
   };
 
   const getDescription = (description: string, sectionId: number) => {
-    //Active Section Item
+    // Active Section Item
     if (activeSectionId !== null && sectionId === activeSectionId) {
       return (
         <div
@@ -118,20 +112,6 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
               className={styles.accordionBg}
             />
           )}
-          {/* <div className={styles["about-services-section-circle-container"]}>
-            {Array.from({ length: aboutUsAccordionList.length }).map(
-              (_, index) => (
-                <div
-                  key={index}
-                  className={`${styles["about-services-section-circle"]} ${
-                    index === activeSectionId || index < activeSectionId
-                      ? ""
-                      : styles.outline
-                  }`}
-                />
-              )
-            )}
-          </div> */}
           <div className={styles["about-services-section-description"]}>
             {getSectionItem(sectionId, description)}
           </div>
@@ -223,67 +203,3 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
 };
 
 export default AboutAccordion;
-
-// <div className={styles["founder-images-container"]}>
-//   {Array.from({ length: 2 }).map((_, index) => {
-//     const name = index === 0 ? "John Doe" : "Foe Snow";
-//     return (
-//       <div
-//         className={styles["founder-image-item-container"]}
-//         key={index}
-//       >
-//         <div className={styles["founder-image-holder"]}>
-//           <Image
-//             src={`/img/founder-${index + 1}.jpg`}
-//             alt={name}
-//             fill
-//           />
-//         </div>
-//         <p>{name}</p>
-//       </div>
-//     );
-//   })}
-// </div>
-
-{
-  /* <BruceSpotlight
-              style={
-                sectionId === 0
-                  ? { opacity: 1, zIndex: 2 }
-                  : { opacity: 0, zIndex: -1 }
-              }
-            />
-
-            <WhyChooseUs
-              style={
-                sectionId === 1
-                  ? { opacity: 1, zIndex: 1 }
-                  : { opacity: 0, zIndex: -1 }
-              }
-            />
-            <ul
-              style={
-                sectionId === aboutUsAccordionList.length - 1
-                  ? { opacity: 1, zIndex: 1 }
-                  : { opacity: 0, zIndex: -1 }
-              }
-            >
-              <li>Precision First</li>
-              <li>Speed with Integrity</li>
-              <li>Built for Partners</li>
-              <li>Own the Outcome</li>
-              <li>Scalable by Design</li>
-              <li>Innovate with Purpose</li>
-              <li>Clariy in Communication</li>
-            </ul>
-
-            <p
-              style={
-                sectionId > 1 && sectionId < aboutUsAccordionList.length - 1
-                  ? { opacity: 1, zIndex: 1 }
-                  : { opacity: 0, zIndex: -1 }
-              }
-            >
-              {description}
-            </p> */
-}
