@@ -79,6 +79,25 @@ const serviceSections: ServiceItemType[] = [
         image:
           "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FJE_Si_676ad8ceb5.png&w=1080&q=90",
       },
+      {
+        caseStudy: true,
+        title: "QTO & Selection Support Success",
+        services: [
+          {
+            title: "Challenge",
+            desc: "A mid-sized US Air-Distribution Representative lost two estimators, creating operational gaps in their estimating and quoting processes. 167% Efficiency Gain increase in weekly quoting efficiency.",
+          },
+          {
+            title: "Solution",
+            desc: "JES provided comprehensive estimating and quoting support, leveraging expertise to boost efficiency and profitability. $3M Added Revenue - Additional Annual Revenue.",
+          },
+          {
+            title: "Results",
+            desc: "Weekly quoting increased by $528K (167% efficiency gain). Monthly sales grew by $200K with just $6,950 investment. Additional $50K monthly margin. $700k Margin Growth - Extra Annual Profit Margin",
+          },
+        ],
+        image: "/img/services/spec-review.png",
+      },
     ],
     toolsUsed: [
       "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FPlan_Swift_Logo_Lrg_3a74a35ff2.png&w=384&q=100",
@@ -133,29 +152,6 @@ const serviceSections: ServiceItemType[] = [
         ],
       },
     ],
-    extraDetails: [
-      {
-        caseStudy: true,
-        title: "Engineering Model integration",
-        description:
-          "Using JESi, our all-in-one project management portal designed to elevate collaboration and streamline project workflows. With our user-friendly interface, clients can effortlessly upload project files, ensuring seamless communication and file sharing.",
-        services: [
-          {
-            title: "Challenge",
-            desc: "Engineers needed a complete model including an ERU, fan system, and vibration curb.",
-          },
-          {
-            title: "Solution",
-            desc: "JES engaged manufacturers to retrieve models for all components.",
-          },
-          {
-            title: "Outcome",
-            desc: "Model delivered overnight, allowing the rep to engage with JES in the afternoon and have the model ready for the engineer the next morning.",
-          },
-        ],
-        image: "/img/services/subServices/equipment-case-study.png",
-      },
-    ],
   },
   {
     title: "Spec Review",
@@ -167,8 +163,6 @@ const serviceSections: ServiceItemType[] = [
       {
         caseStudy: true,
         title: "Engineering Model integration",
-        description:
-          "Using JESi, our all-in-one project management portal designed to elevate collaboration and streamline project workflows. With our user-friendly interface, clients can effortlessly upload project files, ensuring seamless communication and file sharing.",
         services: [
           {
             title: "Challenge",
@@ -240,8 +234,6 @@ const serviceSections: ServiceItemType[] = [
       {
         caseStudy: true,
         title: "Engineering Model integration",
-        description:
-          "Using JESi, our all-in-one project management portal designed to elevate collaboration and streamline project workflows. With our user-friendly interface, clients can effortlessly upload project files, ensuring seamless communication and file sharing.",
         services: [
           {
             title: "Challenge",
@@ -470,8 +462,6 @@ const serviceSections: ServiceItemType[] = [
       {
         caseStudy: true,
         title: "Space Design Challenges Solved in Record Time",
-        description:
-          "Using JESi, our all-in-one project management portal designed to elevate collaboration and streamline project workflows. With our user-friendly interface, clients can effortlessly upload project files, ensuring seamless communication and file sharing.",
         services: [
           {
             title: "The Challenge",

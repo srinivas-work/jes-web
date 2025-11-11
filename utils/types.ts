@@ -44,7 +44,7 @@ export type SecurityItemType = {
 export type SolutionType = {
   caseStudy?: boolean;
   title: string;
-  description: string;
+  description?: string;
   services: string[] | GenericType[];
   image: string;
 };

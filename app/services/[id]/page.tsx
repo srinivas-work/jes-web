@@ -59,7 +59,9 @@ const ServiceItem = () => {
         selectedService={selectedService}
       />
       {/* <VideoSection id={Number(id)} /> */}
-      <ServiceSteps subServiceItem={selectedService.subServices} />
+      {selectedService.subServices && (
+        <ServiceSteps subServiceItem={selectedService.subServices} />
+      )}
       <ProductSelection />
       {selectedService.toolsUsed && (
         <div

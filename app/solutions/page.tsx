@@ -85,7 +85,9 @@ export const SolutionCard: React.FC<{
               </h2>
             )}
             <h2 className={styles.title}>{solution.title}</h2>
-            <p className={styles.description}>{solution.description}</p>
+            {solution.description && (
+              <p className={styles.description}>{solution.description}</p>
+            )}
 
             <div className={styles.servicesList}>
               {solution.services.map((service, idx) => (
