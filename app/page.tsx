@@ -23,6 +23,7 @@ import WhyChooseUs from "@/components/PageComponents/AboutPage/AboutAccordion/Wh
 import ProcessDetails from "@/components/PageComponents/HomePage/ProcessDetails/ProcessDetails";
 import Image from "next/image";
 import MissionVision from "@/components/PageComponents/AboutPage/AboutAccordion/MissionVision/MissionVision";
+import FAQSection from "@/components/PageComponents/HomePage/FAQSection/FAQSection";
 
 function Building() {
   const tex = useTexture("/img/modern-building.png");
@@ -120,23 +121,7 @@ export default function Home() {
       <GrowthPath3D />
       {/* <ProcessDetails /> */}
       <IndustryHighlights />
-      <div
-        style={{
-          margin: "8rem auto",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "4rem",
-        }}
-      >
-        <h2>Frequently Asked Questions</h2>
-        <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-          {!!faq &&
-            faq.map((item, i) => {
-              return <FAQ data={item} key={i} />;
-            })}
-        </div>
-      </div>
+      <FAQSection />
       <TestimonialCarouselReel cardSpacing={420} testimonials={testimonials} />
     </div>
   );

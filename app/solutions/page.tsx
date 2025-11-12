@@ -285,7 +285,7 @@ const Solutions = () => {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           viewport={{ once: true }}
         >
-          <h2>Ready to Elevate Your Projects?</h2>
+          <h2>Ready to Scale Your Business?</h2>
           <p>
             Let us discuss how our BIM solutions can transform your engineering
             workflow

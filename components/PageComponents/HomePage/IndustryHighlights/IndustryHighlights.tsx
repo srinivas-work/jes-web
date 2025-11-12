@@ -4,8 +4,6 @@ import styles from "./IndustryHighlights.module.css";
 import { highlights } from "@/utils/data/dummyData";
 
 export default function IndustryHighlights() {
-  console.log("Industry Highlights");
-
   return (
     <section className={styles.industryHighlightsSection}>
       <div className={styles.backgroundPattern}></div>

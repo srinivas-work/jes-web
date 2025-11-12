@@ -239,9 +239,9 @@ function InsightCard({ insight, index }: { insight: Insight; index: number }) {
     <motion.article
       ref={cardRef}
       className={styles.insightCard}
-      initial={{ opacity: 0, y: 60 }}
+      initial={{ y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: false, margin: "-80px" }}
       transition={{
         duration: 0.7,
         delay: index * 0.1,

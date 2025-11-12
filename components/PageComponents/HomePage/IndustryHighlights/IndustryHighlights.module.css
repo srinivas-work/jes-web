@@ -139,3 +139,27 @@
 .linkRed {
   color: #b91c1c;
 }
+
+@media screen and (max-width: 650px) {
+  .industryItems {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 3.5rem;
+    width: 100%;
+    height: unset;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card:nth-child(odd)::before {
+    top: 0;
+  }
+
+  .card:nth-child(odd)::after {
+    height: 0px;
+  }
+
+  .card:nth-child(even)::after {
+    height: 0px;
+  }
+}

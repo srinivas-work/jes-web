@@ -43,3 +43,13 @@
   object-fit: cover;
   overflow: visible;
 }
+
+@media screen and (max-width: 650px) {
+  .jesLogoAboutContainer {
+    gap: 2rem;
+  }
+
+  .jesLogoAboutDesc {
+    text-align: justify;
+  }
+}

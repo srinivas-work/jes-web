@@ -414,7 +414,7 @@
 
 .activeFilter {
   background: #a91e2d;
-  color: #fff;
+  color: #fff !important;
   border-color: #a91e2d;
 }
 
@@ -434,7 +434,7 @@
   height: 100%;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 650px) {
   .container {
     padding: 0 16px 60px;
   }
@@ -460,6 +460,20 @@
 
   .heroDescription {
     font-size: 16px;
+  }
+
+  .filterMenu {
+    margin: 5rem auto;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    justify-content: flex-start;
+    padding: 0 1rem;
+  }
+
+  .filterButton {
+    padding: 5px 25px;
+    border-radius: 25px;
   }
 
   .cardContent {

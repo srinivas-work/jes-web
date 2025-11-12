@@ -9,6 +9,7 @@ import { useEffect, useRef } from "react";
 import styles from "./JesLogoDetails.module.css";
 import PatternAnimation from "@/components/UI/PatternAnimation/PatternAnimation";
 import Image from "next/image";
+import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 
 interface CrossIconProps {
   color?: string;
@@ -140,6 +141,8 @@ const JesLogo: React.FC<CrossIconProps> = ({
 export default function JesLogoDetails() {
   const ref = useRef<HTMLDivElement | null>(null);
 
+  const isPhoneScreen = useIsPhoneScreen();
+
   // Track scroll progress across the full height of the section
   // const { scrollYProgress } = useScroll({
   //   target: ref,
@@ -220,6 +223,36 @@ export default function JesLogoDetails() {
 
   // Create motion blur filter
   const blurFilter = useTransform(smoothBlur, (b) => `blur(${b}px)`);
+
+  if (isPhoneScreen) {
+    return (
+      <div
+        className={styles.jesLogoDetailsContainer}
+        style={{ height: "unset" }}
+      >
+        <div
+          className={styles.jesDetailsContainer}
+          style={{ position: "static" }}
+        >
+          <div className={styles.jesLogoAboutContainer}>
+            <h2>About Us</h2>
+            <img src="/img/logos/jes_logo.svg" style={{ width: "15rem" }} />
+            <p className={styles.jesLogoAboutDesc}>
+              We have combined the precision and innovation of our U.S.-based
+              engineering expertise with the deep, industry-specific experience
+              of our 200+ professional engineers across India and Qatar. Our
+              global team seamlessly manages your engineering and design
+              workloads ensuring accuracy, efficiency, and scalability at every
+              stage of the process. By entrusting us with your complex design
+              and documentation needs, your organization gains the freedom to
+              focus on strategy, growth, and innovation unlocking a new world of
+              opportunities and technological possibilities.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.jesLogoDetailsContainer} ref={ref}>

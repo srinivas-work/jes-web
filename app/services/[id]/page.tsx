@@ -1,12 +1,11 @@
 "use client";
 
 import { SolutionCard } from "@/app/solutions/page";
-import FAQ from "@/components/FAQ/FAQ";
-import OurApproach from "@/components/PageComponents/ServicePage/OurApproach/OurApproach";
+import FAQSection from "@/components/PageComponents/HomePage/FAQSection/FAQSection";
 import ProductSelection from "@/components/PageComponents/ServicePage/ProductSelection/ProductSelection";
 import ServiceSteps from "@/components/PageComponents/ServicePage/ServiceSteps/ServiceSteps";
 import LaptopViewer from "@/components/ThreeD/LaptopViewer/LaptopViewer";
-import { faq, serviceSections } from "@/utils/data/dummyData";
+import { serviceSections } from "@/utils/data/dummyData";
 import { splitText } from "@/utils/helperFunctions";
 import { useLenis } from "@/utils/hooks/useLenis";
 import { motion } from "framer-motion";
@@ -118,23 +117,7 @@ const ServiceItem = () => {
           ))}
         </section>
       )}
-      <div
-        style={{
-          margin: "0 auto",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "4rem",
-        }}
-      >
-        <h2>Frequently Asked Questions</h2>
-        <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
-          {!!faq &&
-            faq.map((item, i) => {
-              return <FAQ data={item} key={i} />;
-            })}
-        </div>
-      </div>
+      <FAQSection />
       {/* <OurApproach /> */}
       <motion.section
         className={styles.serviceCtaSection}
