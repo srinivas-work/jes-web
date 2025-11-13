@@ -1,11 +1,11 @@
 "use client";
 
+import FlipBookViewer from "@/components/FlipBookViewer/FlipBookViewer";
 import { useLenis } from "@/utils/hooks/useLenis";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import styles from "./Insights.module.css";
-import { useScrollStore } from "@/utils/store/useScrollStore";
 
 interface Insight {
   id: number;
@@ -89,6 +89,8 @@ export const insightsData: Insight[] = [
 export default function Insights() {
   useLenis();
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isDocClicked, setIsDocClicked] = useState(false);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
@@ -202,15 +204,32 @@ export default function Insights() {
       <div className={styles.container}>
         <section className={styles.insightsGrid}>
           {filteredInsights.map((insight, index) => (
-            <InsightCard key={insight.id} insight={insight} index={index} />
+            <InsightCard
+              key={insight.id}
+              insight={insight}
+              index={index}
+              cardClickHandler={(clicked) => setIsDocClicked(clicked)}
+            />
           ))}
         </section>
       </div>
+      <FlipBookViewer
+        isClicked={isDocClicked}
+        onClose={() => setIsDocClicked(false)}
+      />
     </div>
   );
 }
 
-function InsightCard({ insight, index }: { insight: Insight; index: number }) {
+function InsightCard({
+  insight,
+  index,
+  cardClickHandler,
+}: {
+  insight: Insight;
+  index: number;
+  cardClickHandler: (clicked: boolean) => void;
+}) {
   const router = useRouter(); // ✅ Next.js router for navigation
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -232,7 +251,9 @@ function InsightCard({ insight, index }: { insight: Insight; index: number }) {
   const smoothImageY = useSpring(imageY, { stiffness: 100, damping: 30 });
 
   const handleClick = () => {
-    router.push(`/insights/${insight.id}`);
+    //router.push(`/insights/${insight.id}`);
+    //setIsDocClicked(true);
+    cardClickHandler(true);
   };
 
   return (

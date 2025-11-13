@@ -22,6 +22,7 @@ const serviceSections: ServiceItemType[] = [
   {
     title: "Quantity Take Off",
     image: "/img/services/qto.png",
+    pdfLink: "/pdfs/service-docs/Jersey_Quantity_Take_Off_US.pdf",
     img1: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FGroup_21_553dee3fe0.jpg&w=640&q=90",
     img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FRectangle_35_9b6cebc560.jpg&w=640&q=90",
     description:
@@ -41,7 +42,7 @@ const serviceSections: ServiceItemType[] = [
         title: "Customized Reports & Documentation",
         desc: [
           "Preparation of comprehensive reports outlining the measured quantities, including breakdowns.",
-          "We customize the QTO process to make your systems",
+          "We tailor the QTO package to match your existing BOQ sheets and pivot files, ensuring smooth integration into your workflow.",
         ],
       },
 
@@ -114,29 +115,24 @@ const serviceSections: ServiceItemType[] = [
       "JES provides equipment selection services for the air-side, applied MEP equipment and controls. We support in choosing the most suitable and efficient mechanical and electrical equipment for your construction projects. Equipment selected to meet local building codes and safety regulations ensures project compliance.",
       "Equipment selection services are therefore very useful for optimizing the performance, efficiency, and cost-effectiveness of MEP systems in construction projects, while also promoting sustainability and compliance with industry standards.",
     ],
-    pdfLink: "/pdfs/equipment_selection.pdf",
+    pdfLink: "/pdfs/service-docs/Jersey_Equipment_Selection_US.pdf",
+
     subServices: [
       {
         title: "Comprehensive Equipment Selection",
-        desc: [
-          "Support in choosing the most suitable mechanical and electrical equipment for construction projects.",
-          "Focus on air-side, chilled water, and refrigerant control systems.",
-        ],
+        desc: ["We are factory trained by the leading manufacturers."],
       },
       {
         title: "Efficiency & Performance Optimization",
-        desc: [
-          "Selection aimed at maximizing system efficiency and operational performance.",
-          "Ensures long-term reliability and reduced energy consumption.",
-        ],
+        desc: ["Selections reviewed to optimize spec and energy requirements."],
       },
-      {
-        title: "Regulatory Compliance",
-        desc: [
-          "Equipment chosen in alignment with local building codes and safety regulations.",
-          "Guarantees project compliance and safety assurance.",
-        ],
-      },
+      // {
+      //   title: "Regulatory Compliance",
+      //   desc: [
+      //     "Equipment chosen in alignment with local building codes and safety regulations.",
+      //     "Guarantees project compliance and safety assurance.",
+      //   ],
+      // },
       {
         title: "Cost-effective Solutions",
         desc: [
@@ -144,13 +140,13 @@ const serviceSections: ServiceItemType[] = [
           "Helps optimize overall project budget without compromising quality.",
         ],
       },
-      {
-        title: "Sustainability-driven Approach",
-        desc: [
-          "Focus on environmentally responsible systems supporting green building standards.",
-          "Promotes long-term efficiency and reduced carbon footprint.",
-        ],
-      },
+      // {
+      //   title: "Sustainability-driven Approach",
+      //   desc: [
+      //     "Focus on environmentally responsible systems supporting green building standards.",
+      //     "Promotes long-term efficiency and reduced carbon footprint.",
+      //   ],
+      // },
     ],
   },
   {
@@ -159,30 +155,10 @@ const serviceSections: ServiceItemType[] = [
     img2: "/img/services/spec-review-2.png",
     description:
       "JES Spec review ensures client's equipment meets or wisely challenges the Spec, using a thorough tested process to , perform electrical, controls and physical specifications are addressed.",
-    extraDetails: [
-      {
-        caseStudy: true,
-        title: "Engineering Model integration",
-        services: [
-          {
-            title: "Challenge",
-            desc: "Engineers needed a complete model including an ERU, fan system, and vibration curb.",
-          },
-          {
-            title: "Solution",
-            desc: "JES engaged manufacturers to retrieve models for all components.",
-          },
-          {
-            title: "Outcome",
-            desc: "Model delivered overnight, allowing the rep to engage with JES in the afternoon and have the model ready for the engineer the next morning.",
-          },
-        ],
-        image: "/img/services/subServices/equipment-case-study.png",
-      },
-    ],
   },
   {
     title: "BIM Modelling",
+    pdfLink: "/pdfs/service-docs/Jersey_BIM_Detailed_brochure_US.pdf",
     image: "/img/services/bim-modelling.jpg",
     img1: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FRectangle_52_2196634e4a.jpg&w=640&q=90",
     img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fwhat_is_bim_thumb_1172x660_888f6c7af1.jpg&w=640&q=90",
@@ -255,6 +231,8 @@ const serviceSections: ServiceItemType[] = [
   {
     title: "Revit Models: Component & Assembly",
     image: "/img/services/revit-models.png",
+    img1: "/img/services/revit-models-2.png",
+    img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fwhat_is_bim_thumb_1172x660_888f6c7af1.jpg&w=640&q=90",
     description: [
       "At Jersey Engineering Solutions (JES), our Revit-based Component and Assembly Modelling services bridge the gap between design intent and real-world construction. By integrating data-rich, parametric models from multiple manufacturers into a unified BIM environment, we deliver accurate, coordination-ready models that streamline project workflows.",
       "Each model, whether an individual component or a complete assembly—is meticulously developed to represent true-to-life geometry, performance characteristics, and connectivity details. This ensures seamless integration across mechanical, electrical, and architectural disciplines.",
@@ -298,6 +276,26 @@ const serviceSections: ServiceItemType[] = [
     ],
     extraDetails: [
       {
+        caseStudy: true,
+        title: "Engineering Model integration",
+        services: [
+          {
+            title: "Challenge",
+            desc: "Engineers needed a complete model including an ERU, fan system, and vibration curb.",
+          },
+          {
+            title: "Solution",
+            desc: "JES engaged manufacturers to retrieve models for all components.",
+          },
+          {
+            title: "Outcome",
+            desc: "Model delivered overnight, allowing the rep to engage with JES in the afternoon and have the model ready for the engineer the next morning.",
+          },
+        ],
+        image: "/img/services/subServices/equipment-case-study.png",
+      },
+
+      {
         title: "Component Modeling",
         description:
           "We develop intelligent Revit-based 3D component models that integrate products from multiple manufacturers into a single coordinated BIM environment. Each component is built with precise parameters, metadata, and documentation to enhance design accuracy, coordination, and project efficiency across MEP systems.",
@@ -322,6 +320,7 @@ const serviceSections: ServiceItemType[] = [
   {
     title: "AR/VR Modelling",
     image: "/img/services/ar-vr.jpg",
+    pdfLink: "/pdfs/service-docs/Jersey_AR_and_VR_Modeling_US.pdf",
     img1: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FFrame_627513_edf1367c2e.png&w=640&q=90",
     img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FRectangle_21_87e7dacf53.jpg&w=640&q=90",
     description: [
@@ -391,6 +390,7 @@ const serviceSections: ServiceItemType[] = [
   },
   {
     title: "MEP Drafting",
+    pdfLink: "/pdfs/service-docs/Jersey_MEP_Drafting_Services_US.pdf",
     image: "/img/services/mep-drafting.png",
     img1: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fmep_drafting_services_intro_b23052ada0.jpg&w=640&q=90",
     img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FSpace_Management_Software_8c243ef07d.webp&w=640&q=90",
@@ -486,6 +486,7 @@ const serviceSections: ServiceItemType[] = [
   },
   {
     title: "Energy Modelling / Building Engineering Services",
+    pdfLink: "/pdfs/service-docs/Jersey_Thermal_Load_Calculation_US.pdf",
     image: "/img/services/energy-modelling.png",
     img1: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FThermal_load_calc_2_a858c198db.jpg&w=384&q=90",
     img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2F3d_rendering_ventilation_system_5_b1bd869dfe.jpg&w=384&q=90",

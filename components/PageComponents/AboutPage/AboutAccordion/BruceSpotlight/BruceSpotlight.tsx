@@ -33,7 +33,7 @@ const BruceSpotlight: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
         {/* Right Text Section */}
         <div className={styles.textColumn}>
           <div className={styles.textContent}>
-            <h2 className={styles.title}>CEO Message</h2>
+            <h2 className={styles.title}>CEO's Message</h2>
             <p className={styles.description}>
               At JES Engineering Solutions, we elevate construction excellence
               worldwide through advanced engineering, fostering sustainability
@@ -43,9 +43,7 @@ const BruceSpotlight: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
             </p>
             <div className={styles.signature}>
               <div className={styles.name}>Bruce Dorey</div>
-              <p className={styles.role}>
-                Partner &amp; CEO, Jersey Engineering Solutions
-              </p>
+              <p className={styles.role}>Partner &amp; CEO, JES Inc.</p>
             </div>
           </div>
         </div>

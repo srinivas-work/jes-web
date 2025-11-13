@@ -130,3 +130,31 @@
   font-size: 1.1rem;
   font-weight: 700;
 }
+
+.brochureBtn {
+  /* border-radius: 50%;
+  height: 4rem;
+  width: 4rem; */
+  width: 12rem;
+  border-radius: 999px;
+  padding: 0.8rem;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1400;
+  background-color: var(--primary-red);
+  transition: all 0.5s ease-in-out !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.brochureBtn:hover {
+  box-shadow: 10px 4px 14px rgba(169, 30, 45, 0.5);
+}
+
+.brochureBtn img {
+  width: 2.3rem;
+  height: 100%;
+  object-fit: cover;
+}

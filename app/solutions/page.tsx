@@ -36,7 +36,7 @@ export const SolutionCard: React.FC<{
       return window.open(destinationUrl, "_blank");
     }
 
-    router.push("/contact");
+    router.push("/insights");
   };
 
   return (
@@ -252,7 +252,7 @@ const Solutions = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            Speed adn Certainty for Reps, Manufacturers & Contractors
+            Speed and Certainty for Reps, Manufacturers, and Contractors
           </motion.h1>
           <motion.p
             className={styles.heroSubtitle}

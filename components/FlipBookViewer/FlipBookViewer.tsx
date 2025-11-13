@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./FlipBookView.module.css";
 
 const FlipBookViewer: React.FC<{
+  pdfUrl?: string;
   isClicked?: boolean;
   onClose?: (isClosed: boolean) => void;
-}> = ({ isClicked, onClose }) => {
+}> = ({ pdfUrl = "/pdfs/jes_white_paper_series.pdf", isClicked, onClose }) => {
   const embedRef = useRef<HTMLEmbedElement | null>(null);
   const [isFlipbookOpen, setIsFlipbookOpen] = useState(false);
 
@@ -23,8 +24,6 @@ const FlipBookViewer: React.FC<{
 
   // const pdfUrl =
   //   "https://cors-anywhere.herokuapp.com/https://www.adobe.com/support/products/enterprise/knowledgecenter/media/c4611_sample_explain.pdf";
-
-  const pdfUrl = "/flipBook/books/jes_demo.pdf"; // https://github.com/progit/progit2/releases/download/2.1.331/progit.pdf
 
   // const openFlipBook = () => {
   //   setIsFlipbookOpen(true);

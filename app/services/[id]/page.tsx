@@ -13,6 +13,8 @@ import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import styles from "./ServiceItem.module.css";
 import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
+import FlipBookViewer from "@/components/FlipBookViewer/FlipBookViewer";
+import { useState } from "react";
 
 //
 
@@ -22,6 +24,7 @@ const ServiceItem = () => {
   const router = useRouter();
   const params = useParams();
   const { id } = params;
+  const [isDocClicked, setIsDocClicked] = useState(false);
 
   const selectedService = serviceSections[Number(id)];
 
@@ -107,17 +110,22 @@ const ServiceItem = () => {
 
       {selectedService.extraDetails && (
         <section className={styles.extrasSection}>
-          {selectedService.extraDetails?.map((solution, index) => (
-            <SolutionCard
-              key={index}
-              solution={solution}
-              index={index}
-              hideId
-              destinationUrl={
-                Number(id) === 0 ? "https://jesi.jerseyeng.com/" : ""
-              }
-            />
-          ))}
+          {selectedService.extraDetails?.map((solution, index) => {
+            let url =
+              Number(id) === 0 && !solution.caseStudy
+                ? "https://jesi.jerseyeng.com/"
+                : "";
+
+            return (
+              <SolutionCard
+                key={index}
+                solution={solution}
+                index={index}
+                hideId
+                destinationUrl={url}
+              />
+            );
+          })}
         </section>
       )}
       <FAQSection />
@@ -153,6 +161,18 @@ const ServiceItem = () => {
           </motion.button>
         </motion.div>
       </motion.section>
+      <FlipBookViewer
+        isClicked={isDocClicked}
+        onClose={() => setIsDocClicked(false)}
+        pdfUrl={selectedService.pdfLink}
+      />
+      <button
+        className={styles.brochureBtn}
+        onClick={() => setIsDocClicked(true)}
+      >
+        <img src="/icons/doc.svg" />
+        View Brochure
+      </button>
     </div>
   );
 };

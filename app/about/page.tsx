@@ -1,15 +1,14 @@
 "use client";
 
 import AboutAccordion from "@/components/PageComponents/AboutPage/AboutAccordion/AboutAccordion";
+import AboutTopPhone from "@/components/PageComponents/AboutPage/AboutTopPhone/AboutTopPhone";
 import CircularTimeline from "@/components/PageComponents/AboutPage/CircularTimeline/CircularTimeline";
-import OurClientsCarousel from "@/components/PageComponents/AboutPage/OurClientsCarousel/OurClientsCarousel";
+import SecuritySection from "@/components/PageComponents/AboutPage/SecuritySection/SecuritySection";
 import TeamCardStack from "@/components/PageComponents/AboutPage/TeamCardStack/TeamCardStack";
+import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 import { useLenis } from "@/utils/hooks/useLenis";
 import Image from "next/image";
 import styles from "./About.module.css";
-import SecuritySection from "@/components/PageComponents/AboutPage/SecuritySection/SecuritySection";
-import AboutTopPhone from "@/components/PageComponents/AboutPage/AboutTopPhone/AboutTopPhone";
-import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 
 const About = () => {
   useLenis();

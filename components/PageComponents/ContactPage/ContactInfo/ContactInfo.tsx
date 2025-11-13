@@ -4,10 +4,11 @@ import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import styles from "./ContactInfo.module.css";
 import FlipBookViewer from "@/components/FlipBookViewer/FlipBookViewer";
-import { FileText } from "lucide-react";
+import { Facebook, FileText, Instagram, Linkedin } from "lucide-react";
+import Link from "next/link";
 
 const contactInfo = [
-  { icon: "/icons/phone.svg", text: "+1012 3456 789", alt: "Phone" },
+  { icon: "/icons/phone.svg", text: "+1 434 218-8403", alt: "Phone" },
   { icon: "/icons/email.svg", text: "sales@jerseyeng.com", alt: "Email" },
   {
     icon: "/icons/location.svg",
@@ -132,14 +133,32 @@ const ContactInfo = () => {
           </div>
 
           <div className={styles.socialIcons}>
-            {socialIcons.map((icon, index) => (
+            {/* {socialIcons.map((icon, index) => (
               <img
                 key={index}
                 className={styles.socialIcon}
                 alt={icon.alt}
                 src={icon.src}
               />
-            ))}
+            ))} */}
+            <Link
+              href="https://www.linkedin.com/company/jersey-engineering-solutions/"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={35} />
+            </Link>
+            <Link
+              href="https://www.facebook.com/p/Jersey-Engineering-Solutions-61565305681720/"
+              aria-label="Facebook"
+            >
+              <Facebook size={35} />
+            </Link>
+            <Link
+              href="https://www.instagram.com/jersey_engineering_solutions/"
+              aria-label="Twitter"
+            >
+              <Instagram size={35} />
+            </Link>
             <button
               className={styles.docButton}
               onClick={() => setIsDocClicked(true)}
