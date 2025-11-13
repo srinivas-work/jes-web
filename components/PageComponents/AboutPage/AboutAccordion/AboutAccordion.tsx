@@ -1,15 +1,13 @@
 import { aboutUsAccordionList } from "@/utils/data/dummyData";
-import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import styles from "./AboutAccordion.module.css";
 import BruceSpotlight from "./BruceSpotlight/BruceSpotlight";
 import MissionVision from "./MissionVision/MissionVision";
-import CommonDataShowcase from "./WhyChooseUs/CommonDataShowcase";
+import CommonDataShowcase from "./CommonDataShowcase/CommonDataShowcase";
 
 const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
   const [activeSectionId, setActiveSectionId] = useState<null | number>(null);
-  const isPhoneScreen = useIsPhoneScreen();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isScrolling, setIsScrolling] = useState(false);
 
@@ -69,16 +67,75 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
     scrollToSection();
   }, [activeSectionId]);
 
+  const getDescriptionStyle = (sectionId: number) => {
+    const backgroundColor =
+      sectionId % 2 == 0 ? "var(--primary-dark)" : "var(--primary-red)";
+
+    if (activeSectionId !== null && sectionId === activeSectionId) {
+      return {
+        padding: "5rem",
+        backgroundColor,
+        color: "white",
+      };
+    } else {
+      return {};
+    }
+  };
+
   const getSectionItem = (sectionId: number, description: string) => {
     switch (sectionId) {
       case 0:
-        return <BruceSpotlight />;
+        return (
+          <>
+            <img src={"/img/highBuilding.jpg"} className={styles.accordionBg} />
+            <div className={styles["about-services-section-description"]}>
+              <BruceSpotlight />
+            </div>
+          </>
+        );
       case 1:
-        return <CommonDataShowcase pageType="whyChoose" />;
+        return (
+          <>
+            <img
+              src={
+                "https://jerseyeng.com/_next/image?url=%2Fimages%2Fabout%2Faboutservice-banner.png&w=3840&q=90"
+              }
+              style={{ opacity: 0.5 }}
+              className={styles.accordionBg}
+            />
+            <div className={styles["about-services-section-description"]}>
+              <CommonDataShowcase pageType="whyChoose" />
+            </div>
+          </>
+        );
       case 2:
-        return <MissionVision />;
-      case aboutUsAccordionList.length - 1:
-        return <CommonDataShowcase pageType="ourValues" />;
+        return (
+          <>
+            <img
+              src={
+                "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687"
+              }
+              className={styles.accordionBg}
+            />
+            <div className={styles["about-services-section-description"]}>
+              <MissionVision />
+            </div>
+          </>
+        );
+      case 3:
+        return (
+          <>
+            <img
+              src={
+                "https://images.unsplash.com/photo-1537291730574-76479f3da033?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
+              }
+              className={styles.accordionBg}
+            />
+            <div className={styles["about-services-section-description"]}>
+              <CommonDataShowcase pageType="ourValues" />
+            </div>
+          </>
+        );
       default:
         return <p>{description}</p>;
     }
@@ -92,68 +149,11 @@ const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
           className={styles["about-services-section-description-container"]}
           style={getDescriptionStyle(sectionId)}
         >
-          <img
-            className={
-              styles["about-services-section-description-container-bg"]
-            }
-            src="/img/bg_pattern.svg"
-            alt="JES"
-          />
-
-          {sectionId === 0 && (
-            <img src={"/img/highBuilding.jpg"} className={styles.accordionBg} />
-          )}
-
-          {sectionId === 1 && (
-            <img
-              src={
-                "https://jerseyeng.com/_next/image?url=%2Fimages%2Fabout%2Faboutservice-banner.png&w=3840&q=90"
-              }
-              style={{ opacity: 0.5 }}
-              className={styles.accordionBg}
-            />
-          )}
-
-          {sectionId === 2 && (
-            <img
-              src={
-                "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687"
-              }
-              className={styles.accordionBg}
-            />
-          )}
-
-          {sectionId === 3 && (
-            <img
-              src={
-                "https://images.unsplash.com/photo-1537291730574-76479f3da033?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
-              }
-              className={styles.accordionBg}
-            />
-          )}
-
-          <div className={styles["about-services-section-description"]}>
-            {getSectionItem(sectionId, description)}
-          </div>
+          {getSectionItem(sectionId, description)}
         </div>
       );
     } else {
       return <></>;
-    }
-  };
-
-  const getDescriptionStyle = (sectionId: number) => {
-    const backgroundColor =
-      sectionId % 2 == 0 ? "var(--primary-dark)" : "var(--primary-red)";
-
-    if (activeSectionId !== null && sectionId === activeSectionId) {
-      return {
-        padding: isPhoneScreen ? "12rem" : "5rem",
-        backgroundColor,
-        color: "white",
-      };
-    } else {
-      return {};
     }
   };
 

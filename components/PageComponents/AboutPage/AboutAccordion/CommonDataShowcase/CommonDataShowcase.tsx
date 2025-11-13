@@ -1,5 +1,8 @@
-import React, { HTMLAttributes } from "react";
+import React, { HTMLAttributes, useRef, useState } from "react";
 import styles from "./CommonDataShowcase.module.css";
+import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
+
+// ---------------- DATA ---------------- //
 
 const whyChoose = {
   title: "Why choose JES?",
@@ -45,20 +48,24 @@ const ourValues = {
   ],
 };
 
+// ---------------- COMPONENT ---------------- //
+
 const CommonDataShowcase: React.FC<
   HTMLAttributes<HTMLDivElement> & { pageType: "whyChoose" | "ourValues" }
 > = ({ pageType, ...props }) => {
+  const isPhoneScreen = useIsPhoneScreen();
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   const selectedData = pageType === "whyChoose" ? whyChoose : ourValues;
+
+  const toggleAccordion = (index: number) => {
+    setOpenIndex((prev) => (prev === index ? null : index));
+  };
 
   return (
     <div className={`${styles.aboutService} ${props.className}`} {...props}>
-      {/* <figure className={styles.background}>
-        <img
-          src="https://jerseyeng.com/_next/image?url=%2Fimages%2Fabout%2Faboutservice-banner.png&w=1920&q=90"
-          alt="service background"
-        />
-      </figure> */}
-
       <div className={styles.container}>
         <div className={styles.header}>
           <h2 className={styles.title}>{selectedData.title}</h2>
@@ -66,25 +73,67 @@ const CommonDataShowcase: React.FC<
         </div>
 
         <div className={styles.cards}>
-          {selectedData.subData.map((dI, i) => (
-            <div className={styles.card}>
-              <div className={styles.icon}>
-                <img
-                  src={dI.img}
-                  alt={dI.title}
+          {selectedData.subData.map((item, i) => {
+            const isOpen = openIndex === i;
+
+            // FIXED TYPESCRIPT REF CALLBACK
+            const setRef = (el: HTMLDivElement | null): void => {
+              contentRefs.current[i] = el;
+            };
+
+            return (
+              <div
+                key={i}
+                className={`${styles.card} ${
+                  isPhoneScreen ? styles.accordionCard : ""
+                }`}
+              >
+                {/* HEADER */}
+                <div
+                  className={styles.accordionHeader}
+                  onClick={() => isPhoneScreen && toggleAccordion(i)}
+                >
+                  <div className={styles.icon}>
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      style={
+                        pageType === "ourValues"
+                          ? { filter: "brightness(0) invert(1)" }
+                          : {}
+                      }
+                    />
+                  </div>
+
+                  <h3>{item.title}</h3>
+
+                  {isPhoneScreen && (
+                    <span className={styles.accordionArrow}>
+                      {isOpen ? "−" : "+"}
+                    </span>
+                  )}
+                </div>
+
+                {/* CONTENT */}
+                <div
+                  ref={setRef}
+                  className={styles.accordionContent}
                   style={
-                    pageType === "ourValues"
-                      ? { filter: "brightness(0) invert(1)" }
+                    isPhoneScreen
+                      ? {
+                          maxHeight: isOpen
+                            ? (contentRefs.current[i]?.scrollHeight ?? 0) + "px"
+                            : "0px",
+                          opacity: isOpen ? 1 : 0,
+                        }
                       : {}
                   }
-                />
+                >
+                  <p>{item.desc}</p>
+                </div>
               </div>
-              <div className={styles.text}>
-                <h3>{dI.title}</h3>
-                <p>{dI.desc}</p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

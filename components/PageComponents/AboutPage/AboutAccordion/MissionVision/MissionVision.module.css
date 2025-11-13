@@ -59,16 +59,70 @@
   gap: 0.75rem;
 }
 
+/* DESKTOP underline — white */
 .card h3 {
   font-size: 1.2rem;
   font-weight: 500;
   line-height: 1.2;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #dfdfdf;
+  border-bottom: 1px solid #ffffff;
 }
 
 .card p {
   font-size: 0.9rem;
   line-height: 1.6;
   color: #dbdbdb;
+}
+
+/* -------------------- MOBILE ACCORDION -------------------- */
+
+@media screen and (max-width: 650px) {
+  .missionVisionSection {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .missionVisionImg {
+    max-height: 20rem;
+  }
+
+  /* Mobile card wrapper */
+  .accordionCard {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    padding-bottom: 1rem;
+  }
+
+  /* Title clickable */
+  .accordionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+
+    border-bottom: none !important; /* remove underline on mobile */
+    padding-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .accordionArrow {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-left: 1rem;
+  }
+
+  .accordionContent {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.35s ease, opacity 0.25s ease;
+    margin-top: 0.5rem;
+  }
+
+  /* Reintroduce original underline ABOVE text on mobile */
+  .accordionContent.open p {
+    padding-top: 0.75rem;
+    margin-top: 0.75rem;
+  }
 }

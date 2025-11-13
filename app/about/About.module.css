@@ -13,6 +13,7 @@
   top: 500dvh;
   right: -15rem;
   transform: rotateZ(-90deg);
+  z-index: -1;
 }
 
 .bgImageOne {

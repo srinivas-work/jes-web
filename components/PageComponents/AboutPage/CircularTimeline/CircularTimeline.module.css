@@ -90,6 +90,38 @@
   margin-bottom: 0;
 }
 
-.spacer {
-  height: 100vh;
+@media screen and (max-width: 650px) {
+  .journeyHeading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-left: 0;
+    max-width: unset;
+    text-align: center;
+  }
+
+  .circle {
+    position: absolute;
+    left: -25%;
+    width: 40rem;
+    height: 40rem;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transform-origin: center center;
+  }
+
+  .textBlock {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    width: 90%;
+    max-width: 700px;
+    pointer-events: none; /* Prevent interaction when invisible */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

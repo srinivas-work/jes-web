@@ -8,9 +8,13 @@ import { useLenis } from "@/utils/hooks/useLenis";
 import Image from "next/image";
 import styles from "./About.module.css";
 import SecuritySection from "@/components/PageComponents/AboutPage/SecuritySection/SecuritySection";
+import AboutTopPhone from "@/components/PageComponents/AboutPage/AboutTopPhone/AboutTopPhone";
+import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 
 const About = () => {
   useLenis();
+
+  const isPhoneScreen = useIsPhoneScreen();
 
   return (
     <div className={styles.aboutPage}>
@@ -34,7 +38,8 @@ const About = () => {
           height={0}
         />
       </div> */}
-      <AboutAccordion />
+      {isPhoneScreen && <AboutTopPhone />}
+      {!isPhoneScreen && <AboutAccordion />}
 
       <TeamCardStack />
       <CircularTimeline />

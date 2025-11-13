@@ -1,8 +1,6 @@
-import React from "react";
-import styles from "./SecuritySection.module.css";
-import { securityList } from "@/utils/data/dummyData";
 import AnimatedInfoCard from "@/components/UI/AnimatedInfoCard/AnimatedInfoCard";
-import { motion } from "framer-motion";
+import { securityList } from "@/utils/data/dummyData";
+import styles from "./SecuritySection.module.css";
 
 const SecuritySection = () => {
   return (

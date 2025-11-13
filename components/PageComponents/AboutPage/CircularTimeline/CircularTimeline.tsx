@@ -95,7 +95,7 @@ const TextBlock: React.FC<TextBlockProps> = ({
   const opacity = useTransform(
     scrollYProgress,
     [start - 0.1, start, end - 0.1, end],
-    [0, 1, 1, 0]
+    [0, 1, 1, index === sections.length - 1 ? 0.1 : 0]
   );
 
   const y = useTransform(
@@ -161,9 +161,6 @@ export default function CircularTimeline() {
           />
         ))}
       </div>
-
-      {/* Spacer to allow scroll range */}
-      <div className={styles.spacer}></div>
     </div>
   );
 }
