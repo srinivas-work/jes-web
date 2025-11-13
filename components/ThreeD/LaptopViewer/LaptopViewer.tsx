@@ -14,6 +14,7 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import styles from "./LaptopViewer.module.css";
+import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 
 type ModelProps = {
   openProgress: number;
@@ -46,6 +47,8 @@ function Model({ openProgress, hinge, imgLink }: ModelProps) {
   const group = useRef<THREE.Group>(null);
   const { nodes } = useGLTF("/models/mac-draco.glb") as any;
   const imageTexture = useTexture(imgLink);
+
+  const isPhoneScreen = useIsPhoneScreen();
 
   imageTexture.flipY = false;
 
@@ -109,7 +112,7 @@ function Model({ openProgress, hinge, imgLink }: ModelProps) {
   });
 
   return (
-    <group ref={group} scale={1.2} dispose={null}>
+    <group ref={group} scale={isPhoneScreen ? 0.8 : 1.2} dispose={null}>
       <group rotation-x={hinge} position={[0, -0.04, 0.41]}>
         <group position={[0, 2.96, -0.13]} rotation={[Math.PI / 2, 0, 0]}>
           <mesh material={aluminiumMat} geometry={nodes["Cube008"].geometry} />

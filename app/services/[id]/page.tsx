@@ -12,6 +12,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import styles from "./ServiceItem.module.css";
+import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 
 //
 
@@ -23,6 +24,8 @@ const ServiceItem = () => {
   const { id } = params;
 
   const selectedService = serviceSections[Number(id)];
+
+  const isPhoneScreen = useIsPhoneScreen();
 
   const { text1: headingPart1, text2: headingPart2 } = splitText(
     selectedService.title
@@ -77,9 +80,9 @@ const ServiceItem = () => {
           <h2>Tools Used</h2>
           <div
             style={{
-              width: "80%",
+              width: isPhoneScreen ? "90%" : "80%",
               display: "flex",
-              gap: "var(--spacing)",
+              gap: isPhoneScreen ? "1rem" : "var(--spacing)",
               justifyContent: "center",
             }}
           >
@@ -89,7 +92,7 @@ const ServiceItem = () => {
                 style={{
                   maxWidth: "15rem",
                   backgroundColor: "#efeeee",
-                  padding: "1rem 2rem",
+                  padding: isPhoneScreen ? "0.7rem" : "1rem 2rem",
                   display: "flex",
                   alignItems: "center",
                   borderRadius: "2rem",
