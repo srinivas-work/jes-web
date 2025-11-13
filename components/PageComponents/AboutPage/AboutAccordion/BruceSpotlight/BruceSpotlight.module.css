@@ -62,15 +62,19 @@
   transition: transform 0.1s cubic-bezier(0.3, 0.2, 0.2, 0.8), opacity 0.1s;
 }
 
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .title {
   font-size: 52px;
-  line-height: 68px;
   font-weight: 600;
   max-width: 462px;
 }
 
 .description {
-  margin-top: 32px;
   line-height: 31px;
   opacity: 0.95;
   font-size: 16px;

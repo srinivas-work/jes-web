@@ -42,7 +42,7 @@ const BruceSpotlight: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
               environments.
             </p>
             <div className={styles.signature}>
-              <div className={styles.name}>Bruce Dorey</div>
+              <div className={styles.name}>Bruce Dorey, PHD</div>
               <p className={styles.role}>Partner &amp; CEO, JES Inc.</p>
             </div>
           </div>
