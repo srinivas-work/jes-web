@@ -5,16 +5,9 @@ import {
   useMotionValue,
   useTransform,
 } from "framer-motion";
-import {
-  AlertTriangle,
-  Camera,
-  Cpu,
-  FileSpreadsheet,
-  Layers,
-} from "lucide-react";
+import { AlertTriangle, Camera, Cpu, Layers } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Carousel.module.css";
-import { useParams } from "next/navigation";
 
 interface CarouselItem {
   title: string;
@@ -150,9 +143,6 @@ export default function Carousel({
     height: number;
   }>({ width: 0, height: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
-
-  const params = useParams();
-  const { id } = params;
 
   let revisedItems = DEFAULT_ITEMS;
 

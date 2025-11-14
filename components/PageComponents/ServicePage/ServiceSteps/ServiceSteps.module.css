@@ -34,89 +34,9 @@
   min-width: max-content;
 }
 
-.card {
-  min-width: 380px;
-  max-width: 380px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  border: 2px solid var(--primary-red);
-  border-radius: 30px;
-  padding: 40px 35px;
-  transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
-  flex-shrink: 0;
-}
-
-.card:hover {
-  transform: translateY(-1rem);
-  box-shadow: 0 10px 30px rgba(201, 24, 74, 0.15);
-}
-
-.cardLabel {
-  font-size: 14px;
-  color: #999;
-  margin-bottom: 15px;
-  font-weight: 500;
-}
-
-.cardNumber {
-  font-size: 56px;
-  font-weight: 600;
-  color: var(--primary-red);
-  margin-bottom: 25px;
-  line-height: 1;
-}
-
-.cardTitle {
-  font-size: 24px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #e0e0e0;
-}
-
-.cardContent {
-  list-style: none;
-  padding: 0;
-}
-
-.cardContent li {
-  font-size: 16px;
-  line-height: 1.7;
-  color: #666;
-  margin-bottom: 18px;
-  padding-left: 20px;
-  position: relative;
-}
-
-.cardContent li:before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: var(--primary-red);
-  font-size: 20px;
-}
-
-.cardContent li:last-child {
-  margin-bottom: 0;
-}
-
 @media (max-width: 768px) {
   .title {
     font-size: 42px;
     margin-bottom: 50px;
-  }
-
-  .card {
-    min-width: 320px;
-    max-width: 320px;
-    padding: 30px 25px;
-  }
-
-  .cardNumber {
-    font-size: 48px;
-  }
-
-  .cardTitle {
-    font-size: 20px;
   }
 }
