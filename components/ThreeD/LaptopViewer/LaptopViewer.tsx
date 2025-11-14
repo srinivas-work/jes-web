@@ -285,6 +285,14 @@ export default function LaptopViewer({
   const text2Y = useTransform(smoothProgress, [0, 1], [-2.5, -0.6]);
   const textZ = useTransform(smoothProgress, [0, 1], [4, 0]);
   const textScale = useTransform(smoothProgress, [0, 1], [1, 0.9]);
+
+  const textPhone1X = useTransform(smoothProgress, [0, 1], [0, 0]);
+  const textPhone1Y = useTransform(smoothProgress, [0, 1], [5.2, 1]);
+  const textPhone2X = useTransform(smoothProgress, [0, 1], [0, 0]);
+  const textPhone2Y = useTransform(smoothProgress, [0, 1], [-5, -0.6]);
+  const textPhoneZ = useTransform(smoothProgress, [0, 1], [4, 0]);
+  const textPhoneScale = useTransform(smoothProgress, [0, 1], [0.6, 0.55]);
+
   const textColor = useTransform(
     smoothProgress,
     [0, 1],
@@ -319,40 +327,67 @@ export default function LaptopViewer({
   const [tShadowColor, setTShadowColor] = useState("#434343");
 
   // Subscribe to transform updates
+
   useEffect(() => {
     const u1 = hingeValue.on("change", setHinge);
     const u2 = smoothProgress.on("change", setOpenProgress);
+    const u9 = textColor.on("change", setTColor);
+    const u10 = textShadowColor.on("change", setTShadowColor);
+
+    return () => {
+      u1();
+      u2();
+      u9();
+      u10();
+    };
+  }, [hingeValue, smoothProgress, textColor, textShadowColor]);
+
+  useEffect(() => {
+    if (isPhoneScreen) return;
+
     const u3 = text1X.on("change", setT1X);
     const u4 = text1Y.on("change", setT1Y);
     const u5 = text2X.on("change", setT2X);
     const u6 = text2Y.on("change", setT2Y);
     const u7 = textZ.on("change", setTZ);
     const u8 = textScale.on("change", setTScale);
-    const u9 = textColor.on("change", setTColor);
-    const u10 = textShadowColor.on("change", setTShadowColor);
+
     return () => {
-      u1();
-      u2();
       u3();
       u4();
       u5();
       u6();
       u7();
       u8();
-      u9();
-      u10();
+    };
+  }, [isPhoneScreen, text1X, text1Y, text2X, text2Y, textZ, textScale]);
+
+  useEffect(() => {
+    if (!isPhoneScreen) return;
+
+    const u3 = textPhone1X.on("change", setT1X);
+    const u4 = textPhone1Y.on("change", setT1Y);
+    const u5 = textPhone2X.on("change", setT2X);
+    const u6 = textPhone2Y.on("change", setT2Y);
+    const u7 = textPhoneZ.on("change", setTZ);
+    const u8 = textPhoneScale.on("change", setTScale);
+
+    return () => {
+      u3();
+      u4();
+      u5();
+      u6();
+      u7();
+      u8();
     };
   }, [
-    hingeValue,
-    smoothProgress,
-    text1X,
-    text1Y,
-    text2X,
-    text2Y,
-    textZ,
-    textScale,
-    textColor,
-    textShadowColor,
+    isPhoneScreen,
+    textPhone1X,
+    textPhone1Y,
+    textPhone2X,
+    textPhone2Y,
+    textPhoneZ,
+    textPhoneScale,
   ]);
 
   // Mouse movement tracking
@@ -369,6 +404,9 @@ export default function LaptopViewer({
   useEffect(() => {
     if (isPhoneScreen) {
       setT1X(0);
+      setT1Y(5.2);
+      setT2X(0);
+      setTScale(0.6);
     }
   }, [isPhoneScreen]);
 
