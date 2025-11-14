@@ -10,12 +10,10 @@ import styles from "./ServiceScrollStackPhone.module.css";
 const StickyCard = ({
   serviceItem,
   index,
-  isPhoneScreen,
   router,
 }: {
   serviceItem: ServiceItemType;
   index: number;
-  isPhoneScreen: boolean;
   router: AppRouterInstance;
 }) => {
   const container = useRef<HTMLDivElement>(null);
@@ -27,10 +25,15 @@ const StickyCard = ({
   return (
     <div ref={container} className={styles.cardContainer}>
       <motion.div className={styles.motionCard}>
+        <div className={styles.imageContainer}>
+          <h3 className={styles.title}>{serviceItem.title}</h3>
+          <img
+            src={serviceItem.image}
+            alt={serviceItem.title}
+            className={styles.serviceImage}
+          />
+        </div>
         <div className={styles.cardContentContainer}>
-          {!isPhoneScreen && (
-            <h3 className={styles.title}>{serviceItem.title}</h3>
-          )}
           <p className={styles.description}>{serviceItem.description}</p>
           <button
             className={styles.button}
@@ -39,16 +42,6 @@ const StickyCard = ({
             View Details
           </button>
         </div>
-        <div className={styles.imageContainer}>
-          {isPhoneScreen && (
-            <h3 className={styles.title}>{serviceItem.title}</h3>
-          )}
-          <img
-            src={serviceItem.image}
-            alt={serviceItem.title}
-            className={styles.serviceImage}
-          />
-        </div>
       </motion.div>
     </div>
   );
@@ -56,7 +49,6 @@ const StickyCard = ({
 
 const ServiceScrollStackPhone = () => {
   const container = useRef<HTMLDivElement>(null);
-  const isPhoneScreen = useIsPhoneScreen();
   const router = useRouter();
 
   return (
@@ -67,7 +59,6 @@ const ServiceScrollStackPhone = () => {
             key={`p_${i}`}
             serviceItem={serviceItem}
             index={i}
-            isPhoneScreen={isPhoneScreen}
             router={router}
           />
         );

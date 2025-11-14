@@ -1,7 +1,7 @@
 import Carousel from "@/components/UI/Carousel/Carousel";
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import styles from "./ProductSelection.module.css";
+import styles from "./KeyDeliverables.module.css";
 
 interface KeyDeliverablesType {
   id: number;
@@ -76,7 +76,7 @@ const ICON_BG_COLORS = {
   expanded: "rgba(255, 255, 255, 0.15)",
 };
 
-const ProductSelection = () => {
+const KeyDeliverables = () => {
   const [expandedId, setExpandedId] = useState<number>(1);
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.4 });
@@ -197,7 +197,7 @@ const ProductSelection = () => {
   );
 };
 
-export default ProductSelection;
+export default KeyDeliverables;
 
 // const products: Product[] = [
 //   {

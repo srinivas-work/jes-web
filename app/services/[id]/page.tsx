@@ -1,20 +1,20 @@
 "use client";
 
 import { SolutionCard } from "@/app/solutions/page";
+import FlipBookViewer from "@/components/FlipBookViewer/FlipBookViewer";
 import FAQSection from "@/components/PageComponents/HomePage/FAQSection/FAQSection";
-import ProductSelection from "@/components/PageComponents/ServicePage/ProductSelection/ProductSelection";
+import KeyDeliverables from "@/components/PageComponents/ServicePage/KeyDeliverables/KeyDeliverables";
 import ServiceSteps from "@/components/PageComponents/ServicePage/ServiceSteps/ServiceSteps";
 import LaptopViewer from "@/components/ThreeD/LaptopViewer/LaptopViewer";
 import { serviceSections } from "@/utils/data/dummyData";
 import { splitText } from "@/utils/helperFunctions";
+import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 import { useLenis } from "@/utils/hooks/useLenis";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
-import styles from "./ServiceItem.module.css";
-import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
-import FlipBookViewer from "@/components/FlipBookViewer/FlipBookViewer";
 import { useState } from "react";
+import styles from "./ServiceItem.module.css";
 
 //
 
@@ -67,7 +67,7 @@ const ServiceItem = () => {
       {selectedService.subServices && (
         <ServiceSteps subServiceItem={selectedService.subServices} />
       )}
-      <ProductSelection />
+      <KeyDeliverables />
       {selectedService.toolsUsed && (
         <div
           style={{

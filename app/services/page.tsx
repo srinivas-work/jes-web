@@ -1,7 +1,7 @@
 "use client";
 
 import OurApproach from "@/components/PageComponents/ServicePage/OurApproach/OurApproach";
-import ProductSelection from "@/components/PageComponents/ServicePage/ProductSelection/ProductSelection";
+import ProductSelection from "@/components/PageComponents/ServicePage/KeyDeliverables/KeyDeliverables";
 import ServiceSteps from "@/components/PageComponents/ServicePage/ServiceSteps/ServiceSteps";
 import VideoPlayer from "@/components/UI/VideoPlayer/VideoPlayer";
 import { serviceSections } from "@/utils/data/dummyData";

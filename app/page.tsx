@@ -85,8 +85,8 @@ export default function Home() {
       >
         <Suspense fallback={null}>
           <Text
-            position={[0, 2.5, -1]}
-            fontSize={0.5}
+            position={isPhoneScreen ? [0, 2.35, -1] : [0, 2.5, -1]}
+            fontSize={isPhoneScreen ? 0.38 : 0.5}
             color="#a91e29"
             anchorX="center"
             anchorY="middle"
@@ -97,13 +97,13 @@ export default function Home() {
             We help you
           </Text>
           <Text
-            position={[0, 1.1, -1]}
-            fontSize={1.7}
+            position={isPhoneScreen ? [0, 1.4, -1] : [0, 1.1, -1]}
+            fontSize={isPhoneScreen ? 0.85 : 1.7}
             color="#a91e29"
             anchorX="center"
             anchorY="middle"
             maxWidth={500}
-            letterSpacing={1.1}
+            letterSpacing={isPhoneScreen ? 0.3 : 1.1}
             font="/fonts/PlusJakartaSans-Light.ttf"
           >
             SCALE
