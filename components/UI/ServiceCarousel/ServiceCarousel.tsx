@@ -168,6 +168,11 @@ export default function ServiceCarousel({
             [90, 0, -90]
           );
 
+          //   let modifiedIndex = index;
+
+          //   if (modifiedIndex === carouselItems.length + 1) {
+          //     modifiedIndex = 0;
+          //   }
           return (
             <motion.div
               key={index}
