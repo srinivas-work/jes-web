@@ -1,3 +1,4 @@
+import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 import { ServiceItemType } from "@/utils/types";
 import {
   ContactShadows,
@@ -14,7 +15,6 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import styles from "./LaptopViewer.module.css";
-import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 
 type ModelProps = {
   openProgress: number;
@@ -264,6 +264,7 @@ export default function LaptopViewer({
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mouse = useRef({ x: 0, y: 0 });
+  const isPhoneScreen = useIsPhoneScreen();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -365,21 +366,11 @@ export default function LaptopViewer({
     return () => window.removeEventListener("mousemove", onMove);
   }, []);
 
-  const getDescription = () => {
-    return (
-      <>
-        {Array.isArray(selectedService.description) ? (
-          selectedService.description.map((item, index) => (
-            <p key={index} className={styles.serviceDetails}>
-              {item}
-            </p>
-          ))
-        ) : (
-          <p className={styles.serviceDetails}>{selectedService.description}</p>
-        )}
-      </>
-    );
-  };
+  useEffect(() => {
+    if (isPhoneScreen) {
+      setT1X(0);
+    }
+  }, [isPhoneScreen]);
 
   return (
     <motion.section

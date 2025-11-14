@@ -158,3 +158,20 @@
   height: 100%;
   object-fit: cover;
 }
+
+@media (max-width: 650px) {
+  .servicePage {
+    gap: 0;
+  }
+
+  .extrasSection {
+    max-width: 80dvw;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .serviceCtaSection {
+    padding: 2rem;
+  }
+}

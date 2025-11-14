@@ -45,13 +45,15 @@ const ServiceSteps: React.FC<{ subServiceItem?: GenericType[] }> = ({
           Service Details
         </h2>
 
-        <ServiceCarousel items={subServiceItem!} autoplay loop />
+        {isPhoneScreen && (
+          <ServiceCarousel items={subServiceItem!} autoplay loop />
+        )}
         {!isPhoneScreen && (
           <div className={styles.scrollContainer}>
             <motion.div
               className={styles.cardsContainer}
               ref={cardsRef}
-              style={isPhoneScreen ? { x } : { overflowX: "scroll" }}
+              style={{ x }}
             >
               {subServiceItem?.map((item, index) => (
                 <ServiceCard cardItem={item} cardIndex={index} key={index} />
