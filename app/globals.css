@@ -30,6 +30,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   display: flex;
   flex-direction: column;
+  touch-action: pan-y;
 }
 
 main {

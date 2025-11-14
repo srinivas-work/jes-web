@@ -127,7 +127,7 @@ export default function CircularTimeline() {
     <div ref={containerRef} className={styles.scrollContainer}>
       <div className={styles.stickyWrapper}>
         <h2 className={styles.journeyHeading}>Our Journey</h2>
-        <div className={styles.bgImageContainerOne}>
+        {/* <div className={styles.bgImageContainerOne}>
           <Image
             className={styles.bgImageOne}
             src={"/img/jes_curve.png"}
@@ -136,7 +136,7 @@ export default function CircularTimeline() {
             width={0}
             height={0}
           />
-        </div>
+        </div> */}
         {/* Rotating circle */}
         <motion.div className={styles.circle} style={{ rotate: rotation }}>
           {sections.map((section, index) => (
