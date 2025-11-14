@@ -4,6 +4,7 @@
   height: 600px; /* Ensures indicators are visible */
   overflow: hidden;
   box-sizing: border-box;
+  margin-bottom: var(--spacing);
 }
 
 .carouselTrack {
