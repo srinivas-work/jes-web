@@ -2,6 +2,7 @@ import Carousel from "@/components/UI/Carousel/Carousel";
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import styles from "./KeyDeliverables.module.css";
+import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 
 interface KeyDeliverablesType {
   id: number;
@@ -81,6 +82,7 @@ const KeyDeliverables = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.4 });
   const [animateCards, setAnimateCards] = useState(false);
+  const isPhoneScreen = useIsPhoneScreen();
 
   useEffect(() => {
     setAnimateCards(isInView);
@@ -94,7 +96,10 @@ const KeyDeliverables = () => {
 
       <div className={styles.grid}>
         {/* Left Column - Stacked Cards */}
-        <div className={styles.leftColumn}>
+        <div
+          className={styles.leftColumn}
+          style={isPhoneScreen ? { marginBottom: "2rem" } : {}}
+        >
           <div className={styles.cardsStack}>
             {keyDeliverables.map((product, index) => {
               const isExpanded = expandedId === product.id;
@@ -103,19 +108,37 @@ const KeyDeliverables = () => {
                 <motion.div
                   key={product.id}
                   className={styles.card}
-                  initial={{ opacity: 1, y: 50 }}
-                  animate={{
-                    y: animateCards ? 0 : 50,
-                    background: isExpanded
-                      ? CARD_COLORS.expanded
-                      : CARD_COLORS.normal,
-                    scale: isExpanded ? 1.02 : 1,
-                  }}
-                  transition={{
-                    duration: ANIMATION_DURATION,
-                    delay: index * STAGGER_DELAY,
-                    ease: "easeInOut",
-                  }}
+                  initial={!isPhoneScreen ? { opacity: 1, y: 50 } : {}}
+                  animate={
+                    !isPhoneScreen
+                      ? {
+                          y: animateCards ? 0 : 50,
+                          background: isExpanded
+                            ? CARD_COLORS.expanded
+                            : CARD_COLORS.normal,
+                          scale: isExpanded ? 1.02 : 1,
+                        }
+                      : {}
+                  }
+                  transition={
+                    !isPhoneScreen
+                      ? {
+                          duration: ANIMATION_DURATION,
+                          delay: index * STAGGER_DELAY,
+                          ease: "easeInOut",
+                        }
+                      : {}
+                  }
+                  style={
+                    isPhoneScreen
+                      ? {
+                          background: isExpanded
+                            ? CARD_COLORS.expanded
+                            : CARD_COLORS.normal,
+                          scale: isExpanded ? 1.02 : 1,
+                        }
+                      : {}
+                  }
                   onClick={() => handleCardClick(product.id)}
                 >
                   <div className={styles.cardContent}>
