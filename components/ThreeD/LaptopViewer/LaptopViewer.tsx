@@ -429,7 +429,7 @@ export default function LaptopViewer({
         style={{
           position: isPhoneScreen ? "static" : "sticky",
           top: 0,
-          height: "100vh",
+          height: isPhoneScreen ? "100%" : "100vh",
           width: "100%",
         }}
       >

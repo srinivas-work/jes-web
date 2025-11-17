@@ -36,16 +36,18 @@ const ServiceItem = () => {
 
   return (
     <div className={styles.servicePage}>
-      <div className={styles.bgImageContainerOne}>
-        <Image
-          className={styles.bgImageOne}
-          src={"/img/jes_curve.png"}
-          alt="JES Engineering"
-          sizes="100vw"
-          width={0}
-          height={0}
-        />
-      </div>
+      {!isPhoneScreen && (
+        <div className={styles.bgImageContainerOne}>
+          <Image
+            className={styles.bgImageOne}
+            src={"/img/jes_curve.png"}
+            alt="JES Engineering"
+            sizes="100vw"
+            width={0}
+            height={0}
+          />
+        </div>
+      )}
       <div className={styles.bgImageContainerTwo}>
         <Image
           className={styles.bgImageTwo}
