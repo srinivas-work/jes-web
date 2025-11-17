@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import styles from "./KeyDeliverables.module.css";
 import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
+import { useParams, usePathname } from "next/navigation";
 
 interface KeyDeliverablesType {
   id: number;
@@ -36,13 +37,10 @@ const keyDeliverables: KeyDeliverablesType[] = [
   },
   {
     id: 3,
-    title: "BIM/Revit Modelling + XR Visualization",
+    title: "JES AI powered agenet",
     icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/contract_ac062687fa.svg",
     desc: [
-      "Build it right, before you build it.",
-      "What you get: Revit families and coordinated BIM models with clash-aware layout",
-      "Extras: AR/VR animations and interactive walkthroughs for stakeholder buy-in",
-      "Why it matters: Fewer field changes, clearer coordination, stronger client trust",
+      "JES-AI is your AI-powered agent that learns from your projects to provide instant answers and insights based on your company's accumulated knowledge.",
     ],
   },
   {
@@ -55,6 +53,71 @@ const keyDeliverables: KeyDeliverablesType[] = [
       "Standard: Organized to division and CSI requirements",
       "Why it matters: Faster approvals and fewer back-and-forth cycles",
     ],
+  },
+];
+
+const keyDeliverablesEquipments: KeyDeliverablesType[] = [
+  {
+    id: 1,
+    title: "Air Distribution",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/bmi_73aa8947cb.svg",
+    desc: [
+      "Air Distribution",
+      "GRDs",
+      "Dampers",
+      "VAVs and Fan Powered Boxes",
+      "Valves",
+    ],
+  },
+  {
+    id: 2,
+    title: "Noise Control and Isolation",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/application_4aa981e844.svg",
+    desc: [
+      "Noise Control and Isolation",
+      "Sound Attenuators/Silencers",
+      "Vibration & Isolation",
+      "Seismic Restraints",
+    ],
+  },
+  {
+    id: 3,
+    title: "Equipments",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/contract_ac062687fa.svg",
+    desc: ["Equipments", "Fans", "VRVs/VRFs", "Split Systems"],
+  },
+  {
+    id: 4,
+    title: "Applied Equipments",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/bmi_73aa8947cb.svg",
+    desc: ["Applied Equipments", "Chillers", "AHU"],
+  },
+];
+
+const keyDeliverablesBIM: KeyDeliverablesType[] = [
+  {
+    id: 1,
+    title: "3D Visualization",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/bmi_73aa8947cb.svg",
+    desc: [""],
+  },
+  {
+    id: 2,
+    title: "BIM Clash Coordination Services",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/application_4aa981e844.svg",
+    desc: [""],
+  },
+  {
+    id: 3,
+    title: "Shop Drawing",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/contract_ac062687fa.svg",
+    desc: [""],
+  },
+  {
+    id: 4,
+    title: "Revit Families",
+    icon: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/bmi_73aa8947cb.svg",
+    desc: [""],
   },
 ];
 
@@ -84,6 +147,16 @@ const KeyDeliverables = () => {
   const [animateCards, setAnimateCards] = useState(false);
   const isPhoneScreen = useIsPhoneScreen();
 
+  let deliverablesList = keyDeliverables;
+
+  const { id } = useParams();
+
+  if (id === "1") {
+    deliverablesList = keyDeliverablesEquipments;
+  } else if (id === "3") {
+    deliverablesList = keyDeliverablesBIM;
+  }
+
   useEffect(() => {
     setAnimateCards(isInView);
   }, [isInView]);
@@ -101,7 +174,7 @@ const KeyDeliverables = () => {
           style={isPhoneScreen ? { marginBottom: "2rem" } : {}}
         >
           <div className={styles.cardsStack}>
-            {keyDeliverables.map((product, index) => {
+            {deliverablesList.map((product, index) => {
               const isExpanded = expandedId === product.id;
 
               return (
@@ -206,9 +279,9 @@ const KeyDeliverables = () => {
           </div>
 
           <div className={styles.description}>
-            <p>{keyDeliverables[expandedId - 1].desc[0]}</p>
+            <p>{deliverablesList[expandedId - 1].desc[0]}</p>
             <ul>
-              {keyDeliverables[expandedId - 1].desc.map((desItem, i) => {
+              {deliverablesList[expandedId - 1].desc.map((desItem, i) => {
                 if (i === 0) return undefined;
                 return <li key={i}>{desItem}</li>;
               })}

@@ -5,9 +5,16 @@ import {
   useMotionValue,
   useTransform,
 } from "framer-motion";
-import { AlertTriangle, Camera, Cpu, Layers } from "lucide-react";
+import {
+  AlertTriangle,
+  Camera,
+  Cpu,
+  FileSpreadsheet,
+  Layers,
+} from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./Carousel.module.css";
+import { useParams } from "next/navigation";
 
 interface CarouselItem {
   title: string;
@@ -51,7 +58,7 @@ const DEFAULT_ITEMS: CarouselItem[] = [
     title: "MEP Coordination",
     description:
       "Mechanical, electrical, and plumbing design integration for seamless construction workflows.",
-    imgUrl: "/img/services/service-3.jpg",
+    imgUrl: "/img/services/jes_ai.png",
     id: 3,
     icon: <Cpu className={styles["carousel-icon"]} />, // Symbolic of systems integration
   },
@@ -59,7 +66,7 @@ const DEFAULT_ITEMS: CarouselItem[] = [
     title: "Scan to BIM",
     description:
       "Convert point cloud data from laser scans into intelligent, as-built BIM models.",
-    imgUrl: "/img/services/service-4.jpg",
+    imgUrl: "/img/services/submittals.png",
     id: 4,
     icon: <Camera className={styles["carousel-icon"]} />, // Represents scanning
   },
@@ -73,48 +80,85 @@ const DEFAULT_ITEMS: CarouselItem[] = [
   // },
 ];
 
-// const EquipmentSelection: CarouselItem[] = [
-//   {
-//     title: "3D BIM Modeling",
-//     description:
-//       "Comprehensive Revit-based 3D modeling for architecture, structure, and MEP systems.",
-//     imgUrl: "/img/services/subServices/ahu.jpg",
-//     id: 1,
-//     icon: <Layers className={styles["carousel-icon"]} />, // Represents model layers & building components
-//   },
-//   {
-//     title: "Clash Detection",
-//     description:
-//       "Identify and resolve design conflicts across disciplines using Navisworks and Revit coordination.",
-//     imgUrl: "/img/services/subServices/grd.png",
-//     id: 2,
-//     icon: <AlertTriangle className={styles["carousel-icon"]} />, // Indicates clashes or issues
-//   },
-//   {
-//     title: "Clash Detection",
-//     description:
-//       "Identify and resolve design conflicts across disciplines using Navisworks and Revit coordination.",
-//     imgUrl: "/img/services/subServices/valves.jpg",
-//     id: 3,
-//     icon: <AlertTriangle className={styles["carousel-icon"]} />, // Indicates clashes or issues
-//   },
-//   {
-//     title: "MEP Coordination",
-//     description:
-//       "Mechanical, electrical, and plumbing design integration for seamless construction workflows.",
-//     imgUrl: "/img/services/subServices/vrv.png",
-//     id: 4,
-//     icon: <Cpu className={styles["carousel-icon"]} />, // Symbolic of systems integration
-//   },
-//   {
-//     title: "Quantity Takeoff",
-//     description:
-//       "Automated quantity estimation and material scheduling from BIM data for accurate costing.",
-//     imgUrl: "/img/services/subServices/noise-control.jpg",
-//     id: 5,
-//     icon: <FileSpreadsheet className={styles["carousel-icon"]} />, // Represents reports/BOQs
-//   },
-// ];
+const EquipmentSelection: CarouselItem[] = [
+  {
+    title: "3D BIM Modeling",
+    description:
+      "Comprehensive Revit-based 3D modeling for architecture, structure, and MEP systems.",
+    imgUrl: "/img/services/subServices/grd.png",
+    id: 1,
+    icon: <Layers className={styles["carousel-icon"]} />, // Represents model layers & building components
+  },
+  {
+    title: "Clash Detection",
+    description:
+      "Identify and resolve design conflicts across disciplines using Navisworks and Revit coordination.",
+    imgUrl: "/img/services/subServices/noise-control.jpg",
+    id: 2,
+    icon: <AlertTriangle className={styles["carousel-icon"]} />, // Indicates clashes or issues
+  },
+  {
+    title: "Clash Detection",
+    description:
+      "Identify and resolve design conflicts across disciplines using Navisworks and Revit coordination.",
+    imgUrl: "/img/services/subServices/vrv.png",
+    id: 3,
+    icon: <AlertTriangle className={styles["carousel-icon"]} />, // Indicates clashes or issues
+  },
+  {
+    title: "MEP Coordination",
+    description:
+      "Mechanical, electrical, and plumbing design integration for seamless construction workflows.",
+    imgUrl: "/img/services/subServices/ahu.jpg",
+
+    id: 4,
+    icon: <Cpu className={styles["carousel-icon"]} />, // Symbolic of systems integration
+  },
+  {
+    title: "Quantity Takeoff",
+    description:
+      "Automated quantity estimation and material scheduling from BIM data for accurate costing.",
+    imgUrl: "/img/services/subServices/noise-control.jpg",
+    id: 5,
+    icon: <FileSpreadsheet className={styles["carousel-icon"]} />, // Represents reports/BOQs
+  },
+];
+
+const BimImages: CarouselItem[] = [
+  {
+    title: "3D BIM Modeling",
+    description:
+      "Comprehensive Revit-based 3D modeling for architecture, structure, and MEP systems.",
+    imgUrl: "/img/services/subServices/3d_visualization.png",
+    id: 1,
+    icon: <Layers className={styles["carousel-icon"]} />, // Represents model layers & building components
+  },
+  {
+    title: "Clash Detection",
+    description:
+      "Identify and resolve design conflicts across disciplines using Navisworks and Revit coordination.",
+    imgUrl: "/img/services/subServices/clash-detection.jpg",
+    id: 2,
+    icon: <AlertTriangle className={styles["carousel-icon"]} />, // Indicates clashes or issues
+  },
+  {
+    title: "Clash Detection",
+    description:
+      "Identify and resolve design conflicts across disciplines using Navisworks and Revit coordination.",
+    imgUrl: "/img/services/subServices/spool_drawing.png",
+    id: 3,
+    icon: <AlertTriangle className={styles["carousel-icon"]} />, // Indicates clashes or issues
+  },
+  {
+    title: "MEP Coordination",
+    description:
+      "Mechanical, electrical, and plumbing design integration for seamless construction workflows.",
+    imgUrl: "/img/services/subServices/revit_test.jpg",
+
+    id: 4,
+    icon: <Cpu className={styles["carousel-icon"]} />, // Symbolic of systems integration
+  },
+];
 
 const DRAG_BUFFER = 0;
 const VELOCITY_THRESHOLD = 500;
@@ -144,11 +188,15 @@ export default function Carousel({
   }>({ width: 0, height: 0 });
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const { id } = useParams();
+
   let revisedItems = DEFAULT_ITEMS;
 
-  // if (Number(id) === 1) {
-  //   revisedItems = EquipmentSelection;
-  // }
+  if (Number(id) === 1) {
+    revisedItems = EquipmentSelection;
+  } else if (Number(id) === 3) {
+    revisedItems = BimImages;
+  }
 
   // Calculate container dimensions on mount and resize
   useEffect(() => {
@@ -323,7 +371,7 @@ export default function Carousel({
             >
               <div className={styles["carousel-item-inner"]}>
                 <img src={item.imgUrl} className={styles.carouselItemBg} />
-                <div
+                {/* <div
                   className={`${styles["carousel-item-header"]} ${
                     round ? styles.round : ""
                   }`}
@@ -339,7 +387,7 @@ export default function Carousel({
                   <p className={styles["carousel-item-description"]}>
                     {item.description}
                   </p>
-                </div>
+                </div> */}
               </div>
             </motion.div>
           );
