@@ -67,3 +67,10 @@
 .laptopImg:hover {
   transform: scale(1.1);
 }
+
+@media (max-width: 650px) {
+  .laptopViewerSection {
+    width: 100%;
+    height: 200vh;
+  }
+}

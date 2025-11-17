@@ -286,6 +286,11 @@ export default function LaptopViewer({
   const textZ = useTransform(smoothProgress, [0, 1], [4, 0]);
   const textScale = useTransform(smoothProgress, [0, 1], [1, 0.9]);
 
+  const hingeValuePhone = useTransform(
+    smoothProgress,
+    [0, 0.2],
+    [-0.425, 1.575]
+  );
   const textPhone1X = useTransform(smoothProgress, [0, 1], [0, 0]);
   const textPhone1Y = useTransform(smoothProgress, [0, 1], [5.2, 1]);
   const textPhone2X = useTransform(smoothProgress, [0, 1], [0, 0]);
@@ -329,14 +334,10 @@ export default function LaptopViewer({
   // Subscribe to transform updates
 
   useEffect(() => {
-    const u1 = hingeValue.on("change", setHinge);
-    const u2 = smoothProgress.on("change", setOpenProgress);
     const u9 = textColor.on("change", setTColor);
     const u10 = textShadowColor.on("change", setTShadowColor);
 
     return () => {
-      u1();
-      u2();
       u9();
       u10();
     };
@@ -345,6 +346,8 @@ export default function LaptopViewer({
   useEffect(() => {
     if (isPhoneScreen) return;
 
+    const u1 = hingeValue.on("change", setHinge);
+    const u2 = smoothProgress.on("change", setOpenProgress);
     const u3 = text1X.on("change", setT1X);
     const u4 = text1Y.on("change", setT1Y);
     const u5 = text2X.on("change", setT2X);
@@ -353,6 +356,8 @@ export default function LaptopViewer({
     const u8 = textScale.on("change", setTScale);
 
     return () => {
+      u1();
+      u2();
       u3();
       u4();
       u5();
@@ -365,6 +370,8 @@ export default function LaptopViewer({
   useEffect(() => {
     if (!isPhoneScreen) return;
 
+    const u1 = hingeValuePhone.on("change", setHinge);
+    const u2 = smoothProgress.on("change", setOpenProgress);
     const u3 = textPhone1X.on("change", setT1X);
     const u4 = textPhone1Y.on("change", setT1Y);
     const u5 = textPhone2X.on("change", setT2X);
@@ -373,6 +380,8 @@ export default function LaptopViewer({
     const u8 = textPhoneScale.on("change", setTScale);
 
     return () => {
+      u1();
+      u2();
       u3();
       u4();
       u5();
@@ -417,7 +426,12 @@ export default function LaptopViewer({
       style={{ background }}
     >
       <div
-        style={{ position: "sticky", top: 0, height: "100vh", width: "100%" }}
+        style={{
+          position: isPhoneScreen ? "static" : "sticky",
+          top: 0,
+          height: "100vh",
+          width: "100%",
+        }}
       >
         <Canvas dpr={[1, 2]} camera={{ position: [0, 0, -30], fov: 35 }}>
           <Suspense fallback={<Loader />}>
