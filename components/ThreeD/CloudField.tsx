@@ -126,12 +126,12 @@ export default function CloudField() {
     // Smooth parallax effect
     target.current.x = THREE.MathUtils.lerp(
       target.current.x,
-      mouse.x * 1000,
+      mouse.x * 2000,
       lerpFactor
     );
     target.current.y = THREE.MathUtils.lerp(
       target.current.y,
-      -mouse.y * 1000,
+      -mouse.y * 2000,
       lerpFactor
     );
 

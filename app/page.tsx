@@ -67,6 +67,7 @@ export default function Home() {
       >
         SCALE
       </h1> */}
+
       <Canvas
         className={styles.canvas}
         style={{ width: "100vw", height: "100vh" }}

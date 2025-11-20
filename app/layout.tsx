@@ -1,10 +1,9 @@
+import BackToTopButton from "@/components/BackToTopButton/BackToTopButton";
+import Footer from "@/components/Footer/Footer";
+import Header from "@/components/Header/Header";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
-import ScrollToTopButton from "@/components/ScrollToTopButton/ScrollToTopButton";
-import BackToTopButton from "@/components/BackToTopButton/BackToTopButton";
 
 const plusJakartaSans = localFont({
   src: [
@@ -68,6 +67,8 @@ export default function RootLayout({
         />
       </head>
       <body className={plusJakartaSans.variable}>
+        {/* <Preloader /> */}
+
         <Header />
         {/* <ScrollToTopButton /> */}
         <BackToTopButton />
