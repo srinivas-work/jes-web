@@ -207,17 +207,23 @@ export default function ProjectDetails() {
             onMouseUp={onMouseUp}
             onMouseMove={onMouseMove}
           >
-            {projectList.map((projectItem, i) => (
-              <ProjectCard
-                key={i}
-                projectItem={projectItem}
-                index={i}
-                //borderRadius={card.borderRadius}
-                //overlayColor={card.overlayColor}
-                isBlurred={hoveredIndex !== null && hoveredIndex !== i}
-                onHover={(hovered) => setHoveredIndex(hovered ? i : null)}
-              />
-            ))}
+            {projectList.map((projectItem, i) => {
+              if (Number(id) === i) {
+                return;
+              }
+
+              return (
+                <ProjectCard
+                  key={i}
+                  projectItem={projectItem}
+                  index={i}
+                  //borderRadius={card.borderRadius}
+                  //overlayColor={card.overlayColor}
+                  isBlurred={hoveredIndex !== null && hoveredIndex !== i}
+                  onHover={(hovered) => setHoveredIndex(hovered ? i : null)}
+                />
+              );
+            })}
           </div>
         </div>
       </section>

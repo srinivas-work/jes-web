@@ -126,3 +126,23 @@ footer {
     color-scheme: dark;
   }
 } */
+
+/* ===== Scrollbar Styling (WebKit Browsers: Chrome, Edge, Safari) ===== */
+* {
+  scrollbar-color: var(--primary-red) #e3e3e3; /* thumb | track */
+}
+
+::-webkit-scrollbar-track {
+  background: #e3e3e3; /* track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-red); /* thumb color */
+  border-radius: 10px;
+  border: 2px solid #e3e3e3; /* padding around thumb */
+}
+
+/* Optional: Hover effect */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #b01522; /* darker shade on hover */
+}
