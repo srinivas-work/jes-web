@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import ScrollToTopButton from "@/components/ScrollToTopButton/ScrollToTopButton";
+import BackToTopButton from "@/components/BackToTopButton/BackToTopButton";
 
 const plusJakartaSans = localFont({
   src: [
@@ -67,6 +69,8 @@ export default function RootLayout({
       </head>
       <body className={plusJakartaSans.variable}>
         <Header />
+        {/* <ScrollToTopButton /> */}
+        <BackToTopButton />
         <main>{children}</main>
         <Footer />
       </body>

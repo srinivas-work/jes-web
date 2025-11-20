@@ -1,16 +1,15 @@
 "use client";
 
-import FAQ from "@/components/FAQ/FAQ";
 import JesLogoDetails from "@/components/JesLogoMove/JesLogoDetails/JesLogoDetails";
+import FAQSection from "@/components/PageComponents/HomePage/FAQSection/FAQSection";
 import IndustryHighlights from "@/components/PageComponents/HomePage/IndustryHighlights/IndustryHighlights";
 import ServiceScrollShowcase from "@/components/PageComponents/HomePage/ServiceScrollShowcase/ServiceScrollShowcase";
 import StatsBar from "@/components/PageComponents/HomePage/StatsBar/StatsBar";
 import TestimonialCarouselReel from "@/components/PageComponents/HomePage/TestimonialCarouselReel/TestimonialCarouselReel";
 import CloudField from "@/components/ThreeD/CloudField";
 import GrowthPath3D from "@/components/ThreeD/GrowthPath3D/GrowthPath3D";
-import GrowthCubes3D from "@/components/ThreeD/PortalCards/GrowthCubes3D";
 import ServiceScrollStackPhone from "@/components/UI/ServiceScrollStackPhone/ServiceScrollStackPhone";
-import { faq, testimonials } from "@/utils/data/dummyData";
+import { testimonials } from "@/utils/data/dummyData";
 import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 import { useLenis } from "@/utils/hooks/useLenis";
 import { Text, useTexture } from "@react-three/drei";
@@ -18,12 +17,6 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
-import BruceSpotlight from "@/components/PageComponents/AboutPage/AboutAccordion/BruceSpotlight/BruceSpotlight";
-import WhyChooseUs from "@/components/PageComponents/AboutPage/AboutAccordion/CommonDataShowcase/CommonDataShowcase";
-import ProcessDetails from "@/components/PageComponents/HomePage/ProcessDetails/ProcessDetails";
-import Image from "next/image";
-import MissionVision from "@/components/PageComponents/AboutPage/AboutAccordion/MissionVision/MissionVision";
-import FAQSection from "@/components/PageComponents/HomePage/FAQSection/FAQSection";
 
 function Building() {
   const tex = useTexture("/img/modern-building.png");

@@ -2,6 +2,7 @@ import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import styles from "./CircularTimeline.module.css";
 import Image from "next/image";
+import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 
 interface Section {
   number: string;
@@ -115,6 +116,7 @@ const TextBlock: React.FC<TextBlockProps> = ({
 
 export default function CircularTimeline() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const isPhoneScreen = useIsPhoneScreen();
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
@@ -127,16 +129,18 @@ export default function CircularTimeline() {
     <div ref={containerRef} className={styles.scrollContainer}>
       <div className={styles.stickyWrapper}>
         <h2 className={styles.journeyHeading}>Our Journey</h2>
-        {/* <div className={styles.bgImageContainerOne}>
-          <Image
-            className={styles.bgImageOne}
-            src={"/img/jes_curve.png"}
-            alt="JES Engineering"
-            sizes="100vw"
-            width={0}
-            height={0}
-          />
-        </div> */}
+        {!isPhoneScreen && (
+          <div className={styles.bgImageContainerOne}>
+            <Image
+              className={styles.bgImageOne}
+              src={"/img/jes_curve.png"}
+              alt="JES Engineering"
+              sizes="100vw"
+              width={0}
+              height={0}
+            />
+          </div>
+        )}
         {/* Rotating circle */}
         <motion.div className={styles.circle} style={{ rotate: rotation }}>
           {sections.map((section, index) => (

@@ -7,7 +7,7 @@ import MissionVision from "./MissionVision/MissionVision";
 import CommonDataShowcase from "./CommonDataShowcase/CommonDataShowcase";
 
 const AboutAccordion: React.FC<{ className?: string }> = ({ className }) => {
-  const [activeSectionId, setActiveSectionId] = useState<null | number>(null);
+  const [activeSectionId, setActiveSectionId] = useState<null | number>(0);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isScrolling, setIsScrolling] = useState(false);
 

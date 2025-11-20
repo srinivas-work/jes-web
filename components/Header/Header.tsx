@@ -36,7 +36,7 @@ const Header = () => {
 
   const isSolutions =
     pathname === "/solutions" ||
-    pathname === "/insights" ||
+    pathname.includes("insights") ||
     pathname.includes("projects/");
   //pathname.includes("/services/");
 

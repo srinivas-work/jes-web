@@ -35,11 +35,10 @@ const BruceSpotlight: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
           <div className={styles.textContent}>
             <h2 className={styles.title}>CEO's Message</h2>
             <p className={styles.description}>
-              At JES Engineering Solutions, we elevate construction excellence
-              worldwide through advanced engineering, fostering sustainability
-              and delivering unparalleled building engineering solutions to our
-              valued customers that redefine the future of building
-              environments.
+              At JES Inc., we elevate construction excellence worldwide through
+              advanced engineering, fostering sustainability and delivering
+              unparalleled building engineering solutions to our valued
+              customers that redefine the future of building environments.
             </p>
             <div className={styles.signature}>
               <div className={styles.name}>Bruce Dorey, PHD</div>

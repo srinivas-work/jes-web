@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 2000 2000"
+>
+  <style>
+    .st0 { fill: none; stroke: #202020; stroke-width: 250; stroke-miterlimit: 10; }
+  </style>
+
+  <!-- Rotate +90° around center (1000,1000) -->
+  <g transform="rotate(90 1000 1000)">
+    <polyline class="st0" points="551,102 1449,1000 551,1898" />
+  </g>
+</svg>

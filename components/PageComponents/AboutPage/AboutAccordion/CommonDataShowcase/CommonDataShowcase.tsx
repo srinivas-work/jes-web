@@ -6,7 +6,7 @@ import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 
 const whyChoose = {
   title: "Why choose JES?",
-  desc: "Establish a groundbreaking paradigm in the MEP industry with Jersey Engineering, empowering you to achieve your best. Our services offer a more effective way to run your business, allowing you the time to concentrate on what only you can do much better and at ease serving your customers, managing your employees, and nurturing the overall well-being of your enterprise.",
+  desc: "Establish a groundbreaking paradigm in the MEP industry with JES Inc., empowering you to achieve your best. Our services offer a more effective way to run your business, allowing you the time to concentrate on what only you can do much better and at ease serving your customers, managing your employees, and nurturing the overall well-being of your enterprise.",
   subData: [
     {
       img: "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/partner_e4c52b7cdc.svg",

@@ -9,7 +9,7 @@ const ServiceCard: React.FC<{ cardItem: GenericType; cardIndex: number }> = ({
 }) => {
   return (
     <motion.div className={styles.card}>
-      <div className={styles.cardLabel}>Part {toRoman(cardIndex + 1)}</div>
+      {/* <div className={styles.cardLabel}>Part {toRoman(cardIndex + 1)}</div> */}
       <div className={styles.cardNumber}>0{cardIndex + 1}</div>
       <div className={styles.cardTitle}>{cardItem.title}</div>
       <ul className={styles.cardContent}>

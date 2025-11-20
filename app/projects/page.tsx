@@ -32,7 +32,7 @@ const Projects = () => {
       </div> */}
 
       <h2>Our Client Projects</h2>
-      <ButtonLayer options={["All", "MEP", "AR/VR"]} />
+      {/* <ButtonLayer options={["All", "MEP", "AR/VR"]} /> */}
       <ProjectsGallery />
     </div>
   );

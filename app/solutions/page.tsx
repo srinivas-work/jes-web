@@ -161,6 +161,7 @@ const Solutions = () => {
   useLenis();
   const heroRef = useRef(null);
   const containerRef = useRef(null);
+  const router = useRouter();
 
   const { scrollYProgress: heroProgress } = useScroll({
     target: heroRef,
@@ -287,7 +288,7 @@ const Solutions = () => {
         >
           <h2>Ready to Scale Your Business?</h2>
           <p>
-            Let us discuss how our BIM solutions can transform your engineering
+            Let us discuss how our solutions can transform your engineering
             workflow
           </p>
           <motion.button
@@ -297,6 +298,7 @@ const Solutions = () => {
               boxShadow: "0 8px 24px rgba(169, 30, 45, 0.35)",
             }}
             whileTap={{ scale: 0.97 }}
+            onClick={() => router.push("/contact")}
           >
             Get Started
           </motion.button>

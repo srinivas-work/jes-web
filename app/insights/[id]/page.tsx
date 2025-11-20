@@ -1,14 +1,12 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useRef, useMemo } from "react";
-import { useParams, useRouter } from "next/navigation";
-import styles from "./InsightDetails.module.css";
-import Image from "next/image";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
-import { insightsData } from "../page";
 import { useLenis } from "@/utils/hooks/useLenis";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import Image from "next/image";
+import { useParams, useRouter } from "next/navigation";
+import { useMemo, useRef } from "react";
+import { insightsData } from "../page";
+import styles from "./InsightDetails.module.css";
 
 export default function InsightDetails() {
   useLenis();
@@ -76,8 +74,6 @@ export default function InsightDetails() {
   // ---------- RENDER ----------
   return (
     <div ref={ref} className={styles.detailsWrapper}>
-      <Header />
-
       {/* Floating Curves with rotation & scale */}
       <motion.div
         className={styles.floatingCurve1}
@@ -166,8 +162,6 @@ export default function InsightDetails() {
           </p>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }

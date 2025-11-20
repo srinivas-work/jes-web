@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import styles from "./ContactInfo.module.css";
 import FlipBookViewer from "@/components/FlipBookViewer/FlipBookViewer";
@@ -17,84 +17,106 @@ const contactInfo = [
   },
 ];
 
-const socialIcons = [
-  { src: "/icons/discord.png", alt: "Discord" },
-  { src: "/icons/ig.png", alt: "Instagram" },
-  { src: "/icons/twitter.png", alt: "Twitter" },
-];
-
-const subjectOptions = [
-  {
-    id: "subject-1",
-    label: "General Inquiry",
-    icon: "/teenyicons-tick-circle-solid-1.svg",
-  },
-  {
-    id: "subject-2",
-    label: "AR/VR Inquiry",
-    icon: "/teenyicons-tick-circle-solid.svg",
-  },
-  {
-    id: "subject-3",
-    label: "BIM Inquiry",
-    icon: "/teenyicons-tick-circle-solid.svg",
-  },
-  {
-    id: "subject-4",
-    label: "Architecture Inquiry",
-    icon: "/teenyicons-tick-circle-solid.svg",
-  },
+const serviceOptions = [
+  "Quantity Take Off",
+  "Equipment/Product Selection",
+  "Spec Review",
+  "BIM Modelling",
+  "Revit Models: Component & Assembly",
+  "AR/VR Modelling",
+  "MEP Drafting",
+  "Energy Modelling",
 ];
 
 const ContactInfo = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [isDocClicked, setIsDocClicked] = useState(false);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end end"],
-  });
+  const { scrollYProgress } = useScroll({ target: ref });
 
-  // Parallax Y positions
-  const leftY = useTransform(scrollYProgress, [0, 1], [0, 0]);
-  const rightY = useTransform(scrollYProgress, [0, 1], [0, 0]);
+  const leftY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 0]));
+  const rightY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 0]));
+  const whiteCurveRotate = useSpring(
+    useTransform(scrollYProgress, [0, 1], [0, 5])
+  );
+  const redCurveRotate = useSpring(
+    useTransform(scrollYProgress, [0, 1], [0, -5])
+  );
 
-  // Smooth spring motion
-  const smoothLeftY = useSpring(leftY, { stiffness: 80, damping: 25 });
-  const smoothRightY = useSpring(rightY, { stiffness: 80, damping: 25 });
-
-  // Optional: subtle rotation/scale for decorative images
-  const whiteCurveRotate = useTransform(scrollYProgress, [0, 1], [0, 5]);
-  const smoothWhiteCurveRotate = useSpring(whiteCurveRotate, {
-    stiffness: 80,
-    damping: 25,
-  });
-
-  const redCurveRotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
-  const smoothRedCurveRotate = useSpring(redCurveRotate, {
-    stiffness: 80,
-    damping: 25,
-  });
-
-  const [formData, setFormData] = React.useState({
+  // FORM STATE
+  const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
-    subject: "subject-1",
+    subject: "General Inquiry",
     message: "",
   });
+
+  const [formMessage, setFormMessage] = useState(""); // SUCCESS or ERROR text
+  const [isSuccess, setIsSuccess] = useState(false); // determines color
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+    setFormMessage("");
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Message sent successfully!");
+  const handleServiceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setFormMessage("");
+    setFormData({ ...formData, subject: e.target.value });
   };
+
+  // VALIDATION
+  const validate = () => {
+    if (!formData.firstName.trim()) return "First name is required.";
+    if (!formData.lastName.trim()) return "Last name is required.";
+    if (!formData.email.trim()) return "Email is required.";
+    if (!/^\S+@\S+\.\S+$/.test(formData.email)) return "Enter a valid email.";
+    if (!formData.phone.trim()) return "Phone number is required.";
+    if (!/^[0-9+()\-\s]{7,}$/.test(formData.phone))
+      return "Enter a valid phone number.";
+    if (!formData.message.trim()) return "Message cannot be empty.";
+    return "";
+  };
+
+  // SUBMIT
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const error = validate();
+    if (error) {
+      setIsSuccess(false);
+      setFormMessage(error);
+      return;
+    }
+
+    await new Promise((res) => setTimeout(res, 700));
+
+    setIsSuccess(true);
+    setFormMessage("Thank you! Your message has been sent successfully.");
+
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      subject: "General Inquiry",
+      message: "",
+    });
+  };
+
+  // AUTO-HIDE SUCCESS AFTER 3 SECONDS
+  useEffect(() => {
+    if (isSuccess) {
+      const timer = setTimeout(() => {
+        setFormMessage("");
+        setIsSuccess(false);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isSuccess]);
 
   return (
     <section ref={ref} className={styles.container}>
@@ -102,14 +124,15 @@ const ContactInfo = () => {
         isClicked={isDocClicked}
         onClose={() => setIsDocClicked(false)}
       />
+
       <div className={styles.wrapper}>
         {/* LEFT PANEL */}
-        <motion.div className={styles.leftPanel} style={{ y: smoothLeftY }}>
+        <motion.div className={styles.leftPanel} style={{ y: leftY }}>
           <motion.img
             className={styles.backgroundVector}
             alt="Vector"
             src="/img/jes_curve_white.svg"
-            style={{ rotate: smoothWhiteCurveRotate }}
+            style={{ rotate: whiteCurveRotate }}
           />
 
           <div className={styles.contactTitleContainer}>
@@ -124,8 +147,8 @@ const ContactInfo = () => {
               <div key={index} className={styles.contactItem}>
                 <img
                   className={styles.contactIcon}
-                  alt={info.alt}
                   src={info.icon}
+                  alt={info.alt}
                 />
                 <div className={styles.contactText}>{info.text}</div>
               </div>
@@ -133,37 +156,19 @@ const ContactInfo = () => {
           </div>
 
           <div className={styles.socialIcons}>
-            {/* {socialIcons.map((icon, index) => (
-              <img
-                key={index}
-                className={styles.socialIcon}
-                alt={icon.alt}
-                src={icon.src}
-              />
-            ))} */}
-            <Link
-              href="https://www.linkedin.com/company/jersey-engineering-solutions/"
-              aria-label="LinkedIn"
-            >
+            <Link href="#">
               <Linkedin size={35} />
             </Link>
-            <Link
-              href="https://www.facebook.com/p/Jersey-Engineering-Solutions-61565305681720/"
-              aria-label="Facebook"
-            >
+            <Link href="#">
               <Facebook size={35} />
             </Link>
-            <Link
-              href="https://www.instagram.com/jersey_engineering_solutions/"
-              aria-label="Twitter"
-            >
+            <Link href="#">
               <Instagram size={35} />
             </Link>
+
             <button
               className={styles.docButton}
               onClick={() => setIsDocClicked(true)}
-              aria-label="Download Company Profile"
-              style={{ zIndex: 500 }}
             >
               <FileText className={styles.docIcon} />
               View Company Profile
@@ -172,113 +177,144 @@ const ContactInfo = () => {
         </motion.div>
 
         {/* RIGHT PANEL */}
-        <motion.div className={styles.rightPanel} style={{ y: smoothRightY }}>
+        <motion.div className={styles.rightPanel} style={{ y: rightY }}>
           <motion.img
             className={styles.formBackground}
             alt="Vector"
             src="/img/jes_curve_red.svg"
-            style={{ rotate: smoothRedCurveRotate }}
+            style={{ rotate: redCurveRotate }}
           />
 
           <form onSubmit={handleSubmit} className={styles.form}>
+            {/* NAME GRID */}
             <div className={styles.formGrid}>
               <div className={styles.formGroup}>
-                <label htmlFor="firstName" className={styles.label}>
-                  First Name
-                </label>
+                <label className={styles.label}>First Name</label>
                 <input
-                  id="firstName"
+                  className={styles.input}
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
-                  className={styles.input}
                   placeholder="John"
-                  required
                 />
               </div>
+
               <div className={styles.formGroup}>
-                <label htmlFor="lastName" className={styles.label}>
-                  Last Name
-                </label>
+                <label className={styles.label}>Last Name</label>
                 <input
-                  id="lastName"
+                  className={styles.input}
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
-                  className={styles.input}
                   placeholder="Doe"
-                  required
                 />
               </div>
             </div>
 
+            {/* EMAIL GRID */}
             <div className={styles.formGrid}>
               <div className={styles.formGroup}>
-                <label htmlFor="email" className={styles.label}>
-                  Email
-                </label>
+                <label className={styles.label}>Email</label>
                 <input
-                  id="email"
+                  className={styles.input}
                   name="email"
-                  type="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={styles.input}
-                  placeholder="john@example.com"
-                  required
+                  type="email"
+                  placeholder="example@xyz.com"
                 />
               </div>
+
               <div className={styles.formGroup}>
-                <label htmlFor="phone" className={styles.label}>
-                  Phone Number
-                </label>
+                <label className={styles.label}>Phone Number</label>
                 <input
-                  id="phone"
+                  className={styles.input}
                   name="phone"
-                  type="tel"
                   value={formData.phone}
                   onChange={handleChange}
-                  className={styles.input}
-                  placeholder="+1 012 3456 789"
-                  required
+                  placeholder="+1 123 457 8490"
                 />
               </div>
             </div>
 
+            {/* SUBJECT */}
             <div className={styles.subjectSection}>
-              <label className={styles.label}>Select Subject?</label>
-              <div className={styles.radioGroup}>
-                {subjectOptions.map((option) => (
-                  <label key={option.id} className={styles.radioItem}>
-                    <input
-                      type="radio"
-                      name="custom-radio"
-                      value={option.id}
-                      className={styles.radioInput}
-                    />
-                    <span className={styles.radioLabel}>{option.label}</span>
-                  </label>
-                ))}
+              <label className={styles.label}>Select Subject</label>
+
+              <div className={styles.subjectLayout}>
+                <label className={styles.radioItem}>
+                  <input
+                    type="radio"
+                    name="subject"
+                    value="General Inquiry"
+                    className={styles.radioInput}
+                    checked={formData.subject === "General Inquiry"}
+                    onChange={() =>
+                      setFormData({ ...formData, subject: "General Inquiry" })
+                    }
+                  />
+                  <span className={styles.radioLabel}>General Inquiry</span>
+                </label>
+
+                <div className={styles.dropdownItem}>
+                  <input
+                    type="radio"
+                    name="subject"
+                    checked={formData.subject !== "General Inquiry"}
+                    readOnly
+                    className={styles.radioInput}
+                  />
+
+                  <select
+                    className={styles.select}
+                    value={
+                      formData.subject === "General Inquiry"
+                        ? ""
+                        : formData.subject
+                    }
+                    onChange={handleServiceChange}
+                  >
+                    <option value="" disabled>
+                      Select a Service
+                    </option>
+
+                    {serviceOptions.map((service, index) => (
+                      <option key={index} value={service}>
+                        {service}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
             </div>
 
+            {/* MESSAGE */}
             <div className={styles.textareaSection}>
-              <label htmlFor="message" className={styles.label}>
-                Message
-              </label>
+              <label className={styles.label}>Message</label>
               <textarea
-                id="message"
                 name="message"
+                className={styles.textarea}
                 value={formData.message}
                 onChange={handleChange}
-                className={styles.textarea}
-                placeholder="Write your message.."
-                required
+                placeholder="Type your message"
               />
             </div>
 
+            {/* UNIFIED MESSAGE AREA (ERROR or SUCCESS) */}
+            {formMessage && (
+              <motion.div
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={isSuccess ? styles.successBox : styles.errorBox}
+              >
+                {isSuccess ? "✅ " : "❌ "}
+                {formMessage}
+              </motion.div>
+            )}
+
+            {/* SUBMIT */}
             <div className={styles.buttonContainer}>
-              <button type="submit" className={styles.submitButton}>
+              <button className={styles.submitButton} type="submit">
                 Send Message
               </button>
             </div>

@@ -111,10 +111,12 @@ export default function Insights() {
 
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
-  const categories = useMemo(
-    () => ["All", ...Array.from(new Set(insightsData.map((i) => i.category)))],
-    []
-  );
+  // const categories = useMemo(
+  //   () => ["All", ...Array.from(new Set(insightsData.map((i) => i.category)))],
+  //   []
+  // );
+
+  const categories = ["All", "LinkedIn", "Case Study", "White Paper"];
 
   const filteredInsights = useMemo(() => {
     if (selectedCategory === "All") return insightsData;
@@ -251,9 +253,9 @@ function InsightCard({
   const smoothImageY = useSpring(imageY, { stiffness: 100, damping: 30 });
 
   const handleClick = () => {
-    //router.push(`/insights/${insight.id}`);
+    router.push(`/insights/${insight.id}`);
     //setIsDocClicked(true);
-    cardClickHandler(true);
+    //cardClickHandler(true);
   };
 
   return (

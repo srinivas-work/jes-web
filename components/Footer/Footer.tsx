@@ -1,7 +1,17 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { Linkedin, Facebook, Twitter, Instagram } from "lucide-react";
+import {
+  Linkedin,
+  Facebook,
+  Twitter,
+  Instagram,
+  Mail,
+  Phone,
+  Map,
+  LocationEditIcon,
+  MapPin,
+} from "lucide-react";
 import Link from "next/link";
 import { HTMLProps, useRef } from "react";
 import styles from "./Footer.module.css";
@@ -42,16 +52,27 @@ const Footer: React.FC<HTMLProps<HTMLElement>> = ({ ...props }) => {
         <div className={styles.down}>
           <div className={styles.contact}>
             <p className={styles.contactTitle}>Contact us:</p>
-            <p>
-              Email:{" "}
+            <p className={styles.contactDetails}>
+              <Mail width={23} height={23} />
               <Link href="mailto:bruce.dorey@jerseyeng.com">
                 bruce.dorey@jerseyeng.com
               </Link>
             </p>
-            <p>Phone: +1 434 218-8403</p>
-            <p>
-              Address: US – SALES OFFICE Charlottesville, <br /> Virginia 22902,
-              United States
+            <p className={styles.contactDetails}>
+              <Phone width={23} height={23} /> +1 434 218-8403
+            </p>
+            <p
+              className={styles.contactDetails}
+              //style={{ alignItems: "start" }}
+            >
+              <MapPin
+                width={23}
+                height={23}
+                //style={{ marginTop: "0.5rem" }}
+              />
+              <span>
+                US – SALES OFFICE Charlottesville, Virginia 22902, United States
+              </span>
             </p>
           </div>
           <div className={styles.subscribeBox}>

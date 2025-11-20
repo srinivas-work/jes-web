@@ -9,6 +9,7 @@ import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 import { useLenis } from "@/utils/hooks/useLenis";
 import Image from "next/image";
 import styles from "./About.module.css";
+import FAQSection from "@/components/PageComponents/HomePage/FAQSection/FAQSection";
 
 const About = () => {
   useLenis();
@@ -43,6 +44,7 @@ const About = () => {
       <TeamCardStack />
       <CircularTimeline />
       <SecuritySection />
+      <FAQSection />
       {/* <OurClientsCarousel /> */}
     </div>
   );
