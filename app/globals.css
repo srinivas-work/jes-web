@@ -144,5 +144,5 @@ footer {
 
 /* Optional: Hover effect */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #b01522; /* darker shade on hover */
+  background-color: var(--primary-red); /* darker shade on hover */
 }
