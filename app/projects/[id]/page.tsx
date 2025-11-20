@@ -121,9 +121,21 @@ export default function ProjectDetails() {
             <div className={styles.overviewSection}>
               <h3 className={styles.sectionTitle}>Project Overview</h3>
               <div className={styles.overviewContainer}>
-                {projectList[Number(id)].overview.map((o, i) => (
-                  <p className={styles.overviewText}>{o}</p>
-                ))}
+                {projectList[Number(id)].overview.map((o, i) => {
+                  const containsHTML = /<\/?[a-z][\s\S]*>/i.test(o);
+
+                  return containsHTML ? (
+                    <div
+                      key={i}
+                      className={styles.overviewText}
+                      dangerouslySetInnerHTML={{ __html: o }}
+                    />
+                  ) : (
+                    <p key={i} className={styles.overviewText}>
+                      {o}
+                    </p>
+                  );
+                })}
               </div>
             </div>
 

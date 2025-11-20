@@ -581,7 +581,29 @@ const projectList: ProjectItemType[] = [
     imgLink: "/img/projects/nissan-stadium.jpg",
     location: "Tennessee, USA",
     overview: [
-      "JES delivered full Revit modeling + immersive VR reviews to finalize the perfect outdoor plant room location. Using virtual reality, the design team and client could “walk” the stadium as fans – from every seat, suite, and concourse – while we instantly relocated the entire plant room around the site in real time. The result? We selected the optimal position where: Mechanical equipment is completely hidden from view, Noise impact is minimized regardless of event configuration (concerts, football, soccer, etc.), Zero interference with the guest experience. VR didn’t just help visualize – it guaranteed the plant disappears for 70,000+ fans on game day.",
+      `<section>
+  <p>
+    JES delivered full Revit modeling and immersive VR reviews to finalize the perfect outdoor plant room location.
+  </p>
+
+  <p>
+    Using virtual reality, the design team and client could “walk” the stadium as fans – from every seat, suite, and concourse – while we instantly relocated the entire plant room around the site in real time.
+  </p>
+
+  <h3>The result?</h3>
+
+  <ul style="padding-left: 2.5rem;">
+    <li>Mechanical equipment is completely hidden from view</li>
+    <li>Noise impact is minimized regardless of event configuration (concerts, football, soccer, etc.)</li>
+    <li>Zero interference with the guest experience</li>
+  </ul>
+
+  <p>
+    VR didn’t just help visualize – it guaranteed the plant disappears for 70,000+ fans on game day.
+  </p>
+</section>
+
+`,
     ],
     client: "Nissan Stadium",
     contractor: "Voltas Ltd.",
