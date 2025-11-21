@@ -45,7 +45,6 @@
 .portalCard:nth-child(2) {
   top: 45%;
   left: 3rem;
-  transform: translate(0, -45%) !important;
 }
 
 .portalCard:nth-child(2):hover {

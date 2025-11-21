@@ -187,7 +187,7 @@ export default function ProjectDetails() {
       {/* Our Client Projects */}
       <section className={styles.projectsSection}>
         <div className={styles.container}>
-          <h2>Our Client Projects</h2>
+          <h2>Other Projects</h2>
           {/* <div className={styles.projectsGrid}>
             {projects.map((project, index) => (
               <ProjectCard

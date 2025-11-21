@@ -159,12 +159,12 @@ const ContactInfo = () => {
             <Link href="#">
               <Linkedin size={35} />
             </Link>
-            <Link href="#">
+            {/* <Link href="#">
               <Facebook size={35} />
             </Link>
             <Link href="#">
               <Instagram size={35} />
-            </Link>
+            </Link> */}
 
             <button
               className={styles.docButton}

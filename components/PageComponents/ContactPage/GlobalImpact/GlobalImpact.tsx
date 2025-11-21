@@ -79,15 +79,6 @@ const GlobalImpact = () => {
                   left: selectedRegion.mapPosition.left,
                 }}
               />
-
-              {/* Info Box */}
-              <div className={styles.infoBox}>
-                <p className={styles.infoText}>
-                  Our organization has a strong global presence with branches
-                  strategically located in key regions and make a positive
-                  impact on a worldwide scale.
-                </p>
-              </div>
             </div>
           </div>
         </div>

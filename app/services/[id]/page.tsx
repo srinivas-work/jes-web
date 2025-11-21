@@ -15,6 +15,7 @@ import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import styles from "./ServiceItem.module.css";
+import ReadyScale from "@/components/ReadyScale/ReadyScale";
 
 //
 
@@ -132,37 +133,11 @@ const ServiceItem = () => {
       )}
       <FAQSection />
       {/* <OurApproach /> */}
-      <motion.section
-        className={styles.serviceCtaSection}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        viewport={{ once: true }}
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          viewport={{ once: true }}
-        >
-          <h2>Ready to Scale Your Business?</h2>
-          <p>
-            Let us discuss how our {selectedService.title} Solutions can
-            transform your engineering workflow
-          </p>
-          <motion.button
-            className={styles.primaryButton}
-            whileHover={{
-              y: -4,
-              boxShadow: "0 8px 24px rgba(169, 30, 45, 0.35)",
-            }}
-            whileTap={{ scale: 0.97 }}
-            onClick={() => router.push("/contact")}
-          >
-            Get Started
-          </motion.button>
-        </motion.div>
-      </motion.section>
+
+      <ReadyScale
+        desc={`Let us discuss how our ${selectedService.title} Solutions can
+            transform your engineering workflow`}
+      />
       <FlipBookViewer
         isClicked={isDocClicked}
         onClose={() => setIsDocClicked(false)}

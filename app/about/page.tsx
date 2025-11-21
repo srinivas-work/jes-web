@@ -10,6 +10,7 @@ import { useLenis } from "@/utils/hooks/useLenis";
 import Image from "next/image";
 import styles from "./About.module.css";
 import FAQSection from "@/components/PageComponents/HomePage/FAQSection/FAQSection";
+import ReadyScale from "@/components/ReadyScale/ReadyScale";
 
 const About = () => {
   useLenis();
@@ -45,6 +46,7 @@ const About = () => {
       <CircularTimeline />
       <SecuritySection />
       <FAQSection />
+      <ReadyScale />
       {/* <OurClientsCarousel /> */}
     </div>
   );

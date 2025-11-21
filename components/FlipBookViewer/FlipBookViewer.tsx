@@ -5,7 +5,7 @@ const FlipBookViewer: React.FC<{
   pdfUrl?: string;
   isClicked?: boolean;
   onClose?: (isClosed: boolean) => void;
-}> = ({ pdfUrl = "/pdfs/jes_white_paper_series.pdf", isClicked, onClose }) => {
+}> = ({ pdfUrl = "/pdfs/jes_brochure.pdf", isClicked, onClose }) => {
   const embedRef = useRef<HTMLEmbedElement | null>(null);
   const [isFlipbookOpen, setIsFlipbookOpen] = useState(false);
 
