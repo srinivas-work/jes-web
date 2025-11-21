@@ -3,10 +3,13 @@
 import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./BackToTopButton.module.css";
+import { usePathname } from "next/navigation";
 
 const BackToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+
+  const pathname = usePathname();
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -53,7 +56,10 @@ const BackToTopButton = () => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.5, y: 30 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          style={{ pointerEvents: "auto" }}
+          style={{
+            pointerEvents: "auto",
+            bottom: pathname.includes("/services") ? "8rem" : "2rem",
+          }}
         >
           <img
             src="/icons/arrow-icon.svg"
