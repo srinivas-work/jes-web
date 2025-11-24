@@ -68,7 +68,7 @@ export default function RootLayout({
         />
       </head>
       <body className={plusJakartaSans.variable}>
-        {/* <Preloader /> */}
+        <Preloader />
 
         <Header />
         {/* <ScrollToTopButton /> */}

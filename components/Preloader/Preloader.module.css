@@ -1,11 +1,14 @@
+/* =============================== */
+/* WHITE THEME OVERLAY             */
+/* =============================== */
+
 .overlay {
   position: fixed;
   inset: 0;
   z-index: 99999999;
-  backdrop-filter: blur(38px);
-  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(28px);
+  background: rgba(255, 255, 255, 0.92);
 
-  /* Move loader downward */
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -33,17 +36,17 @@
   margin-bottom: 48px;
 }
 
-/* =============================== */
-/* BIG TEXT + NO-JUMP FIX          */
-/* =============================== */
+/* ======================================= */
+/* TEXT — INACTIVE GREY + ACTIVE RED       */
+/* ======================================= */
 
 .text {
-  color: white;
+  color: #777; /* Light theme soft grey */
   font-size: 32px;
-  opacity: 0.45;
+  opacity: 0.55;
 
-  font-weight: 700; /* reserve bold width */
-  font-variation-settings: "wght" 400; /* visually normal */
+  font-weight: 700;
+  font-variation-settings: "wght" 400;
 
   transition: opacity 0.3s ease, color 0.3s ease,
     font-variation-settings 0.3s ease;
@@ -52,13 +55,12 @@
 .active {
   color: var(--primary-red);
   opacity: 1;
-
-  font-variation-settings: "wght" 700; /* visually bold */
+  font-variation-settings: "wght" 700;
 }
 
-/* =============================== */
-/* ICONS                           */
-/* =============================== */
+/* ======================================= */
+/* ICONS — LIGHT THEME                     */
+/* ======================================= */
 
 .iconWrapper {
   width: 48px;
@@ -71,7 +73,7 @@
 .iconOutline {
   width: 40px;
   height: 40px;
-  color: white;
+  color: #999; /* Light grey outline */
 }
 
 .iconFilled {
@@ -91,12 +93,12 @@
 }
 
 .activeIcon {
-  filter: drop-shadow(0 0 12px var(--primary-red));
+  filter: drop-shadow(0 0 8px rgba(169, 30, 45, 0.4)); /* Soft subtle glow */
 }
 
-/* =============================== */
-/* MOBILE RESPONSIVE               */
-/* =============================== */
+/* ======================================= */
+/* MOBILE RESPONSIVE                       */
+/* ======================================= */
 
 @media (max-width: 600px) {
   .overlay {

@@ -5,14 +5,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import styles from "./Preloader.module.css";
 
 const loadingStates = [
-  { text: "Buying a condo" },
-  { text: "Travelling in a flight" },
-  { text: "Meeting Tyler Durden" },
-  { text: "He makes soap" },
-  { text: "We goto a bar" },
+  { text: "Calculating project requirements" },
+  { text: "Processing MEP system data" },
+  { text: "Generating BIM insights" },
+  { text: "Reviewing engineering specifications" },
+  { text: "Preparing your project dashboard" },
 ];
-
-export default function Preloader({ duration = 1500 }: { duration?: number }) {
+export default function Preloader({ duration = 1000 }: { duration?: number }) {
   const [currentState, setCurrentState] = useState(0);
   const [finished, setFinished] = useState(false);
 

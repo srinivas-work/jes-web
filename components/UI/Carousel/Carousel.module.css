@@ -46,7 +46,7 @@
   object-fit: cover;
   pointer-events: none;
   user-select: none;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  /* border: 1px solid rgba(0, 0, 0, 0.05); */
 }
 
 .carousel-item.vertical {
@@ -66,7 +66,7 @@
 }
 
 .carousel-container.round {
-  border: 1px solid #555;
+  /* border: 1px solid #555; */
 }
 
 .carousel-container.vertical {
@@ -76,7 +76,7 @@
 .carousel-item.round {
   background-color: #0d0716;
   position: relative;
-  border: 1px solid #555;
+  /* border: 1px solid #555; */
   justify-content: center;
   align-items: center;
   text-align: center;
