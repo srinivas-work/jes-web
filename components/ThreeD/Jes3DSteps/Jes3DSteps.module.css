@@ -74,6 +74,11 @@
 }
 
 @media screen and (max-width: 650px) {
+  .growthPathStickyContainer {
+    position: sticky;
+    top: 5rem;
+  }
+
   /* Keep container as-is, just ensure it's centered */
   .cardsContainer {
     position: relative;
