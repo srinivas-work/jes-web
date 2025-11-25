@@ -1,12 +1,12 @@
 "use client";
-import * as THREE from "three";
+import PortalCard from "@/components/PortalCard/PortalCard";
+import { portalCardList } from "@/utils/data/dummyData";
+import { Environment, Text3D } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Environment, Text, Text3D } from "@react-three/drei";
-import styles from "./GrowthPath3D.module.css";
-import PortalCard from "@/components/PortalCard/PortalCard";
-import { portalCardList } from "@/utils/data/dummyData";
+import * as THREE from "three";
+import styles from "./Jes3DSteps.module.css";
 
 function StepCube({
   color,
@@ -177,7 +177,7 @@ function GrowthPath({ progress }: { progress: any }) {
   );
 }
 
-export default function GrowthPath3D() {
+export default function Jes3DSteps() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,

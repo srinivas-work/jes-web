@@ -7,7 +7,6 @@ import ServiceScrollShowcase from "@/components/PageComponents/HomePage/ServiceS
 import StatsBar from "@/components/PageComponents/HomePage/StatsBar/StatsBar";
 import TestimonialCarouselReel from "@/components/PageComponents/HomePage/TestimonialCarouselReel/TestimonialCarouselReel";
 import CloudField from "@/components/ThreeD/CloudField";
-import GrowthPath3D from "@/components/ThreeD/GrowthPath3D/GrowthPath3D";
 import ServiceScrollStackPhone from "@/components/UI/ServiceScrollStackPhone/ServiceScrollStackPhone";
 import { testimonials } from "@/utils/data/dummyData";
 import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
@@ -17,6 +16,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
+import Jes3DSteps from "@/components/ThreeD/Jes3DSteps/Jes3DSteps";
 
 function Building() {
   const tex = useTexture("/img/modern-building.png");
@@ -112,7 +112,7 @@ export default function Home() {
       {/* <AboutDetails /> */}
       <JesLogoDetails />
       {/* <GrowthCubes3D /> */}
-      <GrowthPath3D />
+      <Jes3DSteps />
       {/* <ProcessDetails /> */}
       <IndustryHighlights />
       <FAQSection />

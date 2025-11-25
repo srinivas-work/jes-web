@@ -1,0 +1,122 @@
+.growthPathSection {
+  height: 400vh;
+}
+
+.cardsContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2rem;
+  margin: 0 auto;
+  z-index: 5;
+}
+
+.portalCard {
+  position: absolute;
+}
+
+.portalCard::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -5rem;
+  transform: translate(0, -50%);
+  width: 20%;
+  height: 2px;
+  background-color: var(--primary-red);
+  z-index: -1;
+}
+
+.portalCard:hover {
+  transform: translateY(-2rem) !important;
+}
+
+.portalCard:nth-child(1) {
+  bottom: 7rem;
+  right: 7rem;
+}
+
+.portalCard:nth-child(2) {
+  top: 45%;
+  left: 3rem;
+}
+
+.portalCard:nth-child(2):hover {
+  transform: translate(0, -55%) !important;
+}
+
+.portalCard:nth-child(2)::before {
+  width: 15%;
+  top: 50%;
+  right: 0;
+  transform: translate(33rem, -50%);
+}
+
+.portalCard:nth-child(3) {
+  top: 5rem;
+  right: 7rem;
+}
+
+.portalCard:nth-child(3)::before {
+  left: -5rem;
+}
+
+@media screen and (max-width: 650px) {
+  /* Keep container as-is, just ensure it's centered */
+  .cardsContainer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
+  /* Center card 1 */
+  .portalCard:nth-child(1) {
+    /* bottom: auto !important; */
+    top: 7rem !important;
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+  }
+
+  /* Center card 2 */
+  .portalCard:nth-child(2) {
+    top: 15rem !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: translateX(-50%) !important;
+  }
+
+  /* Fix its connector line */
+  .portalCard:nth-child(2)::before {
+    transform: translate(-50%, -50%) !important;
+    left: 50% !important;
+    right: auto !important;
+    width: 30% !important; /* safe small centered line */
+  }
+
+  /* Center card 3 */
+  .portalCard:nth-child(3) {
+    top: 18rem !important;
+    left: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: translateX(-50%) !important;
+  }
+
+  /* Fix connector for card 3 */
+  .portalCard:nth-child(3)::before {
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 30% !important;
+  }
+}

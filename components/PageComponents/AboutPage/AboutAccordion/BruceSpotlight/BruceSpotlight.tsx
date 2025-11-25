@@ -22,7 +22,7 @@ const BruceSpotlight: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
             )}
             <figure className={styles.figure}>
               <img
-                src="https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/Bruce_Dorey_4873bd1b0d.jpeg"
+                src="/img/team/bruce_dorey.jpg"
                 alt="chairman"
                 className={styles.mainImg}
               />

@@ -2,7 +2,7 @@
 
 import { PortalCardType } from "@/utils/types";
 import { motion, useTransform } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import styles from "./PortalCard.module.css";
 
 const PortalCard: React.FC<
