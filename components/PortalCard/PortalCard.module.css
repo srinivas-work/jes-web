@@ -87,7 +87,7 @@
 @media (max-width: 650px) {
   .card {
     max-width: 80dvw;
-    height: fit-content;
+    height: 320px;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     margin: 0 auto;
