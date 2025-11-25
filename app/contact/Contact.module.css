@@ -5,3 +5,9 @@
   display: flex;
   flex-direction: column;
 }
+
+@media (max-width: 650px) {
+  .container {
+    gap: 3rem;
+  }
+}

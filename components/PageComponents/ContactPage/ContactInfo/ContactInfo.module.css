@@ -304,3 +304,42 @@
 .submitButton:hover {
   background-color: #8d1b27;
 }
+
+@media (max-width: 650px) {
+  .wrapper {
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10dvw;
+    padding-right: 0;
+  }
+
+  .leftPanel {
+    width: 100vw;
+    min-height: unset;
+    gap: 2.5rem;
+    border-radius: 0;
+  }
+
+  .contactTitleContainer {
+    gap: 0.2rem;
+  }
+
+  .contactTitle {
+    font-size: 30px;
+  }
+
+  .contactSubtitle {
+    font-size: 18px;
+  }
+
+  .rightPanel {
+    max-width: 100dvw;
+  }
+
+  .subjectLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}

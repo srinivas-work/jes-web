@@ -3,20 +3,30 @@ import styles from "./GlobalImpact.module.css";
 import { ChevronRightIcon } from "lucide-react";
 import { Region } from "@/utils/types";
 import { regions } from "@/utils/data/dummyData";
+import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 
 const GlobalImpact = () => {
   const [selectedRegion, setSelectedRegion] = useState<Region>(regions[0]);
+  const isPhoneScreen = useIsPhoneScreen();
 
   return (
     <section className={styles.contentSection}>
       <div className={styles.contentWrapper}>
+        {isPhoneScreen && (
+          <div>
+            <h2 className={styles.heading}>Our Global Reach</h2>
+            <h2 className={styles.heading}>and Impact</h2>
+          </div>
+        )}
         <div className={styles.layout}>
           {/* Left Side - Region List */}
           <div className={styles.leftPanel}>
-            <div>
-              <h2 className={styles.heading}>Our Global Reach</h2>
-              <h2 className={styles.heading}>and Impact</h2>
-            </div>
+            {!isPhoneScreen && (
+              <div>
+                <h2 className={styles.heading}>Our Global Reach</h2>
+                <h2 className={styles.heading}>and Impact</h2>
+              </div>
+            )}
 
             <div className={styles.regionList}>
               {regions.map((region, index) => (

@@ -27,10 +27,7 @@
 }
 
 .heading {
-  font-size: 40px;
-  font-weight: 500;
   line-height: normal;
-  color: var(--primary-dark);
   margin-bottom: 0.5rem;
 }
 
@@ -191,5 +188,20 @@
   100% {
     transform: scale(2);
     opacity: 0;
+  }
+}
+
+@media (max-width: 650px) {
+  .layout {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .rightPanel {
+    width: 100%;
+    position: relative;
+    margin-top: 2rem;
   }
 }

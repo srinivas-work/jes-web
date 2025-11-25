@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import styles from "./ContactInfo.module.css";
 import FlipBookViewer from "@/components/FlipBookViewer/FlipBookViewer";
-import { Facebook, FileText, Instagram, Linkedin } from "lucide-react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { FileText, Linkedin } from "lucide-react";
 import Link from "next/link";
+import React, { useEffect, useRef, useState } from "react";
+import styles from "./ContactInfo.module.css";
+import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 
 const contactInfo = [
   { icon: "/icons/phone.svg", text: "+1 434 218-8403", alt: "Phone" },
@@ -32,6 +33,7 @@ const ContactInfo = () => {
   const ref = useRef<HTMLDivElement>(null);
   const [isDocClicked, setIsDocClicked] = useState(false);
   const { scrollYProgress } = useScroll({ target: ref });
+  const isPhoneScreen = useIsPhoneScreen();
 
   const leftY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 0]));
   const rightY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 0]));
@@ -138,22 +140,24 @@ const ContactInfo = () => {
           <div className={styles.contactTitleContainer}>
             <h3 className={styles.contactTitle}>Contact Information</h3>
             <p className={styles.contactSubtitle}>
-              Say something to start a live chat!
+              Connect with us to scale your business!
             </p>
           </div>
 
-          <div className={styles.contactInfoContainer}>
-            {contactInfo.map((info, index) => (
-              <div key={index} className={styles.contactItem}>
-                <img
-                  className={styles.contactIcon}
-                  src={info.icon}
-                  alt={info.alt}
-                />
-                <div className={styles.contactText}>{info.text}</div>
-              </div>
-            ))}
-          </div>
+          {!isPhoneScreen && (
+            <div className={styles.contactInfoContainer}>
+              {contactInfo.map((info, index) => (
+                <div key={index} className={styles.contactItem}>
+                  <img
+                    className={styles.contactIcon}
+                    src={info.icon}
+                    alt={info.alt}
+                  />
+                  <div className={styles.contactText}>{info.text}</div>
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className={styles.socialIcons}>
             <Link href="#">
