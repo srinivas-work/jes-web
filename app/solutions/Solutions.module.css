@@ -3,6 +3,7 @@
   overflow-x: hidden;
   background: #ffffff;
   position: relative;
+  overflow-y: hidden;
 }
 
 /* Floating Background Elements */
