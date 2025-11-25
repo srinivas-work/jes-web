@@ -27,28 +27,28 @@ interface CircleNumberProps {
 const sections: Section[] = [
   {
     number: "2021",
-    title: "A Seed of Thought",
-    desc: "Q4 2022 - The idea for Darkocean was conceived with a clear vision - to move beyond traditional survey methods by enabling smarter data analysis, real-time decision-making, and automation.",
+    title: "Idea Conceived & First Client Secured",
+    desc: "We introduced the concept of outsourced take-offs and began meeting with industry reps. By the end of the year, we secured our first client—marking the start of our journey.",
   },
   {
     number: "2022",
-    title: "Vision Taking Shape",
-    desc: "Q1 2023: Darkocean FZCO (The parent company) was officially registered and established. Q2 to Q3: The core founding team with a strong background in offshore survey and management was brought together.",
+    title: "Early Growth & Tech Adoption",
+    desc: "Our client base grew, and we strengthened our capabilities by integrating PlanSwift into our workflow for faster, more accurate take-offs.",
   },
   {
     number: "2023",
-    title: "Building the Momentum",
-    desc: "Q1 2024: Collaborations: Geostar Surveys - India, GulfLabs - Qatar Q1 2024: Establish Darkocean Geostar Surveys & Consultancy LLC in UAE.",
+    title: "Major Expansion & New Verticals",
+    desc: "We scaled to 20 + clients and expanded into new verticals, including BIM and AR/VR modeling, establishing a multi-disciplinary engineering support offering.",
   },
   {
     number: "2024",
-    title: "Crafting The Future",
-    desc: "Q1 2025: Exploring new regional markets, expanding into subsea asset inspection and ROV services. Q1 2025: Launching of our Satellite Derived Bathymetry service.",
+    title: "National Reach & Contractor Partnerships",
+    desc: "We expanded our footprint to reps across 20+ states and began delivering services directly to contractors, strengthening our end-to-end project involvement.",
   },
   {
     number: "2025",
-    title: "Vision Taking Shape",
-    desc: "Q2 2025: Collaborated with Helms Geomarine to develop the Geotechnical division. Looking Ahead: Planning strategic acquisition and further investment in DP vessels and advanced survey tech.",
+    title: "AI-Driven Innovation & Faster Turnaround",
+    desc: "We began developing AI tools designed to streamline client workflows, automate repetitive tasks, and significantly improve turnaround times across all service lines",
   },
 ];
 
