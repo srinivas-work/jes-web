@@ -186,12 +186,7 @@ export default function Jes3DSteps() {
 
   return (
     <motion.section ref={ref} className={styles.growthPathSection}>
-      <div
-        style={{
-          position: "sticky",
-          top: 0,
-        }}
-      >
+      <div className={styles.growthPathStickyContainer}>
         <div className={styles.cardsContainer}>
           {portalCardList.map((p, i) => (
             <PortalCard

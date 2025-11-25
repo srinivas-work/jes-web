@@ -2,10 +2,16 @@
   height: 400vh;
 }
 
+.growthPathStickyContainer {
+  position: sticky;
+  top: 0;
+}
+
 .cardsContainer {
   position: absolute;
   top: 0;
   left: 0;
+  bottom: 0;
   width: 100dvw;
   height: 100dvh;
   display: flex;
