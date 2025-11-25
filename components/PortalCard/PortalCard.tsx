@@ -59,7 +59,6 @@ const PortalCard: React.FC<
               "https://images.unsplash.com/photo-1556655848-f3a7049761a6?w=500&h=300&fit=crop";
           }}
         />
-        <div className={styles.imageOverlay} />
       </div>
 
       {/* Text Content - No animation */}

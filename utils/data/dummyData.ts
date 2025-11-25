@@ -693,7 +693,7 @@ const portalCardList: PortalCardType[] = [
   },
   {
     imgLink:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YW5hbHl6ZSUyMGRhdGF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&h=500&q=80",
+      "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     title: "Align with the team",
     desc: "Specify exactly what you need via the portal or email. Fast, direct, clear.",
   },
