@@ -80,3 +80,61 @@
   height: 100%;
   object-fit: cover;
 }
+
+@media (max-width: 768px) {
+  .containerMobile {
+    flex-direction: column;
+    height: auto;
+    padding: 2rem 1.5rem;
+    gap: 1rem;
+  }
+
+  /* Mobile image — full width, top */
+  .imageContainerMobile {
+    margin-top: -10rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    transform: scale(1.1);
+  }
+
+  .imageMobile {
+    width: 100%;
+    height: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 1.5rem;
+  }
+
+  /* Hide desktop absolute-positioned image */
+  .imageContainer {
+    display: none;
+  }
+
+  /* Text area on mobile */
+  .contentMobile {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    margin-bottom: 1.5rem;
+  }
+
+  .primaryButton {
+    padding: 14px 32px;
+    font-size: 15px;
+  }
+
+  .backgroundVector {
+    display: none;
+  }
+}

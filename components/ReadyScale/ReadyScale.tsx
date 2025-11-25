@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import styles from "./ReadyScale.module.css";
 import { useRouter } from "next/navigation";
+import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 
 interface ReadyScaleProps {
   title?: string;
@@ -17,27 +18,50 @@ const ReadyScale: React.FC<ReadyScaleProps> = ({
   imageUrl = "/img/eng_worker.png",
 }) => {
   const router = useRouter();
+  const isPhone = useIsPhoneScreen();
 
   return (
     <motion.section
-      className={styles.container}
+      className={`${styles.container} ${isPhone ? styles.containerMobile : ""}`}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
       viewport={{ once: true }}
     >
+      {/* --- IMAGE FIRST ON MOBILE --- */}
+      {isPhone && (
+        <motion.div className={styles.imageContainerMobile}>
+          <motion.img
+            src={imageUrl}
+            alt="JES scaling"
+            className={styles.imageMobile}
+            initial={{ opacity: 0, y: 80, scale: 0.92 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{
+              duration: 1.2,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            viewport={{ once: false, amount: 0.25 }}
+          />
+        </motion.div>
+      )}
+
+      {/* --- TEXT CONTENT --- */}
       <motion.div
-        className={styles.content}
+        className={`${styles.content} ${isPhone ? styles.contentMobile : ""}`}
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         viewport={{ once: true }}
       >
-        <img
-          className={styles.backgroundVector}
-          alt="Vector"
-          src="/img/jes_curve_white.svg"
-        />
+        {!isPhone && (
+          <img
+            className={styles.backgroundVector}
+            alt="Vector"
+            src="/img/jes_curve_white.svg"
+          />
+        )}
+
         <h2 className={styles.title}>{title}</h2>
 
         <p className={styles.subtitle}>{desc}</p>
@@ -55,20 +79,23 @@ const ReadyScale: React.FC<ReadyScaleProps> = ({
         </motion.button>
       </motion.div>
 
-      <div className={styles.imageContainer}>
-        <motion.img
-          src={imageUrl}
-          alt="Ready to Scale with JES"
-          className={styles.image}
-          initial={{ opacity: 0, y: 80, scale: 0.92 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{
-            duration: 1.2,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-          viewport={{ once: false, amount: 0.25 }}
-        />
-      </div>
+      {/* --- DESKTOP IMAGE --- */}
+      {!isPhone && (
+        <div className={styles.imageContainer}>
+          <motion.img
+            src={imageUrl}
+            alt="Ready to Scale with JES"
+            className={styles.image}
+            initial={{ opacity: 0, y: 80, scale: 0.92 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{
+              duration: 1.2,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            viewport={{ once: false, amount: 0.25 }}
+          />
+        </div>
+      )}
     </motion.section>
   );
 };
