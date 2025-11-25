@@ -1,66 +1,82 @@
-.cta {
-  text-align: center;
-  padding: 10rem 2rem;
+/* Main container */
+.container {
+  background-color: #a91e2d;
+  border-radius: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   position: relative;
-  z-index: 1;
-  background: radial-gradient(
-    ellipse 60% 40% at 50% 50%,
-    rgba(169, 30, 45, 0.04) 0%,
-    transparent 100%
-  );
+  width: 90dvw;
+  height: 25rem;
+  margin: calc(var(--spacing) * 1.5) auto;
 }
 
-.cta h2 {
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  color: var(--primary-dark);
-  margin-bottom: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+/* Left content section */
+.content {
+  flex: 1;
+  color: white;
+  z-index: 2;
+  padding-left: 5rem;
+  position: relative;
+}
+
+.backgroundVector {
+  position: absolute;
+  width: 35rem;
+  top: -15rem;
+  left: 10rem;
+  opacity: 0.3;
+  transform: rotate(90deg);
+  pointer-events: none;
+}
+
+/* Title */
+.title {
+  font-size: 60px;
+  font-weight: 700;
+  margin-bottom: 20px;
   line-height: 1.1;
 }
 
-.cta p {
-  font-size: 1.25rem;
-  color: var(--light-gray);
-  margin-bottom: 3.5rem;
-  max-width: 680px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.7;
+/* Subtitle text */
+.subtitle {
+  font-size: 20px;
+  margin-bottom: 30px;
+  font-weight: 400;
+  line-height: 1.4;
 }
 
+/* CTA Button */
 .primaryButton {
-  background: var(--primary-red);
+  padding: 16px 40px;
+  font-size: 16px;
+  background-color: white;
+  color: #a91e2d;
   border: none;
-  color: white;
-  font-size: 1.1rem;
-  font-weight: 700;
+  border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(169, 30, 45, 0.25), 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative;
-  overflow: hidden;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .primaryButton:hover {
-  background: #8a1824;
-  transform: translateY(-2px);
+  color: #a91e2d;
+  background-color: white;
+  box-shadow: 4px 8px 8px hsl(0deg 0% 0% / 0.28) !important;
 }
 
-@media (max-width: 768px) {
-  .cta {
-    padding: 6rem 1.5rem;
-  }
+/* Right side image */
+.imageContainer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 600px;
+  height: 600px;
+  z-index: 1;
+}
 
-  .cta h2 {
-    font-size: 2rem;
-  }
-
-  .cta p {
-    font-size: 1.08rem;
-  }
-
-  .primaryButton {
-    padding: 1.2rem 2.8rem;
-    font-size: 1.02rem;
-  }
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
