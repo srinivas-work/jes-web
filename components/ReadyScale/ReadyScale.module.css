@@ -9,6 +9,7 @@
   width: 90dvw;
   height: 25rem;
   margin: calc(var(--spacing) * 1.5) auto;
+  overflow: visible;
 }
 
 /* Left content section */

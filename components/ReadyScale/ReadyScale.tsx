@@ -41,7 +41,7 @@ const ReadyScale: React.FC<ReadyScaleProps> = ({
               duration: 1.2,
               ease: [0.16, 1, 0.3, 1],
             }}
-            viewport={{ once: false, amount: 0.25 }}
+            viewport={{ once: false, amount: 0.05 }}
           />
         </motion.div>
       )}
@@ -86,13 +86,14 @@ const ReadyScale: React.FC<ReadyScaleProps> = ({
             src={imageUrl}
             alt="Ready to Scale with JES"
             className={styles.image}
-            initial={{ opacity: 0, y: 80, scale: 0.92 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             transition={{
               duration: 1.2,
               ease: [0.16, 1, 0.3, 1],
             }}
-            viewport={{ once: false, amount: 0.25 }}
+            style={{ transformOrigin: "bottom" }}
+            viewport={{ once: false, amount: 0.05 }}
           />
         </div>
       )}
