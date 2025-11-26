@@ -1,0 +1,137 @@
+.certificationCard {
+  aspect-ratio: 1 / 1;
+  max-height: fit-content;
+  position: relative;
+  border-radius: 2.5rem;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  transition: all 0.7s ease-in-out;
+  cursor: pointer;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  /* box-shadow: 4px 8px 16px hsl(0deg 0% 0% / 0.05); */
+}
+
+.certificationCard::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  transition: all 1s ease-in-out;
+  color: white;
+}
+
+.certificationCard:hover::after {
+  background-color: rgba(169, 30, 45, 0.7);
+
+  backdrop-filter: blur(10px);
+}
+@media screen and (min-width: 700px) {
+  .certificationCard:hover {
+    transform: translate3d(0, -0.5rem, 0);
+    border-radius: 3.5rem;
+    box-shadow: 8px 16px 16px hsl(0deg 0% 0% / 0.1);
+  }
+}
+
+.certification-card-description {
+  position: absolute;
+  width: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  opacity: 0;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: opacity 1s ease-in-out;
+}
+
+.certification-card-description * {
+  color: white;
+}
+
+.certification-card-description-title-container b {
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+
+.certificationCard:hover .certification-card-description {
+  opacity: 1;
+}
+
+/* .certificationCard:hover {
+      transform: scale(1.05);
+    } */
+
+.certification-image-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.certificationImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 40, 79, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.popupOverlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popupImageWrapper {
+  background: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+  transform: scale(0.9);
+  transition: transform 0.3s ease-in-out;
+}
+
+.popupOverlay.open .popupImageWrapper {
+  transform: scale(1);
+}
+
+.popupImageWrapper img {
+  max-width: 100%;
+  max-height: 80vh;
+  display: block;
+}
+
+@media screen and (max-width: 600px) {
+  .certificationCard {
+    border-radius: 1.5rem;
+    padding: 1rem;
+  }
+}

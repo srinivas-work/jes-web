@@ -1,5 +1,7 @@
 import {
   HeaderMenuItemType,
+  InsightItemType,
+  PdfCardItemType,
   PortalCardType,
   ProjectItemType,
   Region,
@@ -1029,6 +1031,127 @@ const regions: Region[] = [
   },
 ];
 
+const insightsData: InsightItemType[] = [
+  {
+    id: 1,
+    title: "The Future of Digital Transformation",
+    excerpt:
+      "Exploring how emerging technologies are reshaping business landscapes and creating new opportunities for innovation.",
+    category: "Technology",
+    date: "Oct 8, 2025",
+    image:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+    readTime: "5 min read",
+  },
+  {
+    id: 2,
+    title: "Design Thinking in Modern Product Development",
+    excerpt:
+      "Understanding the principles of user-centered design and how they drive successful product innovation.",
+    category: "Design",
+    date: "Oct 5, 2025",
+    image:
+      "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&q=80",
+    readTime: "7 min read",
+  },
+  {
+    id: 3,
+    title: "Sustainable Business Practices for 2025",
+    excerpt:
+      "Implementing eco-friendly strategies that benefit both the environment and your bottom line.",
+    category: "Sustainability",
+    date: "Oct 2, 2025",
+    image:
+      "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=800&q=80",
+    readTime: "6 min read",
+  },
+  {
+    id: 4,
+    title: "AI Integration in Customer Experience",
+    excerpt:
+      "Leveraging artificial intelligence to create personalized and engaging customer journeys.",
+    category: "AI & ML",
+    date: "Sep 28, 2025",
+    image:
+      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
+    readTime: "8 min read",
+  },
+  {
+    id: 5,
+    title: "Building High-Performance Teams",
+    excerpt:
+      "Strategies for fostering collaboration, innovation, and excellence in remote and hybrid work environments.",
+    category: "Leadership",
+    date: "Sep 25, 2025",
+    image:
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
+    readTime: "5 min read",
+  },
+  {
+    id: 6,
+    title: "Data-Driven Decision Making",
+    excerpt:
+      "Harnessing the power of analytics to make informed strategic choices that drive growth.",
+    category: "Analytics",
+    date: "Sep 22, 2025",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    readTime: "6 min read",
+  },
+];
+
+const whitePapers: InsightItemType[] = [
+  {
+    id: 1,
+    title: "Hidden Cost of In-House Takeoffs",
+    category: "White Papers",
+    date: "Nov 23, 2025",
+    image: "/img/thumbnails/hidden-cost-of-in-house-takeoffs.jpg",
+    pdfUrl: "/pdfs/white-papers/hidden-cost-of-in-house-takeoffs.pdf",
+    readTime: "5 min read",
+  },
+  {
+    id: 2,
+    title: "Leakage by Design: The Distributed Refrigerant Fallacy",
+    category: "White Papers",
+    date: "Oct 12, 2025",
+    image:
+      "/img/thumbnails/leakage-by-design-the-distributed-refrigerant-fallacy.jpg",
+    pdfUrl:
+      "/pdfs/white-papers/leakage-by-design-the-distributed-refrigerant-fallacy.pdf",
+    readTime: "5 min read",
+  },
+  {
+    id: 3,
+    title: "AI Alone Will Crash and Burn in Engineering",
+    category: "White Papers",
+    date: "Nov 23, 2025",
+    image: "/img/thumbnails/ai-alone-will-crash.jpg",
+    pdfUrl: "/pdfs/white-papers/ai-alone-will-crash.pdf",
+    readTime: "5 min read",
+  },
+];
+
+const whitePaperList: PdfCardItemType[] = [
+  {
+    name: "Hidden Cost of In-House Takeoffs",
+    pdfUrl: "/pdfs/white-papers/hidden-cost-of-in-house-takeoffs.pdf",
+    thumbnail: "/img/thumbnails/hidden-cost-of-in-house-takeoffs.jpg",
+  },
+  {
+    name: "Leakage by Design: The Distributed Refrigerant Fallacy",
+    pdfUrl:
+      "/pdfs/white-papers/leakage-by-design-the-distributed-refrigerant-fallacy.pdf",
+    thumbnail:
+      "/img/thumbnails/leakage-by-design-the-distributed-refrigerant-fallacy.jpg",
+  },
+  {
+    name: "AI Alone Will Crash and Burn in Engineering",
+    pdfUrl: "/pdfs/white-papers/ai-alone-will-crash.pdf",
+    thumbnail: "/img/thumbnails/ai-alone-will-crash.jpg",
+  },
+];
+
 export {
   defaultHeaderMenuItems,
   faq,
@@ -1041,4 +1164,7 @@ export {
   solutions,
   highlights,
   regions,
+  whitePaperList,
+  insightsData,
+  whitePapers,
 };

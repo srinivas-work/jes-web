@@ -1,104 +1,37 @@
 "use client";
 
 import FlipBookViewer from "@/components/FlipBookViewer/FlipBookViewer";
+import PdfCard from "@/components/UI/PdfCard/PdfCard";
+import {
+  insightsData,
+  whitePaperList,
+  whitePapers,
+} from "@/utils/data/dummyData";
 import { useLenis } from "@/utils/hooks/useLenis";
+import { useUserValidatorStore } from "@/utils/store/useUserValidatorStore";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./Insights.module.css";
-import { useUserValidatorStore } from "@/utils/store/useUserValidatorStore";
+import { InsightItemType } from "@/utils/types";
 import UserValidatorForm from "@/components/UserValidatorForm/UserValidatorForm";
-
-interface Insight {
-  id: number;
-  title: string;
-  excerpt: string;
-  category: string;
-  date: string;
-  image: string;
-  readTime: string;
-}
-
-export const insightsData: Insight[] = [
-  {
-    id: 1,
-    title: "The Future of Digital Transformation",
-    excerpt:
-      "Exploring how emerging technologies are reshaping business landscapes and creating new opportunities for innovation.",
-    category: "Technology",
-    date: "Oct 8, 2025",
-    image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
-    readTime: "5 min read",
-  },
-  {
-    id: 2,
-    title: "Design Thinking in Modern Product Development",
-    excerpt:
-      "Understanding the principles of user-centered design and how they drive successful product innovation.",
-    category: "Design",
-    date: "Oct 5, 2025",
-    image:
-      "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&q=80",
-    readTime: "7 min read",
-  },
-  {
-    id: 3,
-    title: "Sustainable Business Practices for 2025",
-    excerpt:
-      "Implementing eco-friendly strategies that benefit both the environment and your bottom line.",
-    category: "Sustainability",
-    date: "Oct 2, 2025",
-    image:
-      "https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=800&q=80",
-    readTime: "6 min read",
-  },
-  {
-    id: 4,
-    title: "AI Integration in Customer Experience",
-    excerpt:
-      "Leveraging artificial intelligence to create personalized and engaging customer journeys.",
-    category: "AI & ML",
-    date: "Sep 28, 2025",
-    image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
-    readTime: "8 min read",
-  },
-  {
-    id: 5,
-    title: "Building High-Performance Teams",
-    excerpt:
-      "Strategies for fostering collaboration, innovation, and excellence in remote and hybrid work environments.",
-    category: "Leadership",
-    date: "Sep 25, 2025",
-    image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
-    readTime: "5 min read",
-  },
-  {
-    id: 6,
-    title: "Data-Driven Decision Making",
-    excerpt:
-      "Harnessing the power of analytics to make informed strategic choices that drive growth.",
-    category: "Analytics",
-    date: "Sep 22, 2025",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    readTime: "6 min read",
-  },
-];
 
 export default function Insights() {
   useLenis();
   const containerRef = useRef<HTMLDivElement>(null);
   const [isDocClicked, setIsDocClicked] = useState(false);
+  const [cardPdfUrl, setCardPdfUrl] = useState<string | undefined>(undefined);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  const { openValidator } = useUserValidatorStore();
+  const {
+    isOpen: isUserValidatorOpen,
+    isValidated,
+    openValidator,
+  } = useUserValidatorStore();
 
   const curve1Y = useTransform(scrollYProgress, [0, 1], [0, -300]);
   const curve2Y = useTransform(scrollYProgress, [0, 1], [0, 400]);
@@ -127,9 +60,24 @@ export default function Insights() {
     return insightsData.filter((i) => i.category === selectedCategory);
   }, [selectedCategory]);
 
+  useEffect(() => {
+    if (selectedCategory === "White Papers") {
+      openValidator();
+    }
+  }, [selectedCategory]);
+
+  //Opening White Papers only when user is validated
+  useEffect(() => {
+    if (!isValidated && selectedCategory === "White Papers") {
+      setSelectedCategory("All");
+    }
+    if (isValidated) {
+      setSelectedCategory("White Papers");
+    }
+  }, [selectedCategory, isValidated, isUserValidatorOpen]);
+
   return (
     <div className={styles.pageWrapper} ref={containerRef}>
-      <UserValidatorForm />
       {/* Floating Background Elements */}
       <motion.div
         className={styles.floatingCurve1}
@@ -197,11 +145,7 @@ export default function Insights() {
         {categories.map((cat) => (
           <button
             key={cat}
-            onClick={
-              cat === "White Papers"
-                ? openValidator
-                : () => setSelectedCategory(cat)
-            }
+            onClick={() => setSelectedCategory(cat)}
             className={`${styles.filterButton} ${
               selectedCategory === cat ? styles.activeFilter : ""
             }`}
@@ -214,20 +158,40 @@ export default function Insights() {
       {/* Insights Grid */}
       <div className={styles.container}>
         <section className={styles.insightsGrid}>
-          {filteredInsights.map((insight, index) => (
-            <InsightCard
-              key={insight.id}
-              insight={insight}
-              index={index}
-              cardClickHandler={(clicked) => setIsDocClicked(clicked)}
-            />
-          ))}
+          {selectedCategory === "White Papers" && isValidated ? (
+            <>
+              {whitePapers.map((whitePaperItem, index) => (
+                <InsightCard
+                  key={whitePaperItem.id}
+                  insight={whitePaperItem}
+                  index={index}
+                  cardClickHandler={(clicked) => {
+                    setIsDocClicked(clicked);
+                    setCardPdfUrl(whitePaperItem.pdfUrl!);
+                  }}
+                />
+              ))}
+            </>
+          ) : (
+            <>
+              {filteredInsights.map((insight, index) => (
+                <InsightCard
+                  key={insight.id}
+                  insight={insight}
+                  index={index}
+                  cardClickHandler={(clicked) => setIsDocClicked(clicked)}
+                />
+              ))}
+            </>
+          )}
         </section>
       </div>
       <FlipBookViewer
         isClicked={isDocClicked}
         onClose={() => setIsDocClicked(false)}
+        pdfUrl={cardPdfUrl}
       />
+      <UserValidatorForm />
     </div>
   );
 }
@@ -237,11 +201,11 @@ function InsightCard({
   index,
   cardClickHandler,
 }: {
-  insight: Insight;
+  insight: InsightItemType;
   index: number;
   cardClickHandler: (clicked: boolean) => void;
 }) {
-  const router = useRouter(); // ✅ Next.js router for navigation
+  const router = useRouter();
   const cardRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const { scrollYProgress } = useScroll({
@@ -262,9 +226,12 @@ function InsightCard({
   const smoothImageY = useSpring(imageY, { stiffness: 100, damping: 30 });
 
   const handleClick = () => {
-    router.push(`/insights/${insight.id}`);
+    if (!insight.pdfUrl) {
+      return router.push(`/insights/${insight.id}`);
+    }
+
     //setIsDocClicked(true);
-    //cardClickHandler(true);
+    cardClickHandler(true);
   };
 
   return (
@@ -281,7 +248,7 @@ function InsightCard({
       }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      onClick={handleClick} // ✅ Click navigates to detail page
+      onClick={handleClick}
     >
       <div className={styles.imageWrapper}>
         <motion.div className={styles.imageInner} style={{ y: smoothImageY }}>
@@ -317,14 +284,16 @@ function InsightCard({
           {insight.title}
         </motion.h2>
 
-        <p className={styles.cardExcerpt}>{insight.excerpt}</p>
+        {insight.excerpt && (
+          <p className={styles.cardExcerpt}>{insight.excerpt}</p>
+        )}
 
         <motion.div
           className={styles.readMore}
           animate={{ x: isHovered ? 6 : 0 }}
           transition={{ duration: 0.3 }}
         >
-          <span>Read Article</span>
+          <span>{insight.pdfUrl ? "Read Document" : "Read Article"}</span>
           <motion.svg
             width="18"
             height="18"

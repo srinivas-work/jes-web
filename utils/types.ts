@@ -65,3 +65,20 @@ export type Region = {
   details: string[];
   mapPosition: { top: string; left: string };
 };
+
+export type PdfCardItemType = {
+  name: string;
+  pdfUrl: string;
+  thumbnail: string;
+};
+
+export type InsightItemType = {
+  id: number;
+  title: string;
+  excerpt?: string;
+  category: string;
+  date: string;
+  image: string;
+  readTime: string;
+  pdfUrl?: string;
+};

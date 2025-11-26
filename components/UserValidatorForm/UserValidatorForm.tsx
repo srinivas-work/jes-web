@@ -6,7 +6,7 @@ import styles from "./UserValidatorForm.module.css";
 import { useUserValidatorStore } from "@/utils/store/useUserValidatorStore";
 
 const UserValidatorForm = () => {
-  const { isOpen, closeValidator } = useUserValidatorStore();
+  const { isOpen, setValidated, closeValidator } = useUserValidatorStore();
 
   // Form state
   const [form, setForm] = useState({
@@ -69,7 +69,10 @@ const UserValidatorForm = () => {
 
     console.log("VALID FORM:", form);
 
-    closeValidator(); // close only on successful validation
+    // NEW: Mark as validated
+    setValidated(true);
+
+    closeValidator();
   };
 
   return (
