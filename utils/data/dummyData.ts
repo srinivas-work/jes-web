@@ -623,15 +623,15 @@ const projectList: ProjectItemType[] = [
     serviceType: "QTO",
   },
   {
-    name: "KIPP School Washington DC, USA",
+    name: "KIPP School",
     imgLink: "/img/projects/kipp-school.jpg",
     thumbnailLink: "/img/projects/kipp-school-thumb.jpg",
-    location: "Lusail City, Qatar",
+    location: "Washington DC, United States",
     overview: [
       "KIPP DC Quest Academy educates District of Columbia children in Grades 1 through 4. KIPP DC Elementary Schools work with students to become thoughtful thinkers and teammates who will return as college-educated leaders of their community. Upon completion of fourth grade, Quest Academy students move onto KIPP DC Valor Academy.",
     ],
-    client: "Qatari Diar & Lusail City",
-    contractor: "Voltas Ltd.",
+    client: "KIPP DC",
+    contractor: "SETTY ASSOCIATES INTERNATIONAL",
     serviceType: "BIM Modeling",
   },
   {
