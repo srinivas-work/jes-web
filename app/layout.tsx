@@ -73,7 +73,7 @@ export default function RootLayout({
 
         <Header />
         {/* <ScrollToTopButton /> */}
-        <CustomScrollbar />
+        {/* <CustomScrollbar /> */}
         <BackToTopButton />
         <main>{children}</main>
         <Footer />

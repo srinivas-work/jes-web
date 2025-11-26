@@ -1,20 +1,15 @@
 "use client";
 
 import FlipBookViewer from "@/components/FlipBookViewer/FlipBookViewer";
-import PdfCard from "@/components/UI/PdfCard/PdfCard";
-import {
-  insightsData,
-  whitePaperList,
-  whitePapers,
-} from "@/utils/data/dummyData";
+import UserValidatorForm from "@/components/UserValidatorForm/UserValidatorForm";
+import { insightsData, whitePapers } from "@/utils/data/dummyData";
 import { useLenis } from "@/utils/hooks/useLenis";
 import { useUserValidatorStore } from "@/utils/store/useUserValidatorStore";
+import { InsightItemType } from "@/utils/types";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./Insights.module.css";
-import { InsightItemType } from "@/utils/types";
-import UserValidatorForm from "@/components/UserValidatorForm/UserValidatorForm";
 
 export default function Insights() {
   useLenis();
@@ -66,7 +61,10 @@ export default function Insights() {
     }
   }, [selectedCategory]);
 
+  //Add the case study image
+
   //Opening White Papers only when user is validated
+  //It should show the cards then ask for validation
   useEffect(() => {
     if (!isValidated && selectedCategory === "White Papers") {
       setSelectedCategory("All");
