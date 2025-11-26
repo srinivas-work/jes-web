@@ -5,8 +5,8 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { useMemo, useRef } from "react";
-import { insightsData } from "../page";
 import styles from "./InsightDetails.module.css";
+import { insightsData } from "@/utils/data/dummyData";
 
 export default function InsightDetails() {
   useLenis();
