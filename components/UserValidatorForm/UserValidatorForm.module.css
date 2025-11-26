@@ -1,0 +1,159 @@
+/* BACKDROP */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 20000;
+}
+
+.panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  width: 40rem;
+  max-width: 95%;
+  background: white;
+  z-index: 30000;
+  border-radius: 0 2rem 2rem 0;
+  padding: 2.5rem 3.125rem;
+  overflow-y: auto;
+  box-shadow: 0 0.5rem 2.5rem rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.backgroundVector {
+  position: absolute;
+  width: 27rem;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  opacity: 0.05;
+  scale: -1;
+}
+
+/* CLOSE BUTTON */
+.closeBtn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  color: #fff;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.125rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* TEXT */
+.heading {
+  font-size: 3rem;
+  margin-bottom: 1.875rem;
+  max-width: 80%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* INPUTS */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 0.9375rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.input,
+.phoneInput,
+.textarea {
+  width: 100%;
+  background: #f7f7f7;
+  border: 1px solid #e6e6e6;
+  padding: 0.875rem 1.125rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+.input:focus,
+.phoneInput:focus,
+.textarea:focus {
+  border-color: #111;
+}
+
+.textarea {
+  height: 8.75rem;
+  resize: none;
+}
+
+/* PHONE FIELD */
+.phoneWrapper {
+  background: #f7f7f7;
+  border: 1px solid #e6e6e6;
+  display: flex;
+  border-radius: 0.75rem;
+  align-items: center;
+}
+
+.code {
+  padding: 0 0.875rem;
+  font-size: 1rem;
+  color: #111;
+  border-right: 1px solid #ddd;
+}
+
+/* COUNTRY CODE BOX */
+.codeBox {
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  border-right: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.5rem;
+}
+
+/* PHONE INPUT */
+.phoneInput {
+  background: transparent;
+  border: none;
+  padding: 0.875rem 1rem; /* now matches code box spacing */
+  font-size: 1rem;
+}
+
+.error {
+  color: #d50000;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .panel {
+    width: 100dvw;
+    max-width: unset;
+    border-radius: 0;
+    padding: 2.5rem;
+  }
+
+  .heading {
+    font-size: 3rem;
+    margin-bottom: 1.875rem;
+    width: 100%;
+    max-width: 100%;
+  }
+}

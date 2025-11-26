@@ -83,7 +83,7 @@ button {
   border: none;
   outline: none;
   user-select: none;
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.4s ease-in-out;
 }
 
 /* button::before {
@@ -107,7 +107,9 @@ button:hover::before {
 } */
 
 button:hover {
+  color: white !important;
   background-color: #7f1010;
+  box-shadow: 4px 7px 7px rgba(127, 16, 16, 0.38);
 }
 
 footer {
@@ -127,31 +129,33 @@ footer {
   }
 } */
 
-/* ===== Scrollbar Styling (WebKit Browsers: Chrome, Edge, Safari) ===== */
+/* Hide default scrollbars */
+*::-webkit-scrollbar {
+  display: none;
+}
 * {
-  scrollbar-color: var(--primary-red) #e3e3e3;
+  scrollbar-width: none;
 }
 
-/* Firefox track */
-::-webkit-scrollbar-track {
-  background: #e3e3e3;
+/* Custom scrollbar track (INACTIVE area) */
+.custom-scrollbar-track {
+  position: fixed;
+  right: 0.2rem;
+  top: 0;
+  width: 0.6rem;
+  height: 100vh;
+  background: #d6d6d6; /* INACTIVE area = grey */
+  border-radius: 1rem;
+  z-index: 9999;
+  pointer-events: none;
 }
 
-/* Firefox thumb */
-::-webkit-scrollbar-thumb {
-  background-color: var(--primary-red);
-  border-radius: 10px;
-  border: 2px solid #e3e3e3;
-}
-
-/* Hover effect */
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--primary-red);
-}
-
-/* 🔥 REMOVE ARROW BUTTONS */
-::-webkit-scrollbar-button {
-  display: none !important;
-  height: 0;
-  width: 0;
+/* Custom scrollbar thumb (ACTIVE part) */
+.custom-scrollbar-thumb {
+  position: absolute;
+  width: 100%;
+  background: var(--primary-red, #a91e2d); /* ACTIVE area */
+  border-radius: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease, height 0.2s ease;
 }

@@ -7,6 +7,7 @@ import ServiceScrollShowcase from "@/components/PageComponents/HomePage/ServiceS
 import StatsBar from "@/components/PageComponents/HomePage/StatsBar/StatsBar";
 import TestimonialCarouselReel from "@/components/PageComponents/HomePage/TestimonialCarouselReel/TestimonialCarouselReel";
 import CloudField from "@/components/ThreeD/CloudField";
+import Jes3DSteps from "@/components/ThreeD/Jes3DSteps/Jes3DSteps";
 import ServiceScrollStackPhone from "@/components/UI/ServiceScrollStackPhone/ServiceScrollStackPhone";
 import { testimonials } from "@/utils/data/dummyData";
 import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
@@ -16,7 +17,6 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
-import Jes3DSteps from "@/components/ThreeD/Jes3DSteps/Jes3DSteps";
 
 function Building() {
   const tex = useTexture("/img/modern-building.png");

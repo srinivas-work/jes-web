@@ -104,7 +104,7 @@ const Footer: React.FC<HTMLProps<HTMLElement>> = ({ ...props }) => {
       <div className={styles.divider}></div>
 
       <div className={styles.bottomBar}>
-        <p>© 2025 JES Inc. All Rights Reserved.</p>
+        <p>© {new Date().getFullYear()} JES Inc. All Rights Reserved.</p>
         <Link href="#">Privacy Policy</Link>
       </div>
     </footer>

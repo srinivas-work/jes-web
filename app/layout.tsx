@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Preloader from "@/components/Preloader/Preloader";
+import CustomScrollbar from "@/components/UI/CustomScrollbar";
 
 const plusJakartaSans = localFont({
   src: [
@@ -72,6 +73,7 @@ export default function RootLayout({
 
         <Header />
         {/* <ScrollToTopButton /> */}
+        <CustomScrollbar />
         <BackToTopButton />
         <main>{children}</main>
         <Footer />

@@ -6,6 +6,8 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useMemo, useRef, useState } from "react";
 import styles from "./Insights.module.css";
+import { useUserValidatorStore } from "@/utils/store/useUserValidatorStore";
+import UserValidatorForm from "@/components/UserValidatorForm/UserValidatorForm";
 
 interface Insight {
   id: number;
@@ -96,6 +98,8 @@ export default function Insights() {
     offset: ["start start", "end end"],
   });
 
+  const { openValidator } = useUserValidatorStore();
+
   const curve1Y = useTransform(scrollYProgress, [0, 1], [0, -300]);
   const curve2Y = useTransform(scrollYProgress, [0, 1], [0, 400]);
   const curve1Rotate = useTransform(scrollYProgress, [0, 1], [0, 50]);
@@ -116,7 +120,7 @@ export default function Insights() {
   //   []
   // );
 
-  const categories = ["All", "LinkedIn", "Case Study", "White Paper"];
+  const categories = ["All", "LinkedIn", "Case Study", "White Papers"];
 
   const filteredInsights = useMemo(() => {
     if (selectedCategory === "All") return insightsData;
@@ -125,6 +129,7 @@ export default function Insights() {
 
   return (
     <div className={styles.pageWrapper} ref={containerRef}>
+      <UserValidatorForm />
       {/* Floating Background Elements */}
       <motion.div
         className={styles.floatingCurve1}
@@ -192,7 +197,11 @@ export default function Insights() {
         {categories.map((cat) => (
           <button
             key={cat}
-            onClick={() => setSelectedCategory(cat)}
+            onClick={
+              cat === "White Papers"
+                ? openValidator
+                : () => setSelectedCategory(cat)
+            }
             className={`${styles.filterButton} ${
               selectedCategory === cat ? styles.activeFilter : ""
             }`}

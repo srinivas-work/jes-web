@@ -146,6 +146,9 @@ export default function FloatingSideMenu({
                     <X size={22} />
                   </motion.span>
                 </motion.button>
+                <small className={styles.reservedText}>
+                  © {new Date().getFullYear()} JES Inc. All Rights Reserved.
+                </small>
                 <h2 className={styles.menuTitle}>Explore</h2>
                 <ul className={styles.menuList}>
                   {menuItems.map((item, i) => (
