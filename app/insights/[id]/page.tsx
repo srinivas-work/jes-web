@@ -84,7 +84,7 @@ export default function InsightDetails() {
         }}
         aria-hidden
       >
-        <Image
+        <img
           src="/img/jes_curve.png"
           alt=""
           width={600}
@@ -102,7 +102,7 @@ export default function InsightDetails() {
         }}
         aria-hidden
       >
-        <Image
+        <img
           src="/img/jes_curve_detailed.png"
           alt=""
           width={700}
@@ -117,11 +117,9 @@ export default function InsightDetails() {
           className={styles.heroImageContainer}
           style={{ y: smoothHeroY }}
         >
-          <Image
+          <img
             src={insight.image}
             alt={insight.title}
-            fill
-            priority
             sizes="100vw"
             className={styles.heroImage}
           />

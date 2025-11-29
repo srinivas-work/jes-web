@@ -13,6 +13,7 @@ import {
 import { Canvas, useFrame } from "@react-three/fiber";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import React, { Suspense, useEffect, useRef, useState } from "react";
+import { Perf } from "r3f-perf";
 import * as THREE from "three";
 import styles from "./LaptopViewer.module.css";
 
@@ -45,8 +46,9 @@ function Loader() {
 
 function Model({ openProgress, hinge, imgLink }: ModelProps) {
   const group = useRef<THREE.Group>(null);
-  const { nodes } = useGLTF("/models/mac-draco.glb") as any;
+  const { scene, nodes } = useGLTF("/models/laptop.glb");
   const imageTexture = useTexture(imgLink);
+  const BASE_POSITION = new THREE.Vector3(0, -3, 0);
 
   const isPhoneScreen = useIsPhoneScreen();
 
@@ -57,7 +59,7 @@ function Model({ openProgress, hinge, imgLink }: ModelProps) {
     const t = state.clock.getElapsedTime();
     const open = openProgress < 0.1;
 
-    // existing floating motion
+    // floating rotations (keep)
     group.current.rotation.x = THREE.MathUtils.lerp(
       group.current.rotation.x,
       open ? Math.cos(t / 10) / 10 + 0.25 : 0,
@@ -73,74 +75,62 @@ function Model({ openProgress, hinge, imgLink }: ModelProps) {
       open ? Math.sin(t / 10) / 10 : 0,
       0.1
     );
-    group.current.position.y = THREE.MathUtils.lerp(
-      group.current.position.y,
-      open ? (-2 + Math.sin(t)) / 3 : -4.3,
-      0.1
-    );
   });
 
-  // Custom materials
-  const aluminiumMat = new THREE.MeshStandardMaterial({
-    color: "#b0b0b0",
-    metalness: 0.9,
-    roughness: 0.25,
-    envMapIntensity: 1.2,
-    side: THREE.DoubleSide,
+  const map = (
+    value: number,
+    inMin: number,
+    inMax: number,
+    outMin: number,
+    outMax: number
+  ) => {
+    return outMin + ((value - inMin) * (outMax - outMin)) / (inMax - inMin);
+  };
+
+  useFrame(() => {
+    if (!group.current) return;
+
+    scene.children[3].rotation.x = hinge;
+    scene.children[4].rotation.x = hinge;
+    scene.children[5].rotation.x = hinge;
+
+    // map hinge to shadow X position
+    const xPosShadow = map(hinge, -0.425, 1.575, 0, -2);
+    const yPosShadow = map(hinge, -0.425, 1.575, 0, 1.75);
+
+    const yPosGroup = map(hinge, -0.425, 1.575, BASE_POSITION.y, -6);
+
+    scene.children[0].position.x = xPosShadow;
+    scene.children[0].position.y = yPosShadow;
+
+    group.current.position.set(BASE_POSITION.x, yPosGroup, BASE_POSITION.z);
   });
 
-  const trackPadMat = new THREE.MeshStandardMaterial({
-    color: "#969696",
-    metalness: 0.9,
-    roughness: 0.25,
-    envMapIntensity: 1.2,
-    side: THREE.DoubleSide,
-  });
+  //Adding screen texture
+  useEffect(() => {
+    if (!scene || !imageTexture) return;
 
-  const matteMat = new THREE.MeshStandardMaterial({
-    color: "#272727",
-    metalness: 0.9,
-    roughness: 0.25,
-    side: THREE.DoubleSide,
-  });
-
-  const keyMat = new THREE.MeshStandardMaterial({
-    color: "#111",
-    metalness: 0.9,
-    roughness: 0.2,
-    side: THREE.DoubleSide,
-  });
+    const mesh = scene.children[3];
+    if (mesh instanceof THREE.Mesh) {
+      mesh.material = new THREE.MeshPhysicalMaterial({
+        map: imageTexture,
+        clearcoat: 1, // adds glossy layer
+        clearcoatRoughness: 0, // perfectly shiny
+        roughness: 0.4, // texture stays clear
+        metalness: 0.1,
+        toneMapped: false,
+      });
+    }
+  }, [scene, imageTexture]);
 
   return (
-    <group ref={group} scale={isPhoneScreen ? 0.8 : 1.2} dispose={null}>
-      <group rotation-x={hinge} position={[0, -0.04, 0.41]}>
-        <group position={[0, 2.96, -0.13]} rotation={[Math.PI / 2, 0, 0]}>
-          <mesh material={aluminiumMat} geometry={nodes["Cube008"].geometry} />
-          <mesh material={matteMat} geometry={nodes["Cube008_1"].geometry} />
-
-          {/* Screen mesh with hover + scale */}
-          <mesh geometry={nodes["Cube008_2"].geometry}>
-            <meshBasicMaterial map={imageTexture} toneMapped={false} />
-          </mesh>
-        </group>
-      </group>
-
-      <mesh
-        material={keyMat}
-        geometry={nodes.keyboard.geometry}
-        position={[1.79, 0, 3.45]}
-      />
-
-      <group position={[0, -0.1, 3.39]}>
-        <mesh material={aluminiumMat} geometry={nodes["Cube002"].geometry} />
-        <mesh material={trackPadMat} geometry={nodes["Cube002_1"].geometry} />
-      </group>
-
-      <mesh
-        material={keyMat}
-        geometry={nodes.touchbar.geometry}
-        position={[0, -0.03, 1.2]}
-      />
+    <group
+      ref={group}
+      scale={isPhoneScreen ? 0.8 : 1.2}
+      dispose={null}
+      position={BASE_POSITION}
+    >
+      <primitive object={scene} />
     </group>
   );
 }
@@ -434,6 +424,7 @@ export default function LaptopViewer({
         }}
       >
         <Canvas dpr={[1, 2]} camera={{ position: [0, 0, -30], fov: 35 }}>
+          <Perf position="top-left" style={{ marginTop: "5rem" }} />
           <Suspense fallback={<Loader />}>
             {/* <Sky /> */}
 
@@ -453,13 +444,13 @@ export default function LaptopViewer({
               textShadowColor={tShadowColor}
               imgTexture={imgLink}
             />
-            <ContactShadows
+            {/* <ContactShadows
               position={[0, -4.5, 0]}
               opacity={0.4}
               scale={20}
               blur={1.75}
               far={4.5}
-            />
+            /> */}
           </Suspense>
           <Preload all />
         </Canvas>

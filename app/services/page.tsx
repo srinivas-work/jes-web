@@ -1,14 +1,11 @@
 "use client";
 
-import OurApproach from "@/components/PageComponents/ServicePage/OurApproach/OurApproach";
 import ProductSelection from "@/components/PageComponents/ServicePage/KeyDeliverables/KeyDeliverables";
 import ServiceSteps from "@/components/PageComponents/ServicePage/ServiceSteps/ServiceSteps";
 import VideoPlayer from "@/components/UI/VideoPlayer/VideoPlayer";
 import { serviceSections } from "@/utils/data/dummyData";
 import { useLenis } from "@/utils/hooks/useLenis";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
-import { useParams } from "next/navigation";
 import { useRef } from "react";
 import styles from "./Services.module.css";
 
@@ -80,23 +77,18 @@ const Services = () => {
   return (
     <div className={styles.servicePage}>
       <div className={styles.bgImageContainerOne}>
-        <Image
+        <img
           className={styles.bgImageOne}
           src={"/img/jes_curve.png"}
           alt="JES Engineering"
           sizes="100vw"
-          width={0}
-          height={0}
         />
       </div>
       <div className={styles.bgImageContainerTwo}>
-        <Image
+        <img
           className={styles.bgImageTwo}
           src={"/img/jes_curve_detailed.png"}
           alt="JES Engineering"
-          sizes="100vw"
-          width={0}
-          height={0}
         />
       </div>
       <h2 className={styles.videoTitle}>{serviceSections[0].title}</h2>
@@ -119,7 +111,6 @@ const Services = () => {
       </p> */}
       <ServiceSteps />
       <ProductSelection />
-      <OurApproach />
     </div>
   );
 };

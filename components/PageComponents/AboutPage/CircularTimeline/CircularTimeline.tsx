@@ -1,8 +1,7 @@
+import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import styles from "./CircularTimeline.module.css";
-import Image from "next/image";
-import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 
 interface Section {
   number: string;
@@ -131,13 +130,10 @@ export default function CircularTimeline() {
         <h2 className={styles.journeyHeading}>Our Journey</h2>
         {!isPhoneScreen && (
           <div className={styles.bgImageContainerOne}>
-            <Image
+            <img
               className={styles.bgImageOne}
               src={"/img/jes_curve.png"}
               alt="JES Engineering"
-              sizes="100vw"
-              width={0}
-              height={0}
             />
           </div>
         )}

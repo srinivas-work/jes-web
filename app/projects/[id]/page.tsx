@@ -1,14 +1,13 @@
 "use client";
 
-import { projectCardDetailsHorizontal } from "@/components/PageComponents/ProjectPage/ProjectsGallery/ProjectsGallery";
+import ProjectCard from "@/components/PageComponents/ProjectPage/ProjectsGallery/ProjectCard/ProjectCard";
+import { projectList } from "@/utils/data/dummyData";
 import { useLenis } from "@/utils/hooks/useLenis";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import { useParams } from "next/navigation";
 import React, { useRef, useState } from "react";
 import styles from "./ProjectDetails.module.css";
-import ProjectCard from "@/components/PageComponents/ProjectPage/ProjectsGallery/ProjectCard/ProjectCard";
-import { projectList } from "@/utils/data/dummyData";
-import { useParams } from "next/navigation";
 
 interface TechnicalDetailProps {
   icon: string;
@@ -23,7 +22,7 @@ const TechnicalDetail: React.FC<TechnicalDetailProps> = ({
 }) => (
   <div className={styles.technicalItem}>
     {/* <div className={styles.technicalIcon}>{icon}</div> */}
-    <Image alt={label} width={40} height={40} src={icon} />
+    <img alt={label} width={40} height={40} src={icon} />
     <div className={styles.technicalLabel}>{label}</div>
     <div className={styles.technicalValue}>{value}</div>
   </div>

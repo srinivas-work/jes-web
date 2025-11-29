@@ -25,8 +25,8 @@ const serviceSections: ServiceItemType[] = [
     title: "Quantity Take Off",
     image: "/img/services/qto.png",
     pdfLink: "/pdfs/service-docs/Jersey_Quantity_Take_Off_US.pdf",
-    img1: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FGroup_21_553dee3fe0.jpg&w=640&q=90",
-    img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FRectangle_35_9b6cebc560.jpg&w=640&q=90",
+    img1: "/img/services/qto1.webp",
+    img2: "/img/services/qto2.webp",
     description:
       "Our team of 200+ factory-trained engineers combine a proven process with state-of-the-art AI to deliver accurate MEP takeoffs and selections and we partner closely with your team for fast, reliable file management.",
     subServices: [
@@ -79,8 +79,7 @@ const serviceSections: ServiceItemType[] = [
             desc: "Keep an eye on the communication history between clients and our engineers. Monitor the activity log to review discussions, decisions, and actions taken, ensuring complete transparency and accountability.",
           },
         ],
-        image:
-          "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FJE_Si_676ad8ceb5.png&w=1080&q=90",
+        image: "/img/jesi_portal.png",
       },
       {
         caseStudy: true,
@@ -103,16 +102,16 @@ const serviceSections: ServiceItemType[] = [
       },
     ],
     toolsUsed: [
-      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FPlan_Swift_Logo_Lrg_3a74a35ff2.png&w=384&q=100",
-      "https://cdn-jersey-bucket.s3.us-west-2.amazonaws.com/tool3_ce410bd7df.svg",
-      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fon_center_software_logo_bycc_www_e8c4a31429.png&w=384&q=100",
+      "/img/tools/planSwift.png",
+      "/img/tools/blueBeam.svg",
+      "/img/tools/onCenter.png",
     ],
   },
   {
     title: "Equipment / Product Selection",
     image: "/img/services/equipment-selection.png",
-    img1: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fd8a7a68b9d4d121713a62556451f0c4d9ca6d9ec_1438x985_90082729a1.webp&w=640&q=90",
-    img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FRectangle_29_f4d8f843e7.jpg&w=640&q=90",
+    img1: "/img/services/equipment1.webp",
+    img2: "/img/services/equipment2.webp",
     description: [
       "JES provides equipment selection services for the air-side, applied MEP equipment and controls. We support in choosing the most suitable and efficient mechanical and electrical equipment for your construction projects. Equipment selected to meet local building codes and safety regulations ensures project compliance.",
       "Equipment selection services are therefore very useful for optimizing the performance, efficiency, and cost-effectiveness of MEP systems in construction projects, while also promoting sustainability and compliance with industry standards.",
@@ -162,8 +161,8 @@ const serviceSections: ServiceItemType[] = [
     title: "BIM Modelling",
     pdfLink: "/pdfs/service-docs/Jersey_BIM_Detailed_brochure_US.pdf",
     image: "/img/services/bim-modelling.jpg",
-    img1: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FRectangle_52_2196634e4a.jpg&w=640&q=90",
-    img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fwhat_is_bim_thumb_1172x660_888f6c7af1.jpg&w=640&q=90",
+    img1: "/img/services/bim1.webp",
+    img2: "/img/services/bim2.webp",
     description:
       "Building Information Modeling (BIM) employs different levels of detail (LOD) to categorize the extent of development and detailing within a BIM model. These levels help define the granularity and sophistication of information contained in the model at various stages of the project.",
     subServices: [
@@ -209,9 +208,9 @@ const serviceSections: ServiceItemType[] = [
       },
     ],
     toolsUsed: [
-      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FFrame_189727_fa99135d7e.png&w=384&q=100",
-      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FGroup_189727_d3db82f79c.png&w=384&q=100",
-      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FGroup_189728_4bdd969802.png&w=384&q=100",
+      "/img/tools/autoCad.png",
+      "/img/tools/autoRevit.png",
+      "/img/tools/blueBeam.svg",
     ],
     extraDetails: [
       {
@@ -239,7 +238,7 @@ const serviceSections: ServiceItemType[] = [
     title: "Revit Models: Component & Assembly",
     image: "/img/services/revit-models.png",
     img1: "/img/services/revit-models-2.png",
-    img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fwhat_is_bim_thumb_1172x660_888f6c7af1.jpg&w=640&q=90",
+    img2: "/img/services/bim2.webp",
     description: [
       "At JES Inc., our Revit-based Component and Assembly Modelling services bridge the gap between design intent and real-world construction. By integrating data-rich, parametric models from multiple manufacturers into a unified BIM environment, we deliver accurate, coordination-ready models that streamline project workflows.",
       "Each model, whether an individual component or a complete assembly—is meticulously developed to represent true-to-life geometry, performance characteristics, and connectivity details. This ensures seamless integration across mechanical, electrical, and architectural disciplines.",
@@ -328,8 +327,8 @@ const serviceSections: ServiceItemType[] = [
     title: "AR/VR Modelling",
     image: "/img/services/ar-vr.jpg",
     pdfLink: "/pdfs/service-docs/Jersey_AR_and_VR_Modeling_US.pdf",
-    img1: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FFrame_627513_edf1367c2e.png&w=640&q=90",
-    img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FRectangle_21_87e7dacf53.jpg&w=640&q=90",
+    img1: "/img/services/ar1.webp",
+    img2: "/img/services/ar2.webp",
     description: [
       "We provide state-of-the-art AR(Augmented Reality) & VR(Virtual Reality) 3D modeling at affordable prices that are custom-designed by professionally trained industry leading experts. These value added services present you with cutting-edge solutions for immersive digital experiences.",
       "We create interactive 3D models and environments that enhance value across various industries in the segment. AR & VR modeling enable users to engage with realistic, computer-generated simulations that augment the real world (AR) or create entirely virtual environments (VR) for an array of applications, transforming how we experience and interact with content and information.",
@@ -390,8 +389,7 @@ const serviceSections: ServiceItemType[] = [
             desc: "We enable you to visualize complex designs in a 3-D space, and spot potential design flaws and space constraints and to do this collaboratively.",
           },
         ],
-        image:
-          "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FAR_VR_Modeling_dbbe228b1f.jpg&w=1080&q=90",
+        image: "/img/services/ar-vr.jpg",
       },
     ],
   },
@@ -399,8 +397,8 @@ const serviceSections: ServiceItemType[] = [
     title: "MEP Drafting",
     pdfLink: "/pdfs/service-docs/Jersey_MEP_Drafting_Services_US.pdf",
     image: "/img/services/mep-drafting.png",
-    img1: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fmep_drafting_services_intro_b23052ada0.jpg&w=640&q=90",
-    img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FSpace_Management_Software_8c243ef07d.webp&w=640&q=90",
+    img1: "/img/services/mep1.jpg",
+    img2: "/img/services/mep2.webp",
     description: [
       "We specialize in providing high-quality Mechanical, Electrical, and Plumbing (MEP) AutoCAD drafting services that cater to the diverse needs of the construction and engineering industry. With a dedicated focus on precision, innovation, and efficiency, we serve as your trusted partner in delivering impeccable MEP drafting solutions.",
       "Our drafting services encompass meticulous creation of Mechanical Drawings, Electrical Layouts, and Plumbing Designs. Precision is our hallmark, ensuring that every detail is accurately represented. With expertise in CAD technology, we deliver comprehensive, industry-compliant drafts, facilitating seamless integration for successful implementation in diverse construction and engineering projects.",
@@ -462,8 +460,7 @@ const serviceSections: ServiceItemType[] = [
             desc: "Benefit from our streamlined processes and expertise, reducing project turnaround time and accelerating project completion.",
           },
         ],
-        image:
-          "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fdrawing_management_large_1152x688_1_d480d4f19e.jpg&w=1080&q=90",
+        image: "/img/servies/mep-benefits.jpg",
       },
 
       {
@@ -486,17 +483,14 @@ const serviceSections: ServiceItemType[] = [
         image: "/img/services/subServices/mep-case-study.jpg",
       },
     ],
-    toolsUsed: [
-      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FFrame_189727_fa99135d7e.png&w=384&q=100",
-      "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FGroup_189727_d3db82f79c.png&w=384&q=100",
-    ],
+    toolsUsed: ["/img/tools/autoCad.png", "/img/tools/autoRevit.png"],
   },
   {
     title: "Energy Modelling / Building Engineering Services",
     pdfLink: "/pdfs/service-docs/Jersey_Thermal_Load_Calculation_US.pdf",
     image: "/img/services/energy-modelling.png",
-    img1: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FThermal_load_calc_2_a858c198db.jpg&w=384&q=90",
-    img2: "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2F3d_rendering_ventilation_system_5_b1bd869dfe.jpg&w=384&q=90",
+    img1: "/img/services/energyModelling1.webp",
+    img2: "/img/services/energyModelling2.webp",
     description: [
       "We provide advanced Energy Modelling and Building Engineering services to optimize the efficiency, sustainability, and performance of building systems. Our analyses are rooted in precise engineering calculations and simulation tools to ensure comfort, reliability, and energy savings across MEP systems.",
       "Through data-driven design and simulation, we help engineers and project stakeholders make informed decisions that reduce operational costs and environmental impact while meeting international building performance standards.",
@@ -544,8 +538,7 @@ const serviceSections: ServiceItemType[] = [
           "Energy Efficiency Optimization",
           "Troubleshooting and Assessment",
         ],
-        image:
-          "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FThermal_load_calc_e20d82a2dc.jpg&w=1920&q=90",
+        image: "/img/servies/subServices/thermal-load.jpg",
       },
       {
         title: "Ductwork E.S.P Calculations",
@@ -557,8 +550,7 @@ const serviceSections: ServiceItemType[] = [
           "Equipment Selection Support",
           "Troubleshooting and Optimization",
         ],
-        image:
-          "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2FHVAC_2_761e9977f7.png&w=1920&q=90",
+        image: "/img/servies/subServices/ductwork.png",
       },
       {
         title: "Pump Head Calculation",
@@ -570,8 +562,7 @@ const serviceSections: ServiceItemType[] = [
           "System Design Support",
           "Troubleshooting and Assessment",
         ],
-        image:
-          "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fgallery9_79ecb57d8d.jpg&w=1920&q=90",
+        image: "/img/servies/subServices/pumpHead.jpg",
       },
     ],
   },

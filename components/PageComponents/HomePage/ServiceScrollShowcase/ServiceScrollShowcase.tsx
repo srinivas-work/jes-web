@@ -6,7 +6,6 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { memo, useEffect, useRef, useState } from "react";
 import styles from "./ServiceScrollShowcase.module.css";
@@ -108,13 +107,10 @@ const ServiceScrollShowcase = () => {
             style={{ rotate, scale }}
             transition={{ duration: 1.2, ease: "easeOut" }}
           >
-            <Image
+            <img
               className={styles.bgImage}
               src={"/img/jes_curve.png"}
               alt="JES Engineering"
-              sizes="100vw"
-              width={0}
-              height={0}
             />
           </motion.div>
 

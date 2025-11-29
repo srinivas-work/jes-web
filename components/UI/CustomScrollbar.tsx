@@ -4,7 +4,6 @@ import { useEffect } from "react";
 
 const CustomScrollbar = () => {
   useEffect(() => {
-    // Create track + thumb
     const track = document.createElement("div");
     track.className = "custom-scrollbar-track";
 
@@ -19,8 +18,11 @@ const CustomScrollbar = () => {
       const scrollTop = doc.scrollTop;
       const scrollHeight = doc.scrollHeight - window.innerHeight;
 
+      // If page doesn't scroll
       if (scrollHeight <= 0) {
-        thumb.style.opacity = "0";
+        thumb.style.opacity = "1"; // always visible
+        thumb.style.height = "100%";
+        thumb.style.top = "0";
         return;
       }
 
@@ -32,14 +34,8 @@ const CustomScrollbar = () => {
       thumb.style.height = `${thumbHeight}px`;
       thumb.style.top = `${progress * (window.innerHeight - thumbHeight)}px`;
 
-      // Fade in on scroll
+      // Always visible
       thumb.style.opacity = "1";
-
-      // Fade out after 800ms
-      clearTimeout((window as any).scrollbarHideTimer);
-      (window as any).scrollbarHideTimer = setTimeout(() => {
-        thumb.style.opacity = "0";
-      }, 800);
     };
 
     window.addEventListener("scroll", updateThumb);
@@ -54,7 +50,7 @@ const CustomScrollbar = () => {
     };
   }, []);
 
-  return null; // This component injects DOM elements only
+  return null;
 };
 
 export default CustomScrollbar;

@@ -5,17 +5,15 @@ import FlipBookViewer from "@/components/FlipBookViewer/FlipBookViewer";
 import FAQSection from "@/components/PageComponents/HomePage/FAQSection/FAQSection";
 import KeyDeliverables from "@/components/PageComponents/ServicePage/KeyDeliverables/KeyDeliverables";
 import ServiceSteps from "@/components/PageComponents/ServicePage/ServiceSteps/ServiceSteps";
+import ReadyScale from "@/components/ReadyScale/ReadyScale";
 import LaptopViewer from "@/components/ThreeD/LaptopViewer/LaptopViewer";
 import { serviceSections } from "@/utils/data/dummyData";
 import { splitText } from "@/utils/helperFunctions";
 import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 import { useLenis } from "@/utils/hooks/useLenis";
-import { motion } from "framer-motion";
-import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import styles from "./ServiceItem.module.css";
-import ReadyScale from "@/components/ReadyScale/ReadyScale";
 
 //
 
@@ -39,24 +37,20 @@ const ServiceItem = () => {
     <div className={styles.servicePage}>
       {!isPhoneScreen && (
         <div className={styles.bgImageContainerOne}>
-          <Image
+          <img
             className={styles.bgImageOne}
             src={"/img/jes_curve.png"}
             alt="JES Engineering"
             sizes="100vw"
-            width={0}
-            height={0}
           />
         </div>
       )}
       <div className={styles.bgImageContainerTwo}>
-        <Image
+        <img
           className={styles.bgImageTwo}
           src={"/img/jes_curve_detailed.png"}
           alt="JES Engineering"
           sizes="100vw"
-          width={0}
-          height={0}
         />
       </div>
       {/* <h2 className={styles.videoTitle}>{selectedService.title}</h2> */}

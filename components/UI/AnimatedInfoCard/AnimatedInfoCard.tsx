@@ -4,7 +4,6 @@ import { SecurityItemType } from "@/utils/types";
 import { motion, Variants } from "framer-motion";
 import React from "react";
 import styles from "./AnimatedInfoCard.module.css";
-import Image from "next/image";
 
 const AnimatedInfoCard: React.FC<SecurityItemType> = ({
   imgLink,
@@ -40,7 +39,7 @@ const AnimatedInfoCard: React.FC<SecurityItemType> = ({
       />
 
       <div className={styles.iconWrapper}>
-        <Image
+        <img
           src={imgLink}
           alt={title}
           width={60}

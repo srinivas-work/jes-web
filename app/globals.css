@@ -130,30 +130,57 @@ footer {
 } */
 
 /* ===== Scrollbar Styling (WebKit Browsers: Chrome, Edge, Safari) ===== */
-* {
+/* * {
   scrollbar-color: var(--primary-red) #e3e3e3;
 }
 
-/* Firefox track */
 ::-webkit-scrollbar-track {
   background: #e3e3e3;
 }
 
-/* Firefox thumb */
 ::-webkit-scrollbar-thumb {
   background-color: var(--primary-red);
   border-radius: 10px;
   border: 2px solid #e3e3e3;
 }
 
-/* Hover effect */
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--primary-red);
 }
 
-/* 🔥 REMOVE ARROW BUTTONS */
 ::-webkit-scrollbar-button {
   display: none !important;
   height: 0;
   width: 0;
+} */
+
+/* Hide default scrollbars */
+*::-webkit-scrollbar {
+  display: none;
+}
+* {
+  scrollbar-width: none;
+}
+
+/* Custom scrollbar track (INACTIVE area) */
+.custom-scrollbar-track {
+  position: fixed;
+  right: 0.2rem;
+  top: 0;
+  width: 0.6rem;
+  height: 100vh;
+  background: #d6d6d6; /* INACTIVE area = grey */
+  border-radius: 1rem;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Custom scrollbar thumb (ACTIVE part) */
+.custom-scrollbar-thumb {
+  position: absolute;
+  width: 100%;
+  background: var(--primary-red, #a91e2d); /* ACTIVE area */
+  border-radius: 1rem;
+  opacity: 1;
+  transition: opacity 0.3s ease, height 0.2s ease;
 }

@@ -1,7 +1,7 @@
-import { useState } from "react";
-import styles from "./ProjectsGallery.module.css";
 import { projectList } from "@/utils/data/dummyData";
+import { useState } from "react";
 import ProjectCard from "./ProjectCard/ProjectCard";
+import styles from "./ProjectsGallery.module.css";
 
 interface ProjectCardProps {
   imageUrl: string;
@@ -138,54 +138,6 @@ export const projectCardDetailsHorizontal = [
     borderRadius: "0 4rem 4rem 0",
   },
 ];
-
-// export const ProjectCard = ({
-//   imageUrl,
-//   title,
-//   author,
-//   borderRadius,
-//   overlayColor,
-//   isBlurred,
-//   onHover,
-// }: ProjectCardProps) => {
-//   const router = useRouter();
-
-//   const goToProjects = () => {
-//     router.push("/projects/1"); // navigate to /projects
-//   };
-
-//   return (
-//     <div
-//       className={`${styles.cardWrapper} ${isBlurred ? styles.blurred : ""}`}
-//       //className={styles.cardWrapper}
-//       style={{ borderRadius }}
-//       onMouseEnter={() => onHover?.(true)}
-//       onMouseLeave={() => onHover?.(false)}
-//       onClick={goToProjects}
-//     >
-//       <div className={styles.cardInner}>
-//         <div className={styles.imageContainer}>
-//           <Image
-//             src={imageUrl}
-//             alt={title}
-//             fill
-//             className={styles.cardImage}
-//             sizes="(max-width: 768px) 100vw, 50vw"
-//           />
-//           <div
-//             className={styles.overlay}
-//             style={{ background: overlayColor }}
-//           ></div>
-//         </div>
-
-//         <div className={styles.textTop}>
-//           <h3>{title}</h3>
-//         </div>
-//         <div className={styles.textSide}>{author}</div>
-//       </div>
-//     </div>
-//   );
-// };
 
 export default function ProjectsGallery() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);

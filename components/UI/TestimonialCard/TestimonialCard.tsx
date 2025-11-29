@@ -1,8 +1,7 @@
+import { TestimonialCardProps } from "@/utils/types";
+import { Star } from "lucide-react";
 import React from "react";
 import styles from "./TestimonialCard.module.css";
-import { Star } from "lucide-react";
-import Image from "next/image";
-import { TestimonialCardProps } from "@/utils/types";
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
   rating = 5,
@@ -22,15 +21,6 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       <p className={styles.desc}>"{desc}"</p>
 
       <div className={styles.author}>
-        {/* <div className={styles.avatar}>
-          <Image
-            src={image}
-            alt={name}
-            width={40}
-            height={40}
-            className={styles.avatarImg}
-          />
-        </div> */}
         <div>
           <h4 className={styles.name}>{name}</h4>
           <p className={styles.title}>{title}</p>

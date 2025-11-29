@@ -30,12 +30,7 @@ const MissionVision: React.FC<HTMLAttributes<HTMLDivElement>> = ({
       className={`${styles.missionVisionSection} ${props.className ?? ""}`}
       {...props}
     >
-      <img
-        className={styles.missionVisionImg}
-        src={
-          "https://jerseyeng.com/_next/image?url=https%3A%2F%2Fcdn-jersey-bucket.s3.us-west-2.amazonaws.com%2Fvison_3b52f4e39b.png&w=1080&q=90"
-        }
-      />
+      <img className={styles.missionVisionImg} src={"/img/missionVision.png"} />
 
       <div className={styles.container}>
         <div className={styles.header}>

@@ -20,9 +20,7 @@ const AboutTopPhone = () => {
         style={{ backgroundColor: "var(--primary-red)" }}
       >
         <img
-          src={
-            "https://jerseyeng.com/_next/image?url=%2Fimages%2Fabout%2Faboutservice-banner.png&w=3840&q=90"
-          }
+          src={"/img/whyChoose.png"}
           style={{ opacity: 0.5 }}
           className={styles.accordionBg}
         />

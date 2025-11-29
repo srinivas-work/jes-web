@@ -1,7 +1,6 @@
 import { ProjectItemType } from "@/utils/types";
 import { useRouter } from "next/navigation";
 import styles from "./ProjectCard.module.css";
-import Image from "next/image";
 
 const ProjectCard: React.FC<{
   projectItem: ProjectItemType;
@@ -26,12 +25,10 @@ const ProjectCard: React.FC<{
     >
       <div className={styles.cardInner}>
         <div className={styles.imageContainer}>
-          <Image
+          <img
             src={projectItem.thumbnailLink ?? projectItem.imgLink}
             alt={projectItem.name}
-            fill
             className={styles.cardImage}
-            sizes="(max-width: 768px) 100vw, 50vw"
           />
           <div
             className={styles.overlay}

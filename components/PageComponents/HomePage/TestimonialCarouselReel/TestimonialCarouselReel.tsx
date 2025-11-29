@@ -1,5 +1,4 @@
 import { TestimonialCardProps } from "@/utils/types";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import TestimonialCard from "../../../UI/TestimonialCard/TestimonialCard";
 import styles from "./TestimonialCarouselReel.module.css";
@@ -66,7 +65,7 @@ const TestimonialCarouselReel: React.FC<CarouselReelProps> = ({
     <section className={styles.testimonialSection}>
       <h2 style={{ textAlign: "center" }}>Customer Experiences</h2>
       <div className={styles.bgImageContainerOne}>
-        <Image
+        <img
           className={styles.bgImageOne}
           src={"/img/jes_curve_detailed.png"}
           alt="JES Engineering"
