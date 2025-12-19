@@ -7,6 +7,7 @@ import {
   Region,
   SecurityItemType,
   ServiceItemType,
+  ServiceSectionsType,
   SolutionType,
   TestimonialCardProps,
 } from "../types";
@@ -20,10 +21,559 @@ const defaultHeaderMenuItems: HeaderMenuItemType[] = [
   { name: "Contact Us", path: "/contact" },
 ];
 
+const serviceSectionsObj: ServiceSectionsType = {
+  "quantity-take-off": {
+    title: "Quantity Take Off",
+    image: "/img/services/qto-new.png",
+    pdfLink: "/pdfs/service-docs/Jersey_Quantity_Take_Off_US.pdf",
+    img1: "/img/services/qto1.webp",
+    img2: "/img/services/qto2.webp",
+    description:
+      "Our team of 200+ factory-trained engineers combine a proven process with state-of-the-art AI to deliver accurate MEP takeoffs and selections and we partner closely with your team for fast, reliable file management.",
+    subServices: [
+      {
+        title: "Specialized Quantity Take-Off",
+        desc: ["Using manufacturing software, with 10+ years QTO experience."],
+      },
+      {
+        title: "Software-Aided QTO",
+        desc: [
+          "Utilization of advanced software tools like Bluebeam, Planswift, or specialized QTO software for precise calculations and project evaluation.",
+        ],
+      },
+      {
+        title: "Customized Reports & Documentation",
+        desc: [
+          "Preparation of comprehensive reports outlining the measured quantities, including breakdowns.",
+          "We tailor the QTO package to match your existing BOQ sheets and pivot files, ensuring smooth integration into your workflow.",
+        ],
+      },
+
+      {
+        title: "Quality Assurance and Compliance",
+        desc: [
+          "Ensuring compliance with industry standards, regulations, and best practices during the quantity estimation process.",
+          "Quality checks to maintain accuracy and reliability of the quantity take-off data.",
+        ],
+      },
+    ],
+    extraDetails: [
+      {
+        title: "JESi Customer Portal",
+        description:
+          "Using JESi, our all-in-one project management portal designed to elevate collaboration and streamline project workflows. With our user-friendly interface, clients can effortlessly upload project files, ensuring seamless communication and file sharing.",
+        services: [
+          {
+            title: "Effortless File Uploads",
+            desc: "Our platform allows clients to upload project files with ease, eliminating the hassle of traditional methods. Effortlessly share documents, plans, and specifications to keep everyone on the same page.",
+          },
+          {
+            title: "Live Chat for Instant Clarity",
+            desc: "Need immediate clarification? Our live chat feature enables real-time communication between clients and our team of engineers. Instantly address queries, seek clarifications, and discuss project specifics without delays.",
+          },
+          {
+            title: "Real-time Project Status Updates",
+            desc: "Stay informed about project progress at all times. Our portal provides real-time status updates, ensuring transparency and allowing clients to track milestones, deadlines, and developments effortlessly.",
+          },
+          {
+            title: "Transparent Communication Tracking",
+            desc: "Keep an eye on the communication history between clients and our engineers. Monitor the activity log to review discussions, decisions, and actions taken, ensuring complete transparency and accountability.",
+          },
+        ],
+        image: "/img/jesi_portal.png",
+      },
+      {
+        caseStudy: true,
+        title: "QTO & Selection Support Success",
+        services: [
+          {
+            title: "Challenge",
+            desc: "A mid-sized US Air-Distribution Representative lost two estimators, creating operational gaps in their estimating and quoting processes. 167% Efficiency Gain increase in weekly quoting efficiency.",
+          },
+          {
+            title: "Solution",
+            desc: "JES provided comprehensive estimating and quoting support, leveraging expertise to boost efficiency and profitability. $3M Added Revenue - Additional Annual Revenue.",
+          },
+          {
+            title: "Results",
+            desc: "Weekly quoting increased by $528K (167% efficiency gain). Monthly sales grew by $200K with just $6,950 investment. Additional $50K monthly margin. $700k Margin Growth - Extra Annual Profit Margin",
+          },
+        ],
+        image: "/img/services/spec-review.png",
+      },
+    ],
+    toolsUsed: [
+      "/img/tools/planSwift.png",
+      "/img/tools/blueBeam.svg",
+      "/img/tools/onCenter.png",
+    ],
+  },
+  "equipment-product": {
+    title: "Equipment / Product Selection",
+    image: "/img/services/equipment-selection.png",
+    img1: "/img/services/equipment1.webp",
+    img2: "/img/services/equipment2.webp",
+    description: [
+      "JES provides equipment selection services for the air-side, applied MEP equipment and controls. We support in choosing the most suitable and efficient mechanical and electrical equipment for your construction projects. Equipment selected to meet local building codes and safety regulations ensures project compliance.",
+      "Equipment selection services are therefore very useful for optimizing the performance, efficiency, and cost-effectiveness of MEP systems in construction projects, while also promoting sustainability and compliance with industry standards.",
+    ],
+    pdfLink: "/pdfs/service-docs/Jersey_Equipment_Selection_US.pdf",
+
+    subServices: [
+      {
+        title: "Comprehensive Equipment Selection",
+        desc: ["We are factory trained by the leading manufacturers."],
+      },
+      {
+        title: "Efficiency & Performance Optimization",
+        desc: ["Selections reviewed to optimize spec and energy requirements."],
+      },
+      // {
+      //   title: "Regulatory Compliance",
+      //   desc: [
+      //     "Equipment chosen in alignment with local building codes and safety regulations.",
+      //     "Guarantees project compliance and safety assurance.",
+      //   ],
+      // },
+      {
+        title: "Cost-effective Solutions",
+        desc: [
+          "Balance between performance, cost, and sustainability during equipment selection.",
+          "Helps optimize overall project budget without compromising quality.",
+        ],
+      },
+      // {
+      //   title: "Sustainability-driven Approach",
+      //   desc: [
+      //     "Focus on environmentally responsible systems supporting green building standards.",
+      //     "Promotes long-term efficiency and reduced carbon footprint.",
+      //   ],
+      // },
+    ],
+  },
+  "spec-review": {
+    title: "Spec Review",
+    image: "/img/services/spec-review-new.png",
+    img2: "/img/services/spec-review-2.png",
+    description:
+      "JES Spec review ensures client's equipment meets or wisely challenges the Spec, using a thorough tested process to , perform electrical, controls and physical specifications are addressed.",
+  },
+  "bim-modelling": {
+    title: "BIM Modelling",
+    pdfLink: "/pdfs/service-docs/Jersey_BIM_Detailed_brochure_US.pdf",
+    image: "/img/services/bim-modelling.jpg",
+    img1: "/img/services/bim1.webp",
+    img2: "/img/services/bim2.webp",
+    description:
+      "Building Information Modeling (BIM) employs different levels of detail (LOD) to categorize the extent of development and detailing within a BIM model. These levels help define the granularity and sophistication of information contained in the model at various stages of the project.",
+    subServices: [
+      {
+        title: "LOD 100 - Conceptual Design",
+        desc: [
+          "LOD 100 represents the most basic level of BIM modeling.",
+          "It includes conceptual information, basic geometry, and overall project massing.",
+          "Used in the early stages of design to communicate the project's basic form and concept.",
+        ],
+      },
+      {
+        title: "LOD 200 - Schematic Design",
+        desc: [
+          "LOD 200 involves more developed elements than LOD 100.",
+          "It includes approximate sizes, shapes, and locations of building elements.",
+          "Used in the schematic design phase to visualize the project and assess its feasibility.",
+        ],
+      },
+      {
+        title: "LOD 300 - Detailed Design",
+        desc: [
+          "LOD 300 provides a more detailed representation of building elements.",
+          "It includes accurate geometry, sizes, shapes, quantities, and relationships between components.",
+          "Used during the detailed design phase for coordination and construction documentation.",
+        ],
+      },
+      {
+        title: "LOD 400 - Fabrication and Assembly",
+        desc: [
+          "LOD 400 is highly detailed and suitable for fabrication and assembly purposes.",
+          "It includes precise geometry, specific product information, and assembly details.",
+          "Used for manufacturing, fabrication, and assembly of building components.",
+        ],
+      },
+      {
+        title: "LOD 500 - As-Built Model",
+        desc: [
+          "LOD 500 represents the highest level of detail, capturing actual installed elements and accurate as-built conditions.",
+          "It includes precise geometry, product data, and operational information.",
+          "Used for facility management, maintenance, and renovation purposes post-construction.",
+        ],
+      },
+    ],
+    toolsUsed: [
+      "/img/tools/autoCad.png",
+      "/img/tools/autoRevit.png",
+      "/img/tools/blueBeam.svg",
+    ],
+    extraDetails: [
+      {
+        caseStudy: true,
+        title: "Engineering Model integration",
+        services: [
+          {
+            title: "Challenge",
+            desc: "Engineers needed a complete model including an ERU, fan system, and vibration curb.",
+          },
+          {
+            title: "Solution",
+            desc: "JES engaged manufacturers to retrieve models for all components.",
+          },
+          {
+            title: "Outcome",
+            desc: "Model delivered overnight, allowing the rep to engage with JES in the afternoon and have the model ready for the engineer the next morning.",
+          },
+        ],
+        image: "/img/services/subServices/equipment-case-study.png",
+      },
+    ],
+  },
+  "revit-models": {
+    title: "Revit Models: Component & Assembly",
+    image: "/img/services/revit-models.png",
+    img1: "/img/services/revit-models-2.png",
+    img2: "/img/services/bim2.webp",
+    description: [
+      "At JES Inc., our Revit-based Component and Assembly Modelling services bridge the gap between design intent and real-world construction. By integrating data-rich, parametric models from multiple manufacturers into a unified BIM environment, we deliver accurate, coordination-ready models that streamline project workflows.",
+      "Each model, whether an individual component or a complete assembly—is meticulously developed to represent true-to-life geometry, performance characteristics, and connectivity details. This ensures seamless integration across mechanical, electrical, and architectural disciplines.",
+    ],
+    subServices: [
+      {
+        title: "Integrated Component Modelling",
+        desc: [
+          "Creation of intelligent Revit models integrating parts from multiple manufacturers.",
+          "Ensures seamless coordination across MEP systems.",
+        ],
+      },
+      {
+        title: "Comprehensive Submittal Packages",
+        desc: [
+          "Preparation of detailed 3D component assemblies and technical drawings.",
+          "Includes family types, connection points, and performance data for approval.",
+        ],
+      },
+      {
+        title: "BIM-driven Efficiency",
+        desc: [
+          "Standardized, parametric Revit families for accurate coordination.",
+          "Reduces rework and improves design precision and collaboration.",
+        ],
+      },
+      {
+        title: "Assembly Modelling",
+        desc: [
+          "Development of combined mechanical, electrical, and structural assemblies.",
+          "Supports modular installation and clash detection for site efficiency.",
+        ],
+      },
+      {
+        title: "Deliverables",
+        desc: [
+          "Parametric Revit families (.RFA) and assemblies (.RVT).",
+          "Coordinated views, schedules, and LOD-compliant BIM models.",
+        ],
+      },
+    ],
+    extraDetails: [
+      {
+        caseStudy: true,
+        title: "Engineering Model integration",
+        services: [
+          {
+            title: "Challenge",
+            desc: "Engineers needed a complete model including an ERU, fan system, and vibration curb.",
+          },
+          {
+            title: "Solution",
+            desc: "JES engaged manufacturers to retrieve models for all components.",
+          },
+          {
+            title: "Outcome",
+            desc: "Model delivered overnight, allowing the rep to engage with JES in the afternoon and have the model ready for the engineer the next morning.",
+          },
+        ],
+        image: "/img/services/subServices/equipment-case-study.png",
+      },
+
+      {
+        title: "Component Modeling",
+        description:
+          "We develop intelligent Revit-based 3D component models that integrate products from multiple manufacturers into a single coordinated BIM environment. Each component is built with precise parameters, metadata, and documentation to enhance design accuracy, coordination, and project efficiency across MEP systems.",
+        services: [
+          {
+            title: "Integrated Multi-Manufacturer Models",
+            desc: "JES combined components from different manufacturers into a single, cohesive model for seamless client use.",
+          },
+          {
+            title: "Comprehensive Submittal",
+            desc: "Delivered a fully documented model with all integrated components for approval and implementation.",
+          },
+          {
+            title: "Efficiency & Accuracy",
+            desc: "Streamlined design process by ensuring compatibility and reducing coordination effort.",
+          },
+        ],
+        image: "/img/services/revit-models-3.png",
+      },
+    ],
+  },
+  "ar-vr": {
+    title: "AR/VR Modelling",
+    image: "/img/services/ar-vr-new.jpg",
+    pdfLink: "/pdfs/service-docs/Jersey_AR_and_VR_Modeling_US.pdf",
+    img1: "/img/services/ar1.webp",
+    img2: "/img/services/ar2.webp",
+    description: [
+      "We provide state-of-the-art AR(Augmented Reality) & VR(Virtual Reality) 3D modeling at affordable prices that are custom-designed by professionally trained industry leading experts. These value added services present you with cutting-edge solutions for immersive digital experiences.",
+      "We create interactive 3D models and environments that enhance value across various industries in the segment. AR & VR modeling enable users to engage with realistic, computer-generated simulations that augment the real world (AR) or create entirely virtual environments (VR) for an array of applications, transforming how we experience and interact with content and information.",
+    ],
+    subServices: [
+      {
+        title: "Immersive AR/VR Solutions",
+        desc: [
+          "Development of interactive 3D models and environments for AR and VR platforms.",
+          "Enhances visualization and engagement across industries.",
+        ],
+      },
+      {
+        title: "Cutting-edge Digital Experiences",
+        desc: [
+          "Creation of realistic simulations that augment reality or form virtual spaces.",
+          "Transforms how users interact with digital environments.",
+        ],
+      },
+      {
+        title: "Expert-driven Design",
+        desc: [
+          "Models crafted by experienced professionals ensuring realism and precision.",
+          "Tailored to meet specific client objectives and applications.",
+        ],
+      },
+      {
+        title: "Affordable Innovation",
+        desc: [
+          "High-quality AR/VR modeling services offered at competitive pricing.",
+          "Combines technology and creativity for maximum value.",
+        ],
+      },
+      {
+        title: "Versatile Industry Applications",
+        desc: [
+          "AR/VR models designed for sectors like architecture, education, real estate, and manufacturing.",
+          "Enables immersive presentations, training, and simulation experiences.",
+        ],
+      },
+    ],
+    extraDetails: [
+      {
+        title: "Benefits of AR & VR Experiences with us.",
+        description:
+          "We provide state-of-the-art AR & VR 3D modeling at an affordable rate, Custom-designed by professionally trained industry leading experts.",
+        services: [
+          {
+            title: "Low cost Augmented & Virtual  Reality Services",
+            desc: "Affordable, high-quality AR/VR 3D modeling for interactive visualizations, walkthroughs, and simulations tailored to client needs.",
+          },
+          {
+            title: "Unlock Your Engineering Potential with Our AR/VR Services",
+            desc: "By outsourcing your AR and VR work to us, you can unlock your engineering potential TODAY without breaking the bank.",
+          },
+          {
+            title: "Elevate your collaboration and communications",
+            desc: "We enable you to visualize complex designs in a 3-D space, and spot potential design flaws and space constraints and to do this collaboratively.",
+          },
+        ],
+        image: "/img/services/ar-vr.jpg",
+      },
+    ],
+  },
+  "mep-drafting": {
+    title: "MEP Drafting",
+    pdfLink: "/pdfs/service-docs/Jersey_MEP_Drafting_Services_US.pdf",
+    image: "/img/services/mep-drafting.png",
+    img1: "/img/services/mep1.jpg",
+    img2: "/img/services/mep2.webp",
+    description: [
+      "We specialize in providing high-quality Mechanical, Electrical, and Plumbing (MEP) AutoCAD drafting services that cater to the diverse needs of the construction and engineering industry. With a dedicated focus on precision, innovation, and efficiency, we serve as your trusted partner in delivering impeccable MEP drafting solutions.",
+      "Our drafting services encompass meticulous creation of Mechanical Drawings, Electrical Layouts, and Plumbing Designs. Precision is our hallmark, ensuring that every detail is accurately represented. With expertise in CAD technology, we deliver comprehensive, industry-compliant drafts, facilitating seamless integration for successful implementation in diverse construction and engineering projects.",
+    ],
+    subServices: [
+      {
+        title: "MEP AutoCAD Drafting",
+        desc: [
+          "Our team of experienced drafters utilize the power of AutoCAD to create accurate and detailed MEP drawings. From HVAC layouts to electrical plans and plumbing schematics, we ensure precision in every aspect of MEP design.",
+        ],
+      },
+      {
+        title: "2D Drafting and Detailing",
+        desc: [
+          "We excel in converting conceptual ideas into comprehensive 2D drafts, providing detailed layouts that adhere to industry standards and project specifications.",
+        ],
+      },
+      {
+        title: "3D Modeling Integration",
+        desc: [
+          "Seamlessly integrating 3D MEP models into AutoCAD, we ensure a holistic view of MEP systems, facilitating better visualization and coordination among various project stakeholders.",
+        ],
+      },
+      {
+        title: "As-Built Documentation",
+        desc: [
+          "We assist in creating as-built documentation, capturing accurate representations of installed MEP components for renovation or maintenance purposes.",
+        ],
+      },
+      {
+        title: "Coordination and Clash Detection",
+        desc: [
+          "We perform detailed coordination among architectural, structural, and MEP trades to identify and resolve clashes early, ensuring smooth on-site installation and reduced rework.",
+        ],
+      },
+      {
+        title: "BIM to CAD Conversion",
+        desc: [
+          "Our experts efficiently convert BIM models into detailed 2D CAD drawings, maintaining accuracy, scale, and data integrity for construction and documentation purposes.",
+        ],
+      },
+    ],
+    extraDetails: [
+      {
+        title: "Benefits of outsourcing MEP drafting to us.",
+        description:
+          "We provide state-of-the-art AR & VR 3D modeling at an affordable rate, Custom-designed by professionally trained industry leading experts.",
+        services: [
+          {
+            title: "Focus on Core Competencies",
+            desc: "Outsourcing MEP drafting allows your team to focus on core business functions while we handle the intricate drafting tasks.",
+          },
+          {
+            title: "Scalability",
+            desc: "Our flexible outsourcing model accommodates varying project sizes and requirements, ensuring scalability and timely delivery.",
+          },
+          {
+            title: "Time Efficiency",
+            desc: "Benefit from our streamlined processes and expertise, reducing project turnaround time and accelerating project completion.",
+          },
+        ],
+        image: "/img/servies/mep-benefits.jpg",
+      },
+
+      {
+        caseStudy: true,
+        title: "Space Design Challenges Solved in Record Time",
+        services: [
+          {
+            title: "The Challenge",
+            desc: "Client faced critical space constraints with modular chiller replacement.",
+          },
+          {
+            title: "Our Response",
+            desc: "Delivered detailed 3D Revit model within 48 hours",
+          },
+          {
+            title: "The Result",
+            desc: "Client visualized exact space utilization. WE WON THE $400,000 JOB IN NYC",
+          },
+        ],
+        image: "/img/services/subServices/mep-case-study.jpg",
+      },
+    ],
+    toolsUsed: ["/img/tools/autoCad.png", "/img/tools/autoRevit.png"],
+  },
+  "energy-modelling": {
+    title: "Energy Modelling / Building Engineering Services",
+    pdfLink: "/pdfs/service-docs/Jersey_Thermal_Load_Calculation_US.pdf",
+    image: "/img/services/energy-modelling.png",
+    img1: "/img/services/energyModelling1.webp",
+    img2: "/img/services/energyModelling2.webp",
+    description: [
+      "We provide advanced Energy Modelling and Building Engineering services to optimize the efficiency, sustainability, and performance of building systems. Our analyses are rooted in precise engineering calculations and simulation tools to ensure comfort, reliability, and energy savings across MEP systems.",
+      "Through data-driven design and simulation, we help engineers and project stakeholders make informed decisions that reduce operational costs and environmental impact while meeting international building performance standards.",
+    ],
+    subServices: [
+      {
+        title: "Thermal Load Calculation",
+        desc: [
+          "Comprehensive assessment of heating and cooling loads using industry-standard methods to ensure accurate HVAC system sizing and energy efficiency.",
+        ],
+      },
+      {
+        title: "Ductwork E.S.P Calculation",
+        desc: [
+          "Detailed calculation of External Static Pressure (ESP) for duct systems, ensuring optimal airflow, balanced pressure distribution, and reduced system losses.",
+        ],
+      },
+      {
+        title: "Pump Head Calculation",
+        desc: [
+          "Precise evaluation of total dynamic head for chilled water and plumbing systems to determine pump capacity and ensure efficient hydraulic performance.",
+        ],
+      },
+      {
+        title: "Energy Simulation & Analysis",
+        desc: [
+          "Utilization of software tools like HAP or IES-VE for modeling building energy performance, identifying savings opportunities, and verifying design compliance.",
+        ],
+      },
+      {
+        title: "System Optimization & Reporting",
+        desc: [
+          "Preparation of energy efficiency reports, system performance summaries, and recommendations to improve sustainability and reduce operational costs.",
+        ],
+      },
+    ],
+    extraDetails: [
+      {
+        title: "Thermal Load Calculation",
+        description:
+          "Accurate thermal load calculation in a building is vital as it lets you estimate the required capacity of your heating systems, thereby meeting the required temperature conditions in the conditioned space.",
+        services: [
+          "Heat Load Analysis",
+          "HVAC System Design Support",
+          "Energy Efficiency Optimization",
+          "Troubleshooting and Assessment",
+        ],
+        image: "/img/servies/subServices/thermal-load.jpg",
+      },
+      {
+        title: "Ductwork E.S.P Calculations",
+        description:
+          "Optimize structural systems with precision BIM modeling and analysis. Our team delivers accurate structural models that integrate seamlessly with architectural and MEP systems.",
+        services: [
+          "Detailed Analysis",
+          "Ductwork Design Optimization",
+          "Equipment Selection Support",
+          "Troubleshooting and Optimization",
+        ],
+        image: "/img/servies/subServices/ductwork.png",
+      },
+      {
+        title: "Pump Head Calculation",
+        description:
+          "Streamline mechanical, electrical, and plumbing systems with intelligent BIM coordination. We ensure all building systems work harmoniously, identifying conflicts before construction begins.",
+        services: [
+          "Hydraulic Analysis",
+          "Efficiency Optimization",
+          "System Design Support",
+          "Troubleshooting and Assessment",
+        ],
+        image: "/img/servies/subServices/pumpHead.jpg",
+      },
+    ],
+  },
+};
+
 const serviceSections: ServiceItemType[] = [
   {
+    id: "quantity-take-off",
     title: "Quantity Take Off",
-    image: "/img/services/qto.png",
+    image: "/img/services/qto-new.png",
     pdfLink: "/pdfs/service-docs/Jersey_Quantity_Take_Off_US.pdf",
     img1: "/img/services/qto1.webp",
     img2: "/img/services/qto2.webp",
@@ -108,6 +658,7 @@ const serviceSections: ServiceItemType[] = [
     ],
   },
   {
+    id: "equipment-product",
     title: "Equipment / Product Selection",
     image: "/img/services/equipment-selection.png",
     img1: "/img/services/equipment1.webp",
@@ -151,13 +702,15 @@ const serviceSections: ServiceItemType[] = [
     ],
   },
   {
+    id: "spec-review",
     title: "Spec Review",
-    image: "/img/services/spec-review.png",
+    image: "/img/services/spec-review-new.png",
     img2: "/img/services/spec-review-2.png",
     description:
       "JES Spec review ensures client's equipment meets or wisely challenges the Spec, using a thorough tested process to , perform electrical, controls and physical specifications are addressed.",
   },
   {
+    id: "bim-modelling",
     title: "BIM Modelling",
     pdfLink: "/pdfs/service-docs/Jersey_BIM_Detailed_brochure_US.pdf",
     image: "/img/services/bim-modelling.jpg",
@@ -235,6 +788,7 @@ const serviceSections: ServiceItemType[] = [
     ],
   },
   {
+    id: "revit-models",
     title: "Revit Models: Component & Assembly",
     image: "/img/services/revit-models.png",
     img1: "/img/services/revit-models-2.png",
@@ -324,8 +878,9 @@ const serviceSections: ServiceItemType[] = [
     ],
   },
   {
+    id: "ar-vr",
     title: "AR/VR Modelling",
-    image: "/img/services/ar-vr.jpg",
+    image: "/img/services/ar-vr-new.jpg",
     pdfLink: "/pdfs/service-docs/Jersey_AR_and_VR_Modeling_US.pdf",
     img1: "/img/services/ar1.webp",
     img2: "/img/services/ar2.webp",
@@ -394,6 +949,7 @@ const serviceSections: ServiceItemType[] = [
     ],
   },
   {
+    id: "mep-drafting",
     title: "MEP Drafting",
     pdfLink: "/pdfs/service-docs/Jersey_MEP_Drafting_Services_US.pdf",
     image: "/img/services/mep-drafting.png",
@@ -486,6 +1042,7 @@ const serviceSections: ServiceItemType[] = [
     toolsUsed: ["/img/tools/autoCad.png", "/img/tools/autoRevit.png"],
   },
   {
+    id: "energy-modelling",
     title: "Energy Modelling / Building Engineering Services",
     pdfLink: "/pdfs/service-docs/Jersey_Thermal_Load_Calculation_US.pdf",
     image: "/img/services/energy-modelling.png",
@@ -1144,18 +1701,19 @@ const whitePaperList: PdfCardItemType[] = [
 ];
 
 export {
+  aboutUsAccordionList,
   defaultHeaderMenuItems,
   faq,
+  highlights,
+  insightsData,
   portalCardList,
   projectList,
-  serviceSections,
-  testimonials,
-  securityList,
-  aboutUsAccordionList,
-  solutions,
-  highlights,
   regions,
+  securityList,
+  serviceSectionsObj,
+  solutions,
+  testimonials,
   whitePaperList,
-  insightsData,
   whitePapers,
+  serviceSections,
 };

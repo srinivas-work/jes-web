@@ -55,24 +55,17 @@ export default function Insights() {
     return insightsData.filter((i) => i.category === selectedCategory);
   }, [selectedCategory]);
 
-  useEffect(() => {
-    if (selectedCategory === "White Papers") {
+  const whitePaperClickHandler = (
+    clicked: boolean,
+    whitePaperItem: InsightItemType
+  ) => {
+    if (!isValidated) {
       openValidator();
     }
-  }, [selectedCategory]);
 
-  //Add the case study image
-
-  //Opening White Papers only when user is validated
-  //It should show the cards then ask for validation
-  useEffect(() => {
-    if (!isValidated && selectedCategory === "White Papers") {
-      setSelectedCategory("All");
-    }
-    if (isValidated) {
-      setSelectedCategory("White Papers");
-    }
-  }, [selectedCategory, isValidated, isUserValidatorOpen]);
+    setIsDocClicked(clicked);
+    setCardPdfUrl(whitePaperItem.pdfUrl!);
+  };
 
   return (
     <div className={styles.pageWrapper} ref={containerRef}>
@@ -156,17 +149,16 @@ export default function Insights() {
       {/* Insights Grid */}
       <div className={styles.container}>
         <section className={styles.insightsGrid}>
-          {selectedCategory === "White Papers" && isValidated ? (
+          {selectedCategory === "White Papers" ? (
             <>
               {whitePapers.map((whitePaperItem, index) => (
                 <InsightCard
                   key={whitePaperItem.id}
                   insight={whitePaperItem}
                   index={index}
-                  cardClickHandler={(clicked) => {
-                    setIsDocClicked(clicked);
-                    setCardPdfUrl(whitePaperItem.pdfUrl!);
-                  }}
+                  cardClickHandler={(clicked) =>
+                    whitePaperClickHandler(clicked, whitePaperItem)
+                  }
                 />
               ))}
             </>
@@ -185,7 +177,7 @@ export default function Insights() {
         </section>
       </div>
       <FlipBookViewer
-        isClicked={isDocClicked}
+        isClicked={isDocClicked && isValidated}
         onClose={() => setIsDocClicked(false)}
         pdfUrl={cardPdfUrl}
       />

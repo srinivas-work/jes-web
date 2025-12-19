@@ -1,0 +1,44 @@
+.container {
+  max-width: 70dvw;
+  margin: var(--header-height) auto;
+  padding: 0 20px;
+  line-height: 1.7;
+  color: #1a1a1a;
+  font-family: system-ui, sans-serif;
+}
+
+.title {
+  font-size: 2.6rem;
+  margin-bottom: 30px;
+  font-weight: 700;
+  color: #000;
+  text-wrap: balance;
+}
+
+.section {
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.section p {
+  font-size: 1rem;
+  line-height: 2rem;
+  color: #444;
+  margin: 6px 0; /* tighter paragraph spacing */
+  text-wrap: pretty; /* better at avoiding widows without weird spacing */
+}
+
+/* Light widow prevention without extra spacing */
+.section p::after {
+  content: "";
+  display: inline-block;
+  width: 0; /* was 100%, which caused extra space */
+}

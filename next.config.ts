@@ -20,19 +20,26 @@ const nextConfig: NextConfig = {
   //   ];
   // },
 
-  // // Your existing rewrites — kept exactly same
-  // async rewrites() {
-  //   return [
-  //     {
-  //       source: "/en-US",
-  //       destination: "/",
-  //     },
-  //     {
-  //       source: "/en-US/:path*",
-  //       destination: "/:path*",
-  //     },
-  //   ];
-  // },
+  async rewrites() {
+    return [
+      // --- Existing rewrites ---
+      // {
+      //   source: "/en-US",
+      //   destination: "/",
+      // },
+      // {
+      //   source: "/en-US/:path*",
+      //   destination: "/:path*",
+      // },
+
+      // --- React app rewrites ---
+      {
+        // Allow React-router paths like /react/dashboard, /react/profile, etc.
+        source: "/lp/quantity-take-off",
+        destination: "/ads",
+      },
+    ];
+  },
 
   images: {
     remotePatterns: [
@@ -51,12 +58,13 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "jes-web-assets-us.s3.us-west-2.amazonaws.com",
-        // This will allow ALL paths from this hostname
         pathname: "/**",
       },
     ],
-    // Optional: Add domains for broader compatibility
-    domains: ["jes-web-assets-us.s3.us-west-2.amazonaws.com"],
+    domains: [
+      "jes-eng.vercel.app",
+      "jes-web-assets-us.s3.us-west-2.amazonaws.com",
+    ],
   },
 
   eslint: {

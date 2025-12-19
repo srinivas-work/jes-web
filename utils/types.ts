@@ -1,4 +1,5 @@
 export type ServiceItemType = {
+  id: string;
   title: string;
   image: string;
   img1?: string;
@@ -9,6 +10,31 @@ export type ServiceItemType = {
   pdfLink?: string;
   extraDetails?: SolutionType[];
 };
+
+export type ServiceItemTypeObj = {
+  title: string;
+  image: string;
+  img1?: string;
+  img2?: string;
+  toolsUsed?: string[];
+  description: string | string[];
+  subServices?: GenericType[];
+  pdfLink?: string;
+  extraDetails?: SolutionType[];
+};
+
+export enum ServiceId {
+  QUANTITY_TAKE_OFF = "quantity-take-off",
+  EQUIPMENT_PRODUCT = "equipment-product",
+  SPEC_REVIEW = "spec-review",
+  BIM_MODELLING = "bim-modelling",
+  REVIT_MODELS = "revit-models",
+  AR_VR = "ar-vr",
+  MEP_DRAFTING = "mep-drafting",
+  ENERGY_MODELLING = "energy-modelling",
+}
+
+export type ServiceSectionsType = Record<ServiceId, ServiceItemTypeObj>;
 
 export type TestimonialCardProps = {
   rating?: number;

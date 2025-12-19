@@ -37,12 +37,20 @@
   }
 }
 
-.logo {
-  width: 8rem;
-  height: auto;
-  object-fit: contain;
+/* Logo Container Styles */
+.logoContainer {
+  position: relative;
+  width: 8rem; /* Match the original logo width */
+  height: calc(var(--header-height) * 0.6); /* Proportional height */
   cursor: pointer;
   user-select: none;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.3s ease;
 }
 
 .navLinks {
@@ -84,4 +92,16 @@
   color: white !important;
   border-color: transparent;
   background: var(--primary-red);
+}
+
+/* Optional: Add hover effect for the logo container */
+.logoContainer:hover .logo {
+  opacity: 0.8 !important;
+}
+
+/* Media query adjustments for logo container */
+@media screen and (max-width: 700px) {
+  .logoContainer {
+    width: 6rem; /* Smaller logo on mobile */
+  }
 }

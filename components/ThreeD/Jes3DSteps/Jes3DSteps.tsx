@@ -219,7 +219,7 @@ export default function Jes3DSteps() {
         >
           <ambientLight intensity={0.8} />
           <directionalLight position={[5, 10, 5]} intensity={1.2} />
-          <Environment preset="city" />
+          <Environment files={"/img/textures/city.hdr"} />
           <GrowthPath progress={scrollYProgress} />
         </Canvas>
       </div>

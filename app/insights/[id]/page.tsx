@@ -120,7 +120,6 @@ export default function InsightDetails() {
           <img
             src={insight.image}
             alt={insight.title}
-            sizes="100vw"
             className={styles.heroImage}
           />
           <div className={styles.heroOverlay} />

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./KeyDeliverables.module.css";
 import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 import { useParams, usePathname } from "next/navigation";
+import { ServiceId } from "@/utils/types";
 
 interface KeyDeliverablesType {
   id: number;
@@ -140,7 +141,9 @@ const ICON_BG_COLORS = {
   expanded: "rgba(255, 255, 255, 0.15)",
 };
 
-const KeyDeliverables = () => {
+const KeyDeliverables: React.FC<{ currentService: ServiceId }> = ({
+  currentService,
+}) => {
   const [expandedId, setExpandedId] = useState<number>(1);
   const sectionRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.4 });
@@ -149,11 +152,9 @@ const KeyDeliverables = () => {
 
   let deliverablesList = keyDeliverables;
 
-  const { id } = useParams();
-
-  if (id === "1") {
+  if (currentService === "equipment-product") {
     deliverablesList = keyDeliverablesEquipments;
-  } else if (id === "3") {
+  } else if (currentService === "bim-modelling") {
     deliverablesList = keyDeliverablesBIM;
   }
 

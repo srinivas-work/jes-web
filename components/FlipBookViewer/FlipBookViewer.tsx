@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./FlipBookView.module.css";
+import { NEXT_PUBLIC_BUCKET_URL } from "@/utils/data/constants";
 
 const FlipBookViewer: React.FC<{
   pdfUrl?: string;
@@ -89,7 +90,9 @@ const FlipBookViewer: React.FC<{
               className={styles["flip-book-container"]}
               ref={embedRef}
               //src="/flipBook/index.html"
-              src={`/flipBook/index.html?pdf=${pdfUrl}`}
+              src={`/flipBook/index.html?pdf=${
+                NEXT_PUBLIC_BUCKET_URL + pdfUrl
+              }`}
               title="Dark Ocean Flipbook"
             />
           </div>

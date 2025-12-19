@@ -97,7 +97,10 @@ const Footer: React.FC<HTMLProps<HTMLElement>> = ({ ...props }) => {
 
       <div className={styles.bottomBar}>
         <p>© {new Date().getFullYear()} JES Inc. All Rights Reserved.</p>
-        <Link href="#">Privacy Policy</Link>
+        <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
+          <Link href="/terms">Terms & Conditions</Link>
+          <Link href="/privacy-policy">Privacy Policy</Link>
+        </div>
       </div>
     </footer>
   );

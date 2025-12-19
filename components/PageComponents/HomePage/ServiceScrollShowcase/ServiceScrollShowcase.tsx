@@ -1,4 +1,7 @@
-import { serviceSections } from "@/utils/data/dummyData";
+"use client";
+
+import { serviceSectionsObj } from "@/utils/data/dummyData";
+import { ServiceId } from "@/utils/types";
 import {
   AnimatePresence,
   motion,
@@ -12,27 +15,53 @@ import styles from "./ServiceScrollShowcase.module.css";
 
 const ServiceScrollShowcase = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isReady, setIsReady] = useState(false);
   const router = useRouter();
   const refs = useRef<(HTMLDivElement | null)[]>([]);
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // Parallax setup
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
+  // Get service keys directly
+  const serviceKeys = Object.keys(serviceSectionsObj);
 
-  const rotate = useSpring(useTransform(scrollYProgress, [0, 1], [0, 360]), {
-    stiffness: 60,
-    damping: 18,
-  });
+  // Delayed initialization to avoid hydration errors
+  useEffect(() => {
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      setIsReady(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
-  const scale = useSpring(useTransform(scrollYProgress, [0, 1], [1, 1.1]), {
-    stiffness: 70,
-    damping: 22,
-  });
+  // Initialize scroll only when ready
+  const { scrollYProgress } = useScroll(
+    isReady && sectionRef.current
+      ? {
+          target: sectionRef,
+          offset: ["start end", "end start"],
+        }
+      : undefined
+  );
+
+  // Always use the same spring config, just control the transform
+  const rotate = useSpring(
+    useTransform(scrollYProgress, [0, 1], [0, isReady ? 360 : 0]),
+    {
+      stiffness: 60,
+      damping: 18,
+    }
+  );
+
+  const scale = useSpring(
+    useTransform(scrollYProgress, [0, 1], [1, isReady ? 1.1 : 1]),
+    {
+      stiffness: 70,
+      damping: 22,
+    }
+  );
 
   useEffect(() => {
+    if (!isReady || !refs.current.length) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -47,9 +76,11 @@ const ServiceScrollShowcase = () => {
 
     refs.current.forEach((el) => el && observer.observe(el));
     return () => observer.disconnect();
-  }, [activeIndex]);
+  }, [isReady]);
 
   const handleClick = (i: number) => {
+    if (!isReady) return;
+
     const target = refs.current[i];
     if (!target) return;
 
@@ -78,18 +109,99 @@ const ServiceScrollShowcase = () => {
     router.push(route);
   };
 
+  // Get active service data
+  const activeService =
+    serviceSectionsObj[serviceKeys[activeIndex] as ServiceId];
+
+  // Static version for SSR and initial render
+  if (!isReady) {
+    return (
+      <div className={styles.serviceScrollWrapper} id="services">
+        <div className={styles.sidebar}>
+          {serviceKeys.map((key, i) => (
+            <div
+              key={key}
+              className={styles.menuItem}
+              onClick={() => isReady && handleClick(i)}
+            >
+              <p>{serviceSectionsObj[key as ServiceId].title}</p>
+              <span className={styles.seeker} />
+            </div>
+          ))}
+        </div>
+        <div className={styles.contentArea}>
+          <div className={styles.stickyContent}>
+            {/* Static background image */}
+            <div className={styles.bgImageContainer}>
+              <img
+                className={styles.bgImage}
+                src={"/img/jes_curve.png"}
+                alt="JES Engineering"
+              />
+            </div>
+
+            {/* Static service content */}
+            {activeService && (
+              <div className={styles.serviceImageContainer}>
+                <div className={styles.imageStack}>
+                  <img
+                    src={activeService.img1 ?? activeService.image}
+                    alt={activeService.title}
+                    className={`${styles.serviceImage} ${styles.imageBack}`}
+                  />
+                  <img
+                    src={activeService.img2 ?? activeService.image}
+                    alt={activeService.title}
+                    className={`${styles.serviceImage} ${styles.imageFront}`}
+                  />
+                </div>
+                <p className={styles.description}>
+                  {Array.isArray(activeService.description)
+                    ? activeService.description[0]
+                    : activeService.description}
+                </p>
+                <button
+                  className={styles.button}
+                  onClick={() => goTo(`/services/${serviceKeys[activeIndex]}`)}
+                >
+                  View Details
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Static scroll triggers */}
+          <div className={styles.scrollSections}>
+            {serviceKeys.map((_, i) => (
+              <div
+                key={i}
+                ref={(el) => {
+                  if (el && !refs.current[i]) {
+                    refs.current[i] = el;
+                  }
+                }}
+                className={styles.trigger}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Animated version for client-side
   return (
     <div className={styles.serviceScrollWrapper} ref={sectionRef} id="services">
       <div className={styles.sidebar}>
-        {serviceSections.map((sec, i) => (
+        {serviceKeys.map((key, i) => (
           <div
-            key={i}
+            key={key}
             className={`${styles.menuItem} ${
               activeIndex === i ? styles.active : ""
             }`}
             onClick={() => handleClick(i)}
           >
-            <p>{sec.title}</p>
+            <p>{serviceSectionsObj[key as ServiceId].title}</p>
             <span
               className={`${styles.seeker} ${
                 activeIndex === i ? styles.active : ""
@@ -126,30 +238,24 @@ const ServiceScrollShowcase = () => {
             >
               <div className={styles.imageStack}>
                 <img
-                  src={
-                    serviceSections[activeIndex].img1 ??
-                    serviceSections[activeIndex].image
-                  }
-                  alt={serviceSections[activeIndex].title}
+                  src={activeService.img1 ?? activeService.image}
+                  alt={activeService.title}
                   className={`${styles.serviceImage} ${styles.imageBack}`}
                 />
                 <img
-                  src={
-                    serviceSections[activeIndex].img2 ??
-                    serviceSections[activeIndex].image
-                  } // You might want to use a different image here
-                  alt={serviceSections[activeIndex].title}
+                  src={activeService.img2 ?? activeService.image}
+                  alt={activeService.title}
                   className={`${styles.serviceImage} ${styles.imageFront}`}
                 />
               </div>
               <p className={styles.description}>
-                {Array.isArray(serviceSections[activeIndex].description)
-                  ? serviceSections[activeIndex].description[0]
-                  : serviceSections[activeIndex].description}
+                {Array.isArray(activeService.description)
+                  ? activeService.description[0]
+                  : activeService.description}
               </p>
               <button
                 className={styles.button}
-                onClick={() => goTo(`/services/${activeIndex}`)}
+                onClick={() => goTo(`/services/${serviceKeys[activeIndex]}`)}
               >
                 View Details
               </button>
@@ -159,11 +265,11 @@ const ServiceScrollShowcase = () => {
 
         {/* Scroll Triggers */}
         <div className={styles.scrollSections}>
-          {serviceSections.map((_, i) => (
+          {serviceKeys.map((_, i) => (
             <div
               key={i}
               ref={(el) => {
-                refs.current[i] = el;
+                if (el) refs.current[i] = el;
               }}
               className={styles.trigger}
             />

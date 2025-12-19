@@ -1,7 +1,6 @@
 import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
-import { ServiceItemType } from "@/utils/types";
+import { ServiceItemTypeObj } from "@/utils/types";
 import {
-  ContactShadows,
   Environment,
   Html,
   Preload,
@@ -13,7 +12,6 @@ import {
 import { Canvas, useFrame } from "@react-three/fiber";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import React, { Suspense, useEffect, useRef, useState } from "react";
-import { Perf } from "r3f-perf";
 import * as THREE from "three";
 import styles from "./LaptopViewer.module.css";
 
@@ -236,7 +234,7 @@ function Scene({
       <Model openProgress={openProgress} hinge={hinge} imgLink={imgTexture} />
       {/* <directionalLight intensity={2} /> */}
       <pointLight position={[10, 10, 10]} intensity={1.5} />
-      <Environment preset="city" />
+      <Environment files={"/img/textures/city.hdr"} />
     </group>
   );
 }
@@ -250,7 +248,7 @@ export default function LaptopViewer({
   text1?: string;
   text2?: string;
   imgLink: string;
-  selectedService: ServiceItemType;
+  selectedService: ServiceItemTypeObj;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mouse = useRef({ x: 0, y: 0 });
@@ -424,7 +422,7 @@ export default function LaptopViewer({
         }}
       >
         <Canvas dpr={[1, 2]} camera={{ position: [0, 0, -30], fov: 35 }}>
-          <Perf position="top-left" style={{ marginTop: "5rem" }} />
+          {/* <Perf position="top-left" style={{ marginTop: "5rem" }} /> */}
           <Suspense fallback={<Loader />}>
             {/* <Sky /> */}
 
