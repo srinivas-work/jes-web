@@ -5,13 +5,15 @@ import GlobalImpact from "@/components/PageComponents/ContactPage/GlobalImpact/G
 import { useLenis } from "@/utils/hooks/useLenis";
 import React from "react";
 import styles from "./Contact.module.css";
+import ZohoContactForm from "@/components/ZohoContactForm/ZohoContactForm";
 
 const Contact: React.FC = () => {
   useLenis();
 
   return (
     <div className={styles.container}>
-      <ContactInfo />
+      {/* <ContactInfo /> */}
+      <ZohoContactForm />
       <GlobalImpact />
     </div>
   );

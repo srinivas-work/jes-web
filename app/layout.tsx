@@ -53,6 +53,11 @@ const plusJakartaSans = localFont({
 export const metadata: Metadata = {
   title: "JES Engineering Solutions",
   description: "Scale your business with JES Inc.",
+
+  // ✅ Google Search Console Verification
+  verification: {
+    google: "e6LCO6c1jUvL2qOgf3XtHF43bFFVufmiEd2-INLv1PQ",
+  },
 };
 
 export default function RootLayout({
@@ -91,14 +96,9 @@ export default function RootLayout({
               "alternateName": "JES Engineering",
               "description": "JES provides comprehensive engineering services including Quantity Take-Off, BIM Modeling, MEP Drafting, Equipment Selection, and Revit Modeling with specialized expertise across all LOD levels.",
               "url": "https://jerseyeng.com/",
-              "logo": "https://jerseyeng.com//images/logo.png",
+              "logo": "https://jerseyeng.com/images/logo.png",
               "foundingDate": "2015",
-              "founders": [
-                {
-                  "@type": "Person",
-                  "name": "Bruce Devey"
-                }
-              ],
+              "founders": [{ "@type": "Person", "name": "Bruce Devey" }],
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "U.S. SALES OFFICE",
@@ -115,101 +115,15 @@ export default function RootLayout({
                   "email": "texce.derey@jerseyeng.com",
                   "areaServed": "US",
                   "availableLanguage": "English"
-                },
-                {
-                  "@type": "ContactPoint",
-                  "telephone": "+1-532-218-8403",
-                  "contactType": "technical support",
-                  "email": "bruce.doveyglenoyenq.com",
-                  "areaServed": "US"
                 }
               ],
               "sameAs": [
                 "https://www.linkedin.com/company/jes-engineering",
                 "https://twitter.com/jes_engineering"
-              ],
-              "knowsAbout": [
-                "Quantity Take-Off",
-                "BIM Modeling",
-                "Revit Models",
-                "MEP Drafting",
-                "Equipment Selection",
-                "AutoCAD",
-                "XR Visualization",
-                "LOD Standards",
-                "Component Modeling",
-                "Assembly Modeling",
-                "HVAC Systems",
-                "Electrical Planning",
-                "Plumbing Schematics"
-              ],
-              "makesOffer": [
-                {
-                  "@type": "Offer",
-                  "name": "Quantity Take-Off Services",
-                  "description": "Specialized quantity take-off using manufacturing software with 10+ years experience"
-                },
-                {
-                  "@type": "Offer",
-                  "name": "BIM Modeling Services",
-                  "description": "Comprehensive BIM modeling across LOD 100-400 for conceptual design to fabrication"
-                },
-                {
-                  "@type": "Offer",
-                  "name": "MEP Drafting Services",
-                  "description": "AutoCAD drafting for mechanical, electrical, and plumbing systems"
-                },
-                {
-                  "@type": "Offer",
-                  "name": "Equipment Selection",
-                  "description": "Factory-trained equipment selection optimizing performance and cost"
-                },
-                {
-                  "@type": "Offer",
-                  "name": "Revit Modeling",
-                  "description": "Component and assembly modeling with multi-manufacturer integration"
-                }
-              ],
-              "serviceArea": {
-                "@type": "GeoCircle",
-                "geoMidpoint": {
-                  "@type": "GeoCoordinates",
-                  "latitude": 38.0293,
-                  "longitude": -78.4767
-                },
-                "geoRadius": "500000"
-              },
-              "areaServed": [
-                { "@type": "State", "name": "Virginia" },
-                { "@type": "Country", "name": "United States" }
-              ],
-              "employees": {
-                "@type": "Person",
-                "name": "Engineering Team",
-                "description": "Factory-trained professionals with 10+ years experience in engineering and modeling"
-              },
-              "keywords": [
-                "BIM Modeling",
-                "Quantity Take-Off",
-                "MEP Drafting",
-                "Revit Models",
-                "Equipment Selection",
-                "Engineering Services",
-                "AutoCAD",
-                "3D Modeling",
-                "XR Visualization",
-                "Construction Documentation"
-              ],
-              "additionalProperty": [
-                { "@type": "PropertyValue", "name": "Years of Experience", "value": "10+ years" },
-                { "@type": "PropertyValue", "name": "Service Turnaround", "value": "12-72 hours for most scopes" },
-                { "@type": "PropertyValue", "name": "Project Management Portal", "value": "JESI Customer Portal" },
-                { "@type": "PropertyValue", "name": "Case Study Success", "value": "$400,000 project win in NYC with 48-hour delivery" }
               ]
             }
           `}
         </Script>
-        {/* END JSON-LD SCHEMA */}
       </head>
 
       <body className={plusJakartaSans.variable}>
@@ -222,8 +136,8 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* End GTM NoScript */}
 
+        <Preloader />
         <Header />
         <CustomScrollbar />
         <BackToTopButton />

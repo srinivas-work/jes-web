@@ -17,6 +17,7 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import * as THREE from "three";
 import styles from "./page.module.css";
+import ZohoContactForm from "@/components/ZohoContactForm/ZohoContactForm";
 
 function Building() {
   const tex = useTexture("/img/modern-building.png");

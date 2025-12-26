@@ -13,7 +13,7 @@ export default function ServicePage({ params }: { params: { id: string } }) {
     description:
       "Provider of specialized Quantity Take-Off (QTO), BIM/Revit Modeling, and engineering support services.",
     url: "https://jerseyeng.com/quantity-take-off",
-    telephone: "+1-634-218-8403",
+    telephone: "+1-1-866-JES-HVAC",
     email: "kance.drevoglerroyen@gmail.com",
     address: {
       "@type": "PostalAddress",

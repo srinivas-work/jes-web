@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import styles from "./Preloader.module.css";
+import { usePathname } from "next/navigation";
 
 const loadingStates = [
   { text: "Calculating project requirements" },
@@ -11,9 +12,16 @@ const loadingStates = [
   { text: "Reviewing engineering specifications" },
   { text: "Preparing your project dashboard" },
 ];
+
 export default function Preloader({ duration = 1000 }: { duration?: number }) {
+  const pathname = usePathname();
   const [currentState, setCurrentState] = useState(0);
   const [finished, setFinished] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     if (currentState < loadingStates.length - 1) {
@@ -28,16 +36,21 @@ export default function Preloader({ duration = 1000 }: { duration?: number }) {
     return () => clearTimeout(endTimeout);
   }, [currentState, duration]);
 
+  if (pathname.includes("/lp") || pathname.includes("/thanks")) {
+    return null;
+  }
+
+  if (!isMounted) return null;
+
   return (
     <AnimatePresence>
       {!finished && (
         <motion.div
           className={styles.overlay}
-          initial={{ opacity: 1, y: 0 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
           exit={{
             opacity: 0,
-            y: -140,
             transition: { duration: 0.6, ease: "easeInOut" },
           }}
         >
@@ -52,35 +65,45 @@ export default function Preloader({ duration = 1000 }: { duration?: number }) {
 
 function LoaderCore({ value }: { value: number }) {
   return (
-    <div className={styles.listWrapper}>
-      {loadingStates.map((state, i) => {
-        const distance = Math.abs(i - value);
-        const opacity = Math.max(1 - distance * 0.2, 0);
+    <div className={styles.listContainer}>
+      <div className={styles.listWrapper}>
+        {loadingStates.map((state, i) => {
+          const distance = Math.abs(i - value);
+          const opacity = Math.max(1 - distance * 0.2, 0);
 
-        return (
-          <motion.div
-            key={i}
-            className={styles.item}
-            initial={{ opacity: 0, y: -(value * 40) }}
-            animate={{ opacity, y: -(value * 40) }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className={styles.iconWrapper}>
-              {i <= value ? (
-                <FilledCheck active={i === value} />
-              ) : (
-                <CheckIcon />
-              )}
-            </div>
-
-            <span
-              className={`${styles.text} ${value === i ? styles.active : ""}`}
+          return (
+            <motion.div
+              key={i}
+              className={styles.item}
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity,
+                y: -(value * 40),
+              }}
+              transition={{
+                duration: 0.5,
+                type: "spring",
+                stiffness: 100,
+                damping: 15,
+              }}
             >
-              {state.text}
-            </span>
-          </motion.div>
-        );
-      })}
+              <div className={styles.iconWrapper}>
+                {i <= value ? (
+                  <FilledCheck active={i === value} />
+                ) : (
+                  <CheckIcon />
+                )}
+              </div>
+
+              <span
+                className={`${styles.text} ${value === i ? styles.active : ""}`}
+              >
+                {state.text}
+              </span>
+            </motion.div>
+          );
+        })}
+      </div>
     </div>
   );
 }

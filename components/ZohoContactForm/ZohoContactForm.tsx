@@ -1,11 +1,11 @@
 "use client";
 
-import FlipBookViewer from "@/components/FlipBookViewer/FlipBookViewer";
+import { useState, FormEvent } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { FileText, Linkedin } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
-import styles from "./ContactInfo.module.css";
+import { useRef } from "react";
+import styles from "./ZohoContactForm.module.css";
 import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 
 const contactInfo = [
@@ -20,7 +20,7 @@ const contactInfo = [
 
 const serviceOptions = [
   "Quantity Take Off",
-  "Equipment/Product Selection",
+  "Equipment / Product Selection",
   "Spec Review",
   "BIM Modelling",
   "Revit Models: Component & Assembly",
@@ -29,9 +29,19 @@ const serviceOptions = [
   "Energy Modelling",
 ];
 
-const ContactInfo = () => {
+interface FormData {
+  Name_First: string;
+  Name_Last: string;
+  SingleLine: string;
+  Email: string;
+  PhoneNumber_countrycode: string;
+  Radio: string;
+  Dropdown: string;
+  MultiLine: string;
+}
+
+export default function ZohoContactForm() {
   const ref = useRef<HTMLDivElement>(null);
-  const [isDocClicked, setIsDocClicked] = useState(false);
   const { scrollYProgress } = useScroll({ target: ref });
   const isPhoneScreen = useIsPhoneScreen();
 
@@ -44,89 +54,140 @@ const ContactInfo = () => {
     useTransform(scrollYProgress, [0, 1], [0, -5])
   );
 
-  // FORM STATE
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    subject: "General Inquiry",
-    message: "",
+  const [formData, setFormData] = useState<FormData>({
+    Name_First: "",
+    Name_Last: "",
+    SingleLine: "",
+    Email: "",
+    PhoneNumber_countrycode: "",
+    Radio: "",
+    Dropdown: "-Select-",
+    MultiLine: "",
   });
 
-  const [formMessage, setFormMessage] = useState(""); // SUCCESS or ERROR text
-  const [isSuccess, setIsSuccess] = useState(false); // determines color
+  const [formMessage, setFormMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     setFormMessage("");
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const handleServiceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleRadioChange = (value: string) => {
     setFormMessage("");
-    setFormData({ ...formData, subject: e.target.value });
+    setFormData((prev) => ({
+      ...prev,
+      Radio: value,
+    }));
   };
 
-  // VALIDATION
-  const validate = () => {
-    if (!formData.firstName.trim()) return "First name is required.";
-    if (!formData.lastName.trim()) return "Last name is required.";
-    if (!formData.email.trim()) return "Email is required.";
-    if (!/^\S+@\S+\.\S+$/.test(formData.email)) return "Enter a valid email.";
-    if (!formData.phone.trim()) return "Phone number is required.";
-    if (!/^[0-9+()\-\s]{7,}$/.test(formData.phone))
-      return "Enter a valid phone number.";
-    if (!formData.message.trim()) return "Message cannot be empty.";
-    return "";
+  const validateForm = (): boolean => {
+    if (!formData.Name_First.trim()) {
+      setFormMessage("First name is required");
+      setIsSuccess(false);
+      return false;
+    }
+    if (!formData.Name_Last.trim()) {
+      setFormMessage("Last name is required");
+      setIsSuccess(false);
+      return false;
+    }
+    if (!formData.SingleLine.trim()) {
+      setFormMessage("Company name is required");
+      setIsSuccess(false);
+      return false;
+    }
+    if (!formData.Email.trim()) {
+      setFormMessage("Email is required");
+      setIsSuccess(false);
+      return false;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.Email)) {
+      setFormMessage("Please enter a valid email address");
+      setIsSuccess(false);
+      return false;
+    }
+    return true;
   };
 
-  // SUBMIT
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    const error = validate();
-    if (error) {
-      setIsSuccess(false);
-      setFormMessage(error);
+    if (!validateForm()) {
       return;
     }
 
-    await new Promise((res) => setTimeout(res, 700));
+    setIsSubmitting(true);
+    setFormMessage("");
 
-    setIsSuccess(true);
-    setFormMessage("Thank you! Your message has been sent successfully.");
+    try {
+      const formDataToSubmit = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        formDataToSubmit.append(key, value);
+      });
 
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      subject: "General Inquiry",
-      message: "",
-    });
-  };
+      // Add hidden fields required by Zoho
+      formDataToSubmit.append("zf_referrer_name", "");
+      formDataToSubmit.append("zf_redirect_url", "");
+      formDataToSubmit.append("zc_gad", "");
+      formDataToSubmit.append("utm_source", "");
+      formDataToSubmit.append("utm_medium", "");
+      formDataToSubmit.append("utm_campaign", "");
+      formDataToSubmit.append("utm_term", "");
+      formDataToSubmit.append("utm_content", "");
+      formDataToSubmit.append("gclid", "");
 
-  // AUTO-HIDE SUCCESS AFTER 3 SECONDS
-  useEffect(() => {
-    if (isSuccess) {
-      const timer = setTimeout(() => {
+      await fetch(
+        "https://forms.zohopublic.com/jesengineeringsolutions1/form/ContactUsForm/formperma/kpQYNAU9yiPtZ92jmn9ay0RXmW23xMjnHAl8XxV-fVA/htmlRecords/submit",
+        {
+          method: "POST",
+          body: formDataToSubmit,
+          mode: "no-cors",
+        }
+      );
+
+      setIsSuccess(true);
+      setFormMessage("Thank you! Your message has been sent successfully.");
+
+      // Reset form
+      setFormData({
+        Name_First: "",
+        Name_Last: "",
+        SingleLine: "",
+        Email: "",
+        PhoneNumber_countrycode: "",
+        Radio: "",
+        Dropdown: "-Select-",
+        MultiLine: "",
+      });
+
+      // Auto-clear success message after 3 seconds
+      setTimeout(() => {
         setFormMessage("");
         setIsSuccess(false);
       }, 3000);
-
-      return () => clearTimeout(timer);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setIsSuccess(false);
+      setFormMessage(
+        "Sorry, there was an error submitting the form. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
     }
-  }, [isSuccess]);
+  };
 
   return (
     <section ref={ref} className={styles.container}>
-      <FlipBookViewer
-        isClicked={isDocClicked}
-        onClose={() => setIsDocClicked(false)}
-      />
-
       <div className={styles.wrapper}>
         {/* LEFT PANEL */}
         <motion.div className={styles.leftPanel} style={{ y: leftY }}>
@@ -163,16 +224,12 @@ const ContactInfo = () => {
             <Link href="#">
               <Linkedin size={35} />
             </Link>
-            {/* <Link href="#">
-              <Facebook size={35} />
-            </Link>
-            <Link href="#">
-              <Instagram size={35} />
-            </Link> */}
-
             <button
               className={styles.docButton}
-              onClick={() => setIsDocClicked(true)}
+              onClick={() => {
+                // Add your document viewer logic here
+                console.log("View company profile");
+              }}
             >
               <FileText className={styles.docIcon} />
               View Company Profile
@@ -193,38 +250,50 @@ const ContactInfo = () => {
             {/* NAME GRID */}
             <div className={styles.formGrid}>
               <div className={styles.formGroup}>
-                <label className={styles.label}>First Name</label>
+                <label className={styles.label}>First Name*</label>
                 <input
                   className={styles.input}
-                  name="firstName"
-                  value={formData.firstName}
+                  name="Name_First"
+                  value={formData.Name_First}
                   onChange={handleChange}
                   placeholder="John"
                 />
               </div>
 
               <div className={styles.formGroup}>
-                <label className={styles.label}>Last Name</label>
+                <label className={styles.label}>Last Name*</label>
                 <input
                   className={styles.input}
-                  name="lastName"
-                  value={formData.lastName}
+                  name="Name_Last"
+                  value={formData.Name_Last}
                   onChange={handleChange}
                   placeholder="Doe"
                 />
               </div>
             </div>
 
-            {/* EMAIL GRID */}
+            {/* COMPANY NAME */}
+            <div className={styles.formGroup}>
+              <label className={styles.label}>Company Name*</label>
+              <input
+                className={styles.input}
+                name="SingleLine"
+                value={formData.SingleLine}
+                onChange={handleChange}
+                placeholder="Your company name"
+              />
+            </div>
+
+            {/* EMAIL & PHONE GRID */}
             <div className={styles.formGrid}>
               <div className={styles.formGroup}>
-                <label className={styles.label}>Email</label>
+                <label className={styles.label}>Email*</label>
                 <input
                   className={styles.input}
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
+                  name="Email"
                   type="email"
+                  value={formData.Email}
+                  onChange={handleChange}
                   placeholder="example@xyz.com"
                 />
               </div>
@@ -233,8 +302,8 @@ const ContactInfo = () => {
                 <label className={styles.label}>Phone Number</label>
                 <input
                   className={styles.input}
-                  name="phone"
-                  value={formData.phone}
+                  name="PhoneNumber_countrycode"
+                  value={formData.PhoneNumber_countrycode}
                   onChange={handleChange}
                   placeholder="+1 123 457 8490"
                 />
@@ -250,12 +319,9 @@ const ContactInfo = () => {
                   <input
                     type="radio"
                     name="subject"
-                    value="General Inquiry"
                     className={styles.radioInput}
-                    checked={formData.subject === "General Inquiry"}
-                    onChange={() =>
-                      setFormData({ ...formData, subject: "General Inquiry" })
-                    }
+                    checked={formData.Radio === "General Inquiry"}
+                    onChange={() => handleRadioChange("General Inquiry")}
                   />
                   <span className={styles.radioLabel}>General Inquiry</span>
                 </label>
@@ -264,24 +330,22 @@ const ContactInfo = () => {
                   <input
                     type="radio"
                     name="subject"
-                    checked={formData.subject !== "General Inquiry"}
+                    checked={
+                      formData.Radio !== "General Inquiry" &&
+                      formData.Radio !== ""
+                    }
                     readOnly
                     className={styles.radioInput}
                   />
 
                   <select
                     className={styles.select}
-                    value={
-                      formData.subject === "General Inquiry"
-                        ? ""
-                        : formData.subject
-                    }
-                    onChange={handleServiceChange}
+                    name="Dropdown"
+                    value={formData.Dropdown}
+                    onChange={handleChange}
+                    onClick={() => handleRadioChange("Select a Service")}
                   >
-                    <option value="" disabled>
-                      Select a Service
-                    </option>
-
+                    <option value="-Select-">Select a Service</option>
                     {serviceOptions.map((service, index) => (
                       <option key={index} value={service}>
                         {service}
@@ -296,15 +360,16 @@ const ContactInfo = () => {
             <div className={styles.textareaSection}>
               <label className={styles.label}>Message</label>
               <textarea
-                name="message"
+                name="MultiLine"
                 className={styles.textarea}
-                value={formData.message}
+                value={formData.MultiLine}
                 onChange={handleChange}
                 placeholder="Type your message"
+                rows={4}
               />
             </div>
 
-            {/* UNIFIED MESSAGE AREA (ERROR or SUCCESS) */}
+            {/* MESSAGE AREA (ERROR + SUCCESS) */}
             {formMessage && (
               <motion.div
                 initial={{ opacity: 0, y: 6 }}
@@ -316,10 +381,14 @@ const ContactInfo = () => {
               </motion.div>
             )}
 
-            {/* SUBMIT */}
+            {/* SUBMIT BUTTON */}
             <div className={styles.buttonContainer}>
-              <button className={styles.submitButton} type="submit">
-                Send Message
+              <button
+                className={styles.submitButton}
+                type="submit"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
             </div>
           </form>
@@ -327,6 +396,4 @@ const ContactInfo = () => {
       </div>
     </section>
   );
-};
-
-export default ContactInfo;
+}

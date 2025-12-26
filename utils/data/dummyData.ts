@@ -1522,7 +1522,7 @@ const regions: Region[] = [
     hasDetails: true,
     details: [
       "US – SALES OFFICE Charlottesville, Virginia 22902, United States",
-      "+1434218-8403",
+      "+1-1-866-JES-HVAC",
       "bruce.dorey@jerseyeng.com",
     ],
     mapPosition: { top: "50%", left: "20%" },

@@ -51,7 +51,7 @@ const Footer: React.FC<HTMLProps<HTMLElement>> = ({ ...props }) => {
               </Link>
             </p>
             <p className={styles.contactDetails}>
-              <Phone width={23} height={23} /> +1 434 218-8403
+              <Phone width={23} height={23} /> +1-1-866-JES-HVAC
             </p>
             <p
               className={styles.contactDetails}

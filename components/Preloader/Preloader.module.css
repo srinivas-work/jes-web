@@ -8,24 +8,39 @@
   z-index: 99999999;
   backdrop-filter: blur(28px);
   background: rgba(255, 255, 255, 0.92);
-
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  padding-top: 160px;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
 }
 
 .loaderWrapper {
   height: auto;
   position: relative;
   z-index: 5;
+  width: 100%;
+  max-width: 650px;
+  padding: 0 20px;
+}
+
+.listContainer {
+  position: relative;
+  height: 500px; /* Fixed height container */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .listWrapper {
   display: flex;
   flex-direction: column;
-  max-width: 650px;
-  margin: auto;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  will-change: transform;
 }
 
 /* BIG spacing between lines */
@@ -34,6 +49,8 @@
   align-items: center;
   gap: 20px;
   margin-bottom: 48px;
+  position: relative;
+  width: 100%;
 }
 
 /* ======================================= */
@@ -41,19 +58,18 @@
 /* ======================================= */
 
 .text {
-  color: #777; /* Light theme soft grey */
+  color: #777;
   font-size: 32px;
   opacity: 0.55;
-
   font-weight: 700;
   font-variation-settings: "wght" 400;
-
   transition: opacity 0.3s ease, color 0.3s ease,
     font-variation-settings 0.3s ease;
+  line-height: 1.2;
 }
 
 .active {
-  color: var(--primary-red);
+  color: var(--primary-red, #a91e2d);
   opacity: 1;
   font-variation-settings: "wght" 700;
 }
@@ -68,12 +84,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .iconOutline {
   width: 40px;
   height: 40px;
-  color: #999; /* Light grey outline */
+  color: #999;
 }
 
 .iconFilled {
@@ -82,7 +99,7 @@
 }
 
 .filledCircle {
-  fill: var(--primary-red);
+  fill: var(--primary-red, #a91e2d);
 }
 
 .filledTick {
@@ -93,44 +110,121 @@
 }
 
 .activeIcon {
-  filter: drop-shadow(0 0 8px rgba(169, 30, 45, 0.4)); /* Soft subtle glow */
+  filter: drop-shadow(0 0 8px rgba(169, 30, 45, 0.4));
 }
 
 /* ======================================= */
-/* MOBILE RESPONSIVE                       */
+/* RESPONSIVE DESIGN - SIMPLIFIED          */
 /* ======================================= */
 
-@media (max-width: 600px) {
+/* Tablet & Mobile (768px and below) */
+@media (max-width: 768px) {
   .overlay {
-    padding-top: 120px;
+    backdrop-filter: blur(20px);
+    padding: 0 16px;
+  }
+
+  .listContainer {
+    height: 400px;
   }
 
   .item {
-    gap: 14px;
-    margin-bottom: 34px;
+    gap: 16px;
+    margin-bottom: 32px;
   }
 
   .text {
-    font-size: 22px;
-    font-variation-settings: "wght" 400;
+    font-size: 24px;
   }
 
   .iconWrapper {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
   }
 
-  .iconOutline {
-    width: 28px;
-    height: 28px;
-  }
-
+  .iconOutline,
   .iconFilled {
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
   }
 
   .filledTick {
-    stroke-width: 2.6;
+    stroke-width: 2.8;
+  }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+  .overlay {
+    backdrop-filter: blur(16px);
+    padding-bottom: 20rem;
+  }
+
+  .listContainer {
+    height: 350px;
+  }
+
+  .item {
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .text {
+    font-size: 18px;
+  }
+
+  .iconWrapper {
+    width: 28px;
+    height: 28px;
+  }
+
+  .iconOutline,
+  .iconFilled {
+    width: 24px;
+    height: 24px;
+  }
+
+  .filledTick {
+    stroke-width: 2.2;
+  }
+}
+
+/* Small Mobile (360px and below) */
+@media (max-width: 360px) {
+  .listContainer {
+    height: 300px;
+  }
+
+  .item {
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+
+  .iconWrapper {
+    width: 24px;
+    height: 24px;
+  }
+
+  .iconOutline,
+  .iconFilled {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* ======================================= */
+/* ACCESSIBILITY & DARK MODE               */
+/* ======================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .item,
+  .text {
+    transition: none !important;
+    animation: none !important;
   }
 }
