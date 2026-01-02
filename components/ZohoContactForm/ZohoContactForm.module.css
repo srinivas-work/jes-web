@@ -456,3 +456,33 @@
     width: 95%;
   }
 }
+
+/* =======================
+   TERMS & CONDITIONS
+======================= */
+.termsText {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: -1rem;
+}
+
+.termsTick {
+  color: var(--primary-red);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.termsLink {
+  color: var(--primary-red);
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.termsLink:hover {
+  text-decoration-thickness: 2px;
+}

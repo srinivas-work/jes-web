@@ -4,7 +4,7 @@ import Header from "@/components/Header/Header";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Preloader from "@/components/Preloader/Preloader";
+// import Preloader from "@/components/Preloader/Preloader";
 import CustomScrollbar from "@/components/UI/CustomScrollbar";
 import Script from "next/script";
 
@@ -137,7 +137,7 @@ export default function RootLayout({
           }}
         />
 
-        <Preloader />
+        {/* <Preloader /> */}
         <Header />
         <CustomScrollbar />
         <BackToTopButton />

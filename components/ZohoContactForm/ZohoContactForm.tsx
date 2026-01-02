@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useRef } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { FileText, Linkedin } from "lucide-react";
 import Link from "next/link";
-import { useRef } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./ZohoContactForm.module.css";
 import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
 
@@ -40,7 +40,13 @@ interface FormData {
   MultiLine: string;
 }
 
+const getQueryParam = (key: string): string => {
+  if (typeof window === "undefined") return "";
+  return new URLSearchParams(window.location.search).get(key) || "";
+};
+
 export default function ZohoContactForm() {
+  const router = useRouter();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref });
   const isPhoneScreen = useIsPhoneScreen();
@@ -74,91 +80,70 @@ export default function ZohoContactForm() {
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >
   ) => {
-    setFormMessage("");
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormMessage("");
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleRadioChange = (value: string) => {
+  const handleServiceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setFormMessage("");
     setFormData((prev) => ({
       ...prev,
-      Radio: value,
+      Radio: "Select a Service",
+      Dropdown: e.target.value,
     }));
   };
 
-  const validateForm = (): boolean => {
-    if (!formData.Name_First.trim()) {
-      setFormMessage("First name is required");
-      setIsSuccess(false);
-      return false;
-    }
-    if (!formData.Name_Last.trim()) {
-      setFormMessage("Last name is required");
-      setIsSuccess(false);
-      return false;
-    }
-    if (!formData.SingleLine.trim()) {
-      setFormMessage("Company name is required");
-      setIsSuccess(false);
-      return false;
-    }
-    if (!formData.Email.trim()) {
-      setFormMessage("Email is required");
-      setIsSuccess(false);
-      return false;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.Email)) {
-      setFormMessage("Please enter a valid email address");
-      setIsSuccess(false);
-      return false;
-    }
+  const setError = (msg: string) => {
+    setFormMessage(msg);
+    setIsSuccess(false);
+    return false;
+  };
+
+  const validateForm = () => {
+    if (!formData.Name_First.trim()) return setError("First name is required");
+    if (!formData.Name_Last.trim()) return setError("Last name is required");
+    if (!formData.SingleLine.trim())
+      return setError("Company name is required");
+    if (!formData.Email.trim()) return setError("Email is required");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.Email))
+      return setError("Please enter a valid email address");
     return true;
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     setIsSubmitting(true);
     setFormMessage("");
 
     try {
-      const formDataToSubmit = new FormData();
-      Object.entries(formData).forEach(([key, value]) => {
-        formDataToSubmit.append(key, value);
-      });
+      const payload = new FormData();
+      Object.entries(formData).forEach(([k, v]) => payload.append(k, v));
 
-      // Add hidden fields required by Zoho
-      formDataToSubmit.append("zf_referrer_name", "");
-      formDataToSubmit.append("zf_redirect_url", "");
-      formDataToSubmit.append("zc_gad", "");
-      formDataToSubmit.append("utm_source", "");
-      formDataToSubmit.append("utm_medium", "");
-      formDataToSubmit.append("utm_campaign", "");
-      formDataToSubmit.append("utm_term", "");
-      formDataToSubmit.append("utm_content", "");
-      formDataToSubmit.append("gclid", "");
+      payload.append("utm_source", getQueryParam("utm_source"));
+      payload.append("utm_medium", getQueryParam("utm_medium"));
+      payload.append("utm_campaign", getQueryParam("utm_campaign"));
+      payload.append("utm_term", getQueryParam("utm_term"));
+      payload.append("utm_content", getQueryParam("utm_content"));
+      payload.append("gclid", getQueryParam("gclid"));
 
       await fetch(
         "https://forms.zohopublic.com/jesengineeringsolutions1/form/ContactUsForm/formperma/kpQYNAU9yiPtZ92jmn9ay0RXmW23xMjnHAl8XxV-fVA/htmlRecords/submit",
-        {
-          method: "POST",
-          body: formDataToSubmit,
-          mode: "no-cors",
-        }
+        { method: "POST", body: payload, mode: "no-cors" }
       );
 
       setIsSuccess(true);
-      setFormMessage("Thank you! Your message has been sent successfully.");
+      setFormMessage(
+        "Thanks! If your details are valid, our team will contact you shortly."
+      );
 
-      // Reset form
+      setTimeout(() => {
+        setFormMessage("");
+        setIsSuccess(false);
+      }, 3000);
+
       setFormData({
         Name_First: "",
         Name_Last: "",
@@ -169,18 +154,8 @@ export default function ZohoContactForm() {
         Dropdown: "-Select-",
         MultiLine: "",
       });
-
-      // Auto-clear success message after 3 seconds
-      setTimeout(() => {
-        setFormMessage("");
-        setIsSuccess(false);
-      }, 3000);
-    } catch (error) {
-      console.error("Form submission error:", error);
-      setIsSuccess(false);
-      setFormMessage(
-        "Sorry, there was an error submitting the form. Please try again."
-      );
+    } catch {
+      setError("Sorry, something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -193,8 +168,8 @@ export default function ZohoContactForm() {
         <motion.div className={styles.leftPanel} style={{ y: leftY }}>
           <motion.img
             className={styles.backgroundVector}
-            alt="Vector"
             src="/img/jes_curve_white.svg"
+            alt=""
             style={{ rotate: whiteCurveRotate }}
           />
 
@@ -207,8 +182,8 @@ export default function ZohoContactForm() {
 
           {!isPhoneScreen && (
             <div className={styles.contactInfoContainer}>
-              {contactInfo.map((info, index) => (
-                <div key={index} className={styles.contactItem}>
+              {contactInfo.map((info, i) => (
+                <div key={i} className={styles.contactItem}>
                   <img
                     className={styles.contactIcon}
                     src={info.icon}
@@ -224,14 +199,8 @@ export default function ZohoContactForm() {
             <Link href="#">
               <Linkedin size={35} />
             </Link>
-            <button
-              className={styles.docButton}
-              onClick={() => {
-                // Add your document viewer logic here
-                console.log("View company profile");
-              }}
-            >
-              <FileText className={styles.docIcon} />
+            <button className={styles.docButton}>
+              <FileText size={16} />
               View Company Profile
             </button>
           </div>
@@ -241,13 +210,13 @@ export default function ZohoContactForm() {
         <motion.div className={styles.rightPanel} style={{ y: rightY }}>
           <motion.img
             className={styles.formBackground}
-            alt="Vector"
             src="/img/jes_curve_red.svg"
+            alt=""
             style={{ rotate: redCurveRotate }}
           />
 
           <form onSubmit={handleSubmit} className={styles.form}>
-            {/* NAME GRID */}
+            {/* NAME */}
             <div className={styles.formGrid}>
               <div className={styles.formGroup}>
                 <label className={styles.label}>First Name*</label>
@@ -272,7 +241,7 @@ export default function ZohoContactForm() {
               </div>
             </div>
 
-            {/* COMPANY NAME */}
+            {/* COMPANY */}
             <div className={styles.formGroup}>
               <label className={styles.label}>Company Name*</label>
               <input
@@ -284,14 +253,13 @@ export default function ZohoContactForm() {
               />
             </div>
 
-            {/* EMAIL & PHONE GRID */}
+            {/* EMAIL & PHONE */}
             <div className={styles.formGrid}>
               <div className={styles.formGroup}>
                 <label className={styles.label}>Email*</label>
                 <input
                   className={styles.input}
                   name="Email"
-                  type="email"
                   value={formData.Email}
                   onChange={handleChange}
                   placeholder="example@xyz.com"
@@ -301,11 +269,12 @@ export default function ZohoContactForm() {
               <div className={styles.formGroup}>
                 <label className={styles.label}>Phone Number</label>
                 <input
-                  className={styles.input}
+                  className={`${styles.input} ${styles.numberInput}`}
                   name="PhoneNumber_countrycode"
                   value={formData.PhoneNumber_countrycode}
                   onChange={handleChange}
                   placeholder="+1 123 457 8490"
+                  type="number"
                 />
               </div>
             </div>
@@ -317,37 +286,35 @@ export default function ZohoContactForm() {
               <div className={styles.subjectLayout}>
                 <label className={styles.radioItem}>
                   <input
-                    type="radio"
-                    name="subject"
                     className={styles.radioInput}
+                    type="radio"
+                    name="Radio"
+                    value="General Inquiry"
                     checked={formData.Radio === "General Inquiry"}
-                    onChange={() => handleRadioChange("General Inquiry")}
+                    onChange={handleChange}
                   />
                   <span className={styles.radioLabel}>General Inquiry</span>
                 </label>
 
                 <div className={styles.dropdownItem}>
                   <input
-                    type="radio"
-                    name="subject"
-                    checked={
-                      formData.Radio !== "General Inquiry" &&
-                      formData.Radio !== ""
-                    }
-                    readOnly
                     className={styles.radioInput}
+                    type="radio"
+                    name="Radio"
+                    value="Select a Service"
+                    checked={formData.Radio === "Select a Service"}
+                    readOnly
                   />
 
                   <select
                     className={styles.select}
                     name="Dropdown"
                     value={formData.Dropdown}
-                    onChange={handleChange}
-                    onClick={() => handleRadioChange("Select a Service")}
+                    onChange={handleServiceChange}
                   >
                     <option value="-Select-">Select a Service</option>
-                    {serviceOptions.map((service, index) => (
-                      <option key={index} value={service}>
+                    {serviceOptions.map((service) => (
+                      <option key={service} value={service}>
                         {service}
                       </option>
                     ))}
@@ -360,28 +327,43 @@ export default function ZohoContactForm() {
             <div className={styles.textareaSection}>
               <label className={styles.label}>Message</label>
               <textarea
-                name="MultiLine"
                 className={styles.textarea}
+                name="MultiLine"
                 value={formData.MultiLine}
                 onChange={handleChange}
                 placeholder="Type your message"
-                rows={4}
               />
             </div>
 
-            {/* MESSAGE AREA (ERROR + SUCCESS) */}
-            {formMessage && (
-              <motion.div
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                className={isSuccess ? styles.successBox : styles.errorBox}
+            {/* TERMS */}
+            <p className={styles.termsText}>
+              By submitting this form, you agree to our{" "}
+              <span
+                className={styles.termsLink}
+                role="link"
+                tabIndex={0}
+                onClick={() =>
+                  window.open("/terms", "_blank", "noopener,noreferrer")
+                }
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    window.open("/terms", "_blank", "noopener,noreferrer");
+                  }
+                }}
               >
-                {isSuccess ? "✅ " : "❌ "}
+                Terms & Conditions
+              </span>
+              .
+            </p>
+
+            {/* MESSAGE BOX */}
+            {formMessage && (
+              <div className={isSuccess ? styles.successBox : styles.errorBox}>
                 {formMessage}
-              </motion.div>
+              </div>
             )}
 
-            {/* SUBMIT BUTTON */}
+            {/* SUBMIT */}
             <div className={styles.buttonContainer}>
               <button
                 className={styles.submitButton}

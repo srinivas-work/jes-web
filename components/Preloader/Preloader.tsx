@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import styles from "./Preloader.module.css";
 import { usePathname } from "next/navigation";
+import styles from "./Preloader.module.css";
 
 const loadingStates = [
   { text: "Calculating project requirements" },
@@ -13,34 +13,35 @@ const loadingStates = [
   { text: "Preparing your project dashboard" },
 ];
 
-export default function Preloader({ duration = 1000 }: { duration?: number }) {
+export default function Preloader({ duration = 900 }: { duration?: number }) {
   const pathname = usePathname();
   const [currentState, setCurrentState] = useState(0);
   const [finished, setFinished] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (currentState < loadingStates.length - 1) {
-      const t = setTimeout(() => setCurrentState((p) => p + 1), duration);
-      return () => clearTimeout(t);
-    }
-
-    const endTimeout = setTimeout(() => {
-      setFinished(true);
-    }, 600);
-
-    return () => clearTimeout(endTimeout);
-  }, [currentState, duration]);
-
-  if (pathname.includes("/lp") || pathname.includes("/thanks")) {
+  // Skip preloader on specific routes
+  if (
+    pathname.includes("/lp") ||
+    pathname.includes("/thanks") ||
+    pathname.includes("/terms")
+  ) {
     return null;
   }
 
-  if (!isMounted) return null;
+  useEffect(() => {
+    if (currentState < loadingStates.length - 1) {
+      const timer = setTimeout(
+        () => setCurrentState((prev) => prev + 1),
+        duration
+      );
+      return () => clearTimeout(timer);
+    }
+
+    const endTimer = setTimeout(() => {
+      setFinished(true);
+    }, 500);
+
+    return () => clearTimeout(endTimer);
+  }, [currentState, duration]);
 
   return (
     <AnimatePresence>
@@ -51,60 +52,65 @@ export default function Preloader({ duration = 1000 }: { duration?: number }) {
           animate={{ opacity: 1 }}
           exit={{
             opacity: 0,
-            transition: { duration: 0.6, ease: "easeInOut" },
+            transition: { duration: 0.45, ease: "easeInOut" },
           }}
         >
           <div className={styles.loaderWrapper}>
-            <LoaderCore value={currentState} />
+            <div className={styles.listContainer}>
+              {/* ✅ ONLY THIS MOVES VERTICALLY */}
+              <motion.div
+                className={styles.listWrapper}
+                animate={{
+                  y: -(currentState * 28),
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 70,
+                  damping: 22,
+                  mass: 0.8,
+                }}
+              >
+                {loadingStates.map((state, i) => {
+                  const distance = Math.abs(i - currentState);
+                  const opacity = Math.max(1 - distance * 0.15, 0.3);
+
+                  return (
+                    <motion.div
+                      key={i}
+                      className={styles.item}
+                      animate={{
+                        opacity,
+                        scale: i === currentState ? 1.03 : 1,
+                      }}
+                      transition={{
+                        duration: 0.3,
+                        ease: "easeOut",
+                      }}
+                    >
+                      <div className={styles.iconWrapper}>
+                        {i <= currentState ? (
+                          <FilledCheck active={i === currentState} />
+                        ) : (
+                          <CheckIcon />
+                        )}
+                      </div>
+
+                      <span
+                        className={`${styles.text} ${
+                          currentState === i ? styles.active : ""
+                        }`}
+                      >
+                        {state.text}
+                      </span>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            </div>
           </div>
         </motion.div>
       )}
     </AnimatePresence>
-  );
-}
-
-function LoaderCore({ value }: { value: number }) {
-  return (
-    <div className={styles.listContainer}>
-      <div className={styles.listWrapper}>
-        {loadingStates.map((state, i) => {
-          const distance = Math.abs(i - value);
-          const opacity = Math.max(1 - distance * 0.2, 0);
-
-          return (
-            <motion.div
-              key={i}
-              className={styles.item}
-              initial={{ opacity: 0 }}
-              animate={{
-                opacity,
-                y: -(value * 40),
-              }}
-              transition={{
-                duration: 0.5,
-                type: "spring",
-                stiffness: 100,
-                damping: 15,
-              }}
-            >
-              <div className={styles.iconWrapper}>
-                {i <= value ? (
-                  <FilledCheck active={i === value} />
-                ) : (
-                  <CheckIcon />
-                )}
-              </div>
-
-              <span
-                className={`${styles.text} ${value === i ? styles.active : ""}`}
-              >
-                {state.text}
-              </span>
-            </motion.div>
-          );
-        })}
-      </div>
-    </div>
   );
 }
 

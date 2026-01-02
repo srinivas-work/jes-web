@@ -1,71 +1,88 @@
-/* =============================== */
-/* WHITE THEME OVERLAY             */
-/* =============================== */
-
 .overlay {
   position: fixed;
   inset: 0;
   z-index: 99999999;
-  backdrop-filter: blur(28px);
+
+  backdrop-filter: blur(24px);
   background: rgba(255, 255, 255, 0.92);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  -webkit-user-select: none;
+
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-  overflow: hidden;
+
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .loaderWrapper {
-  height: auto;
   position: relative;
   z-index: 5;
   width: 100%;
   max-width: 650px;
-  padding: 0 20px;
+  padding: 0 24px;
 }
+
+/* =============================== */
+/* LIST CONTAINER                  */
+/* =============================== */
 
 .listContainer {
   position: relative;
-  height: 500px; /* Fixed height container */
-  overflow: hidden;
+  height: 700px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0 8px; /* mobile-safe horizontal breathing room */
 }
+
+/* =============================== */
+/* LIST                            */
+/* =============================== */
 
 .listWrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 650px;
   margin: 0 auto;
   position: relative;
   will-change: transform;
 }
 
-/* BIG spacing between lines */
+/* =============================== */
+/* ITEM                            */
+/* =============================== */
+
 .item {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   margin-bottom: 48px;
-  position: relative;
   width: 100%;
 }
 
-/* ======================================= */
-/* TEXT — INACTIVE GREY + ACTIVE RED       */
-/* ======================================= */
+/* =============================== */
+/* TEXT                            */
+/* =============================== */
 
 .text {
   color: #777;
   font-size: 32px;
-  opacity: 0.55;
   font-weight: 700;
+  opacity: 0.55;
+  line-height: 1.25;
+
   font-variation-settings: "wght" 400;
+
+  word-break: break-word;
+  overflow-wrap: anywhere;
+
   transition: opacity 0.3s ease, color 0.3s ease,
     font-variation-settings 0.3s ease;
-  line-height: 1.2;
 }
 
 .active {
@@ -74,9 +91,9 @@
   font-variation-settings: "wght" 700;
 }
 
-/* ======================================= */
-/* ICONS — LIGHT THEME                     */
-/* ======================================= */
+/* =============================== */
+/* ICONS                           */
+/* =============================== */
 
 .iconWrapper {
   width: 48px;
@@ -113,23 +130,16 @@
   filter: drop-shadow(0 0 8px rgba(169, 30, 45, 0.4));
 }
 
-/* ======================================= */
-/* RESPONSIVE DESIGN - SIMPLIFIED          */
-/* ======================================= */
+/* =============================== */
+/* RESPONSIVE                      */
+/* =============================== */
 
-/* Tablet & Mobile (768px and below) */
 @media (max-width: 768px) {
-  .overlay {
-    backdrop-filter: blur(20px);
-    padding: 0 16px;
-  }
-
   .listContainer {
-    height: 400px;
+    height: 420px;
   }
 
   .item {
-    gap: 16px;
     margin-bottom: 32px;
   }
 
@@ -153,15 +163,9 @@
   }
 }
 
-/* Mobile (480px and below) */
 @media (max-width: 480px) {
-  .overlay {
-    backdrop-filter: blur(16px);
-    padding-bottom: 20rem;
-  }
-
   .listContainer {
-    height: 350px;
+    height: 380px;
   }
 
   .item {
@@ -189,15 +193,9 @@
   }
 }
 
-/* Small Mobile (360px and below) */
 @media (max-width: 360px) {
   .listContainer {
-    height: 300px;
-  }
-
-  .item {
-    gap: 10px;
-    margin-bottom: 24px;
+    height: 340px;
   }
 
   .text {
@@ -216,15 +214,13 @@
   }
 }
 
-/* ======================================= */
-/* ACCESSIBILITY & DARK MODE               */
-/* ======================================= */
+/* =============================== */
+/* ACCESSIBILITY (CSS MODULE SAFE) */
+/* =============================== */
 
 @media (prefers-reduced-motion: reduce) {
-  .overlay,
-  .item,
-  .text {
-    transition: none !important;
+  .overlay * {
     animation: none !important;
+    transition: none !important;
   }
 }
