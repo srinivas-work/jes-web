@@ -1,0 +1,526 @@
+/* app/page.module.css */
+
+/* Keyframe Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Page Layout */
+.page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient Text */
+.gradient {
+  background: linear-gradient(
+    135deg,
+    var(--primary-red) 0%,
+    var(--primary-red) 50%,
+    var(--primary-red) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Sections */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 5%;
+  position: relative;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+
+.sectionSubtitle {
+  font-size: 1.15rem;
+  color: #64748b;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+}
+
+.noMarginBottom {
+  margin-bottom: 0;
+}
+
+/* Feature Grid */
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.featureCard {
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 1.25rem;
+  padding: 2.5rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.featureCard:hover,
+.featureCardHovered {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(169, 30, 45, 0.15);
+  border-color: var(--primary-red);
+}
+
+.featureIcon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    135deg,
+    var(--primary-red) 0%,
+    var(--primary-dark) 100%
+  );
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+  color: white;
+}
+
+.featureIcon:hover,
+.featureIconHovered {
+  transform: rotate(5deg) scale(1.1);
+}
+
+.featureTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #0f172a;
+}
+
+.featureDescription {
+  color: #64748b;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #ffffff;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.tableHeader {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.th {
+  padding: 1.5rem;
+  text-align: left;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-bottom: 2px solid #e2e8f0;
+  color: #0f172a;
+}
+
+.tableRow {
+  transition: all 0.3s ease;
+}
+
+.tableRow:hover {
+  background: #f8fafc;
+}
+
+.td {
+  padding: 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #475569;
+  line-height: 1.7;
+}
+
+.tdCapability {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Bullet List */
+.bulletList {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.bulletItem {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 1rem;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.bulletItem:hover {
+  transform: translateX(8px);
+  border-color: var(--primary-red);
+  box-shadow: 0 8px 25px rgba(169, 30, 45, 0.1);
+}
+
+.bulletIcon {
+  color: var(--primary-red);
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.bulletTitle {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #0f172a;
+}
+
+.bulletText {
+  color: #64748b;
+  line-height: 1.7;
+}
+
+/* Final CTA */
+.finalCta {
+  text-align: center;
+  padding: 6rem 5%;
+  background: linear-gradient(135deg, #fff5f6 0%, #ffe8ea 100%);
+  border-top: 2px solid #e2e8f0;
+  position: relative;
+}
+
+.finalCtaTitle {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+}
+
+.finalCtaSubtitle {
+  font-size: 1.3rem;
+  color: #64748b;
+  margin-bottom: 3rem;
+}
+
+/* Floating Elements */
+.particleContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+.floatingIcon {
+  position: absolute;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.iconPrimary {
+  color: var(--primary-red);
+  top: 15%;
+  left: 10%;
+}
+
+.iconSecondary {
+  color: var(--primary-red);
+  top: 60%;
+  right: 15%;
+}
+
+.iconTertiary {
+  color: var(--primary-red);
+  bottom: 20%;
+  left: 15%;
+}
+
+/* Animation Classes */
+.animated {
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animated.visible {
+  opacity: 1;
+}
+
+.animateUp {
+  transform: translateY(40px);
+}
+
+.animateUp.visible {
+  transform: translateY(0);
+}
+
+.animateDown {
+  transform: translateY(-40px);
+}
+
+.animateDown.visible {
+  transform: translateY(0);
+}
+
+.animateLeft {
+  transform: translateX(-40px);
+}
+
+.animateLeft.visible {
+  transform: translateX(0);
+}
+
+.animateRight {
+  transform: translateX(40px);
+}
+
+.animateRight.visible {
+  transform: translateX(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem 5%;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .hero {
+    padding: 4rem 5% 3rem;
+  }
+
+  .section {
+    padding: 3rem 5%;
+  }
+
+  .featureGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .ctaButton {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .ctaButtonLarge {
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .table {
+    font-size: 0.9rem;
+  }
+
+  .th,
+  .td {
+    padding: 1rem;
+  }
+
+  .finalCta {
+    padding: 4rem 5%;
+  }
+}
+
+/* Floating Background Curves */
+.floatingCurve1,
+.floatingCurve2 {
+  position: fixed;
+  pointer-events: none;
+  opacity: 0.06;
+  z-index: -1;
+  will-change: transform;
+}
+
+.floatingCurve1 {
+  top: 20%;
+  right: -12%;
+  width: 650px;
+  height: 650px;
+}
+
+.floatingCurve1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.floatingCurve2 {
+  bottom: 5%;
+  left: -18%;
+  width: 750px;
+  height: 750px;
+  opacity: 0.5;
+}
+
+.floatingCurve2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%);
+}
+
+/*Hero Section*/
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 85vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 100px;
+}
+
+.heroImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.heroImageContainer {
+  width: 100%;
+  height: 120%;
+  will-change: transform;
+}
+
+.heroImage {
+  width: 100dvw;
+  height: 100%;
+  position: relative;
+}
+
+.heroImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(32, 32, 32, 0.7) 0%,
+    rgba(169, 30, 45, 0.3) 100%
+  );
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 40px;
+  max-width: 900px;
+}
+
+.heroLabel {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  position: relative;
+}
+
+.heroLabel::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+}
+
+.heroTitle {
+  font-size: clamp(44px, 7vw, 80px);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 32px;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  width: 100%;
+}
+
+.titleAccent {
+  color: #a91e2d;
+  display: inline-block;
+}
+
+.heroDescription {
+  font-size: clamp(17px, 2.2vw, 21px);
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 300;
+}

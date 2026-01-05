@@ -8,7 +8,7 @@ import { useUserValidatorStore } from "@/utils/store/useUserValidatorStore";
 import { InsightItemType } from "@/utils/types";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import styles from "./Insights.module.css";
 
 export default function Insights() {

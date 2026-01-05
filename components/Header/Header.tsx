@@ -20,7 +20,8 @@ const Header = () => {
     pathname === "/solutions" ||
     pathname.includes("insights") ||
     pathname.includes("projects/") ||
-    pathname.includes("/lp");
+    pathname.includes("/lp") ||
+    pathname.includes("/ai");
 
   // For solutions pages: white (0) → dark (1) on scroll
   // For other pages: start at dark (1) and stay dark

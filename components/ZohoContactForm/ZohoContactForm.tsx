@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import styles from "./ZohoContactForm.module.css";
 import useIsPhoneScreen from "@/utils/hooks/useIsPhoneScreen";
+import FlipBookViewer from "../FlipBookViewer/FlipBookViewer";
 
 const contactInfo = [
   { icon: "/icons/phone.svg", text: "+1-1-866-JES-HVAC", alt: "Phone" },
@@ -71,6 +72,7 @@ export default function ZohoContactForm() {
     MultiLine: "",
   });
 
+  const [isDocClicked, setIsDocClicked] = useState(false);
   const [formMessage, setFormMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -163,6 +165,11 @@ export default function ZohoContactForm() {
 
   return (
     <section ref={ref} className={styles.container}>
+      <FlipBookViewer
+        isClicked={isDocClicked}
+        onClose={() => setIsDocClicked(false)}
+      />
+
       <div className={styles.wrapper}>
         {/* LEFT PANEL */}
         <motion.div className={styles.leftPanel} style={{ y: leftY }}>
@@ -196,10 +203,13 @@ export default function ZohoContactForm() {
           )}
 
           <div className={styles.socialIcons}>
-            <Link href="#">
+            <Link href="https://www.linkedin.com/company/jersey-engineering-solutions">
               <Linkedin size={35} />
             </Link>
-            <button className={styles.docButton}>
+            <button
+              className={styles.docButton}
+              onClick={() => setIsDocClicked(true)}
+            >
               <FileText size={16} />
               View Company Profile
             </button>
